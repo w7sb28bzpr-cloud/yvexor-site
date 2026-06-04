@@ -2245,6 +2245,24 @@
 </footer>
 
 <script>
+
+/* OUVERTURE TOUJOURS EN HAUT */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+function forceTopOnOpen(){
+  // Si le navigateur a gardé une ancienne position ou un #ancre, on remet l'accueil
+  if (window.location.hash) {
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+}
+
+forceTopOnOpen();
+window.addEventListener('load', () => setTimeout(forceTopOnOpen, 50));
+window.addEventListener('pageshow', () => setTimeout(forceTopOnOpen, 50));
+
 document.addEventListener('DOMContentLoaded', function(){
   const burger = document.getElementById('burger');
   const mobilePanel = document.getElementById('mobilePanel');
@@ -2277,6 +2295,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
   window.toggleMobileMenu = toggleMobileMenu;
   window.closeMobileMenu = closeMobileMenu;
+
+  const logoHome = document.querySelector('.logo');
+  if(logoHome){
+    logoHome.addEventListener('click', function(e){
+      e.preventDefault();
+      history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      closeMobileMenu();
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  }
+
 
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape') closeMobileMenu();

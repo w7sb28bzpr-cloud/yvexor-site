@@ -1489,7 +1489,55 @@
       .chaos-hud-sub{ font-size:.65rem; letter-spacing:.14em; padding:8px 14px; max-width:92vw; }
     }
 
-  </style>
+  
+
+    /* ══════════════════════════════════════════
+       CORRECTIF FINAL — CONTACT SMS + MENU MOBILE
+    ══════════════════════════════════════════ */
+    .contact-grid.single{
+      grid-template-columns:1fr;
+      max-width:760px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .mobile-panel .btn.sms,
+    .mobile-panel .btn.chaos-nav-btn{
+      width:100%;
+      min-height:64px;
+      margin-left:0;
+      margin-right:0;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center !important;
+      text-align:center !important;
+      border:0;
+      border-radius:28px;
+      box-sizing:border-box;
+      font-family:inherit;
+      appearance:none;
+      -webkit-appearance:none;
+      align-self:stretch;
+    }
+
+    .mobile-panel .btn.chaos-nav-btn{
+      margin-top:10px;
+      line-height:1.1;
+    }
+
+    .mobile-panel .btn.chaos-nav-btn::before{
+      pointer-events:none;
+    }
+
+    @media(max-width:420px){
+      .mobile-panel .btn.sms,
+      .mobile-panel .btn.chaos-nav-btn{
+        min-height:62px;
+        border-radius:26px;
+      }
+    }
+</style>
 </head>
 
 <body>
@@ -1549,7 +1597,7 @@
   <a href="#collaboration" onclick="closeMobileMenu()">Partenariat</a>
   <a href="#equipe" onclick="closeMobileMenu()">Équipe</a>
   <a href="#tarifs" onclick="closeMobileMenu()">Tarifs</a>
-  <a href="sms:+33608728918?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms" onclick="closeMobileMenu()">Envoyer un message</a>
+  <a href="sms:+33756913013?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms" onclick="closeMobileMenu()">Envoyer un message</a>
   <button class="btn chaos-nav-btn" type="button" onclick="closeMobileMenu(); setTimeout(() => document.getElementById('chaosBtn')?.click(), 120);">Détruire le site 😂</button>
 </div>
 
@@ -1570,7 +1618,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="sms:+33608728918?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message →</a>
+          <a href="sms:+33756913013?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message →</a>
           <a href="#collaboration" class="btn ghost">Proposer une collaboration</a>
         </div>
 
@@ -1735,7 +1783,7 @@
           <div class="service-intro">
             <div>
               <h3>🏪 Caisses tactiles & commerces</h3>
-              <p>Une caisse tactile personnalisée, sans abonnement obligatoire par la suite, adaptée au métier du client.</p>
+              <p>Une caisse tactile personnalisée, avec achat direct ou abonnement possible, sans abonnement obligatoire par la suite, adaptée au métier du client.</p>
             </div>
             <span class="audience">Cible : restaurants, snacks, boutiques, épiceries</span>
           </div>
@@ -1743,7 +1791,7 @@
             <div class="mini"><h4>Caisse tactile</h4><p>Interface de vente, panier, produits, catégories, modes de paiement.</p></div>
             <div class="mini"><h4>Tickets & impression</h4><p>Ticket client, ticket cuisine, liste de préparation ou ticket personnalisé.</p></div>
             <div class="mini"><h4>Stock & produits</h4><p>Ajout produits, modification prix, suivi stock et catégories.</p></div>
-            <div class="mini"><h4>Sans abonnement obligatoire</h4><p>Le client peut acheter sa solution et choisir une maintenance seulement s’il en a besoin.</p></div>
+            <div class="mini"><h4>Achat ou abonnement possible</h4><p>Le client peut acheter sa solution, choisir un abonnement ou ajouter une maintenance seulement s’il en a besoin.</p></div>
           </div>
         </div>
 
@@ -2156,7 +2204,7 @@
           <div class="icon">🖥️</div>
           <h3>Caisse tactile</h3>
           <div class="price"><span>à partir de</span> 1290€</div>
-          <p>Solution caisse personnalisée, sans abonnement obligatoire par la suite, selon matériel et fonctions.</p>
+          <p>Solution caisse personnalisée. Achat direct possible, abonnement possible, sans abonnement obligatoire par la suite, selon matériel et fonctions.</p>
         </div>
 
         <div class="card">
@@ -2195,33 +2243,23 @@
     <div class="container">
       <div class="section-head center">
         <div class="tagline">Contact rapide</div>
-        <h2>Expliquez votre idée ou votre projet rentable par SMS ou par email.</h2>
+        <h2>Expliquez votre idée ou votre projet rentable par message.</h2>
         <p>
           Décrivez votre activité, votre idée, le problème à résoudre ou le système que vous souhaitez créer.
           YVEXOR vous recontacte pour étudier la faisabilité, le modèle possible et la meilleure façon de lancer le projet.
         </p>
       </div>
 
-      <div class="contact-grid">
+      <div class="contact-grid single">
         <div class="card contact-card">
           <div>
             <div class="icon">💬</div>
             <h3>Envoyer un message</h3>
-            <p>Le plus simple pour présenter rapidement une idée ou demander un premier échange.</p>
+            <p>Le plus simple pour présenter rapidement une idée, demander un premier échange ou expliquer un projet.</p>
+            <div class="example">Numéro : 07 56 91 30 13</div>
           </div>
           <div class="contact-buttons">
-            <a href="sms:+33608728918?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message</a>
-          </div>
-        </div>
-
-        <div class="card contact-card">
-          <div>
-            <div class="icon">📧</div>
-            <h3>Envoyer un email</h3>
-            <p>Idéal pour expliquer un projet plus complet, joindre des informations ou demander un devis détaillé.</p>
-          </div>
-          <div class="contact-buttons">
-            <a href="mailto:contact@yvexor.fr?subject=Demande%20de%20devis%20YVEXOR&body=Bonjour%20YVEXOR,%0A%0AJe%20souhaite%20vous%20pr%C3%A9senter%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20:%0A%0AActivit%C3%A9%20:%0ABesoin%20:%0AD%C3%A9lai%20souhait%C3%A9%20:%0ABudget%20approximatif%20:%0A" class="btn ghost">Envoyer un email</a>
+            <a href="sms:+33756913013?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message</a>
           </div>
         </div>
       </div>
@@ -2245,24 +2283,6 @@
 </footer>
 
 <script>
-
-/* OUVERTURE TOUJOURS EN HAUT */
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-
-function forceTopOnOpen(){
-  // Si le navigateur a gardé une ancienne position ou un #ancre, on remet l'accueil
-  if (window.location.hash) {
-    history.replaceState(null, document.title, window.location.pathname + window.location.search);
-  }
-  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-}
-
-forceTopOnOpen();
-window.addEventListener('load', () => setTimeout(forceTopOnOpen, 50));
-window.addEventListener('pageshow', () => setTimeout(forceTopOnOpen, 50));
-
 document.addEventListener('DOMContentLoaded', function(){
   const burger = document.getElementById('burger');
   const mobilePanel = document.getElementById('mobilePanel');
@@ -2295,17 +2315,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
   window.toggleMobileMenu = toggleMobileMenu;
   window.closeMobileMenu = closeMobileMenu;
-
-  const logoHome = document.querySelector('.logo');
-  if(logoHome){
-    logoHome.addEventListener('click', function(e){
-      e.preventDefault();
-      history.replaceState(null, document.title, window.location.pathname + window.location.search);
-      closeMobileMenu();
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    });
-  }
-
 
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape') closeMobileMenu();

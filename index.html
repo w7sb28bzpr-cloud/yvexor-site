@@ -1198,15 +1198,309 @@
       100%{opacity:0}
     }
 
+  
+
+    /* ══════════════════════════════════════════
+       ALIGNEMENT MENU MOBILE + BOUTONS
+    ══════════════════════════════════════════ */
+    .mobile-panel{
+      max-height:calc(100vh - 96px);
+      overflow-y:auto;
+      align-items:stretch;
+    }
+
+    .mobile-panel a,
+    .mobile-panel button{
+      min-height:56px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      width:100%;
+      line-height:1.15;
+      font-size:1rem;
+    }
+
+    .mobile-panel a:not(.btn){
+      justify-content:flex-start;
+      padding:16px 18px;
+    }
+
+    .mobile-panel .btn,
+    .mobile-panel button.btn{
+      justify-content:center;
+      text-align:center;
+      padding:16px 18px;
+      margin-top:4px;
+    }
+
+    @media(max-width:420px){
+      .mobile-panel{
+        left:10px;
+        right:10px;
+        padding:16px;
+      }
+
+      .mobile-panel a,
+      .mobile-panel button{
+        min-height:54px;
+        font-size:.96rem;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       CHAOS NAV BTN
+    ══════════════════════════════════════════ */
+    .chaos-nav-btn{
+      background: linear-gradient(135deg,#ff2b2b,#ff006e,#7c3aed);
+      color: white;
+      box-shadow: 0 0 28px rgba(255,43,43,.55), 0 0 55px rgba(124,58,237,.25);
+      position: relative;
+      overflow: hidden;
+      font-weight:900;
+    }
+    .chaos-nav-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);
+      transform: translateX(-180%);
+      animation: btnShine 2.2s ease-in-out infinite;
+    }
+    @keyframes btnShine{
+      0%{transform:translateX(-180%)}
+      60%{transform:translateX(180%)}
+      100%{transform:translateX(180%)}
+    }
+
+    /* ══════════════════════════════════════════
+       SIMPLIFICATION SECTIONS : rendu propre
+    ══════════════════════════════════════════ */
+    section:not(.hero)::before,
+    section:not(.hero)::after,
+    .section-head .tagline::after{display:none !important;animation:none !important}
+
+    section.section-visible .section-head .tagline,
+    section.section-visible .section-head h2,
+    section.section-visible .section-head p,
+    body.effects-ready section:not(.section-visible):not(.hero) .card,
+    body.effects-ready section:not(.section-visible):not(.hero) .mini,
+    body.effects-ready section:not(.section-visible):not(.hero) .service-intro,
+    body.effects-ready section:not(.section-visible):not(.hero) .big-message,
+    body.effects-ready section:not(.section-visible):not(.hero) .process .card,
+    body.effects-ready section.section-visible:not(.hero) .card,
+    body.effects-ready section.section-visible:not(.hero) .mini,
+    body.effects-ready section.section-visible:not(.hero) .service-intro,
+    body.effects-ready section.section-visible:not(.hero) .big-message,
+    body.effects-ready section.section-visible:not(.hero) .process .card,
+    body.effects-ready section.section-visible:not(.hero),
+    section.section-visible,section,.card,.mini,.service-intro,.big-message{
+      animation:none !important;transition:none !important;
+      transform:none !important;opacity:1 !important;filter:none !important;
+    }
+
+    /* ══════════════════════════════════════════
+       CHAOS CANVAS OVERLAY
+    ══════════════════════════════════════════ */
+    #chaosCanvas{
+      position:fixed;
+      inset:0;
+      z-index:9990;
+      pointer-events:none;
+      display:none;
+      mix-blend-mode: screen;
+    }
+    body.chaos-mode #chaosCanvas{ display:block; }
+
+    body.chaos-mode{
+      animation: bodyGlitch .08s steps(1) infinite;
+    }
+    @keyframes bodyGlitch{
+      0%  { filter: none; }
+      15% { filter: hue-rotate(90deg) saturate(3) contrast(1.4); }
+      30% { filter: none; }
+      45% { filter: hue-rotate(-60deg) saturate(2) brightness(1.3); }
+      60% { filter: none; }
+      75% { filter: hue-rotate(180deg) saturate(4) contrast(1.6) brightness(.85); }
+      90% { filter: none; }
+    }
+
+    body.chaos-mode main{
+      animation: mainGlitch .11s steps(2) infinite;
+    }
+    @keyframes mainGlitch{
+      0%  { transform: translateX(0) skewX(0deg); }
+      20% { transform: translateX(-4px) skewX(.8deg); }
+      40% { transform: translateX(3px) skewX(-.6deg); }
+      60% { transform: translateX(-2px) skewX(.4deg); }
+      80% { transform: translateX(4px) skewX(-.8deg); }
+      100%{ transform: translateX(0) skewX(0deg); }
+    }
+
+    .chaos-target{
+      position: relative;
+      animation: rgbSplit .09s steps(1) infinite;
+    }
+    @keyframes rgbSplit{
+      0%  { text-shadow: none; color: inherit; }
+      20% { text-shadow: -3px 0 #ff003c, 3px 0 #00fff7; color: #fff; }
+      40% { text-shadow: 3px 0 #ff003c, -3px 0 #00fff7; color: #fff; }
+      60% { text-shadow: -2px 2px #ff006e, 2px -2px #00d4ff; color: #fff; }
+      80% { text-shadow: none; color: #00fff7; }
+      100%{ text-shadow: none; color: inherit; }
+    }
+
+    .shockwave{
+      position:fixed;
+      border-radius:50%;
+      pointer-events:none;
+      z-index:9995;
+      border: 3px solid rgba(255,255,255,.9);
+      box-shadow: 0 0 40px rgba(255,43,43,.8), inset 0 0 40px rgba(0,212,255,.4);
+      transform: translate(-50%,-50%) scale(0);
+      opacity:1;
+      animation: shockwaveAnim .9s cubic-bezier(.16,.86,.24,1) forwards;
+    }
+    @keyframes shockwaveAnim{
+      0%  { width:0px; height:0px; opacity:1; }
+      70% { opacity:.6; }
+      100%{ width:280vmax; height:280vmax; opacity:0; }
+    }
+
+    .lightning{
+      position:fixed;
+      top:0; left:0; right:0; bottom:0;
+      pointer-events:none;
+      z-index:9994;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.85) 0%, rgba(255,43,43,.4) 20%, transparent 55%);
+      opacity:0;
+      animation: lightningFlash .5s ease-out forwards;
+    }
+    @keyframes lightningFlash{
+      0%  { opacity:0; }
+      8%  { opacity:1; }
+      18% { opacity:.2; }
+      28% { opacity:.9; }
+      40% { opacity:.05; }
+      55% { opacity:.7; }
+      100%{ opacity:0; }
+    }
+
+    .scanlines-overlay{
+      position:fixed;
+      inset:0;
+      z-index:9992;
+      pointer-events:none;
+      display:none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(255,0,60,.06) 3px,
+        rgba(255,0,60,.06) 4px
+      );
+      animation: scanlinesScroll .4s linear infinite;
+    }
+    body.chaos-mode .scanlines-overlay{ display:block; }
+    @keyframes scanlinesScroll{
+      from{ background-position: 0 0; }
+      to  { background-position: 0 8px; }
+    }
+
+    .chaos-vignette{
+      position:fixed;
+      inset:0;
+      z-index:9991;
+      pointer-events:none;
+      display:none;
+      background: radial-gradient(ellipse at center, transparent 42%, rgba(180,0,0,.55) 100%);
+      animation: vignettePulse .6s ease-in-out infinite alternate;
+    }
+    body.chaos-mode .chaos-vignette{ display:block; }
+    @keyframes vignettePulse{
+      from{ opacity:.65; }
+      to  { opacity:1; }
+    }
+
+    .chaos-hud{
+      position:fixed;
+      inset:0;
+      z-index:9996;
+      pointer-events:none;
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+    }
+    body.chaos-mode .chaos-hud{ display:flex; }
+
+    .chaos-hud-title{
+      font-size: clamp(2.4rem,8vw,6rem);
+      font-weight:900;
+      letter-spacing: .08em;
+      color: #fff;
+      text-transform: uppercase;
+      text-align:center;
+      animation: hudTitleGlitch .12s steps(1) infinite;
+      line-height:1;
+    }
+    @keyframes hudTitleGlitch{
+      0%  { text-shadow: -4px 0 #ff003c, 4px 0 #00fff7; transform: skewX(0deg); }
+      25% { text-shadow:  4px 0 #ff003c,-4px 0 #00fff7; transform: skewX(-2deg) translateX(2px); }
+      50% { text-shadow: -2px 2px #ff006e, 2px -2px #00d4ff; transform: skewX(1.5deg); }
+      75% { text-shadow:  2px 0 #fff,-2px 0 #ff2b2b; transform: skewX(-1deg) translateX(-3px); }
+      100%{ text-shadow: -4px 0 #ff003c, 4px 0 #00fff7; transform: skewX(0deg); }
+    }
+
+    .chaos-hud-sub{
+      font-size: clamp(.7rem,2vw,1rem);
+      font-weight:900;
+      letter-spacing:.22em;
+      color: #ff003c;
+      text-transform:uppercase;
+      padding:10px 22px;
+      border:2px solid rgba(255,0,60,.65);
+      border-radius:999px;
+      background:rgba(0,0,0,.65);
+      animation: subPulse .55s ease-in-out infinite alternate;
+      text-align:center;
+    }
+    @keyframes subPulse{
+      from{ box-shadow: 0 0 18px rgba(255,0,60,.5), 0 0 40px rgba(255,0,60,.2); color:#ff003c; }
+      to  { box-shadow: 0 0 35px rgba(255,0,60,.9), 0 0 70px rgba(255,0,60,.4); color:#ff6b6b; }
+    }
+
+    .rebuild-flash{
+      position:fixed;inset:0;
+      background: radial-gradient(ellipse at center, #00fff7 0%, #0a84ff 40%, #020408 100%);
+      opacity:0;pointer-events:none;z-index:9999;
+    }
+    .rebuild-flash.active{
+      animation: rebuildAnim .8s cubic-bezier(.22,.8,.2,1) forwards;
+    }
+    @keyframes rebuildAnim{
+      0%  { opacity:1; transform:scale(0); border-radius:50%; }
+      55% { opacity:.9; transform:scale(1.5); border-radius:0; }
+      100%{ opacity:0; transform:scale(1); }
+    }
+
+    @media(max-width:760px){
+      .chaos-hud-title{ font-size:clamp(1.8rem,10vw,3.2rem); }
+      .chaos-hud-sub{ font-size:.65rem; letter-spacing:.14em; padding:8px 14px; max-width:92vw; }
+    }
+
   </style>
 </head>
 
 <body>
 
-<div class="chaos-overlay" id="chaosOverlay">
-  <span class="chaos-line"></span>
-  <span class="chaos-line"></span>
-  <span class="chaos-line"></span>
+<!-- CHAOS SYSTEM v2 -->
+<canvas id="chaosCanvas"></canvas>
+<div class="scanlines-overlay"></div>
+<div class="chaos-vignette"></div>
+<div class="chaos-hud">
+  <div class="chaos-hud-title" id="chaosHudTitle">SYSTÈME DÉTRUIT</div>
+  <div class="chaos-hud-sub" id="chaosHudSub">YVEXOR.EXE — CRITICAL FAILURE</div>
 </div>
 <div class="rebuild-flash" id="rebuildFlash"></div>
 
@@ -1232,7 +1526,7 @@
       <a href="#collaboration">Partenariat</a>
       <a href="#equipe">Équipe</a>
       <a href="#tarifs">Tarifs</a>
-      <button class="btn chaos-nav-btn" id="chaosBtn" type="button">Mode système</button>
+      <button class="btn chaos-nav-btn" id="chaosBtn" type="button">Détruire le site 😂</button>
     </nav>
 
     <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" onclick="toggleMobileMenu(event)">
@@ -1255,8 +1549,8 @@
   <a href="#collaboration" onclick="closeMobileMenu()">Partenariat</a>
   <a href="#equipe" onclick="closeMobileMenu()">Équipe</a>
   <a href="#tarifs" onclick="closeMobileMenu()">Tarifs</a>
-  <a href="sms:+33600000000?&body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms" onclick="closeMobileMenu()">Envoyer un SMS</a>
-  <button class="btn chaos-nav-btn" type="button" onclick="closeMobileMenu(); setTimeout(() => document.getElementById('chaosBtn')?.click(), 120);">Mode système</button>
+  <a href="sms:+33608728918?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms" onclick="closeMobileMenu()">Envoyer un message</a>
+  <button class="btn chaos-nav-btn" type="button" onclick="closeMobileMenu(); setTimeout(() => document.getElementById('chaosBtn')?.click(), 120);">Détruire le site 😂</button>
 </div>
 
 
@@ -1276,7 +1570,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="sms:+33600000000?&body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un SMS →</a>
+          <a href="sms:+33608728918?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message →</a>
           <a href="#collaboration" class="btn ghost">Proposer une collaboration</a>
         </div>
 
@@ -1453,7 +1747,7 @@
           </div>
         </div>
 
-        <div class="service-block" id="applications">
+        <div class="service-block">
           <div class="service-intro">
             <div>
               <h3>📱 Applications mobiles & Android</h3>
@@ -1831,6 +2125,72 @@
     </div>
   </section>
 
+
+  <section id="tarifs" class="dark">
+    <div class="container">
+      <div class="section-head center">
+        <div class="tagline">Tarifs indicatifs</div>
+        <h2>Des bases claires, puis un devis adapté à votre projet.</h2>
+        <p>
+          Les tarifs ci-dessous donnent une première idée. Chaque projet reste étudié selon le besoin réel,
+          le niveau de personnalisation, le matériel, l’installation et les évolutions souhaitées.
+        </p>
+      </div>
+
+      <div class="tarifs-grid">
+        <div class="card">
+          <div class="icon">🌐</div>
+          <h3>Site vitrine</h3>
+          <div class="price"><span>à partir de</span> 350€</div>
+          <p>Page professionnelle, présentation de l’activité, contact, design responsive et base SEO.</p>
+        </div>
+
+        <div class="card featured">
+          <div class="icon">🤖</div>
+          <h3>Agent IA simple</h3>
+          <div class="price"><span>à partir de</span> 350€</div>
+          <p>Assistant pour répondre, orienter les visiteurs, récupérer des demandes ou préparer des rendez-vous.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🖥️</div>
+          <h3>Caisse tactile</h3>
+          <div class="price"><span>à partir de</span> 1290€</div>
+          <p>Solution caisse personnalisée, sans abonnement obligatoire par la suite, selon matériel et fonctions.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Système recharge / paiement</h3>
+          <div class="price"><span>à partir de</span> 1400€</div>
+          <p>Activation après paiement, suivi, interface propriétaire et modèle modulable selon le projet.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>IA locale / serveur privé</h3>
+          <div class="price"><span>à partir de</span> 700€</div>
+          <p>Base IA privée, serveur local, interface interne ou réseau privé selon l’usage de l’entreprise.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏠</div>
+          <h3>Domotique maison</h3>
+          <div class="price">Nous consulter</div>
+          <p>Chaque logement est différent : audit, matériel, installation, scénarios et niveau d’intégration.</p>
+        </div>
+      </div>
+
+      <div class="pay-box">
+        <h3>Paiement souple possible</h3>
+        <p>
+          YVEXOR peut proposer un paiement en plusieurs fois, une maintenance, un abonnement ou un modèle de collaboration
+          selon le potentiel du projet et le budget du client.
+        </p>
+      </div>
+    </div>
+  </section>
+
 <section id="contact" class="dark">
     <div class="container">
       <div class="section-head center">
@@ -1846,11 +2206,11 @@
         <div class="card contact-card">
           <div>
             <div class="icon">💬</div>
-            <h3>Envoyer un SMS</h3>
+            <h3>Envoyer un message</h3>
             <p>Le plus simple pour présenter rapidement une idée ou demander un premier échange.</p>
           </div>
           <div class="contact-buttons">
-            <a href="sms:+33600000000?&body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un SMS</a>
+            <a href="sms:+33608728918?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message</a>
           </div>
         </div>
 
@@ -1885,6 +2245,7 @@
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function(){
   const burger = document.getElementById('burger');
   const mobilePanel = document.getElementById('mobilePanel');
   const mobileBackdrop = document.getElementById('mobileBackdrop');
@@ -1925,175 +2286,284 @@
     if(window.innerWidth > 760) closeMobileMenu();
   });
 
-
-
-  /* Effet chapitre propre au scroll */
+  /* Sections statiques : pas d'animation de scroll pour garder un rendu propre partout */
   const observedSections = document.querySelectorAll('section:not(.hero)');
+  observedSections.forEach((section) => section.classList.add('section-visible'));
 
-  if ('IntersectionObserver' in window) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('section-visible');
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: "0px 0px -12% 0px"
-    });
+  /* ══════════════════════════════════════════
+     CHAOS ENGINE v2 — Particles + Glitch + Shockwave + Lightning
+  ══════════════════════════════════════════ */
+  const chaosBtn        = document.getElementById('chaosBtn');
+  const rebuildFlash    = document.getElementById('rebuildFlash');
+  const chaosHudTitle   = document.getElementById('chaosHudTitle');
+  const chaosHudSub     = document.getElementById('chaosHudSub');
+  const chaosCanvas     = document.getElementById('chaosCanvas');
+  const ctx             = chaosCanvas ? chaosCanvas.getContext('2d') : null;
 
-    observedSections.forEach((section) => sectionObserver.observe(section));
-  } else {
-    observedSections.forEach((section) => section.classList.add('section-visible'));
-  }
+  let chaosActive    = false;
+  let chaosRAF       = null;
+  let chaosTimer     = null;
+  let chaosTextTimer = null;
+  let originals      = [];
+  let particles      = [];
+  let glitchBlocks   = [];
 
+  const hudPhrases = [
+    ['SYSTÈME DÉTRUIT', 'YVEXOR.EXE — CRITICAL FAILURE'],
+    ['CORE DUMP', 'MEMORY OVERFLOW // 0x0000DEAD'],
+    ['ERREUR FATALE', 'KERNEL PANIC — NO OUTPUT'],
+    ['CRASH TOTAL', 'SEGFAULT AT 0xFFFF — ABORT'],
+    ['SITE EN PANNE', 'EXCEPTION NON GÉRÉE // RESTART'],
+    ['REALITY BROKEN', 'YVEXOR CORE REBUILDING...'],
+  ];
+  let hudIdx = 0;
 
-
-  /* Effets visuels renforcés */
-  document.body.classList.add('effects-ready');
-
-  const vividSections = document.querySelectorAll('section:not(.hero)');
-  if ('IntersectionObserver' in window) {
-    const vividObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if(entry.isIntersecting){
-          entry.target.classList.remove('section-visible');
-          void entry.target.offsetWidth;
-          entry.target.classList.add('section-visible');
-        }
-      });
-    }, {
-      threshold: 0.32,
-      rootMargin: "0px 0px -18% 0px"
-    });
-
-    vividSections.forEach((section) => vividObserver.observe(section));
-  }
-
-  const chaosBtn = document.getElementById('chaosBtn');
-  const chaosOverlay = document.getElementById('chaosOverlay');
-  const rebuildFlash = document.getElementById('rebuildFlash');
-
-  const codePieces = [
-    'const system = new YVEXOR.Core();',
-    'await automate(client.need);',
-    'if(payment.valid){ activate(service); }',
-    'AI.private.run(localServer);',
-    'GPIO.relay.write(HIGH);',
-    'camera.detect(vehicle.authorized);',
-    'calendar.createAppointment();',
-    'dashboard.sync();',
-    'mqtt.publish("/building/light", true);',
-    'server.local.encrypt(data);',
-    'function rebuildReality(){ return system.restore(); }',
-    'while(idea){ prototype++; }',
-    'YVEXOR.deploy({mode:"future"});',
-    'access.badge.floor = 1;',
-    'stair.light.stepByStep();',
-    'invoice.auto.generate();',
-    'app.android.connect(api);',
-    'domotic.scene("depart").run();'
+  const glitchWords = [
+    'NULL','0xDEAD','CRASH','ABORT','ERROR','SEGFAULT',
+    'PANIC','OVERFLOW','CORRUPTED','FATAL','#!%@',
+    '01001','YVEXOR','CORE','DUMP','MEMORY','LEAK',
+    '████','▓▒░','???','NaN','undefined','void*',
   ];
 
-  let chaosTimer = null;
-  let chaosInterval = null;
-  let originals = [];
-  let rainCreated = false;
+  function resizeCanvas(){
+    if(!chaosCanvas) return;
+    chaosCanvas.width  = window.innerWidth;
+    chaosCanvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
 
-  function randomCode(){
-    let out = '';
-    const lines = 2 + Math.floor(Math.random() * 3);
-    for(let i = 0; i < lines; i++){
-      out += codePieces[Math.floor(Math.random() * codePieces.length)];
-      if(i < lines - 1) out += ' ';
+  function spawnParticles(cx, cy, count){
+    for(let i = 0; i < count; i++){
+      const angle  = Math.random() * Math.PI * 2;
+      const speed  = 2 + Math.random() * 14;
+      const size   = 2 + Math.random() * 8;
+      const colors = ['#ff003c','#ff006e','#00fff7','#0a84ff','#ffffff','#fbbf24','#a78bfa'];
+      particles.push({
+        x: cx, y: cy,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 3,
+        size,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 1,
+        decay: .012 + Math.random() * .025,
+        square: Math.random() > .5,
+      });
     }
-    return out;
   }
 
-  function createCodeRain(){
-    if(rainCreated) return;
-    rainCreated = true;
-    for(let i = 0; i < 34; i++){
-      const r = document.createElement('div');
-      r.className = 'code-rain';
-      r.style.left = Math.random() * 100 + '%';
-      r.style.animationDuration = (4 + Math.random() * 6).toFixed(2) + 's';
-      r.style.animationDelay = (Math.random() * 5).toFixed(2) + 's';
-      let txt = '';
-      for(let j = 0; j < 9; j++){
-        txt += codePieces[Math.floor(Math.random() * codePieces.length)] + '\n';
+  function spawnGlitchBlocks(){
+    for(let i = 0; i < 14; i++){
+      glitchBlocks.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        w: 30 + Math.random() * 240,
+        h: 3  + Math.random() * 16,
+        color: Math.random() > .5
+          ? `rgba(255,0,60,${(.15+Math.random()*.4).toFixed(2)})`
+          : `rgba(0,255,247,${(.1+Math.random()*.3).toFixed(2)})`,
+        life: 1,
+        decay: .06 + Math.random() * .1,
+        offsetX: (Math.random() - .5) * 80,
+      });
+    }
+  }
+
+  function chaosLoop(){
+    if(!chaosActive || !ctx) return;
+    ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
+
+    if(Math.random() < .22) spawnGlitchBlocks();
+
+    glitchBlocks.forEach(b => {
+      ctx.save();
+      ctx.globalAlpha = b.life;
+      ctx.fillStyle = b.color;
+      ctx.fillRect(b.x + b.offsetX * (1 - b.life), b.y, b.w, b.h);
+      ctx.restore();
+      b.life -= b.decay;
+    });
+    glitchBlocks = glitchBlocks.filter(b => b.life > 0);
+
+    particles.forEach(p => {
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      if(p.square){
+        ctx.fillRect(p.x - p.size/2, p.y - p.size/2, p.size, p.size);
+      }else{
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size/2, 0, Math.PI*2);
+        ctx.fill();
       }
-      r.textContent = txt;
-      chaosOverlay.appendChild(r);
+      ctx.restore();
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += .25;
+      p.vx *= .97;
+      p.alpha -= p.decay;
+    });
+    particles = particles.filter(p => p.alpha > 0);
+
+    chaosRAF = requestAnimationFrame(chaosLoop);
+  }
+
+  function triggerShockwave(){
+    const sw = document.createElement('div');
+    sw.className = 'shockwave';
+    sw.style.left = '50%';
+    sw.style.top  = '38%';
+    document.body.appendChild(sw);
+    setTimeout(() => sw.remove(), 1100);
+  }
+
+  function triggerLightning(){
+    const l = document.createElement('div');
+    l.className = 'lightning';
+    document.body.appendChild(l);
+    setTimeout(() => l.remove(), 650);
+  }
+
+  function randomGlitch(){
+    const len = 3 + Math.floor(Math.random() * 7);
+    let out = '';
+    for(let i = 0; i < len; i++){
+      out += glitchWords[Math.floor(Math.random() * glitchWords.length)] + ' ';
+    }
+    return out.trim();
+  }
+
+  function setChaosButton(label, rebuilding=false){
+    if(!chaosBtn) return;
+    chaosBtn.textContent = label;
+    if(rebuilding){
+      chaosBtn.style.background = 'linear-gradient(135deg,#22c55e,#00d4ff)';
+      chaosBtn.style.color = '#002b1e';
+    }else{
+      chaosBtn.style.background = '';
+      chaosBtn.style.color = '';
     }
   }
 
   function startChaos(){
-    createCodeRain();
+    if(chaosActive) return;
+    chaosActive = true;
+    setChaosButton('⚡ Reconstruire', true);
+
     document.body.classList.add('chaos-mode');
-    chaosBtn.textContent = 'Reconstruire';
-    chaosBtn.classList.add('sms');
+    resizeCanvas();
+    chaosLoop();
+
+    spawnParticles(window.innerWidth / 2, window.innerHeight * 0.38, 300);
+    triggerShockwave();
+    setTimeout(triggerLightning, 60);
+    setTimeout(triggerLightning, 260);
+    setTimeout(() => spawnParticles(window.innerWidth * .22, window.innerHeight * .55, 130), 350);
+    setTimeout(() => spawnParticles(window.innerWidth * .78, window.innerHeight * .32, 130), 550);
+    setTimeout(triggerShockwave, 600);
+    setTimeout(triggerLightning, 680);
+    setTimeout(() => spawnParticles(window.innerWidth * .5, window.innerHeight * .7, 80), 900);
 
     const targets = Array.from(document.querySelectorAll(
       'main h1, main h2, main h3, main h4, main p, main li, main .example, main .audience, main .note'
     ));
-
-    originals = targets.map(el => ({
-      el: el,
-      html: el.innerHTML
-    }));
-
+    originals = targets.map(el => ({ el, html: el.innerHTML }));
     targets.forEach(el => el.classList.add('chaos-target'));
 
-    chaosInterval = setInterval(() => {
+    function scramble(){
+      if(!chaosActive) return;
       originals.forEach(item => {
-        item.el.textContent = randomCode();
+        if(Math.random() < .6) item.el.textContent = randomGlitch();
       });
-    }, 130);
+    }
+    scramble();
+    chaosTextTimer = setInterval(scramble, 85);
 
-    chaosTimer = setTimeout(rebuildPage, 10000);
+    hudIdx = 0;
+    const hudInterval = setInterval(() => {
+      if(!chaosActive){ clearInterval(hudInterval); return; }
+      const p = hudPhrases[hudIdx % hudPhrases.length];
+      if(chaosHudTitle) chaosHudTitle.textContent = p[0];
+      if(chaosHudSub) chaosHudSub.textContent = p[1];
+      hudIdx++;
+    }, 750);
+
+    chaosTimer = setTimeout(rebuildPage, 12000);
   }
 
   function rebuildPage(){
+    if(!chaosActive) return;
     clearTimeout(chaosTimer);
-    clearInterval(chaosInterval);
+    clearInterval(chaosTextTimer);
+    chaosActive = false;
+
+    cancelAnimationFrame(chaosRAF);
+    if(ctx) ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
+    particles = [];
+    glitchBlocks = [];
 
     originals.forEach(item => {
       item.el.innerHTML = item.html;
       item.el.classList.remove('chaos-target');
     });
+    originals = [];
 
     document.body.classList.remove('chaos-mode');
-    chaosBtn.textContent = 'Mode système';
+    setChaosButton('Détruire le site 😂', false);
 
     rebuildFlash.classList.remove('active');
     void rebuildFlash.offsetWidth;
     rebuildFlash.classList.add('active');
 
-    originals = [];
+    resizeCanvas();
+    spawnParticles(window.innerWidth / 2, window.innerHeight / 2, 220);
+    const rebuildColors = ['#00fff7','#0a84ff','#22c55e','#ffffff','#a78bfa'];
+    particles.forEach(p => p.color = rebuildColors[Math.floor(Math.random() * rebuildColors.length)]);
+
+    function rebuildLoop(){
+      if(!ctx) return;
+      ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
+      particles.forEach(p => {
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size/2, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += .25;
+        p.vx *= .97;
+        p.alpha -= p.decay;
+      });
+      particles = particles.filter(p => p.alpha > 0);
+      if(particles.length > 0) requestAnimationFrame(rebuildLoop);
+      else if(ctx) ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
+    }
+    rebuildLoop();
   }
 
   if(chaosBtn){
     chaosBtn.addEventListener('click', () => {
-      if(document.body.classList.contains('chaos-mode')){
-        rebuildPage();
-      }else{
-        startChaos();
-      }
+      if(chaosActive) rebuildPage();
+      else startChaos();
     });
   }
 
-
   const stars = document.querySelector('.stars');
-  for(let i = 0; i < 55; i++){
-    const s = document.createElement('span');
-    s.className = 'star';
-    s.style.left = Math.random() * 100 + '%';
-    s.style.top = Math.random() * 100 + '%';
-    s.style.opacity = (Math.random() * .55 + .15).toFixed(2);
-    s.style.transform = 'scale(' + (Math.random() * 1.5 + .5).toFixed(2) + ')';
-    stars.appendChild(s);
+  if(stars){
+    for(let i = 0; i < 55; i++){
+      const s = document.createElement('span');
+      s.className = 'star';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.opacity = (Math.random() * .55 + .15).toFixed(2);
+      s.style.transform = 'scale(' + (Math.random() * 1.5 + .5).toFixed(2) + ')';
+      stars.appendChild(s);
+    }
   }
+});
 </script>
 
 </body>

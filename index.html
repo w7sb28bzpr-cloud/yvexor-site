@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YVEXOR — Systèmes automatisés, IA privée, domotique, applications & mobilité</title>
+
+  <style>
+    :root{
+      --bg:#020408;
+      --deep:#050b16;
+      --panel:#08152a;
+      --text:#f1f8ff;
+      --muted:#b7c7dd;
+      --dim:#73849d;
+      --blue:#0a84ff;
+      --cyan:#00d4ff;
+      --green:#22c55e;
+      --orange:#fb923c;
+      --purple:#a78bfa;
+      --yellow:#fbbf24;
+      --border:rgba(10,132,255,.22);
+      --border2:rgba(255,255,255,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 4%, rgba(10,132,255,.24), transparent 30%),
+        radial-gradient(circle at 88% 8%, rgba(0,212,255,.16), transparent 30%),
+        linear-gradient(180deg,#020408 0%,#06101f 46%,#020408 100%);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(10,132,255,.043) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10,132,255,.043) 1px, transparent 1px);
+      background-size:78px 78px;
+      z-index:-2;
+    }
+
+    .stars{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:-1;
+    }
+
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:white;
+      border-radius:50%;
+      opacity:.65;
+      box-shadow:0 0 10px rgba(255,255,255,.9);
+    }
+
+    .shooting-star{
+      position:absolute;
+      width:130px;
+      height:1px;
+      background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.9),rgba(0,212,255,.2));
+      transform:rotate(-28deg);
+      opacity:0;
+      animation:shoot 8s linear infinite;
+    }
+
+    .shooting-star:nth-child(1){top:12%;left:-20%;animation-delay:0s}
+    .shooting-star:nth-child(2){top:34%;left:-30%;animation-delay:3.2s}
+    .shooting-star:nth-child(3){top:62%;left:-25%;animation-delay:6.1s}
+
+    @keyframes shoot{
+      0%{transform:translateX(0) translateY(0) rotate(-28deg);opacity:0}
+      5%{opacity:.9}
+      16%{opacity:0}
+      100%{transform:translateX(150vw) translateY(80vh) rotate(-28deg);opacity:0}
+    }
+
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1240px,92%);margin:auto}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(2,4,8,.92);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border2);
+    }
+
+    .nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:10px 0;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      font-size:1.45rem;
+      letter-spacing:-.03em;
+    }
+
+    .logo-mark{
+      width:40px;height:40px;
+      border-radius:13px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      box-shadow:0 0 32px rgba(10,132,255,.48);
+    }
+
+    .logo span{color:var(--muted);font-weight:400}
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      color:var(--muted);
+      font-size:.88rem;
+      font-weight:800;
+    }
+
+    .menu a:hover{color:white}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:13px 22px;
+      font-weight:900;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      color:white;
+      box-shadow:0 16px 50px rgba(10,132,255,.30);
+      transition:.25s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn.ghost{
+      background:rgba(255,255,255,.060);
+      border:1px solid var(--border2);
+      box-shadow:none;
+    }
+    .btn.sms{
+      background:linear-gradient(135deg,#22c55e,#00d4ff);
+      color:#00140b;
+    }
+
+    .burger{display:none;font-size:2rem}
+
+    .hero{
+      padding:105px 0 82px;
+      min-height:calc(100vh - 76px);
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      right:-170px;
+      top:10px;
+      width:650px;
+      height:650px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(10,132,255,.22),transparent 65%);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:50px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(10,132,255,.08);
+      color:#e0f7ff;
+      font-size:.86rem;
+      font-weight:900;
+      margin-bottom:24px;
+    }
+
+    .chip:before{
+      content:"";
+      width:9px;height:9px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 14px var(--green);
+    }
+
+    h1{
+      font-size:clamp(2.65rem,5.8vw,6rem);
+      line-height:1.02;
+      letter-spacing:-.058em;
+      margin-bottom:24px;
+    }
+
+    .gradient{
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:1.18rem;
+      max-width:790px;
+      margin-bottom:28px;
+    }
+
+    .hero strong{color:white}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+
+    .promise{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .promise div{
+      background:rgba(255,255,255,.055);
+      border:1px solid var(--border2);
+      border-radius:16px;
+      padding:14px;
+      color:var(--muted);
+      font-size:.92rem;
+      font-weight:800;
+    }
+
+    .promise b{color:white}
+
+    .screen{
+      background:linear-gradient(145deg,rgba(255,255,255,.11),rgba(255,255,255,.035));
+      border:1px solid var(--border);
+      border-radius:32px;
+      padding:22px;
+      box-shadow:0 40px 100px rgba(0,0,0,.46);
+    }
+
+    .screen-inner{
+      background:rgba(2,4,8,.80);
+      border:1px solid var(--border2);
+      border-radius:24px;
+      padding:20px;
+      overflow:hidden;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid var(--border2);
+      padding-bottom:16px;
+      margin-bottom:18px;
+      color:var(--dim);
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .dots{display:flex;gap:7px}
+    .dots i{width:10px;height:10px;border-radius:50%;background:#ef4444}
+    .dots i:nth-child(2){background:#f59e0b}
+    .dots i:nth-child(3){background:#22c55e}
+
+    .idea-flow{display:grid;gap:12px}
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:44px 1fr auto;
+      gap:12px;
+      align-items:center;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--border2);
+      background:linear-gradient(90deg,rgba(10,132,255,.11),rgba(255,255,255,.035));
+    }
+
+    .flow-step .n{
+      width:38px;height:38px;
+      border-radius:12px;
+      background:rgba(10,132,255,.14);
+      border:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--cyan);
+      font-weight:900;
+    }
+
+    .flow-step h4{font-size:.98rem;margin-bottom:2px}
+    .flow-step p{font-size:.82rem;color:var(--muted);margin:0}
+    .flow-step b{color:var(--green);font-size:.78rem;white-space:nowrap}
+
+    section{padding:90px 0}
+    .dark{
+      background:rgba(2,4,8,.66);
+      border-top:1px solid rgba(255,255,255,.055);
+      border-bottom:1px solid rgba(255,255,255,.055);
+    }
+
+    .section-head{max-width:930px;margin-bottom:45px}
+    .section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+
+    .tagline{
+      color:var(--cyan);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.74rem;
+      font-weight:900;
+      margin-bottom:13px;
+    }
+
+    h2{
+      font-size:clamp(2rem,4.25vw,4rem);
+      line-height:1.08;
+      letter-spacing:-.045em;
+      margin-bottom:14px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .big-message{
+      background:linear-gradient(135deg,rgba(10,132,255,.16),rgba(0,212,255,.06));
+      border:1px solid var(--border);
+      border-radius:32px;
+      padding:42px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .big-message:after{
+      content:"";
+      position:absolute;
+      right:-80px;
+      top:-80px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(0,212,255,.16),transparent 70%);
+    }
+
+    .big-message h2{max-width:980px}
+    .big-message p{
+      color:var(--muted);
+      font-size:1.12rem;
+      max-width:980px;
+      margin-bottom:18px;
+    }
+
+    .note{
+      border:1px solid rgba(34,197,94,.28);
+      background:rgba(34,197,94,.08);
+      color:#dcfce7;
+      padding:15px 18px;
+      border-radius:18px;
+      display:inline-block;
+      font-weight:800;
+      margin-top:10px;
+    }
+
+    .market-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+      border:1px solid var(--border2);
+      border-radius:var(--radius);
+      padding:26px;
+      transition:.25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:var(--border);
+      background:linear-gradient(145deg,rgba(10,132,255,.105),rgba(255,255,255,.04));
+    }
+
+    .icon{font-size:2.18rem;margin-bottom:14px}
+
+    .card h3{
+      font-size:1.35rem;
+      margin-bottom:10px;
+      letter-spacing:-.025em;
+    }
+
+    .card p,.card li{color:var(--muted);font-size:.97rem}
+
+    ul{padding-left:20px;margin-top:14px}
+    li{margin-bottom:8px}
+
+    .audience{
+      margin-top:16px;
+      display:inline-block;
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--cyan);
+      background:rgba(10,132,255,.07);
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    .capabilities,.futur-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .capability,.futur-card{min-height:245px}
+    .futur-card{position:relative;overflow:hidden}
+    .futur-card:after{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(0,212,255,.14),transparent 70%);
+    }
+
+    .capability h3,.futur-card h3{color:white;font-size:1.22rem}
+
+    .example{
+      margin-top:15px;
+      padding:12px;
+      border-radius:14px;
+      background:rgba(10,132,255,.07);
+      border:1px solid var(--border);
+      color:#dff6ff;
+      font-size:.9rem;
+      font-weight:800;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .checklist{display:grid;gap:14px;margin-top:22px}
+
+    .check{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:15px;
+      border-radius:16px;
+      background:rgba(255,255,255,.055);
+      border:1px solid var(--border2);
+    }
+
+    .check b{color:var(--cyan)}
+    .check p{color:var(--muted);font-size:.94rem}
+
+    .big-services{display:grid;gap:28px}
+
+    .service-block{
+      display:grid;
+      grid-template-columns:.86fr 1.14fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .service-intro{
+      background:linear-gradient(145deg,rgba(10,132,255,.13),rgba(255,255,255,.035));
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:310px;
+    }
+
+    .service-intro h3{
+      font-size:2rem;
+      line-height:1.1;
+      letter-spacing:-.04em;
+      margin-bottom:14px;
+    }
+
+    .service-intro p{color:var(--muted);font-size:1rem}
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .mini{
+      background:rgba(255,255,255,.055);
+      border:1px solid var(--border2);
+      border-radius:20px;
+      padding:22px;
+    }
+
+    .mini h4{font-size:1.08rem;margin-bottom:8px}
+    .mini p{color:var(--muted);font-size:.92rem}
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .process .card{position:relative;min-height:220px}
+    .process .num{
+      font-size:2.2rem;
+      color:rgba(10,132,255,.28);
+      font-weight:900;
+      letter-spacing:-.05em;
+      margin-bottom:18px;
+    }
+
+    .tarifs-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .price{
+      font-size:2.15rem;
+      font-weight:900;
+      letter-spacing:-.05em;
+      margin:14px 0;
+      color:white;
+    }
+
+    .price span{
+      color:var(--muted);
+      font-size:.9rem;
+      font-weight:600;
+      letter-spacing:0;
+    }
+
+    .featured{
+      border-color:var(--blue);
+      background:linear-gradient(145deg,rgba(10,132,255,.18),rgba(255,255,255,.04));
+      box-shadow:0 0 55px rgba(10,132,255,.13);
+    }
+
+    .pay-box{
+      margin-top:24px;
+      background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(10,132,255,.08));
+      border:1px solid rgba(34,197,94,.28);
+      border-radius:24px;
+      padding:26px;
+    }
+
+    .pay-box h3{font-size:1.4rem;margin-bottom:8px}
+    .pay-box p{color:var(--muted)}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:stretch;
+    }
+
+    .contact-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .contact-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:320px;
+    }
+
+    footer{
+      padding:40px 0;
+      text-align:center;
+      color:var(--dim);
+      border-top:1px solid var(--border2);
+      background:#020408;
+    }
+
+
+    /* Bouton menu mobile 3 traits */
+    .burger{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border:1px solid var(--border2);
+      background:rgba(255,255,255,.06);
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+      cursor:pointer;
+      box-shadow:0 0 18px rgba(10,132,255,.18);
+      z-index:1002;
+    }
+
+    .burger span{
+      width:22px;
+      height:2px;
+      background:#fff;
+      border-radius:999px;
+      display:block;
+      transition:.25s ease;
+      box-shadow:0 0 10px rgba(0,212,255,.55);
+    }
+
+    .burger.active span:nth-child(1){
+      transform:translateY(7px) rotate(45deg);
+      background:#00d4ff;
+    }
+
+    .burger.active span:nth-child(2){
+      opacity:0;
+    }
+
+    .burger.active span:nth-child(3){
+      transform:translateY(-7px) rotate(-45deg);
+      background:#ff2b2b;
+    }
+
+    @media(max-width:760px){
+      .burger{
+        display:flex !important;
+      }
+
+      .menu.active{
+        display:flex !important;
+      }
+    }
+
+    @media(max-width:1080px){
+      .hero-grid,.service-block,.contact-grid,.split{grid-template-columns:1fr}
+      .market-grid,.tarifs-grid,.capabilities,.futur-grid{grid-template-columns:1fr 1fr}
+      .process{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:760px){
+      .menu{
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+        background:#020408;
+        border-bottom:1px solid var(--border2);
+        padding:22px;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .menu.active{display:flex}
+      .burger{display:flex !important}
+      .market-grid,.mini-grid,.tarifs-grid,.capabilities,.process,.promise,.futur-grid{grid-template-columns:1fr}
+      .hero{padding-top:70px}
+      .flow-step{grid-template-columns:44px 1fr}
+      .flow-step b{grid-column:2}
+    }
+
+
+    /* Menu mobile réellement séparé et cliquable */
+    .mobile-backdrop{
+      display:none;
+      position:fixed;
+      inset:76px 0 0 0;
+      background:rgba(0,0,0,.55);
+      backdrop-filter:blur(6px);
+      z-index:998;
+    }
+
+    .mobile-panel{
+      display:none;
+      position:fixed;
+      top:76px;
+      left:12px;
+      right:12px;
+      z-index:999;
+      background:rgba(2,4,8,.98);
+      border:1px solid rgba(0,212,255,.35);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 24px 80px rgba(0,0,0,.65), 0 0 45px rgba(0,212,255,.18);
+      flex-direction:column;
+      gap:10px;
+      animation:mobileMenuDrop .22s ease-out;
+    }
+
+    @keyframes mobileMenuDrop{
+      from{opacity:0;transform:translateY(-12px) scale(.98)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+
+    .mobile-panel.open,
+    .mobile-backdrop.open{
+      display:flex;
+    }
+
+    .mobile-backdrop.open{
+      display:block;
+    }
+
+    .mobile-panel a,
+    .mobile-panel button{
+      width:100%;
+      text-align:left;
+      justify-content:flex-start;
+    }
+
+    .mobile-panel a:not(.btn){
+      padding:14px 14px;
+      border-radius:14px;
+      color:var(--muted);
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.08);
+      font-weight:900;
+    }
+
+    .mobile-panel a:not(.btn):hover{
+      color:white;
+      border-color:rgba(0,212,255,.35);
+      background:rgba(10,132,255,.10);
+    }
+
+    @media(max-width:760px){
+      .menu{
+        display:none !important;
+      }
+
+      .burger{
+        display:flex !important;
+      }
+    }
+
+
+
+    /* ───── Effet chapitre WAOUH : vague + pulse + cartes en cascade ───── */
+    section:not(.hero){
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    section:not(.hero)::after{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-45%;
+      width:42%;
+      height:100%;
+      pointer-events:none;
+      z-index:-1;
+      opacity:0;
+      background:
+        linear-gradient(110deg,
+          transparent 0%,
+          rgba(0,212,255,.05) 30%,
+          rgba(0,212,255,.20) 48%,
+          rgba(255,43,43,.09) 58%,
+          transparent 100%);
+      transform:skewX(-18deg);
+      filter:blur(2px);
+    }
+
+    section.section-visible:not(.hero)::after{
+      animation:bigSectionSweep 1.25s ease-out 1;
+    }
+
+    @keyframes bigSectionSweep{
+      0%{left:-55%;opacity:0}
+      12%{opacity:1}
+      72%{opacity:.85}
+      100%{left:115%;opacity:0}
+    }
+
+    section.section-visible:not(.hero)::before{
+      height:3px;
+      width:min(520px,82vw);
+      background:linear-gradient(90deg,transparent,#00d4ff,#ffffff,#ff2b2b,transparent);
+      opacity:1;
+      animation:chapterLineShock 1.15s ease-out 1, chapterWave 2.5s ease-in-out infinite 1.2s;
+      box-shadow:0 0 22px rgba(0,212,255,.75), 0 0 42px rgba(255,43,43,.22);
+    }
+
+    @keyframes chapterLineShock{
+      0%{transform:translateX(-50%) scaleX(.05);opacity:0}
+      50%{transform:translateX(-50%) scaleX(1.08);opacity:1}
+      100%{transform:translateX(-50%) scaleX(1);opacity:1}
+    }
+
+    .section-head{
+      perspective:900px;
+    }
+
+    section.section-visible .section-head .tagline{
+      animation:taglineNeonIn .95s cubic-bezier(.16,.88,.24,1) 1;
+    }
+
+    section.section-visible .section-head h2{
+      transform-origin:center;
+      animation:titleMegaPop 1.05s cubic-bezier(.16,.88,.24,1) 1;
+    }
+
+    section.section-visible .section-head p{
+      animation:paragraphRevealStrong .95s cubic-bezier(.16,.88,.24,1) .08s 1 both;
+    }
+
+    @keyframes taglineNeonIn{
+      0%{opacity:0;transform:translateY(22px) scale(.86);letter-spacing:.38em;filter:blur(8px)}
+      55%{opacity:1;transform:translateY(-2px) scale(1.08);letter-spacing:.24em;filter:blur(0);text-shadow:0 0 22px rgba(0,212,255,.85)}
+      100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);text-shadow:0 0 10px rgba(0,212,255,.42)}
+    }
+
+    @keyframes titleMegaPop{
+      0%{opacity:.08;transform:translateY(46px) scale(.78) rotateX(18deg);filter:blur(12px)}
+      42%{opacity:1;transform:translateY(-8px) scale(1.075) rotateX(0deg);filter:blur(0);text-shadow:0 0 26px rgba(0,212,255,.55)}
+      70%{transform:translateY(2px) scale(.985)}
+      100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);text-shadow:none}
+    }
+
+    @keyframes paragraphRevealStrong{
+      0%{opacity:0;transform:translateY(28px);filter:blur(9px)}
+      100%{opacity:1;transform:translateY(0);filter:blur(0)}
+    }
+
+    body.effects-ready section:not(.section-visible):not(.hero) .card,
+    body.effects-ready section:not(.section-visible):not(.hero) .mini,
+    body.effects-ready section:not(.section-visible):not(.hero) .service-intro,
+    body.effects-ready section:not(.section-visible):not(.hero) .big-message,
+    body.effects-ready section:not(.section-visible):not(.hero) .process .card{
+      opacity:.45;
+      transform:translateY(32px) scale(.985);
+    }
+
+    body.effects-ready section.section-visible:not(.hero) .card,
+    body.effects-ready section.section-visible:not(.hero) .mini,
+    body.effects-ready section.section-visible:not(.hero) .service-intro,
+    body.effects-ready section.section-visible:not(.hero) .big-message,
+    body.effects-ready section.section-visible:not(.hero) .process .card{
+      animation:cardCascadeIn .85s cubic-bezier(.16,.88,.24,1) both;
+    }
+
+    body.effects-ready section.section-visible:not(.hero) .card:nth-child(1),
+    body.effects-ready section.section-visible:not(.hero) .mini:nth-child(1){animation-delay:.05s}
+    body.effects-ready section.section-visible:not(.hero) .card:nth-child(2),
+    body.effects-ready section.section-visible:not(.hero) .mini:nth-child(2){animation-delay:.12s}
+    body.effects-ready section.section-visible:not(.hero) .card:nth-child(3),
+    body.effects-ready section.section-visible:not(.hero) .mini:nth-child(3){animation-delay:.19s}
+    body.effects-ready section.section-visible:not(.hero) .card:nth-child(4),
+    body.effects-ready section.section-visible:not(.hero) .mini:nth-child(4){animation-delay:.26s}
+    body.effects-ready section.section-visible:not(.hero) .card:nth-child(5),
+    body.effects-ready section.section-visible:not(.hero) .mini:nth-child(5){animation-delay:.33s}
+    body.effects-ready section.section-visible:not(.hero) .card:nth-child(6),
+    body.effects-ready section.section-visible:not(.hero) .mini:nth-child(6){animation-delay:.40s}
+
+    @keyframes cardCascadeIn{
+      0%{opacity:0;transform:translateY(54px) scale(.94);filter:blur(8px)}
+      60%{opacity:1;transform:translateY(-6px) scale(1.015);filter:blur(0)}
+      100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+    }
+
+    body.effects-ready section.section-visible:not(.hero){
+      animation:sectionBackgroundPulse 1.2s ease-out 1;
+    }
+
+    @keyframes sectionBackgroundPulse{
+      0%{background-color:rgba(10,132,255,.00)}
+      35%{background-color:rgba(10,132,255,.045)}
+      100%{background-color:transparent}
+    }
+
+    @media(max-width:760px){
+      section.section-visible .section-head h2{
+        animation:titleMegaPopMobile .85s cubic-bezier(.16,.88,.24,1) 1;
+      }
+
+      @keyframes titleMegaPopMobile{
+        0%{opacity:.25;transform:translateY(30px) scale(.88);filter:blur(9px)}
+        55%{opacity:1;transform:translateY(-4px) scale(1.035);filter:blur(0);text-shadow:0 0 20px rgba(0,212,255,.45)}
+        100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);text-shadow:none}
+      }
+    }
+
+    /* ───── Effet chapitre propre : vague + zoom doux ───── */
+    section:not(.hero){
+      position:relative;
+    }
+
+    section:not(.hero)::before{
+      content:"";
+      position:absolute;
+      top:28px;
+      left:50%;
+      width:min(360px,72vw);
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,transparent,rgba(0,212,255,.95),rgba(255,43,43,.65),transparent);
+      transform:translateX(-50%) scaleX(.18);
+      opacity:.18;
+      filter:drop-shadow(0 0 10px rgba(0,212,255,.35));
+      pointer-events:none;
+      transition:transform .9s cubic-bezier(.22,.8,.2,1), opacity .7s ease;
+    }
+
+    section.section-visible:not(.hero)::before{
+      transform:translateX(-50%) scaleX(1);
+      opacity:1;
+      animation:chapterWave 2.6s ease-in-out infinite;
+    }
+
+    @keyframes chapterWave{
+      0%,100%{
+        filter:drop-shadow(0 0 8px rgba(0,212,255,.35));
+      }
+      50%{
+        filter:drop-shadow(0 0 22px rgba(0,212,255,.75));
+      }
+    }
+
+    .section-head .tagline{
+      display:inline-block;
+      position:relative;
+    }
+
+    .section-head .tagline::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:-8px;
+      width:0;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,transparent,#00d4ff,transparent);
+      transform:translateX(-50%);
+      box-shadow:0 0 14px rgba(0,212,255,.45);
+      transition:width .65s ease;
+    }
+
+    section.section-visible .section-head .tagline::after{
+      width:100%;
+    }
+
+    section.section-visible .section-head .tagline{
+      animation:taglinePop .75s cubic-bezier(.22,.8,.2,1);
+    }
+
+    section.section-visible .section-head h2{
+      animation:titleWavePop .85s cubic-bezier(.18,.82,.2,1);
+    }
+
+    section.section-visible .section-head p{
+      animation:textRise .8s cubic-bezier(.22,.8,.2,1);
+    }
+
+    @keyframes taglinePop{
+      0%{opacity:.35;transform:translateY(12px) scale(.96);letter-spacing:.28em;filter:blur(4px)}
+      100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+    }
+
+    @keyframes titleWavePop{
+      0%{opacity:.55;transform:translateY(26px) scale(.965);filter:blur(7px)}
+      55%{opacity:1;transform:translateY(-2px) scale(1.018);filter:blur(0)}
+      100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+    }
+
+    @keyframes textRise{
+      0%{opacity:.45;transform:translateY(18px);filter:blur(5px)}
+      100%{opacity:1;transform:translateY(0);filter:blur(0)}
+    }
+
+    @media(max-width:760px){
+      section:not(.hero)::before{
+        top:22px;
+        width:min(260px,68vw);
+      }
+
+      section.section-visible .section-head h2{
+        animation:titleWavePopMobile .75s cubic-bezier(.18,.82,.2,1);
+      }
+
+      @keyframes titleWavePopMobile{
+        0%{opacity:.7;transform:translateY(18px) scale(.98);filter:blur(5px)}
+        60%{opacity:1;transform:translateY(-1px) scale(1.01);filter:blur(0)}
+        100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+      }
+    }
+
+    /* Scrollbar visible futuriste */
+    html{
+      scrollbar-width: thin;
+      scrollbar-color: #ff2b2b #050b16;
+    }
+
+    ::-webkit-scrollbar{
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track{
+      background: rgba(255,255,255,.04);
+      border-left: 1px solid rgba(255,255,255,.08);
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background: linear-gradient(180deg,#ff2b2b,#ff006e,#00d4ff);
+      border-radius: 999px;
+      border: 2px solid #050b16;
+      box-shadow: 0 0 18px rgba(255,43,43,.8), 0 0 32px rgba(0,212,255,.45);
+    }
+
+    ::-webkit-scrollbar-thumb:hover{
+      background: linear-gradient(180deg,#ffffff,#ff2b2b,#00d4ff);
+      box-shadow: 0 0 28px rgba(255,43,43,1), 0 0 45px rgba(0,212,255,.8);
+    }
+
+    .chaos-nav-btn{
+      background: linear-gradient(135deg,#ff2b2b,#ff006e,#00d4ff);
+      color: white;
+      box-shadow: 0 0 22px rgba(255,43,43,.45), 0 0 38px rgba(0,212,255,.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chaos-nav-btn::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+      transform: translateX(-120%);
+      animation: btnScan 2.4s infinite;
+    }
+
+    @keyframes btnScan{
+      0%{transform:translateX(-120%)}
+      55%{transform:translateX(130%)}
+      100%{transform:translateX(130%)}
+    }
+
+    body.chaos-mode{
+      animation: chaosShake .16s infinite alternate;
+    }
+
+    @keyframes chaosShake{
+      from{filter:hue-rotate(0deg) contrast(1.08); transform:translateX(0)}
+      to{filter:hue-rotate(12deg) contrast(1.25); transform:translateX(.5px)}
+    }
+
+    body.chaos-mode main{
+      animation: pageBreak .9s infinite steps(2);
+    }
+
+    @keyframes pageBreak{
+      0%{transform:skewX(0deg)}
+      35%{transform:skewX(.6deg)}
+      70%{transform:skewX(-.6deg)}
+      100%{transform:skewX(0deg)}
+    }
+
+    .chaos-overlay{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:9998;
+      display:none;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(255,43,43,.16),transparent 28%),
+        radial-gradient(circle at 80% 20%,rgba(0,212,255,.14),transparent 30%),
+        linear-gradient(180deg,rgba(2,4,8,.02),rgba(2,4,8,.25));
+      mix-blend-mode:screen;
+    }
+
+    body.chaos-mode .chaos-overlay{
+      display:block;
+    }
+
+    .chaos-overlay::before{
+      content:"SYSTEM OVERRIDE // YVEXOR CORE REBUILDING";
+      position:absolute;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,43,43,.55);
+      background:rgba(2,4,8,.75);
+      color:#fff;
+      font-weight:900;
+      letter-spacing:.16em;
+      font-size:.72rem;
+      box-shadow:0 0 30px rgba(255,43,43,.35);
+      text-align:center;
+      white-space:nowrap;
+    }
+
+    .chaos-line{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:1px;
+      background:linear-gradient(90deg,transparent,#ff2b2b,#00d4ff,transparent);
+      opacity:.55;
+      animation: scanLine 1.1s linear infinite;
+    }
+
+    .chaos-line:nth-child(1){top:18%;animation-delay:0s}
+    .chaos-line:nth-child(2){top:43%;animation-delay:.35s}
+    .chaos-line:nth-child(3){top:76%;animation-delay:.7s}
+
+    @keyframes scanLine{
+      0%{transform:translateX(-100%)}
+      100%{transform:translateX(100%)}
+    }
+
+    .code-rain{
+      position:absolute;
+      top:-20%;
+      color:#00d4ff;
+      font-family:monospace;
+      font-size:12px;
+      line-height:1.35;
+      opacity:.75;
+      text-shadow:0 0 12px rgba(0,212,255,.9);
+      animation: codeFall linear infinite;
+      white-space:pre;
+    }
+
+    @keyframes codeFall{
+      from{transform:translateY(-25vh)}
+      to{transform:translateY(125vh)}
+    }
+
+    .chaos-target{
+      text-shadow:0 0 12px rgba(0,212,255,.75), 0 0 22px rgba(255,43,43,.35);
+      color:#dffbff !important;
+    }
+
+    .rebuild-flash{
+      position:fixed;
+      inset:0;
+      background:white;
+      opacity:0;
+      pointer-events:none;
+      z-index:9999;
+    }
+
+    .rebuild-flash.active{
+      animation: flashRebuild .45s ease-out;
+    }
+
+    @keyframes flashRebuild{
+      0%{opacity:.8}
+      100%{opacity:0}
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="chaos-overlay" id="chaosOverlay">
+  <span class="chaos-line"></span>
+  <span class="chaos-line"></span>
+  <span class="chaos-line"></span>
+</div>
+<div class="rebuild-flash" id="rebuildFlash"></div>
+
+<div class="stars">
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+</div>
+
+<header>
+  <div class="container nav">
+    <a href="#accueil" class="logo">
+      <span class="logo-mark">YX</span>
+      <strong>YV<span>EXOR</span></strong>
+    </a>
+
+    <nav class="menu" id="menu">
+      <a href="#idee">Sur mesure</a>
+      <a href="#futur">Futur</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#applications">Applications</a>
+      <a href="#ia-privee">IA</a>
+      <a href="#collaboration">Partenariat</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#tarifs">Tarifs</a>
+      <button class="btn chaos-nav-btn" id="chaosBtn" type="button">Mode système</button>
+    </nav>
+
+    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" onclick="toggleMobileMenu(event)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+
+<div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMobileMenu()"></div>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#idee" onclick="closeMobileMenu()">Sur mesure</a>
+  <a href="#futur" onclick="closeMobileMenu()">Futur</a>
+  <a href="#solutions" onclick="closeMobileMenu()">Solutions</a>
+  <a href="#applications" onclick="closeMobileMenu()">Applications</a>
+  <a href="#ia-privee" onclick="closeMobileMenu()">IA</a>
+  <a href="#collaboration" onclick="closeMobileMenu()">Partenariat</a>
+  <a href="#equipe" onclick="closeMobileMenu()">Équipe</a>
+  <a href="#tarifs" onclick="closeMobileMenu()">Tarifs</a>
+  <a href="sms:+33600000000?&body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms" onclick="closeMobileMenu()">Envoyer un SMS</a>
+  <button class="btn chaos-nav-btn" type="button" onclick="closeMobileMenu(); setTimeout(() => document.getElementById('chaosBtn')?.click(), 120);">Mode système</button>
+</div>
+
+
+<main>
+
+  <section class="hero" id="accueil">
+    <div class="container hero-grid">
+      <div>
+        <div class="chip">Automaticiens numériques • Code sur mesure • IA privée • Domotique • Commerce connecté</div>
+        <h1>Vos idées deviennent <span class="gradient">des systèmes automatisés réels.</span></h1>
+        <p>
+          YVEXOR conçoit et développe ses propres solutions sur mesure :
+          <strong>logiciel, IA, serveur local, réseau privé, application mobile / Android, caisse tactile, domotique, système de paiement, borne connectée et automatisation métier.</strong>
+        </p>
+        <p>
+          Pas de solution copiée-collée, pas de simple revente de logiciel standard : chaque projet est étudié, codé, adapté et intégré selon votre besoin.
+        </p>
+
+        <div class="hero-actions">
+          <a href="sms:+33600000000?&body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un SMS →</a>
+          <a href="#collaboration" class="btn ghost">Proposer une collaboration</a>
+        </div>
+
+        <div class="promise">
+          <div><b>1.</b> Vous expliquez votre idée</div>
+          <div><b>2.</b> Nous concevons le système</div>
+          <div><b>3.</b> Nous développons sur mesure</div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-inner">
+          <div class="topbar">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <span>YVEXOR Automation Core</span>
+          </div>
+
+          <div class="idea-flow">
+            <div class="flow-step">
+              <div class="n">01</div>
+              <div>
+                <h4>Besoin client</h4>
+                <p>Piloter une maison, vendre un service connecté, automatiser une caisse, créer une IA.</p>
+              </div>
+              <b>BRIEF</b>
+            </div>
+
+            <div class="flow-step">
+              <div class="n">02</div>
+              <div>
+                <h4>Développement YVEXOR</h4>
+                <p>Code, interface, serveur, automatisation, paiement, tableau de bord et intégration.</p>
+              </div>
+              <b>CODE</b>
+            </div>
+
+            <div class="flow-step">
+              <div class="n">03</div>
+              <div>
+                <h4>Action automatique</h4>
+                <p>Le client paie, le système active, contrôle, mesure, alerte ou déclenche.</p>
+              </div>
+              <b>AUTO</b>
+            </div>
+
+            <div class="flow-step">
+              <div class="n">04</div>
+              <div>
+                <h4>Système utile</h4>
+                <p>Le client utilise, pilote, suit et peut générer de la valeur avec son installation.</p>
+              </div>
+              <b>ROI</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="idee">
+    <div class="container">
+      <div class="big-message">
+        <div class="tagline">Notre positionnement</div>
+        <h2>YVEXOR crée des systèmes sur mesure, pas des solutions préfabriquées.</h2>
+        <p>
+          YVEXOR agit comme un bureau de développement et d’automatisation : nous imaginons, codons, connectons et intégrons des systèmes adaptés à chaque client.
+          Le matériel nécessaire peut être sélectionné selon le projet, mais le fonctionnement, l’interface, l’automatisation et la logique métier sont conçus sur mesure.
+        </p>
+        <p>
+          L’objectif est simple : transformer une idée en système utile, rentable et contrôlable. Une caisse, une IA, une application mobile, une maison connectée, un réseau interne ou un système de paiement automatisé peuvent être conçus autour de vos besoins.
+        </p>
+        <div class="note">
+          YVEXOR développe ses propres logiques, interfaces et automatisations afin de proposer une solution réellement adaptée au client.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="futur">
+    <div class="container">
+      <div class="section-head center">
+        <div class="tagline">Exemples futuristes</div>
+        <h2>Des scénarios qui donnent l’impression d’être déjà dans le futur.</h2>
+        <p>
+          Ces exemples montrent ce qu’il est possible d’imaginer pour une maison, une résidence, un hôtel, un parking, un commerce ou une entreprise.
+        </p>
+      </div>
+
+      <div class="futur-grid">
+        <div class="card futur-card">
+          <div class="icon">🚗</div>
+          <h3>Reconnaissance de véhicule</h3>
+          <p>Une caméra peut reconnaître l’arrivée d’un véhicule autorisé sur une propriété privée et déclencher un scénario.</p>
+          <div class="example">Exemple : la voiture arrive, le portail s’ouvre, l’allée s’allume et le système notifie le propriétaire.</div>
+        </div>
+
+        <div class="card futur-card">
+          <div class="icon">🏢</div>
+          <h3>Éclairage intelligent par étage</h3>
+          <p>Dans un immeuble, un badge peut indiquer l’étage de destination et le système allume seulement les zones utiles.</p>
+          <div class="example">Exemple : badge 1er étage → éclairage automatique jusqu’au 1er étage seulement.</div>
+        </div>
+
+        <div class="card futur-card">
+          <div class="icon">🪜</div>
+          <h3>Escalier marche par marche</h3>
+          <p>Les marches peuvent s’allumer progressivement selon le passage, la direction ou un scénario d’ambiance.</p>
+          <div class="example">Exemple : chaque marche s’allume au fur et à mesure de la montée.</div>
+        </div>
+
+        <div class="card futur-card">
+          <div class="icon">🔌</div>
+          <h3>Recharge payante automatisée</h3>
+          <p>Un hôtel, un parking ou une résidence peut proposer une recharge ou un service connecté avec activation automatique après paiement.</p>
+          <div class="example">Exemple : le client paie, le système active le service, l’établissement suit les revenus.</div>
+        </div>
+
+        <div class="card futur-card">
+          <div class="icon">🧠</div>
+          <h3>IA de bâtiment</h3>
+          <p>Une IA peut centraliser les demandes, signaler les pannes, orienter les utilisateurs et prévenir les responsables.</p>
+          <div class="example">Exemple : un résident signale une panne, le syndic reçoit automatiquement les informations utiles.</div>
+        </div>
+
+        <div class="card futur-card">
+          <div class="icon">📲</div>
+          <h3>Maison pilotée depuis téléphone</h3>
+          <p>Le client pilote lumières, accès, volets, chauffage, capteurs et scénarios depuis une interface simple.</p>
+          <div class="example">Exemple : mode “départ” → tout s’éteint, alerte active, portail verrouillé.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions">
+    <div class="container">
+      <div class="section-head">
+        <div class="tagline">Solutions possibles</div>
+        <h2>Des services séparés, mais reliés par la même logique d’automatisation.</h2>
+        <p>YVEXOR développe les systèmes qui relient logiciel, IA, interface tactile, serveur privé, paiement et actions physiques.</p>
+      </div>
+
+      <div class="big-services">
+        <div class="service-block">
+          <div class="service-intro">
+            <div>
+              <h3>🏢 Automatisation d’entreprise</h3>
+              <p>Pour réduire les tâches répétitives : appels, messages, rendez-vous, devis, fichiers, relances et suivi client.</p>
+            </div>
+            <span class="audience">Cible : artisans, garages, cabinets, PME</span>
+          </div>
+          <div class="mini-grid">
+            <div class="mini"><h4>Assistant IA client</h4><p>Répond aux questions simples, récupère les informations et transmet les demandes importantes.</p></div>
+            <div class="mini"><h4>Google Calendar</h4><p>Création de rendez-vous automatique, rappels et organisation du planning.</p></div>
+            <div class="mini"><h4>Devis & factures</h4><p>Préparation de documents, relances, fiches clients et suivi administratif.</p></div>
+            <div class="mini"><h4>CRM simple</h4><p>Suivi prospects, clients, demandes, historique et prochaines actions.</p></div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-intro">
+            <div>
+              <h3>🏪 Caisses tactiles & commerces</h3>
+              <p>Une caisse tactile personnalisée, sans abonnement obligatoire par la suite, adaptée au métier du client.</p>
+            </div>
+            <span class="audience">Cible : restaurants, snacks, boutiques, épiceries</span>
+          </div>
+          <div class="mini-grid">
+            <div class="mini"><h4>Caisse tactile</h4><p>Interface de vente, panier, produits, catégories, modes de paiement.</p></div>
+            <div class="mini"><h4>Tickets & impression</h4><p>Ticket client, ticket cuisine, liste de préparation ou ticket personnalisé.</p></div>
+            <div class="mini"><h4>Stock & produits</h4><p>Ajout produits, modification prix, suivi stock et catégories.</p></div>
+            <div class="mini"><h4>Sans abonnement obligatoire</h4><p>Le client peut acheter sa solution et choisir une maintenance seulement s’il en a besoin.</p></div>
+          </div>
+        </div>
+
+        <div class="service-block" id="applications">
+          <div class="service-intro">
+            <div>
+              <h3>📱 Applications mobiles & Android</h3>
+              <p>Pour transformer une idée en application utilisable sur téléphone : outil client, application interne, tableau de bord mobile ou interface connectée à un système existant.</p>
+            </div>
+            <span class="audience">Cible : entreprises, commerces, particuliers, projets sur mesure</span>
+          </div>
+          <div class="mini-grid">
+            <div class="mini"><h4>Application Android</h4><p>Application mobile adaptée à votre activité, avec interface claire et fonctions utiles.</p></div>
+            <div class="mini"><h4>Application métier</h4><p>Outil interne pour suivre clients, interventions, stocks, rendez-vous ou demandes.</p></div>
+            <div class="mini"><h4>Connexion à vos systèmes</h4><p>L’application peut être reliée à une IA, un serveur local, une caisse, une domotique ou un tableau de bord.</p></div>
+            <div class="mini"><h4>Version progressive</h4><p>Possibilité de commencer par une web app/PWA, puis évoluer vers une application Android complète.</p></div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-intro">
+            <div>
+              <h3>⚡ Systèmes de recharge & paiement</h3>
+              <p>Pour monétiser une recharge ou un service connecté avec paiement, activation automatique, supervision et intégration au site.</p>
+            </div>
+            <span class="audience">Cible : hôtels, parkings, résidences, particuliers</span>
+          </div>
+          <div class="mini-grid">
+            <div class="mini"><h4>Activation après paiement</h4><p>Le client paie, puis le système active automatiquement le service.</p></div>
+            <div class="mini"><h4>Interface propriétaire</h4><p>Suivi des utilisations, paramètres, accès et statistiques.</p></div>
+            <div class="mini"><h4>Intégration domotique</h4><p>Le système peut être ajouté à l’environnement connecté du bâtiment ou de la maison.</p></div>
+            <div class="mini"><h4>Modèle modulable</h4><p>Achat, abonnement ou partage de bénéfices selon le projet et le partenaire.</p></div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-intro">
+            <div>
+              <h3>🤖 IA sur mesure</h3>
+              <p>Pour créer une IA adaptée au besoin de l’entreprise : répondre, classer, orienter, préparer, prendre rendez-vous ou assister les équipes.</p>
+            </div>
+            <span class="audience">Cible : toutes entreprises qui veulent gagner du temps</span>
+          </div>
+          <div class="mini-grid">
+            <div class="mini"><h4>Agent téléphonique</h4><p>Prend les informations, répond aux demandes simples et redirige si nécessaire.</p></div>
+            <div class="mini"><h4>Chatbot site web</h4><p>Répond aux visiteurs, récupère les demandes et prépare le contact commercial.</p></div>
+            <div class="mini"><h4>Assistant interne</h4><p>Utilise les documents de l’entreprise pour aider les équipes dans un cadre précis.</p></div>
+            <div class="mini"><h4>IA privée locale</h4><p>Modèle open source adapté, serveur local ou cloud privé selon les besoins.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="applications" class="dark">
+    <div class="container">
+      <div class="section-head">
+        <div class="tagline">Applications mobiles & Android</div>
+        <h2>Votre système peut aussi vivre dans une application mobile.</h2>
+        <p>
+          Une application mobile permet de rendre une solution plus simple à utiliser au quotidien :
+          client, employé, propriétaire, gestionnaire ou utilisateur final peut accéder au système depuis son téléphone.
+        </p>
+      </div>
+
+      <div class="capabilities">
+        <div class="card capability">
+          <div class="icon">📱</div>
+          <h3>Application Android</h3>
+          <p>Création d’une application mobile adaptée à votre activité, avec les fonctions réellement utiles.</p>
+          <div class="example">Exemple : application pour gérer des clients, des commandes, des accès ou des interventions.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🧭</div>
+          <h3>Application de pilotage</h3>
+          <p>Piloter une maison, une borne, une caisse, un système domotique ou un serveur interne depuis téléphone.</p>
+          <div class="example">Exemple : ouvrir un portail, activer un mode maison, suivre une recharge ou consulter un tableau de bord.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🔗</div>
+          <h3>Application connectée</h3>
+          <p>L’application peut communiquer avec une IA, un serveur local, un site web, une base client ou un système automatisé.</p>
+          <div class="example">Exemple : une application reliée à un CRM, Google Calendar, une IA privée ou une caisse tactile.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="dark" id="ia-privee">
+    <div class="container">
+      <div class="section-head">
+        <div class="tagline">IA open source adaptée et IA privée</div>
+        <h2>Une IA peut être créée uniquement pour votre entreprise.</h2>
+        <p>
+          YVEXOR peut partir de modèles d’IA open source, les adapter à votre métier et les connecter à vos documents,
+          vos règles, vos outils et vos processus internes.
+        </p>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>IA adaptée à votre métier</h3>
+          <p>
+            L’IA peut être configurée pour un rôle précis : répondre à vos clients, assister vos équipes,
+            utiliser vos documents, préparer des réponses, classer des demandes ou guider une procédure.
+          </p>
+          <ul>
+            <li>Réponses basées sur vos documents internes</li>
+            <li>Assistant métier pour vos équipes</li>
+            <li>IA connectée à vos outils existants</li>
+            <li>Accès contrôlé selon les utilisateurs</li>
+            <li>Déploiement local ou cloud privé selon le projet</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🖥️</div>
+          <h3>Serveur local, réseau privé et système interne</h3>
+          <p>
+            Pour les entreprises qui veulent garder le contrôle, YVEXOR peut concevoir un environnement interne dédié :
+            serveur local, mini-PC, interface privée, réseau local, accès utilisateurs et outils réservés à l’entreprise.
+          </p>
+          <ul>
+            <li>IA utilisable sur le réseau de l’entreprise</li>
+            <li>Interface interne accessible aux employés autorisés</li>
+            <li>Base documentaire privée</li>
+            <li>Tableau de bord métier</li>
+            <li>Système Linux ou serveur configuré sur mesure selon le besoin</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="domotique-maison">
+    <div class="container">
+      <div class="section-head">
+        <div class="tagline">Domotique pour particuliers</div>
+        <h2>Une maison peut devenir plus intelligente, plus confortable et plus simple à piloter.</h2>
+        <p>
+          YVEXOR peut concevoir une installation domotique adaptée à votre logement :
+          contrôle à distance, automatisation, scénarios, sécurité, éclairage, portail, chauffage et équipements connectés.
+        </p>
+      </div>
+
+      <div class="capabilities">
+        <div class="card capability">
+          <div class="icon">💡</div>
+          <h3>Éclairage intelligent</h3>
+          <p>Allumage automatique, ambiance personnalisée, détection de présence, extinction programmée ou contrôle depuis téléphone.</p>
+          <div class="example">Exemple : les lumières s’allument automatiquement à l’arrivée ou selon l’heure.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🚪</div>
+          <h3>Portail, porte et accès</h3>
+          <p>Ouverture à distance, accès temporaire, commande depuis smartphone, bouton connecté ou scénario automatisé.</p>
+          <div class="example">Exemple : ouvrir le portail à un livreur ou à un proche sans être sur place.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🔥</div>
+          <h3>Chauffage, volets et confort</h3>
+          <p>Scénarios de température, volets automatisés, économies d’énergie et contrôle des équipements de la maison.</p>
+          <div class="example">Exemple : fermer les volets et baisser le chauffage automatiquement le soir.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🛡️</div>
+          <h3>Sécurité et alertes</h3>
+          <p>Capteurs, détection, notifications, caméras compatibles, alertes en cas d’ouverture, mouvement ou anomalie.</p>
+          <div class="example">Exemple : recevoir une alerte si une porte s’ouvre pendant votre absence.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">📱</div>
+          <h3>Application ou tableau de bord</h3>
+          <p>Interface simple pour piloter les équipements, voir les états, déclencher des actions et gérer les scénarios.</p>
+          <div class="example">Exemple : un écran ou une page web privée pour tout contrôler.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🔌</div>
+          <h3>Systèmes sur mesure</h3>
+          <p>Raspberry Pi, ESP32, relais, capteurs, modules Wi-Fi ou Bluetooth selon le besoin et l’installation existante.</p>
+          <div class="example">Exemple : connecter un ancien équipement qui n’était pas prévu pour être connecté.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="section-head center">
+        <div class="tagline">Méthode</div>
+        <h2>Une idée ne devient pas un projet au hasard.</h2>
+        <p>YVEXOR garde une méthode claire pour proposer une solution sérieuse, utile et réalisable.</p>
+      </div>
+
+      <div class="process">
+        <div class="card">
+          <div class="num">01</div>
+          <h3>Comprendre</h3>
+          <p>Analyse du besoin, du contexte, des contraintes et du résultat attendu.</p>
+        </div>
+
+        <div class="card">
+          <div class="num">02</div>
+          <h3>Concevoir</h3>
+          <p>Architecture du système : logiciel, interface, automatisation, matériel, paiement, serveur ou IA.</p>
+        </div>
+
+        <div class="card">
+          <div class="num">03</div>
+          <h3>Coder</h3>
+          <p>Développement d’une première version utilisable, testable et améliorable.</p>
+        </div>
+
+        <div class="card">
+          <div class="num">04</div>
+          <h3>Accompagner</h3>
+          <p>Installation, formation, maintenance et évolution possible selon les retours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="collaboration" class="dark">
+    <div class="container">
+      <div class="big-message">
+        <div class="tagline">Collaboration & projets rentables</div>
+        <h2>Vous avez une idée rentable ? YVEXOR peut vous aider à la transformer en système réel.</h2>
+        <p>
+          Une idée peut devenir un service, une application, un système automatisé, une interface, une caisse, une IA, une solution domotique ou un outil connecté.
+          Si le projet a du potentiel, YVEXOR peut étudier une collaboration avec vous.
+        </p>
+        <p>
+          L’objectif est simple : créer un système qui peut générer de la valeur. Cela peut être une solution pour votre entreprise, un produit à vendre,
+          un outil interne, une automatisation commerciale ou une idée que vous souhaitez développer avec un partenaire technique.
+        </p>
+        <div class="note">
+          YVEXOR est ouvert aux projets sérieux : développement sur devis, paiement en plusieurs fois, abonnement, partenariat ou modèle avec partage de revenus selon le potentiel du projet.
+        </div>
+      </div>
+
+      <div class="capabilities" style="margin-top:24px">
+        <div class="card capability">
+          <div class="icon">💡</div>
+          <h3>Vous avez l’idée</h3>
+          <p>Vous expliquez le concept, le problème à résoudre, les clients visés et le potentiel commercial.</p>
+          <div class="example">Exemple : un service automatisé pour hôtels, garages, commerces, locations ou particuliers.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">⚙️</div>
+          <h3>YVEXOR construit le système</h3>
+          <p>Nous étudions la faisabilité, puis nous concevons l’interface, le logiciel, l’IA, l’automatisation ou la partie connectée.</p>
+          <div class="example">Exemple : paiement, activation automatique, tableau de bord, notifications et suivi client.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🤝</div>
+          <h3>Un modèle adapté</h3>
+          <p>Selon le projet, la collaboration peut être un devis classique, un abonnement, un paiement progressif ou un partenariat.</p>
+          <div class="example">Exemple : si le système génère du revenu, un partage de bénéfices peut être étudié.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+  <section id="equipe">
+    <div class="container">
+      <div class="section-head center">
+        <div class="tagline">Équipe & collaboration technique</div>
+        <h2>YVEXOR s’appuie sur une organisation claire et des expertises complémentaires.</h2>
+        <p>
+          YVEXOR pilote les projets de développement, d’IA, d’automatisation, de domotique,
+          d’applications et de systèmes connectés. Selon la nature du projet, des collaborateurs spécialisés
+          peuvent intervenir pour renforcer la conception, les tests ou les partenariats.
+        </p>
+      </div>
+
+      <div class="capabilities">
+        <div class="card capability">
+          <div class="icon">🧠</div>
+          <h3>Yannick Marascia</h3>
+          <p>
+            Fondateur de YVEXOR, responsable technique et conception. Il pilote la vision,
+            l’architecture des systèmes, le développement, l’automatisation, l’IA et la validation finale des projets.
+          </p>
+          <div class="example">Rôle : concevoir les systèmes et transformer les idées en solutions techniques réalisables.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🤝</div>
+          <h3>Grégory</h3>
+          <p>
+            Responsable développement commercial, relation client, accompagnement terrain et déploiement.
+            Il échange avec les clients, récupère les besoins, suit les projets et accompagne la mise en place des solutions.
+          </p>
+          <div class="example">Rôle : comprendre le besoin client, préparer le projet et assurer le lien terrain.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🔧</div>
+          <h3>Johan</h3>
+          <p>
+            Référent mécanique auto/moto et prototypage terrain. Il peut intervenir lorsque certains projets nécessitent
+            des essais, des adaptations, des validations ou des retours concrets directement sur véhicule.
+          </p>
+          <div class="example">Rôle : confronter les concepts techniques à la réalité du terrain, sur moto ou voiture.</div>
+        </div>
+      </div>
+
+      <div class="big-message" style="margin-top:24px">
+        <div class="tagline">Collaborateur mobilité</div>
+        <h2>Innomotech peut intervenir comme collaborateur spécialisé sur les projets auto, moto et mobilité.</h2>
+        <p>
+          YVEXOR reste la marque principale pour le développement de systèmes sur mesure :
+          logiciels, IA, applications, automatisations, interfaces, serveurs locaux, domotique et solutions connectées.
+        </p>
+        <p>
+          Innomotech est un pôle collaborateur orienté mobilité, auto, moto, systèmes embarqués et prototypage véhicule.
+          Lorsque le projet touche à un véhicule, une moto, une voiture, un boîtier spécifique, une fonction embarquée
+          ou une idée liée à la mobilité, une collaboration avec Innomotech peut être étudiée au cas par cas.
+        </p>
+        <p>
+          Certains concepts liés à la mobilité sont en cours de développement et peuvent nécessiter confidentialité,
+          protection, dépôt ou démarche de brevet. Les détails techniques ne sont donc pas exposés publiquement,
+          mais peuvent être étudiés dans un cadre sérieux avec les bons partenaires.
+        </p>
+        <div class="note">
+          YVEXOR développe et structure le système. Innomotech peut apporter une expertise ou une orientation mobilité
+          lorsque le projet concerne l’auto, la moto, les véhicules ou les systèmes embarqués.
+        </div>
+      </div>
+
+      <div class="capabilities" style="margin-top:24px">
+        <div class="card capability">
+          <div class="icon">🏍️</div>
+          <h3>Auto / moto / systèmes embarqués</h3>
+          <p>
+            Les projets liés aux véhicules peuvent être étudiés avec une approche spécifique :
+            faisabilité, sécurité, prototypage, tests et intégration progressive.
+          </p>
+          <div class="example">Exemples : fonctions lumineuses temporisées, interfaces connectées, essais prototypes, modules embarqués.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">🧩</div>
+          <h3>Prototypage encadré</h3>
+          <p>
+            Les idées auto/moto sont étudiées dans un cadre contrôlé : usage privé, test, prototype,
+            sécurité et respect des contraintes techniques.
+          </p>
+          <div class="example">Exemple : projection de logo à l’extinction, scénarios embarqués, adaptation de fonctions connectées.</div>
+        </div>
+
+        <div class="card capability">
+          <div class="icon">📞</div>
+          <h3>Andreas — partenariats mobilité</h3>
+          <p>
+            Andreas, associé/actionnaire Innomotech, intervient sur les discussions stratégiques,
+            les négociations et les opportunités liées aux projets mobilité, garages, véhicules,
+            investisseurs ou collaborations rentables.
+          </p>
+          <div class="example">Rôle : ouvrir les portes, négocier les opportunités et faire remonter les projets à étudier.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="contact" class="dark">
+    <div class="container">
+      <div class="section-head center">
+        <div class="tagline">Contact rapide</div>
+        <h2>Expliquez votre idée ou votre projet rentable par SMS ou par email.</h2>
+        <p>
+          Décrivez votre activité, votre idée, le problème à résoudre ou le système que vous souhaitez créer.
+          YVEXOR vous recontacte pour étudier la faisabilité, le modèle possible et la meilleure façon de lancer le projet.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <div>
+            <div class="icon">💬</div>
+            <h3>Envoyer un SMS</h3>
+            <p>Le plus simple pour présenter rapidement une idée ou demander un premier échange.</p>
+          </div>
+          <div class="contact-buttons">
+            <a href="sms:+33600000000?&body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un SMS</a>
+          </div>
+        </div>
+
+        <div class="card contact-card">
+          <div>
+            <div class="icon">📧</div>
+            <h3>Envoyer un email</h3>
+            <p>Idéal pour expliquer un projet plus complet, joindre des informations ou demander un devis détaillé.</p>
+          </div>
+          <div class="contact-buttons">
+            <a href="mailto:contact@yvexor.fr?subject=Demande%20de%20devis%20YVEXOR&body=Bonjour%20YVEXOR,%0A%0AJe%20souhaite%20vous%20pr%C3%A9senter%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20:%0A%0AActivit%C3%A9%20:%0ABesoin%20:%0AD%C3%A9lai%20souhait%C3%A9%20:%0ABudget%20approximatif%20:%0A" class="btn ghost">Envoyer un email</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pay-box">
+        <h3>Informations utiles pour une première réponse</h3>
+        <p>
+          Activité, idée ou problème à résoudre, tâche à automatiser, outils déjà utilisés, délai idéal et budget approximatif si vous en avez un.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>YVEXOR</strong><br>
+    Automaticiens numériques • Code sur mesure • Applications mobiles • IA privée • Serveur local • Domotique • Caisses tactiles • Collaboration mobilité Innomotech • Prototypage auto/moto
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+  function toggleMobileMenu(event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    const isOpen = mobilePanel?.classList.contains('open');
+    if(isOpen){
+      closeMobileMenu();
+    }else{
+      openMobileMenu();
+    }
+  }
+
+  function openMobileMenu(){
+    burger?.classList.add('active');
+    mobilePanel?.classList.add('open');
+    mobileBackdrop?.classList.add('open');
+  }
+
+  function closeMobileMenu(){
+    burger?.classList.remove('active');
+    mobilePanel?.classList.remove('open');
+    mobileBackdrop?.classList.remove('open');
+  }
+
+  window.toggleMobileMenu = toggleMobileMenu;
+  window.closeMobileMenu = closeMobileMenu;
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeMobileMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if(window.innerWidth > 760) closeMobileMenu();
+  });
+
+
+
+  /* Effet chapitre propre au scroll */
+  const observedSections = document.querySelectorAll('section:not(.hero)');
+
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('section-visible');
+        }
+      });
+    }, {
+      threshold: 0.18,
+      rootMargin: "0px 0px -12% 0px"
+    });
+
+    observedSections.forEach((section) => sectionObserver.observe(section));
+  } else {
+    observedSections.forEach((section) => section.classList.add('section-visible'));
+  }
+
+
+
+  /* Effets visuels renforcés */
+  document.body.classList.add('effects-ready');
+
+  const vividSections = document.querySelectorAll('section:not(.hero)');
+  if ('IntersectionObserver' in window) {
+    const vividObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.remove('section-visible');
+          void entry.target.offsetWidth;
+          entry.target.classList.add('section-visible');
+        }
+      });
+    }, {
+      threshold: 0.32,
+      rootMargin: "0px 0px -18% 0px"
+    });
+
+    vividSections.forEach((section) => vividObserver.observe(section));
+  }
+
+  const chaosBtn = document.getElementById('chaosBtn');
+  const chaosOverlay = document.getElementById('chaosOverlay');
+  const rebuildFlash = document.getElementById('rebuildFlash');
+
+  const codePieces = [
+    'const system = new YVEXOR.Core();',
+    'await automate(client.need);',
+    'if(payment.valid){ activate(service); }',
+    'AI.private.run(localServer);',
+    'GPIO.relay.write(HIGH);',
+    'camera.detect(vehicle.authorized);',
+    'calendar.createAppointment();',
+    'dashboard.sync();',
+    'mqtt.publish("/building/light", true);',
+    'server.local.encrypt(data);',
+    'function rebuildReality(){ return system.restore(); }',
+    'while(idea){ prototype++; }',
+    'YVEXOR.deploy({mode:"future"});',
+    'access.badge.floor = 1;',
+    'stair.light.stepByStep();',
+    'invoice.auto.generate();',
+    'app.android.connect(api);',
+    'domotic.scene("depart").run();'
+  ];
+
+  let chaosTimer = null;
+  let chaosInterval = null;
+  let originals = [];
+  let rainCreated = false;
+
+  function randomCode(){
+    let out = '';
+    const lines = 2 + Math.floor(Math.random() * 3);
+    for(let i = 0; i < lines; i++){
+      out += codePieces[Math.floor(Math.random() * codePieces.length)];
+      if(i < lines - 1) out += ' ';
+    }
+    return out;
+  }
+
+  function createCodeRain(){
+    if(rainCreated) return;
+    rainCreated = true;
+    for(let i = 0; i < 34; i++){
+      const r = document.createElement('div');
+      r.className = 'code-rain';
+      r.style.left = Math.random() * 100 + '%';
+      r.style.animationDuration = (4 + Math.random() * 6).toFixed(2) + 's';
+      r.style.animationDelay = (Math.random() * 5).toFixed(2) + 's';
+      let txt = '';
+      for(let j = 0; j < 9; j++){
+        txt += codePieces[Math.floor(Math.random() * codePieces.length)] + '\n';
+      }
+      r.textContent = txt;
+      chaosOverlay.appendChild(r);
+    }
+  }
+
+  function startChaos(){
+    createCodeRain();
+    document.body.classList.add('chaos-mode');
+    chaosBtn.textContent = 'Reconstruire';
+    chaosBtn.classList.add('sms');
+
+    const targets = Array.from(document.querySelectorAll(
+      'main h1, main h2, main h3, main h4, main p, main li, main .example, main .audience, main .note'
+    ));
+
+    originals = targets.map(el => ({
+      el: el,
+      html: el.innerHTML
+    }));
+
+    targets.forEach(el => el.classList.add('chaos-target'));
+
+    chaosInterval = setInterval(() => {
+      originals.forEach(item => {
+        item.el.textContent = randomCode();
+      });
+    }, 130);
+
+    chaosTimer = setTimeout(rebuildPage, 10000);
+  }
+
+  function rebuildPage(){
+    clearTimeout(chaosTimer);
+    clearInterval(chaosInterval);
+
+    originals.forEach(item => {
+      item.el.innerHTML = item.html;
+      item.el.classList.remove('chaos-target');
+    });
+
+    document.body.classList.remove('chaos-mode');
+    chaosBtn.textContent = 'Mode système';
+
+    rebuildFlash.classList.remove('active');
+    void rebuildFlash.offsetWidth;
+    rebuildFlash.classList.add('active');
+
+    originals = [];
+  }
+
+  if(chaosBtn){
+    chaosBtn.addEventListener('click', () => {
+      if(document.body.classList.contains('chaos-mode')){
+        rebuildPage();
+      }else{
+        startChaos();
+      }
+    });
+  }
+
+
+  const stars = document.querySelector('.stars');
+  for(let i = 0; i < 55; i++){
+    const s = document.createElement('span');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.opacity = (Math.random() * .55 + .15).toFixed(2);
+    s.style.transform = 'scale(' + (Math.random() * 1.5 + .5).toFixed(2) + ')';
+    stars.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

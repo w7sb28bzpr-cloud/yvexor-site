@@ -6,11 +6,11 @@
   <title>YVEXOR — Systèmes automatisés, IA privée, domotique, applications & mobilité</title>
 
   <!-- Aperçu de lien / SEO / réseaux sociaux -->
-  <meta name="description" content="YVEXOR conçoit des systèmes automatisés sur mesure : IA privée, domotique, applications, caisse tactile, mobilité et automatisation métier.">
+  <meta name="description" content="YVEXOR conçoit des systèmes automatisés sur mesure : IA privée, agents de veille, domotique, applications, caisse tactile, mobilité et automatisation métier.">
   <meta name="theme-color" content="#020408">
 
   <meta property="og:title" content="YVEXOR — Systèmes automatisés, IA privée, domotique, applications & mobilité">
-  <meta property="og:description" content="Code sur mesure, IA privée, domotique, applications, mobilité et automatisation métier.">
+  <meta property="og:description" content="Code sur mesure, IA privée, agents de veille, domotique, applications, mobilité et automatisation métier.">
   <meta property="og:image" content="https://yvexor.com/yvexorlogo.jpeg">
   <meta property="og:image:secure_url" content="https://yvexor.com/yvexorlogo.jpeg">
   <meta property="og:image:type" content="image/jpeg">
@@ -21,7 +21,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="YVEXOR — Systèmes automatisés">
-  <meta name="twitter:description" content="IA privée, domotique, applications, mobilité et automatisation métier.">
+  <meta name="twitter:description" content="IA privée, agents de veille, domotique, applications, mobilité et automatisation métier.">
   <meta name="twitter:image" content="https://yvexor.com/yvexorlogo.jpeg">
 
   <link rel="canonical" href="https://yvexor.com">
@@ -1868,6 +1868,170 @@
       }
     }
 
+
+    /* ══════════════════════════════════════════
+       AGENT IA DE VEILLE & ANALYSE STRATÉGIQUE
+    ══════════════════════════════════════════ */
+    .veille-section{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .veille-section::after{
+      content:"";
+      position:absolute;
+      right:-180px;
+      top:60px;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(0,212,255,.15),transparent 68%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .veille-section .container{
+      position:relative;
+      z-index:2;
+    }
+
+    .veille-hero-card{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:26px;
+      align-items:stretch;
+      margin-bottom:26px;
+    }
+
+    .veille-main{
+      background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.12),transparent 30%),
+        linear-gradient(145deg,rgba(10,132,255,.18),rgba(0,212,255,.07),rgba(255,255,255,.035));
+      border:1px solid rgba(0,212,255,.45);
+      border-radius:32px;
+      padding:34px;
+      box-shadow:0 0 70px rgba(0,212,255,.10);
+    }
+
+    .veille-main h3{
+      font-size:2rem;
+      line-height:1.1;
+      letter-spacing:-.04em;
+      margin-bottom:14px;
+    }
+
+    .veille-main p{
+      color:var(--muted);
+      font-size:1.03rem;
+      margin-bottom:14px;
+    }
+
+    .veille-dashboard{
+      background:rgba(2,4,8,.78);
+      border:1px solid var(--border2);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:0 30px 90px rgba(0,0,0,.35);
+    }
+
+    .veille-dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding-bottom:16px;
+      margin-bottom:16px;
+      border-bottom:1px solid var(--border2);
+      color:var(--dim);
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+
+    .veille-pulse{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#dcfce7;
+      white-space:nowrap;
+    }
+
+    .veille-pulse::before{
+      content:"";
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 16px var(--green);
+    }
+
+    .veille-report-lines{
+      display:grid;
+      gap:12px;
+    }
+
+    .veille-line{
+      padding:14px;
+      border-radius:16px;
+      background:linear-gradient(90deg,rgba(10,132,255,.12),rgba(255,255,255,.035));
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .veille-line b{
+      display:block;
+      color:white;
+      margin-bottom:3px;
+    }
+
+    .veille-line span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .veille-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .veille-grid .card{
+      min-height:245px;
+    }
+
+    .veille-badge-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .veille-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid rgba(0,212,255,.32);
+      background:rgba(10,132,255,.08);
+      color:#dff8ff;
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    @media(max-width:1080px){
+      .veille-hero-card{grid-template-columns:1fr}
+      .veille-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:760px){
+      .veille-main{padding:24px}
+      .veille-main h3{font-size:1.62rem}
+      .veille-grid{grid-template-columns:1fr}
+      .veille-dashboard-top{align-items:flex-start;flex-direction:column}
+    }
+
 </style>
 </head>
 
@@ -1912,6 +2076,7 @@
       <a href="#solutions">Solutions</a>
       <a href="#applications">Applications</a>
       <a href="#ia-privee">IA</a>
+      <a href="#veille-ia">Veille IA</a>
       <a href="#collaboration">Partenariat</a>
       <a href="#equipe">Équipe</a>
       <a href="#tarifs">Tarifs</a>
@@ -1936,6 +2101,7 @@
   <a href="#solutions" onclick="closeMobileMenu()">Solutions</a>
   <a href="#applications" onclick="closeMobileMenu()">Applications</a>
   <a href="#ia-privee" onclick="closeMobileMenu()">IA</a>
+  <a href="#veille-ia" onclick="closeMobileMenu()">Veille IA</a>
   <a href="#collaboration" onclick="closeMobileMenu()">Partenariat</a>
   <a href="#equipe" onclick="closeMobileMenu()">Équipe</a>
   <a href="#tarifs" onclick="closeMobileMenu()">Tarifs</a>
@@ -2279,6 +2445,99 @@
             <li>Tableau de bord métier</li>
             <li>Système Linux ou serveur configuré sur mesure selon le besoin</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="veille-ia" class="veille-section">
+    <div class="container">
+      <div class="section-head center">
+        <div class="tagline">Agent IA de veille et d’analyse</div>
+        <h2>Une IA qui surveille votre marché et transforme l’information en décisions.</h2>
+        <p>
+          L’agent IA peut analyser automatiquement un secteur d’activité, suivre les concurrents,
+          repérer les nouveautés, surveiller les données financières et produire un rapport clair à fréquence régulière.
+        </p>
+      </div>
+
+      <div class="veille-hero-card">
+        <div class="veille-main">
+          <div class="icon">🛰️</div>
+          <h3>Votre veille stratégique automatisée</h3>
+          <p>
+            Chaque jour ou chaque semaine, l’IA consulte les sources utiles à votre activité :
+            actualités, sites spécialisés, concurrents, produits, tendances, classements, données financières,
+            innovations et informations publiques disponibles.
+          </p>
+          <p>
+            Elle trie ensuite les informations importantes, les résume et fait ressortir ce qui mérite votre attention :
+            opportunités, risques, signaux faibles, mouvements de concurrents ou nouvelles idées à étudier.
+          </p>
+          <div class="veille-badge-row">
+            <span class="veille-badge">Rapport quotidien</span>
+            <span class="veille-badge">Rapport hebdomadaire</span>
+            <span class="veille-badge">Analyse personnalisée</span>
+            <span class="veille-badge">Envoi par mail ou tableau de bord</span>
+          </div>
+        </div>
+
+        <div class="veille-dashboard">
+          <div class="veille-dashboard-top">
+            <span>Rapport IA — exemple</span>
+            <span class="veille-pulse">Analyse active</span>
+          </div>
+          <div class="veille-report-lines">
+            <div class="veille-line">
+              <b>Nouveautés détectées</b>
+              <span>Produits, services, annonces, innovations et tendances importantes du secteur.</span>
+            </div>
+            <div class="veille-line">
+              <b>Concurrence & marché</b>
+              <span>Suivi des concurrents, positionnement, prix, offres, classements et évolutions visibles.</span>
+            </div>
+            <div class="veille-line">
+              <b>Finance & signaux économiques</b>
+              <span>Analyse de données financières, actualités économiques et éléments utiles selon la stratégie définie.</span>
+            </div>
+            <div class="veille-line">
+              <b>Opportunités à étudier</b>
+              <span>Idées, angles commerciaux, améliorations possibles, pistes d’innovation ou concepts à approfondir.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="veille-grid">
+        <div class="card">
+          <div class="icon">📰</div>
+          <h3>Veille informationnelle</h3>
+          <p>
+            L’IA surveille les médias, sites spécialisés, annonces publiques et sources utiles pour ne pas passer à côté
+            d’une information importante.
+          </p>
+          <div class="example">Objectif : gagner du temps et recevoir uniquement ce qui compte vraiment.</div>
+        </div>
+
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>Analyse financière</h3>
+          <p>
+            Pour un profil investisseur ou trader, l’agent peut suivre des marchés, filtrer les actualités,
+            repérer des événements importants et adapter l’analyse à une méthode de réflexion précise.
+          </p>
+          <div class="example">L’IA n’impose pas une stratégie : elle applique le cadre défini par l’utilisateur.</div>
+        </div>
+
+        <div class="card">
+          <div class="icon">💡</div>
+          <h3>Innovation & idées</h3>
+          <p>
+            L’agent peut repérer des besoins mal couverts, comparer les offres existantes et aider à identifier
+            des pistes d’amélioration, de produit ou de service.
+          </p>
+          <div class="example">Objectif : transformer la veille en opportunités concrètes à étudier.</div>
         </div>
       </div>
     </div>
@@ -2666,7 +2925,7 @@ document.addEventListener('DOMContentLoaded', function(){
       'TITLE:Automatisation IA • Domotique • Caisses tactiles',
       'TEL;TYPE=CELL,VOICE:' + YVEXOR_PHONE_E164,
       'URL:' + YVEXOR_SITE,
-      'NOTE:Contact uniquement par SMS. YVEXOR conçoit des systèmes automatisés sur mesure : IA, domotique, caisses tactiles, applications et automatisations métier.',
+      'NOTE:Contact uniquement par SMS. YVEXOR conçoit des systèmes automatisés sur mesure : IA, agents de veille, domotique, caisses tactiles, applications et automatisations métier.',
       'END:VCARD'
     ].join('\r\n');
   }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yvexor.com/sitemap.xml

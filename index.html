@@ -1,934 +1,323 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YVEXOR | Automatisation, IA privée, applications et domotique</title>
-
-  <!-- Aperçu de lien / SEO / réseaux sociaux -->
-  <meta name="description" content="YVEXOR conçoit des systèmes automatisés sur mesure : IA privée, applications, domotique, caisses tactiles, veille et automatisation métier.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="YVEXOR">
-  <meta name="theme-color" content="#020408">
-
-  <meta property="og:title" content="YVEXOR — Systèmes automatisés, IA privée, domotique, applications & mobilité">
-  <meta property="og:description" content="Code sur mesure, IA privée, agents de veille, domotique, applications, mobilité et automatisation métier.">
-  <meta property="og:image" content="https://yvexor.com/yvexorlogo.jpeg">
-  <meta property="og:image:secure_url" content="https://yvexor.com/yvexorlogo.jpeg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="942">
-  <meta property="og:image:height" content="2048">
-  <meta property="og:image:alt" content="Logo YVEXOR">
-  <meta property="og:url" content="https://yvexor.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="YVEXOR">
-  <meta property="og:locale" content="fr_FR">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="YVEXOR — Systèmes automatisés">
-  <meta name="twitter:description" content="IA privée, agents de veille, domotique, applications, mobilité et automatisation métier.">
-  <meta name="twitter:image" content="https://yvexor.com/yvexorlogo.jpeg">
-  <meta name="twitter:image:alt" content="Logo YVEXOR">
-
-  <link rel="canonical" href="https://yvexor.com/">
-  <link rel="icon" type="image/jpeg" href="yvexorlogo.jpeg">
-  <link rel="apple-touch-icon" href="yvexorlogo.jpeg">
-  <link rel="stylesheet" href="styles.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "YVEXOR",
-    "url": "https://yvexor.com/",
-    "logo": "https://yvexor.com/yvexorlogo.jpeg",
-    "image": "https://yvexor.com/yvexorlogo.jpeg",
-    "telephone": "+33756913013",
-    "description": "Conception de systèmes automatisés sur mesure, IA privée, applications mobiles, domotique, caisses tactiles et automatisation métier.",
-    "areaServed": "FR",
-    "knowsLanguage": "fr",
-    "serviceType": [
-      "Automatisation d’entreprise",
-      "Intelligence artificielle privée",
-      "Applications mobiles et Android",
-      "Domotique",
-      "Caisses tactiles",
-      "Systèmes de recharge et de paiement",
-      "Veille stratégique automatisée"
-    ]
-  }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YVEXOR — IA, automatisation, logiciels, caisse et domotique sur mesure</title>
+<meta name="description" content="YVEXOR transforme les méthodes de travail en logiciels, IA, automatisations, caisses, systèmes domotiques et prototypes adaptés à chaque métier.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="YVEXOR">
+<link rel="canonical" href="https://yvexor.com/">
+<meta property="og:title" content="YVEXOR — Transformer une façon de travailler en technologie">
+<meta property="og:description" content="IA métier, automatisation, logiciels, caisse, domotique, hôtellerie, mécanique et prototypes sur mesure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yvexor.com/">
+<meta property="og:site_name" content="YVEXOR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://yvexor.com/yvexorlogo.jpeg">
+<meta property="og:image:secure_url" content="https://yvexor.com/yvexorlogo.jpeg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="942">
+<meta property="og:image:height" content="2048">
+<meta property="og:image:alt" content="Logo YVEXOR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YVEXOR — IA, automatisation et systèmes sur mesure">
+<meta name="twitter:description" content="IA métier, logiciels, automatisation, caisses tactiles, domotique et prototypes sur mesure.">
+<meta name="twitter:image" content="https://yvexor.com/yvexorlogo.jpeg">
+<meta name="twitter:image:alt" content="Logo YVEXOR">
+<meta name="theme-color" content="#1479ff">
+<link rel="icon" type="image/jpeg" href="yvexorlogo.jpeg">
+<link rel="apple-touch-icon" href="yvexorlogo.jpeg">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "YVEXOR",
+  "url": "https://yvexor.com/",
+  "logo": "https://yvexor.com/yvexorlogo.jpeg",
+  "image": "https://yvexor.com/yvexorlogo.jpeg",
+  "description": "Solutions d’intelligence artificielle, automatisation, logiciels, applications, caisses tactiles, domotique et prototypage sur mesure.",
+  "telephone": "+33756913013",
+  "areaServed": "FR",
+  "knowsLanguage": "fr",
+  "serviceType": ["Automatisation d’entreprise", "IA privée", "Applications mobiles", "Caisses tactiles", "Domotique", "Systèmes de recharge et paiement", "Prototypage automobile et moto"]
+}
+</script>
 </head>
-
 <body>
-
-<!-- CHAOS SYSTEM v2 -->
-<canvas id="chaosCanvas" aria-hidden="true"></canvas>
-<div class="scanlines-overlay" aria-hidden="true"></div>
-<div class="chaos-vignette" aria-hidden="true"></div>
-<div class="chaos-hud" aria-hidden="true">
-  <div class="chaos-hud-title" id="chaosHudTitle">SYSTÈME DÉTRUIT</div>
-  <div class="chaos-hud-sub" id="chaosHudSub">YVEXOR.EXE — CRITICAL FAILURE</div>
-</div>
-<div class="rebuild-flash" id="rebuildFlash" aria-hidden="true"></div>
-
-<div class="stars" aria-hidden="true">
-  <span class="shooting-star"></span>
-  <span class="shooting-star"></span>
-  <span class="shooting-star"></span>
-</div>
-
-
-<div class="contact-floating" id="contactFloating" aria-label="Ajouter YVEXOR aux contacts">
-  <div class="contact-floating-text">
-    <b>📇 Ajoutez YVEXOR à vos contacts</b>
-    <span>Fiche pro prête : numéro SMS, site internet et activité. Compatible iPhone / Android.</span>
-  </div>
-  <a href="#" class="btn contact-btn contact-main-cta" data-yvexor-vcard>Ajouter le contact →</a>
-  <button class="contact-floating-close" id="contactFloatingClose" type="button" aria-label="Fermer la proposition de contact">×</button>
-</div>
-
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header>
-  <div class="container nav">
-    <a href="#accueil" class="logo" aria-label="Accueil YVEXOR">
-      <img src="yvexorlogo.jpeg" alt="Logo YVEXOR" class="logo-img" width="48" height="48">
-      <strong>YV<span>EXOR</span></strong>
-    </a>
-
-    <nav class="menu" id="menu" aria-label="Navigation principale">
-      <a href="#idee">Sur mesure</a>
-      <a href="#futur">Futur</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#applications">Applications</a>
-      <a href="#ia-privee">IA</a>
-      <a href="#veille-ia">Veille IA</a>
-      <a href="#collaboration">Partenariat</a>
-      <a href="#equipe">Équipe</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#" class="btn contact-btn" data-yvexor-vcard>📇 Contact pro</a>
-      <button class="btn chaos-nav-btn" id="chaosBtn" type="button">Détruire le site 😂</button>
-    </nav>
-
-    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-controls="mobilePanel" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
+<div class="container nav">
+<a class="brand" href="#accueil" aria-label="Accueil YVEXOR"><img src="yvexorlogo.jpeg" alt="Logo YVEXOR" width="46" height="46"><span>YVEXOR</span></a>
+<button type="button" id="mobile-menu-button" class="mobile-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Ouvrir le menu"><span aria-hidden="true">☰</span></button>
+<nav id="main-navigation" class="navlinks" aria-label="Navigation principale">
+<a href="#services">Services</a><a href="#entreprises">Entreprises & IA</a><a href="#restauration">Commerce</a><a href="#domotique">Domotique</a><a href="#automobile">Mobilité</a><a href="#applications-veille">Applications & veille</a><a href="#tarifs">Tarifs</a><a href="#contact">Contact</a>
+</nav>
+<a class="nav-cta" href="#contact">Parler du projet</a>
+</div>
 </header>
 
+<main id="contenu">
+<section id="accueil" class="hero">
+<div class="container hero-grid">
+<div>
+<div class="kicker">Technologie sur mesure pour chaque métier</div>
+<h1>On transforme votre façon de travailler en <span>technologie.</span></h1>
+<p>YVEXOR analyse votre activité, vos habitudes et vos difficultés, puis construit les logiciels, IA, automatisations et systèmes connectés qui vous font gagner du temps.</p>
+<div class="actions"><a class="btn btn-primary" href="#contact">Présenter mon projet</a><a class="btn btn-secondary" href="#services">Découvrir les solutions</a></div>
+<div class="trust"><span class="pill">IA métier</span><span class="pill">Automatisation</span><span class="pill">Logiciels sur mesure</span><span class="pill">Caisse & commerce</span><span class="pill">Domotique</span><span class="pill">Prototypage</span></div>
+</div>
+<aside class="hero-card"><img src="yvexorlogo.jpeg" alt="Logo YVEXOR" width="170" height="170"><h2>Un besoin précis. Une solution construite autour de vous.</h2><ul><li>Connexion à vos outils existants</li><li>Développement progressif</li><li>Interface simple pour les équipes</li><li>Contrôle humain sur les actions sensibles</li></ul></aside>
+</div>
+</section>
 
-<div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+<section id="services">
+<div class="container">
+<div class="section-head"><div class="kicker">Nos domaines</div><h2>Une même méthode, appliquée à des secteurs très différents.</h2><p>Chaque carte ci-dessous mène à une section complète de cette même page. Aucun fichier supplémentaire n’est nécessaire.</p></div>
+<div class="grid">
+<article class="card"><div class="icon">📨</div><h3>Entreprises & IA</h3><p>YVEXOR crée des assistants et automatisations capables de lire les e-mails, comprendre les demandes, analyser les documents et déclencher des actions encadrées.</p><a href="#entreprises">Voir cette solution →</a></article><article class="card"><div class="icon">🧾</div><h3>Caisse & restauration</h3><p>Encaissement, stocks, clôture, tickets, cuisine, affichage client, comptes caissiers et évolutions métier dans une interface pensée pour le terrain.</p><a href="#restauration">Voir cette solution →</a></article><article class="card"><div class="icon">💡</div><h3>Domotique</h3><p>Maison, appartement, résidence, immeuble, syndic ou bien immobilier : YVEXOR conçoit les scénarios, interfaces et automatismes utiles.</p><a href="#domotique">Voir cette solution →</a></article><article class="card"><div class="icon">📲</div><h3>Hôtellerie</h3><p>Un écosystème peut centraliser l’expérience client, les équipes, les accès, la restauration, l’énergie et les nouveaux services.</p><a href="#hotellerie">Voir cette solution →</a></article><article class="card"><div class="icon">🔧</div><h3>Automobile & mécanique</h3><p>Le professionnel apporte l’expertise terrain. YVEXOR crée la couche logiciel, IA, électronique, télémétrie et prototypage.</p><a href="#automobile">Voir cette solution →</a></article><article class="card"><div class="icon">🧠</div><h3>YVEXOR AI Core</h3><p>Le système identifie le client, charge sa mémoire, choisit le modèle adapté et appelle uniquement les outils autorisés.</p><a href="#ai-core">Voir cette solution →</a></article>
+</div>
+</div>
+</section>
 
-<nav class="mobile-panel" id="mobilePanel" aria-label="Navigation mobile" aria-hidden="true">
-  <a href="#idee">Sur mesure</a>
-  <a href="#futur">Futur</a>
-  <a href="#solutions">Solutions</a>
-  <a href="#applications">Applications</a>
-  <a href="#ia-privee">IA</a>
-  <a href="#veille-ia">Veille IA</a>
-  <a href="#collaboration">Partenariat</a>
-  <a href="#equipe">Équipe</a>
-  <a href="#tarifs">Tarifs</a>
-  <a href="#" class="btn contact-btn" data-yvexor-vcard>📇 Ajouter aux contacts</a>
-  <a href="sms:+33756913013?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message</a>
-  <button class="btn chaos-nav-btn" id="mobileChaosBtn" type="button">Détruire le site 😂</button>
-</nav>
+<section class="alt">
+<div class="container">
+<div class="section-head"><div class="kicker">Notre méthode</div><h2>Du problème réel au système utile.</h2></div>
+<div class="process">
+<div class="step"><strong>01 — COMPRENDRE</strong><h3>Observer le métier</h3><p>Les tâches, les décisions, les données, les blocages et les habitudes.</p></div>
+<div class="step"><strong>02 — CONCEVOIR</strong><h3>Choisir la bonne solution</h3><p>Application, IA, automatisation, matériel ou combinaison de plusieurs briques.</p></div>
+<div class="step"><strong>03 — TESTER</strong><h3>Construire une première version</h3><p>Un prototype concret, testé sur le terrain avec les utilisateurs.</p></div>
+<div class="step"><strong>04 — ÉVOLUER</strong><h3>Améliorer progressivement</h3><p>Ajouter les fonctions utiles au bon moment, sans surdimensionner.</p></div>
+</div>
+</div>
+</section>
 
 
-<main>
+<section id="entreprises" class="sector-section">
+<div class="container">
+<div class="sector-intro">
+<div><div class="kicker">Entreprises & IA</div><h2>Une IA qui travaille selon les règles de votre entreprise.</h2></div>
+<div><p>YVEXOR crée des assistants et automatisations capables de lire les e-mails, comprendre les demandes, analyser les documents et déclencher des actions encadrées.</p><div class="actions"><a class="btn btn-primary" href="#contact">Étudier ce projet</a><a class="btn btn-secondary" data-sms href="sms:+33756913013">Envoyer un SMS</a></div></div>
+</div>
+<div class="sector-cards"><article class="sector-card"><div class="icon">📨</div><h3>E-mails & relation client</h3><p>Classement, résumé, brouillon de réponse, transfert vers la bonne personne et suivi des demandes.</p></article><article class="sector-card"><div class="icon">🧠</div><h3>IA métier privée</h3><p>Documents, procédures, règles internes, validations et vocabulaire propres à l’entreprise.</p></article><article class="sector-card"><div class="icon">📊</div><h3>Analyse & pilotage</h3><p>Stocks, budgets, concurrence, indicateurs, anomalies et scénarios de prévision.</p></article><article class="sector-card"><div class="icon">⚖️</div><h3>Métiers spécialisés</h3><p>Syndicats, cabinets et secteurs réglementés peuvent limiter les sources et imposer des validations.</p></article></div>
+</div>
+</section>
+<section id="restauration" class="sector-section">
+<div class="container">
+<div class="sector-intro">
+<div><div class="kicker">Caisse & restauration</div><h2>Une caisse construite autour de votre manière de travailler.</h2></div>
+<div><p>Encaissement, stocks, clôture, tickets, cuisine, affichage client, comptes caissiers et évolutions métier dans une interface pensée pour le terrain.</p><div class="actions"><a class="btn btn-primary" href="#contact">Étudier ce projet</a><a class="btn btn-secondary" data-sms href="sms:+33756913013">Envoyer un SMS</a></div></div>
+</div>
+<div class="sector-cards"><article class="sector-card"><div class="icon">🧾</div><h3>Encaissement complet</h3><p>Espèces, carte, mixte, remises, TVA, crédits clients et journalisation.</p></article><article class="sector-card"><div class="icon">📦</div><h3>Stocks & achats</h3><p>Produits, codes-barres, seuils, listes de commande, factures et alertes.</p></article><article class="sector-card"><div class="icon">🍽️</div><h3>Restaurant & cuisine</h3><p>Tables, menus, commandes, impressions cuisine, livraison et room service.</p></article><article class="sector-card"><div class="icon">📈</div><h3>Pilotage</h3><p>Chiffre d’affaires, historiques, clôtures, comptes et rapports d’activité.</p></article></div>
+</div>
+</section>
+<section id="domotique" class="sector-section">
+<div class="container">
+<div class="sector-intro">
+<div><div class="kicker">Domotique</div><h2>La technologie s’adapte au lieu et à ceux qui l’utilisent.</h2></div>
+<div><p>Maison, appartement, résidence, immeuble, syndic ou bien immobilier : YVEXOR conçoit les scénarios, interfaces et automatismes utiles.</p><div class="actions"><a class="btn btn-primary" href="#contact">Étudier ce projet</a><a class="btn btn-secondary" data-sms href="sms:+33756913013">Envoyer un SMS</a></div></div>
+</div>
+<div class="sector-cards"><article class="sector-card"><div class="icon">💡</div><h3>Éclairage intelligent</h3><p>Allumer uniquement les zones et étages utilisés puis éteindre derrière le passage, jusqu’à un éclairage progressif marche par marche.</p></article><article class="sector-card"><div class="icon">🔐</div><h3>Accès & sécurité</h3><p>Portes, portails, badges, interphonie, alertes, droits temporaires et reconnaissance d’un véhicule autorisé.</p></article><article class="sector-card"><div class="icon">⚡</div><h3>Économies d’énergie</h3><p>Présence, horaires, lumière naturelle, suivi des consommations et détection d’anomalies.</p></article><article class="sector-card"><div class="icon">🏢</div><h3>Résidences & syndics</h3><p>Parties communes, parkings, caves, locaux techniques et maintenance simplifiée.</p></article></div>
+</div>
+</section>
+<section id="hotellerie" class="sector-section">
+<div class="container">
+<div class="sector-intro">
+<div><div class="kicker">Hôtellerie</div><h2>Relier la réservation, l’accueil, la chambre et l’exploitation.</h2></div>
+<div><p>Un écosystème peut centraliser l’expérience client, les équipes, les accès, la restauration, l’énergie et les nouveaux services.</p><div class="actions"><a class="btn btn-primary" href="#contact">Étudier ce projet</a><a class="btn btn-secondary" data-sms href="sms:+33756913013">Envoyer un SMS</a></div></div>
+</div>
+<div class="sector-cards"><article class="sector-card"><div class="icon">📲</div><h3>Réservation & espace client</h3><p>Site, réservation, informations d’arrivée, services et communication avant séjour.</p></article><article class="sector-card"><div class="icon">🚪</div><h3>Accès aux chambres</h3><p>Codes ou droits temporaires, check-in autonome et désactivation au départ.</p></article><article class="sector-card"><div class="icon">🛏️</div><h3>Chambre intelligente</h3><p>Lumière, température, stores, scénarios d’arrivée et économies d’énergie.</p></article><article class="sector-card"><div class="icon">🔌</div><h3>Recharge électrique</h3><p>Bornes, paiement, réservation et modèles de vente ou partage de revenus à étudier.</p></article></div>
+</div>
+</section>
+<section id="automobile" class="sector-section">
+<div class="container">
+<div class="sector-intro">
+<div><div class="kicker">Automobile & mécanique</div><h2>Transformer le savoir-faire du mécanicien en technologie.</h2></div>
+<div><p>Le professionnel apporte l’expertise terrain. YVEXOR crée la couche logiciel, IA, électronique, télémétrie et prototypage.</p><div class="actions"><a class="btn btn-primary" href="#contact">Étudier ce projet</a><a class="btn btn-secondary" data-sms href="sms:+33756913013">Envoyer un SMS</a></div></div>
+</div>
+<div class="sector-cards"><article class="sector-card"><div class="icon">🔧</div><h3>IA de diagnostic</h3><p>Protocoles guidés, documentation validée, contrôles dans le bon ordre et transmission du savoir.</p></article><article class="sector-card"><div class="icon">📱</div><h3>Application atelier</h3><p>Rendez-vous, ordres de réparation, photos, pièces, temps et suivi client.</p></article><article class="sector-card"><div class="icon">📡</div><h3>Télémétrie & bancs</h3><p>Acquisition de données, courbes, rapports, protocoles reproductibles et historique.</p></article><article class="sector-card"><div class="icon">🧪</div><h3>Prototypes</h3><p>Active Sound, automatismes, interfaces et technologies co-développées sous la marque du client.</p></article></div>
+</div>
+</section>
+<section id="ai-core" class="sector-section">
+<div class="container">
+<div class="sector-intro">
+<div><div class="kicker">YVEXOR AI Core</div><h2>Un noyau central. Plusieurs IA. Plusieurs métiers.</h2></div>
+<div><p>Le système identifie le client, charge sa mémoire, choisit le modèle adapté et appelle uniquement les outils autorisés.</p><div class="actions"><a class="btn btn-primary" href="#contact">Étudier ce projet</a><a class="btn btn-secondary" data-sms href="sms:+33756913013">Envoyer un SMS</a></div></div>
+</div>
+<div class="sector-cards"><article class="sector-card"><div class="icon">🧠</div><h3>Multi-modèles</h3><p>Choisir le meilleur modèle selon le document, le raisonnement, le code ou l’action.</p></article><article class="sector-card"><div class="icon">👥</div><h3>Multi-clients</h3><p>Données, mémoires, comptes et permissions séparés pour chaque entreprise.</p></article><article class="sector-card"><div class="icon">📚</div><h3>RAG & documents</h3><p>Connecter les procédures, catalogues, bases métier et connaissances validées.</p></article><article class="sector-card"><div class="icon">🧩</div><h3>Outils métier</h3><p>Stock, caisse, CRM, factures, e-mail, messagerie, domotique et maintenance.</p></article></div>
+</div>
+</section>
 
-  <section class="hero" id="accueil">
-    <div class="container hero-grid">
-      <div>
-        <div class="chip">Automaticiens numériques • Code sur mesure • IA privée • Domotique • Commerce connecté</div>
+<section id="applications-veille" class="sector-section alt">
+<div class="container">
+  <div class="section-head">
+    <div class="kicker">Applications & veille IA</div>
+    <h2>Votre système reste accessible et transforme l’information en décisions.</h2>
+    <p>YVEXOR peut relier une application mobile, une interface interne, une IA privée et un agent de veille à vos outils et à vos données métier.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><div class="icon">📱</div><h3>Applications mobiles & Android</h3><p>Application métier, tableau de bord ou interface de pilotage connectée à une caisse, un serveur, une IA ou une installation domotique. Une web app ou PWA peut évoluer vers une application Android complète.</p></article>
+    <article class="card"><div class="icon">🛰️</div><h3>Veille stratégique automatisée</h3><p>L’agent suit les actualités, concurrents, produits, tendances, innovations et informations publiques utiles, puis prépare un rapport clair chaque jour ou chaque semaine.</p></article>
+    <article class="card"><div class="icon">📊</div><h3>Analyse financière & informationnelle</h3><p>Tri des sources, synthèse, détection de signaux importants et présentation des éléments qui peuvent aider à prendre une décision.</p></article>
+  </div>
+</div>
+</section>
 
-        <div class="contact-spotlight">
-          <div class="contact-spotlight-icon">📇</div>
-          <div class="contact-spotlight-text">
-            <b>Gardez YVEXOR directement dans votre téléphone</b>
-            <span>Un clic ouvre la fiche contact professionnelle avec le numéro SMS, le site internet et l’activité. Aucun email, tout passe par SMS.</span>
-            <div class="contact-spotlight-tag">iPhone • Android • SMS rapide</div>
-          </div>
-          <a href="#" class="btn contact-btn contact-main-cta" data-yvexor-vcard>Ajouter le contact →</a>
-        </div>
-        <h1>Vos idées deviennent <span class="gradient">des systèmes automatisés réels.</span></h1>
-        <p>
-          YVEXOR conçoit et développe ses propres solutions sur mesure :
-          <strong>logiciel, IA, serveur local, réseau privé, application mobile / Android, caisse tactile, domotique, système de paiement, borne connectée et automatisation métier.</strong>
-        </p>
-        <p>
-          Pas de solution copiée-collée, pas de simple revente de logiciel standard : chaque projet est étudié, codé, adapté et intégré selon votre besoin.
-        </p>
+<section id="equipe-collaboration" class="sector-section">
+<div class="container">
+  <div class="section-head">
+    <div class="kicker">Équipe & collaboration</div>
+    <h2>Des expertises complémentaires pour transformer une idée en système réel.</h2>
+    <p>Vous apportez l’idée ou le besoin. YVEXOR étudie, conçoit et développe la solution, avec un modèle adapté : devis, paiement progressif, maintenance, abonnement ou collaboration selon le projet.</p>
+  </div>
+  <div class="grid team-grid">
+    <article class="card"><h3>Yannick</h3><p>Fondateur de YVEXOR, responsable technique et conception. Il pilote la vision, l’architecture des systèmes, le développement, l’automatisation, l’IA et la validation finale.</p></article>
+    <article class="card"><h3>Grégory</h3><p>Responsable du développement commercial, de la relation client, de l’accompagnement terrain et du déploiement des solutions.</p></article>
+    <article class="card"><h3>Johan</h3><p>Référent mécanique auto/moto et prototypage terrain pour les essais, adaptations et validations directement sur véhicule.</p></article>
+    <article class="card"><h3>Innomotech</h3><p>Collaborateur spécialisé pouvant intervenir sur les projets automobiles, motos, systèmes embarqués et prototypes encadrés.</p></article>
+    <article class="card"><h3>Andreas — partenariats mobilité</h3><p>Associé/actionnaire Innomotech intervenant sur les discussions stratégiques, négociations et opportunités liées à la mobilité, aux garages et aux collaborations.</p></article>
+    <article class="card"><h3>Un partenariat adaptable</h3><p>YVEXOR peut construire le système autour d’une idée rentable et étudier un devis classique, un paiement en plusieurs fois ou un modèle de collaboration adapté.</p></article>
+  </div>
+</div>
+</section>
 
-        <div class="hero-actions">
-          <a href="sms:+33756913013?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un message →</a>
-          <a href="#collaboration" class="btn ghost">Proposer une collaboration</a>
-        </div>
 
-        <div class="promise">
-          <div><b>1.</b> Vous expliquez votre idée</div>
-          <div><b>2.</b> Nous concevons le système</div>
-          <div><b>3.</b> Nous développons sur mesure</div>
-        </div>
-      </div>
+<section id="tarifs">
+<div class="container">
+  <div class="section-head">
+    <div class="kicker">Tarifs indicatifs</div>
+    <h2>Des points de départ clairs, puis un devis adapté au besoin réel.</h2>
+    <p>Ces prix donnent un ordre d’idée. Le tarif final dépend des fonctions, du matériel, des intégrations, de l’installation et du niveau de personnalisation.</p>
+  </div>
 
-      <div class="screen">
-        <div class="screen-inner">
-          <div class="topbar">
-            <div class="dots"><i></i><i></i><i></i></div>
-            <span>YVEXOR Automation Core</span>
-          </div>
+  <div class="pricing-grid">
+    <article class="price-card">
+      <div class="price-label">Site vitrine</div>
+      <div class="price-value">À partir de 350 €</div>
+      <p>Une présence professionnelle moderne avec contact direct et base SEO.</p>
+      <ul>
+        <li>Design responsive</li>
+        <li>Présentation de l’activité</li>
+        <li>Contact direct par SMS</li>
+        <li>Base SEO technique</li>
+      </ul>
+    </article>
 
-          <div class="idea-flow">
-            <div class="flow-step">
-              <div class="n">01</div>
-              <div>
-                <h4>Besoin client</h4>
-                <p>Piloter une maison, vendre un service connecté, automatiser une caisse, créer une IA.</p>
-              </div>
-              <b>BRIEF</b>
-            </div>
+    <article class="price-card">
+      <div class="price-label">Agent IA simple</div>
+      <div class="price-value">À partir de 350 €</div>
+      <p>Assistant pour orienter les visiteurs, récupérer une demande ou préparer un rendez-vous.</p>
+      <ul>
+        <li>Scénario de questions</li>
+        <li>Collecte des informations utiles</li>
+        <li>Transmission vers l’équipe</li>
+        <li>Réponses encadrées</li>
+      </ul>
+    </article>
 
-            <div class="flow-step">
-              <div class="n">02</div>
-              <div>
-                <h4>Développement YVEXOR</h4>
-                <p>Code, interface, serveur, automatisation, paiement, tableau de bord et intégration.</p>
-              </div>
-              <b>CODE</b>
-            </div>
+    <article class="price-card featured">
+      <div class="price-label">IA locale / serveur privé</div>
+      <div class="price-value">À partir de 700 €</div>
+      <p>Première base d’assistant privé, interface interne ou environnement local selon le projet.</p>
+      <ul>
+        <li>Déploiement local possible</li>
+        <li>Documents métier</li>
+        <li>Accès utilisateurs</li>
+        <li>Évolution progressive</li>
+      </ul>
+    </article>
 
-            <div class="flow-step">
-              <div class="n">03</div>
-              <div>
-                <h4>Action automatique</h4>
-                <p>Le client paie, le système active, contrôle, mesure, alerte ou déclenche.</p>
-              </div>
-              <b>AUTO</b>
-            </div>
+    <article class="price-card featured">
+      <div class="price-label">Caisse tactile</div>
+      <div class="price-value">À partir de 1 290 €</div>
+      <p>Solution personnalisée selon l’activité, le matériel et les fonctions retenues, sans abonnement obligatoire par la suite.</p>
+      <ul>
+        <li>Encaissement et tickets</li>
+        <li>Produits et stocks</li>
+        <li>Clôture et historique</li>
+        <li>Achat direct ou abonnement possible</li>
+      </ul>
+    </article>
 
-            <div class="flow-step">
-              <div class="n">04</div>
-              <div>
-                <h4>Système utile</h4>
-                <p>Le client utilise, pilote, suit et peut générer de la valeur avec son installation.</p>
-              </div>
-              <b>ROI</b>
-            </div>
-          </div>
-        </div>
-      </div>
+    <article class="price-card">
+      <div class="price-label">Recharge / paiement</div>
+      <div class="price-value">À partir de 1 400 €</div>
+      <p>Activation après paiement, suivi et interface propriétaire selon les équipements compatibles.</p>
+      <ul>
+        <li>Paiement et activation</li>
+        <li>Suivi des utilisations</li>
+        <li>Tableau de bord</li>
+        <li>Modèle modulable</li>
+      </ul>
+    </article>
 
+    <article class="price-card">
+      <div class="price-label">Domotique</div>
+      <div class="price-value">Nous consulter</div>
+      <p>Chaque logement ou bâtiment étant différent, le prix dépend du matériel et du niveau d’intégration.</p>
+      <ul>
+        <li>Audit du besoin</li>
+        <li>Scénarios sur mesure</li>
+        <li>Installation ou collaboration électricien</li>
+        <li>Maintenance possible</li>
+      </ul>
+    </article>
+  </div>
+
+  <p class="notice notice-spaced">Les tarifs sont indicatifs et ne constituent pas un devis. Un paiement en plusieurs fois, une maintenance, un abonnement ou un modèle de collaboration peut être étudié selon le projet.</p>
+</div>
+</section>
+
+<section id="faq" class="alt">
+<div class="container">
+<div class="section-head"><div class="kicker">Questions fréquentes</div><h2>Ce que les clients nous demandent souvent.</h2></div>
+<div class="faq">
+<details><summary>YVEXOR travaille seulement avec les grandes entreprises ?</summary><p>Non. Une solution peut commencer par une fonction simple pour un commerce, un artisan, un garage, un hôtel ou une PME, puis évoluer.</p></details>
+<details><summary>Faut-il remplacer tous nos logiciels actuels ?</summary><p>Pas forcément. Nous pouvons connecter les outils existants, ajouter une interface ou automatiser seulement une partie du processus.</p></details>
+<details><summary>L’intelligence artificielle peut-elle agir toute seule ?</summary><p>Le niveau d’autonomie est défini avec le client. Les actions sensibles peuvent rester soumises à validation humaine et être journalisées.</p></details>
+<details><summary>Intervenez-vous sur site ?</summary><p>Selon le projet, YVEXOR peut travailler à distance, intervenir sur site ou collaborer avec les professionnels déjà choisis par le client.</p></details>
+</div>
+</div>
+</section>
+
+
+<section id="contact" class="cta-section">
+<div class="container cta-box">
+  <div>
+    <div class="kicker kicker-contact">Contact rapide</div>
+    <h2>Ajoutez YVEXOR à vos contacts, puis envoyez votre idée par SMS.</h2>
+    <p>La fiche contact contient le numéro professionnel, le site internet et l’activité YVEXOR. Sur mobile, le bouton SMS ouvre directement l’application Messages avec le numéro YVEXOR et un texte déjà préparé.</p>
+
+    <div class="contact-actions">
+      <button class="btn btn-primary" type="button" id="add-contact">Ajouter YVEXOR aux contacts</button>
+      <a class="btn btn-secondary" id="send-sms" data-sms href="sms:+33756913013">Envoyer un SMS</a>
     </div>
-  </section>
+    <div id="contact-status" class="contact-status" aria-live="polite"></div>
+  </div>
+
+  <div class="contact-pro-card">
+    <h3>YVEXOR — Contact professionnel</h3>
+    <p><b>Activité :</b> automatisation, intelligence artificielle, logiciels, applications, domotique, caisses tactiles et prototypage.</p>
+    <p><b>Téléphone / SMS :</b><br><a href="tel:+33756913013">07 56 91 30 13</a></p>
+    <p><b>Site internet :</b><br><a href="https://yvexor.com/">yvexor.com</a></p>
+    <p class="notice">Après avoir cliqué sur « Ajouter YVEXOR aux contacts », ouvrez la fiche .vcf téléchargée puis validez « Créer un nouveau contact » ou « Ajouter aux contacts ».</p>
+  </div>
+</div>
+</section>
 
-  <section id="idee">
-    <div class="container">
-      <div class="big-message">
-        <div class="tagline">Notre positionnement</div>
-        <h2>YVEXOR crée des systèmes sur mesure, pas des solutions préfabriquées.</h2>
-        <p>
-          YVEXOR agit comme un bureau de développement et d’automatisation : nous imaginons, codons, connectons et intégrons des systèmes adaptés à chaque client.
-          Le matériel nécessaire peut être sélectionné selon le projet, mais le fonctionnement, l’interface, l’automatisation et la logique métier sont conçus sur mesure.
-        </p>
-        <p>
-          L’objectif est simple : transformer une idée en système utile, rentable et contrôlable. Une caisse, une IA, une application mobile, une maison connectée, un réseau interne ou un système de paiement automatisé peuvent être conçus autour de vos besoins.
-        </p>
-        <div class="note">
-          YVEXOR développe ses propres logiques, interfaces et automatisations afin de proposer une solution réellement adaptée au client.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="dark" id="futur">
-    <div class="container">
-      <div class="section-head center">
-        <div class="tagline">Exemples futuristes</div>
-        <h2>Des scénarios qui donnent l’impression d’être déjà dans le futur.</h2>
-        <p>
-          Ces exemples montrent ce qu’il est possible d’imaginer pour une maison, une résidence, un hôtel, un parking, un commerce ou une entreprise.
-        </p>
-      </div>
-
-      <div class="futur-grid">
-        <div class="card futur-card">
-          <div class="icon">🚗</div>
-          <h3>Reconnaissance de véhicule</h3>
-          <p>Une caméra peut reconnaître l’arrivée d’un véhicule autorisé sur une propriété privée et déclencher un scénario.</p>
-          <div class="example">Exemple : la voiture arrive, le portail s’ouvre, l’allée s’allume et le système notifie le propriétaire.</div>
-        </div>
-
-        <div class="card futur-card">
-          <div class="icon">🏢</div>
-          <h3>Éclairage intelligent par étage</h3>
-          <p>Dans un immeuble, un badge peut indiquer l’étage de destination et le système allume seulement les zones utiles.</p>
-          <div class="example">Exemple : badge 1er étage → éclairage automatique jusqu’au 1er étage seulement.</div>
-        </div>
-
-        <div class="card futur-card">
-          <div class="icon">🪜</div>
-          <h3>Escalier marche par marche</h3>
-          <p>Les marches peuvent s’allumer progressivement selon le passage, la direction ou un scénario d’ambiance.</p>
-          <div class="example">Exemple : chaque marche s’allume au fur et à mesure de la montée.</div>
-        </div>
-
-        <div class="card futur-card">
-          <div class="icon">🔌</div>
-          <h3>Recharge payante automatisée</h3>
-          <p>Un hôtel, un parking ou une résidence peut proposer une recharge ou un service connecté avec activation automatique après paiement.</p>
-          <div class="example">Exemple : le client paie, le système active le service, l’établissement suit les revenus.</div>
-        </div>
-
-        <div class="card futur-card">
-          <div class="icon">🧠</div>
-          <h3>IA de bâtiment</h3>
-          <p>Une IA peut centraliser les demandes, signaler les pannes, orienter les utilisateurs et prévenir les responsables.</p>
-          <div class="example">Exemple : un résident signale une panne, le syndic reçoit automatiquement les informations utiles.</div>
-        </div>
-
-        <div class="card futur-card">
-          <div class="icon">📲</div>
-          <h3>Maison pilotée depuis téléphone</h3>
-          <p>Le client pilote lumières, accès, volets, chauffage, capteurs et scénarios depuis une interface simple.</p>
-          <div class="example">Exemple : mode “départ” → tout s’éteint, alerte active, portail verrouillé.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="solutions">
-    <div class="container">
-      <div class="section-head">
-        <div class="tagline">Solutions possibles</div>
-        <h2>Des services séparés, mais reliés par la même logique d’automatisation.</h2>
-        <p>YVEXOR développe les systèmes qui relient logiciel, IA, interface tactile, serveur privé, paiement et actions physiques.</p>
-      </div>
-
-      <div class="big-services">
-        <div class="service-block">
-          <div class="service-intro">
-            <div>
-              <h3>🏢 Automatisation d’entreprise</h3>
-              <p>Pour réduire les tâches répétitives : appels, messages, rendez-vous, devis, fichiers, relances et suivi client.</p>
-            </div>
-            <span class="audience">Cible : artisans, garages, cabinets, PME</span>
-          </div>
-          <div class="mini-grid">
-            <div class="mini"><h4>Assistant IA client</h4><p>Répond aux questions simples, récupère les informations et transmet les demandes importantes.</p></div>
-            <div class="mini"><h4>Google Calendar</h4><p>Création de rendez-vous automatique, rappels et organisation du planning.</p></div>
-            <div class="mini"><h4>Devis & factures</h4><p>Préparation de documents, relances, fiches clients et suivi administratif.</p></div>
-            <div class="mini"><h4>CRM simple</h4><p>Suivi prospects, clients, demandes, historique et prochaines actions.</p></div>
-          </div>
-        </div>
-
-        <div class="service-block">
-          <div class="service-intro">
-            <div>
-              <h3>🏪 Caisses tactiles & commerces</h3>
-              <p>Une caisse tactile personnalisée, avec achat direct ou abonnement possible, sans abonnement obligatoire par la suite, adaptée au métier du client.</p>
-            </div>
-            <span class="audience">Cible : restaurants, snacks, boutiques, épiceries</span>
-          </div>
-          <div class="mini-grid">
-            <div class="mini"><h4>Caisse tactile</h4><p>Interface de vente, panier, produits, catégories, modes de paiement.</p></div>
-            <div class="mini"><h4>Tickets & impression</h4><p>Ticket client, ticket cuisine, liste de préparation ou ticket personnalisé.</p></div>
-            <div class="mini"><h4>Stock & produits</h4><p>Ajout produits, modification prix, suivi stock et catégories.</p></div>
-            <div class="mini"><h4>Achat ou abonnement possible</h4><p>Le client peut acheter sa solution, choisir un abonnement ou ajouter une maintenance seulement s’il en a besoin.</p></div>
-          </div>
-        </div>
-
-        <div class="service-block">
-          <div class="service-intro">
-            <div>
-              <h3>📱 Applications mobiles & Android</h3>
-              <p>Pour transformer une idée en application utilisable sur téléphone : outil client, application interne, tableau de bord mobile ou interface connectée à un système existant.</p>
-            </div>
-            <span class="audience">Cible : entreprises, commerces, particuliers, projets sur mesure</span>
-          </div>
-          <div class="mini-grid">
-            <div class="mini"><h4>Application Android</h4><p>Application mobile adaptée à votre activité, avec interface claire et fonctions utiles.</p></div>
-            <div class="mini"><h4>Application métier</h4><p>Outil interne pour suivre clients, interventions, stocks, rendez-vous ou demandes.</p></div>
-            <div class="mini"><h4>Connexion à vos systèmes</h4><p>L’application peut être reliée à une IA, un serveur local, une caisse, une domotique ou un tableau de bord.</p></div>
-            <div class="mini"><h4>Version progressive</h4><p>Possibilité de commencer par une web app/PWA, puis évoluer vers une application Android complète.</p></div>
-          </div>
-        </div>
-
-        <div class="service-block">
-          <div class="service-intro">
-            <div>
-              <h3>⚡ Systèmes de recharge & paiement</h3>
-              <p>Pour monétiser une recharge ou un service connecté avec paiement, activation automatique, supervision et intégration au site.</p>
-            </div>
-            <span class="audience">Cible : hôtels, parkings, résidences, particuliers</span>
-          </div>
-          <div class="mini-grid">
-            <div class="mini"><h4>Activation après paiement</h4><p>Le client paie, puis le système active automatiquement le service.</p></div>
-            <div class="mini"><h4>Interface propriétaire</h4><p>Suivi des utilisations, paramètres, accès et statistiques.</p></div>
-            <div class="mini"><h4>Intégration domotique</h4><p>Le système peut être ajouté à l’environnement connecté du bâtiment ou de la maison.</p></div>
-            <div class="mini"><h4>Modèle modulable</h4><p>Achat, abonnement ou partage de bénéfices selon le projet et le partenaire.</p></div>
-          </div>
-        </div>
-
-        <div class="service-block">
-          <div class="service-intro">
-            <div>
-              <h3>🤖 IA sur mesure</h3>
-              <p>Pour créer une IA adaptée au besoin de l’entreprise : répondre, classer, orienter, préparer, prendre rendez-vous ou assister les équipes.</p>
-            </div>
-            <span class="audience">Cible : toutes entreprises qui veulent gagner du temps</span>
-          </div>
-          <div class="mini-grid">
-            <div class="mini"><h4>Agent téléphonique</h4><p>Prend les informations, répond aux demandes simples et redirige si nécessaire.</p></div>
-            <div class="mini"><h4>Chatbot site web</h4><p>Répond aux visiteurs, récupère les demandes et prépare le contact commercial.</p></div>
-            <div class="mini"><h4>Assistant interne</h4><p>Utilise les documents de l’entreprise pour aider les équipes dans un cadre précis.</p></div>
-            <div class="mini"><h4>IA privée locale</h4><p>Modèle open source adapté, serveur local ou cloud privé selon les besoins.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="applications" class="dark">
-    <div class="container">
-      <div class="section-head">
-        <div class="tagline">Applications mobiles & Android</div>
-        <h2>Votre système peut aussi vivre dans une application mobile.</h2>
-        <p>
-          Une application mobile permet de rendre une solution plus simple à utiliser au quotidien :
-          client, employé, propriétaire, gestionnaire ou utilisateur final peut accéder au système depuis son téléphone.
-        </p>
-      </div>
-
-      <div class="capabilities">
-        <div class="card capability">
-          <div class="icon">📱</div>
-          <h3>Application Android</h3>
-          <p>Création d’une application mobile adaptée à votre activité, avec les fonctions réellement utiles.</p>
-          <div class="example">Exemple : application pour gérer des clients, des commandes, des accès ou des interventions.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🧭</div>
-          <h3>Application de pilotage</h3>
-          <p>Piloter une maison, une borne, une caisse, un système domotique ou un serveur interne depuis téléphone.</p>
-          <div class="example">Exemple : ouvrir un portail, activer un mode maison, suivre une recharge ou consulter un tableau de bord.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🔗</div>
-          <h3>Application connectée</h3>
-          <p>L’application peut communiquer avec une IA, un serveur local, un site web, une base client ou un système automatisé.</p>
-          <div class="example">Exemple : une application reliée à un CRM, Google Calendar, une IA privée ou une caisse tactile.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="dark" id="ia-privee">
-    <div class="container">
-      <div class="section-head">
-        <div class="tagline">IA open source adaptée et IA privée</div>
-        <h2>Une IA peut être créée uniquement pour votre entreprise.</h2>
-        <p>
-          YVEXOR peut partir de modèles d’IA open source, les adapter à votre métier et les connecter à vos documents,
-          vos règles, vos outils et vos processus internes.
-        </p>
-      </div>
-
-      <div class="split">
-        <div class="card">
-          <div class="icon">🧠</div>
-          <h3>IA adaptée à votre métier</h3>
-          <p>
-            L’IA peut être configurée pour un rôle précis : répondre à vos clients, assister vos équipes,
-            utiliser vos documents, préparer des réponses, classer des demandes ou guider une procédure.
-          </p>
-          <ul>
-            <li>Réponses basées sur vos documents internes</li>
-            <li>Assistant métier pour vos équipes</li>
-            <li>IA connectée à vos outils existants</li>
-            <li>Accès contrôlé selon les utilisateurs</li>
-            <li>Déploiement local ou cloud privé selon le projet</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="icon">🖥️</div>
-          <h3>Serveur local, réseau privé et système interne</h3>
-          <p>
-            Pour les entreprises qui veulent garder le contrôle, YVEXOR peut concevoir un environnement interne dédié :
-            serveur local, mini-PC, interface privée, réseau local, accès utilisateurs et outils réservés à l’entreprise.
-          </p>
-          <ul>
-            <li>IA utilisable sur le réseau de l’entreprise</li>
-            <li>Interface interne accessible aux employés autorisés</li>
-            <li>Base documentaire privée</li>
-            <li>Tableau de bord métier</li>
-            <li>Système Linux ou serveur configuré sur mesure selon le besoin</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="veille-ia" class="veille-section">
-    <div class="container">
-      <div class="section-head center">
-        <div class="tagline">Agent IA de veille et d’analyse</div>
-        <h2>Une IA qui surveille votre marché et transforme l’information en décisions.</h2>
-        <p>
-          L’agent IA peut analyser automatiquement un secteur d’activité, suivre les concurrents,
-          repérer les nouveautés, surveiller les données financières et produire un rapport clair à fréquence régulière.
-        </p>
-      </div>
-
-      <div class="veille-hero-card">
-        <div class="veille-main">
-          <div class="icon">🛰️</div>
-          <h3>Votre veille stratégique automatisée</h3>
-          <p>
-            Chaque jour ou chaque semaine, l’IA consulte les sources utiles à votre activité :
-            actualités, sites spécialisés, concurrents, produits, tendances, classements, données financières,
-            innovations et informations publiques disponibles.
-          </p>
-          <p>
-            Elle trie ensuite les informations importantes, les résume et fait ressortir ce qui mérite votre attention :
-            opportunités, risques, signaux faibles, mouvements de concurrents ou nouvelles idées à étudier.
-          </p>
-          <div class="veille-badge-row">
-            <span class="veille-badge">Rapport quotidien</span>
-            <span class="veille-badge">Rapport hebdomadaire</span>
-            <span class="veille-badge">Analyse personnalisée</span>
-            <span class="veille-badge">Envoi par mail ou tableau de bord</span>
-          </div>
-        </div>
-
-        <div class="veille-dashboard">
-          <div class="veille-dashboard-top">
-            <span>Rapport IA — exemple</span>
-            <span class="veille-pulse">Analyse active</span>
-          </div>
-          <div class="veille-report-lines">
-            <div class="veille-line">
-              <b>Nouveautés détectées</b>
-              <span>Produits, services, annonces, innovations et tendances importantes du secteur.</span>
-            </div>
-            <div class="veille-line">
-              <b>Concurrence & marché</b>
-              <span>Suivi des concurrents, positionnement, prix, offres, classements et évolutions visibles.</span>
-            </div>
-            <div class="veille-line">
-              <b>Finance & signaux économiques</b>
-              <span>Analyse de données financières, actualités économiques et éléments utiles selon la stratégie définie.</span>
-            </div>
-            <div class="veille-line">
-              <b>Opportunités à étudier</b>
-              <span>Idées, angles commerciaux, améliorations possibles, pistes d’innovation ou concepts à approfondir.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="veille-grid">
-        <div class="card">
-          <div class="icon">📰</div>
-          <h3>Veille informationnelle</h3>
-          <p>
-            L’IA surveille les médias, sites spécialisés, annonces publiques et sources utiles pour ne pas passer à côté
-            d’une information importante.
-          </p>
-          <div class="example">Objectif : gagner du temps et recevoir uniquement ce qui compte vraiment.</div>
-        </div>
-
-        <div class="card">
-          <div class="icon">📊</div>
-          <h3>Analyse financière</h3>
-          <p>
-            Pour un profil investisseur ou trader, l’agent peut suivre des marchés, filtrer les actualités,
-            repérer des événements importants et adapter l’analyse à une méthode de réflexion précise.
-          </p>
-          <div class="example">L’IA n’impose pas une stratégie : elle applique le cadre défini par l’utilisateur.</div>
-        </div>
-
-        <div class="card">
-          <div class="icon">💡</div>
-          <h3>Innovation & idées</h3>
-          <p>
-            L’agent peut repérer des besoins mal couverts, comparer les offres existantes et aider à identifier
-            des pistes d’amélioration, de produit ou de service.
-          </p>
-          <div class="example">Objectif : transformer la veille en opportunités concrètes à étudier.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="domotique-maison">
-    <div class="container">
-      <div class="section-head">
-        <div class="tagline">Domotique pour particuliers</div>
-        <h2>Une maison peut devenir plus intelligente, plus confortable et plus simple à piloter.</h2>
-        <p>
-          YVEXOR peut concevoir une installation domotique adaptée à votre logement :
-          contrôle à distance, automatisation, scénarios, sécurité, éclairage, portail, chauffage et équipements connectés.
-        </p>
-      </div>
-
-      <div class="capabilities">
-        <div class="card capability">
-          <div class="icon">💡</div>
-          <h3>Éclairage intelligent</h3>
-          <p>Allumage automatique, ambiance personnalisée, détection de présence, extinction programmée ou contrôle depuis téléphone.</p>
-          <div class="example">Exemple : les lumières s’allument automatiquement à l’arrivée ou selon l’heure.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🚪</div>
-          <h3>Portail, porte et accès</h3>
-          <p>Ouverture à distance, accès temporaire, commande depuis smartphone, bouton connecté ou scénario automatisé.</p>
-          <div class="example">Exemple : ouvrir le portail à un livreur ou à un proche sans être sur place.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🔥</div>
-          <h3>Chauffage, volets et confort</h3>
-          <p>Scénarios de température, volets automatisés, économies d’énergie et contrôle des équipements de la maison.</p>
-          <div class="example">Exemple : fermer les volets et baisser le chauffage automatiquement le soir.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🛡️</div>
-          <h3>Sécurité et alertes</h3>
-          <p>Capteurs, détection, notifications, caméras compatibles, alertes en cas d’ouverture, mouvement ou anomalie.</p>
-          <div class="example">Exemple : recevoir une alerte si une porte s’ouvre pendant votre absence.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">📱</div>
-          <h3>Application ou tableau de bord</h3>
-          <p>Interface simple pour piloter les équipements, voir les états, déclencher des actions et gérer les scénarios.</p>
-          <div class="example">Exemple : un écran ou une page web privée pour tout contrôler.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🔌</div>
-          <h3>Systèmes sur mesure</h3>
-          <p>Raspberry Pi, ESP32, relais, capteurs, modules Wi-Fi ou Bluetooth selon le besoin et l’installation existante.</p>
-          <div class="example">Exemple : connecter un ancien équipement qui n’était pas prévu pour être connecté.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="dark">
-    <div class="container">
-      <div class="section-head center">
-        <div class="tagline">Méthode</div>
-        <h2>Une idée ne devient pas un projet au hasard.</h2>
-        <p>YVEXOR garde une méthode claire pour proposer une solution sérieuse, utile et réalisable.</p>
-      </div>
-
-      <div class="process">
-        <div class="card">
-          <div class="num">01</div>
-          <h3>Comprendre</h3>
-          <p>Analyse du besoin, du contexte, des contraintes et du résultat attendu.</p>
-        </div>
-
-        <div class="card">
-          <div class="num">02</div>
-          <h3>Concevoir</h3>
-          <p>Architecture du système : logiciel, interface, automatisation, matériel, paiement, serveur ou IA.</p>
-        </div>
-
-        <div class="card">
-          <div class="num">03</div>
-          <h3>Coder</h3>
-          <p>Développement d’une première version utilisable, testable et améliorable.</p>
-        </div>
-
-        <div class="card">
-          <div class="num">04</div>
-          <h3>Accompagner</h3>
-          <p>Installation, formation, maintenance et évolution possible selon les retours.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <section id="collaboration" class="dark">
-    <div class="container">
-      <div class="big-message">
-        <div class="tagline">Collaboration & projets rentables</div>
-        <h2>Vous avez une idée rentable ? YVEXOR peut vous aider à la transformer en système réel.</h2>
-        <p>
-          Une idée peut devenir un service, une application, un système automatisé, une interface, une caisse, une IA, une solution domotique ou un outil connecté.
-          Si le projet a du potentiel, YVEXOR peut étudier une collaboration avec vous.
-        </p>
-        <p>
-          L’objectif est simple : créer un système qui peut générer de la valeur. Cela peut être une solution pour votre entreprise, un produit à vendre,
-          un outil interne, une automatisation commerciale ou une idée que vous souhaitez développer avec un partenaire technique.
-        </p>
-        <div class="note">
-          YVEXOR est ouvert aux projets sérieux : développement sur devis, paiement en plusieurs fois, abonnement, partenariat ou modèle avec partage de revenus selon le potentiel du projet.
-        </div>
-      </div>
-
-      <div class="capabilities" style="margin-top:24px">
-        <div class="card capability">
-          <div class="icon">💡</div>
-          <h3>Vous avez l’idée</h3>
-          <p>Vous expliquez le concept, le problème à résoudre, les clients visés et le potentiel commercial.</p>
-          <div class="example">Exemple : un service automatisé pour hôtels, garages, commerces, locations ou particuliers.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">⚙️</div>
-          <h3>YVEXOR construit le système</h3>
-          <p>Nous étudions la faisabilité, puis nous concevons l’interface, le logiciel, l’IA, l’automatisation ou la partie connectée.</p>
-          <div class="example">Exemple : paiement, activation automatique, tableau de bord, notifications et suivi client.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🤝</div>
-          <h3>Un modèle adapté</h3>
-          <p>Selon le projet, la collaboration peut être un devis classique, un abonnement, un paiement progressif ou un partenariat.</p>
-          <div class="example">Exemple : si le système génère du revenu, un partage de bénéfices peut être étudié.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  
-  <section id="equipe">
-    <div class="container">
-      <div class="section-head center">
-        <div class="tagline">Équipe & collaboration technique</div>
-        <h2>YVEXOR s’appuie sur une organisation claire et des expertises complémentaires.</h2>
-        <p>
-          YVEXOR pilote les projets de développement, d’IA, d’automatisation, de domotique,
-          d’applications et de systèmes connectés. Selon la nature du projet, des collaborateurs spécialisés
-          peuvent intervenir pour renforcer la conception, les tests ou les partenariats.
-        </p>
-      </div>
-
-      <div class="capabilities">
-        <div class="card capability">
-          <div class="icon">🧠</div>
-          <h3>Yannick</h3>
-          <p>
-            Fondateur de YVEXOR, responsable technique et conception. Il pilote la vision,
-            l’architecture des systèmes, le développement, l’automatisation, l’IA et la validation finale des projets.
-          </p>
-          <div class="example">Rôle : concevoir les systèmes et transformer les idées en solutions techniques réalisables.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🤝</div>
-          <h3>Grégory</h3>
-          <p>
-            Responsable développement commercial, relation client, accompagnement terrain et déploiement.
-            Il échange avec les clients, récupère les besoins, suit les projets et accompagne la mise en place des solutions.
-          </p>
-          <div class="example">Rôle : comprendre le besoin client, préparer le projet et assurer le lien terrain.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🔧</div>
-          <h3>Johan</h3>
-          <p>
-            Référent mécanique auto/moto et prototypage terrain. Il peut intervenir lorsque certains projets nécessitent
-            des essais, des adaptations, des validations ou des retours concrets directement sur véhicule.
-          </p>
-          <div class="example">Rôle : confronter les concepts techniques à la réalité du terrain, sur moto ou voiture.</div>
-        </div>
-      </div>
-
-      <div class="big-message" style="margin-top:24px">
-        <div class="tagline">Collaborateur mobilité</div>
-        <h2>Innomotech peut intervenir comme collaborateur spécialisé sur les projets auto, moto et mobilité.</h2>
-        <p>
-          YVEXOR reste la marque principale pour le développement de systèmes sur mesure :
-          logiciels, IA, applications, automatisations, interfaces, serveurs locaux, domotique et solutions connectées.
-        </p>
-        <p>
-          Innomotech est un pôle collaborateur orienté mobilité, auto, moto, systèmes embarqués et prototypage véhicule.
-          Lorsque le projet touche à un véhicule, une moto, une voiture, un boîtier spécifique, une fonction embarquée
-          ou une idée liée à la mobilité, une collaboration avec Innomotech peut être étudiée au cas par cas.
-        </p>
-        <p>
-          Certains concepts liés à la mobilité sont en cours de développement et peuvent nécessiter confidentialité,
-          protection, dépôt ou démarche de brevet. Les détails techniques ne sont donc pas exposés publiquement,
-          mais peuvent être étudiés dans un cadre sérieux avec les bons partenaires.
-        </p>
-        <div class="note">
-          YVEXOR développe et structure le système. Innomotech peut apporter une expertise ou une orientation mobilité
-          lorsque le projet concerne l’auto, la moto, les véhicules ou les systèmes embarqués.
-        </div>
-      </div>
-
-      <div class="capabilities" style="margin-top:24px">
-        <div class="card capability">
-          <div class="icon">🏍️</div>
-          <h3>Auto / moto / systèmes embarqués</h3>
-          <p>
-            Les projets liés aux véhicules peuvent être étudiés avec une approche spécifique :
-            faisabilité, sécurité, prototypage, tests et intégration progressive.
-          </p>
-          <div class="example">Exemples : fonctions lumineuses temporisées, interfaces connectées, essais prototypes, modules embarqués.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">🧩</div>
-          <h3>Prototypage encadré</h3>
-          <p>
-            Les idées auto/moto sont étudiées dans un cadre contrôlé : usage privé, test, prototype,
-            sécurité et respect des contraintes techniques.
-          </p>
-          <div class="example">Exemple : projection de logo à l’extinction, scénarios embarqués, adaptation de fonctions connectées.</div>
-        </div>
-
-        <div class="card capability">
-          <div class="icon">📞</div>
-          <h3>Andreas — partenariats mobilité</h3>
-          <p>
-            Andreas, associé/actionnaire Innomotech, intervient sur les discussions stratégiques,
-            les négociations et les opportunités liées aux projets mobilité, garages, véhicules,
-            investisseurs ou collaborations rentables.
-          </p>
-          <div class="example">Rôle : ouvrir les portes, négocier les opportunités et faire remonter les projets à étudier.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="tarifs" class="dark">
-    <div class="container">
-      <div class="section-head center">
-        <div class="tagline">Tarifs indicatifs</div>
-        <h2>Des bases claires, puis un devis adapté à votre projet.</h2>
-        <p>
-          Les tarifs ci-dessous donnent une première idée. Chaque projet reste étudié selon le besoin réel,
-          le niveau de personnalisation, le matériel, l’installation et les évolutions souhaitées.
-        </p>
-      </div>
-
-      <div class="tarifs-grid">
-        <div class="card">
-          <div class="icon">🌐</div>
-          <h3>Site vitrine</h3>
-          <div class="price"><span>à partir de</span> 350€</div>
-          <p>Page professionnelle, présentation de l’activité, contact, design responsive et base SEO.</p>
-        </div>
-
-        <div class="card featured">
-          <div class="icon">🤖</div>
-          <h3>Agent IA simple</h3>
-          <div class="price"><span>à partir de</span> 350€</div>
-          <p>Assistant pour répondre, orienter les visiteurs, récupérer des demandes ou préparer des rendez-vous.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🖥️</div>
-          <h3>Caisse tactile</h3>
-          <div class="price"><span>à partir de</span> 1290€</div>
-          <p>Solution caisse personnalisée. Achat direct possible, abonnement possible, sans abonnement obligatoire par la suite, selon matériel et fonctions.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">⚡</div>
-          <h3>Système recharge / paiement</h3>
-          <div class="price"><span>à partir de</span> 1400€</div>
-          <p>Activation après paiement, suivi, interface propriétaire et modèle modulable selon le projet.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🧠</div>
-          <h3>IA locale / serveur privé</h3>
-          <div class="price"><span>à partir de</span> 700€</div>
-          <p>Base IA privée, serveur local, interface interne ou réseau privé selon l’usage de l’entreprise.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🏠</div>
-          <h3>Domotique maison</h3>
-          <div class="price">Nous consulter</div>
-          <p>Chaque logement est différent : audit, matériel, installation, scénarios et niveau d’intégration.</p>
-        </div>
-      </div>
-
-      <div class="pay-box">
-        <h3>Paiement souple possible</h3>
-        <p>
-          YVEXOR peut proposer un paiement en plusieurs fois, une maintenance, un abonnement ou un modèle de collaboration
-          selon le potentiel du projet et le budget du client.
-        </p>
-      </div>
-    </div>
-  </section>
-
-<section id="contact" class="dark">
-    <div class="container">
-      <div class="section-head center">
-        <div class="tagline">Contact rapide</div>
-        <h2>Ajoutez YVEXOR à vos contacts, puis envoyez votre idée par SMS.</h2>
-        <p>
-          Le plus simple : gardez la fiche contact professionnelle dans votre téléphone, puis envoyez directement un SMS avec votre activité, votre idée ou le système à automatiser.
-          Pas d’adresse mail : tout passe par message pour aller plus vite.
-        </p>
-      </div>
-
-      <div class="contact-grid highlight">
-        <div class="card contact-card featured-contact">
-          <div>
-            <div class="icon">📇</div>
-            <h3>Ajouter YVEXOR aux contacts</h3>
-            <p>Ouvre une fiche contact prête à enregistrer sur iPhone ou Android avec le numéro SMS, le site internet et l’activité YVEXOR.</p>
-            <div class="example">Contact pro : YVEXOR — Automatisation, IA, domotique, caisses tactiles</div>
-            <span class="contact-mini-note">Le téléphone demandera simplement de valider l’ajout du contact, c’est normal.</span>
-          </div>
-          <div class="contact-buttons">
-            <a href="#" class="btn contact-btn contact-main-cta" data-yvexor-vcard>📇 Ajouter le contact</a>
-          </div>
-        </div>
-
-        <div class="card contact-card">
-          <div>
-            <div class="icon">💬</div>
-            <h3>Envoyer un SMS</h3>
-            <p>Pour présenter rapidement une idée, demander un premier échange ou expliquer un projet rentable à étudier.</p>
-            <div class="example">Numéro : 07 56 91 30 13</div>
-          </div>
-          <div class="contact-buttons">
-            <a href="sms:+33756913013?body=Bonjour%20YVEXOR,%20j%E2%80%99ai%20une%20id%C3%A9e%20ou%20un%20projet%20rentable%20%C3%A0%20%C3%A9tudier." class="btn sms">Envoyer un SMS</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pay-box">
-        <h3>Informations utiles pour une première réponse</h3>
-        <p>
-          Envoyez par SMS : activité, idée ou problème à résoudre, tâche à automatiser, outils déjà utilisés, délai idéal et budget approximatif si vous en avez un.
-        </p>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
-  <div class="container">
-    <strong>YVEXOR</strong><br>
-    Automaticiens numériques • Code sur mesure • Applications mobiles • IA privée • Serveur local • Domotique • Caisses tactiles • Collaboration mobilité Innomotech • Prototypage auto/moto
-  </div>
+<div class="container footer-grid">
+<div><a class="brand" href="#accueil" aria-label="Retour à l’accueil YVEXOR"><img src="yvexorlogo.jpeg" alt="" width="42" height="42"><span>YVEXOR</span></a><div class="footer-tagline">Transformer une façon de travailler en technologie.</div></div>
+<div class="footer-links"><a href="#services">Services</a><a href="#equipe-collaboration">Équipe</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="tel:+33756913013">+33 7 56 91 30 13</a><button type="button" id="chaos-button" class="footer-fun">Détruire le site 😂</button></div>
+</div>
 </footer>
+
+
+
+
 <script src="script.js" defer></script>
 
 </body>

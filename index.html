@@ -52,7 +52,7 @@
 <a class="brand" href="#accueil" aria-label="Accueil YVEXOR"><img src="yvexorlogo.jpeg" alt="Logo YVEXOR" width="46" height="46"><span>YVEXOR</span></a>
 <button type="button" id="mobile-menu-button" class="mobile-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Ouvrir le menu"><span aria-hidden="true">☰</span></button>
 <nav id="main-navigation" class="navlinks" aria-label="Navigation principale">
-<a href="#services">Services</a><a href="#entreprises">Entreprises & IA</a><a href="#restauration">Commerce</a><a href="#domotique">Domotique</a><a href="#automobile">Mobilité</a><a href="#applications-veille">Applications & veille</a><a href="#tarifs">Tarifs</a><a href="#contact">Contact</a>
+<a href="#services">Services</a><a href="#entreprises">Entreprises & IA</a><a href="#restauration">Commerce</a><a href="#domotique">Domotique</a><a href="#automobile">Mobilité</a><a href="#applications-veille">Applications & veille</a><a href="#tarifs">Tarifs</a><a href="#experience">Expérience</a><a href="#contact">Contact</a>
 </nav>
 <a class="nav-cta" href="#contact">Parler du projet</a>
 </div>
@@ -279,6 +279,65 @@
 <details><summary>Intervenez-vous sur site ?</summary><p>Selon le projet, YVEXOR peut travailler à distance, intervenir sur site ou collaborer avec les professionnels déjà choisis par le client.</p></details>
 </div>
 </div>
+</section>
+
+<section class="yv-game" id="experience" aria-labelledby="yv-game-title">
+  <div class="yv-game-glow yv-game-glow-left" aria-hidden="true"></div>
+  <div class="yv-game-glow yv-game-glow-right" aria-hidden="true"></div>
+  <div class="container yv-game-wrap">
+    <div class="yv-game-topline">
+      <div class="yv-game-brand" aria-hidden="true">YVE<span>XOR</span></div>
+      <div class="yv-game-tag">Expérience interactive · environ 60 secondes</div>
+    </div>
+
+    <div class="yv-game-heading">
+      <div class="kicker">Jouons pour conclure</div>
+      <h2 id="yv-game-title">Et si votre problème devenait notre prochain projet&nbsp;?</h2>
+      <p>Vous avez découvert notre façon de travailler. Maintenant, testons votre manière d’aborder un projet à travers trois situations concrètes.</p>
+      <div class="yv-game-topics" aria-label="Thèmes de l’expérience">
+        <span>Caisse, stock & clôture</span>
+        <span>Automatisation & IA métier</span>
+        <span>Bâtiment & domotique</span>
+      </div>
+    </div>
+
+    <div class="yv-game-stage" id="yv-game-stage">
+      <div class="yv-game-stage-inner" id="yv-game-play-area">
+        <div class="yv-game-scene" id="yv-game-scene" data-scene="pos" aria-hidden="true">
+          <div class="yv-game-orbit"></div>
+          <div class="yv-game-orbit yv-game-orbit-small"></div>
+          <div class="yv-game-core" id="yv-game-core">POS</div>
+          <div class="yv-game-satellite yv-game-satellite-1">IA</div>
+          <div class="yv-game-satellite yv-game-satellite-2">POS</div>
+          <div class="yv-game-satellite yv-game-satellite-3">DOM</div>
+          <div class="yv-game-satellite yv-game-satellite-4">APP</div>
+        </div>
+
+        <div class="yv-game-gameplay">
+          <div class="yv-game-step" id="yv-game-step">Situation 1 sur 3</div>
+          <h3 class="yv-game-question" id="yv-game-question">Un commerce perd du temps entre la caisse, le stock et les clôtures. Quelle approche choisissez-vous&nbsp;?</h3>
+          <p class="yv-game-context" id="yv-game-context">Le besoin n’est pas simplement un logiciel, mais un outil adapté au fonctionnement réel du magasin.</p>
+          <div class="yv-game-answers" id="yv-game-answers" role="group" aria-labelledby="yv-game-question"></div>
+        </div>
+      </div>
+
+      <div class="yv-game-result" id="yv-game-result" hidden aria-live="polite">
+        <div class="yv-game-score-ring" id="yv-game-score-ring"><strong id="yv-game-score-text">0/3</strong></div>
+        <div class="yv-game-step">Votre profil YVEXOR</div>
+        <h3 id="yv-game-result-title"></h3>
+        <p id="yv-game-result-text"></p>
+        <div class="yv-game-actions">
+          <a class="btn btn-primary" id="yv-game-sms" href="sms:+33756913013">Présenter mon projet par SMS</a>
+          <button class="btn btn-secondary" id="yv-game-restart" type="button">Rejouer</button>
+        </div>
+        <div class="yv-game-note">Aucune donnée enregistrée — expérience entièrement locale.</div>
+      </div>
+
+      <div class="yv-game-progress" id="yv-game-progress" role="progressbar" aria-label="Progression de l’expérience" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0">
+        <i id="yv-game-progress-bar"></i>
+      </div>
+    </div>
+  </div>
 </section>
 
 

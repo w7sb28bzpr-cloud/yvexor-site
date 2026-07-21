@@ -596,6 +596,65 @@ body.chaos-mode::after {
   100% { transform: translate(1px, -2px); }
 }
 
+/* Expérience interactive, entièrement isolée du reste du site. */
+.yv-game {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(circle at 18% 10%, rgba(20,121,255,.25), transparent 30%), radial-gradient(circle at 84% 28%, rgba(49,215,255,.15), transparent 28%), linear-gradient(180deg,#08182c,#06101e 62%,#030811);
+}
+.yv-game::before { content:""; position:absolute; inset:0; z-index:-3; opacity:.12; background-image:radial-gradient(circle,#fff 1px,transparent 1.4px); background-size:44px 44px; }
+.yv-game-glow { position:absolute; z-index:-2; width:360px; height:360px; border-radius:50%; opacity:.2; filter:blur(90px); pointer-events:none; }
+.yv-game-glow-left { bottom:0; left:-160px; background:var(--blue); }
+.yv-game-glow-right { top:160px; right:-150px; background:var(--cyan); }
+.yv-game-wrap { position:relative; z-index:1; }
+.yv-game-topline { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:38px; }
+.yv-game-brand { font-size:18px; font-weight:950; letter-spacing:.16em; }
+.yv-game-brand span { color:var(--cyan); }
+.yv-game-tag { padding:9px 14px; border:1px solid var(--line); border-radius:999px; color:#d8e8f8; background:rgba(255,255,255,.07); backdrop-filter:blur(12px); font-size:13px; font-weight:800; }
+.yv-game-heading { max-width:880px; margin:0 auto 32px; text-align:center; }
+.yv-game-heading .kicker { justify-content:center; }
+.yv-game-heading h2 { margin:16px 0 18px; font-size:clamp(40px,7vw,76px); line-height:.98; letter-spacing:-.06em; }
+.yv-game-heading p { max-width:760px; margin:auto; color:#c2d2e4; font-size:clamp(16px,2vw,20px); }
+.yv-game-topics { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:22px; }
+.yv-game-topics span { padding:7px 11px; border:1px solid var(--line); border-radius:999px; color:#c8d8e9; background:rgba(255,255,255,.045); font-size:12px; font-weight:750; }
+.yv-game-stage { position:relative; overflow:hidden; border:1px solid var(--line); border-radius:32px; background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03)); box-shadow:0 28px 90px rgba(0,0,0,.4),inset 0 1px rgba(255,255,255,.1); backdrop-filter:blur(20px); }
+.yv-game-stage-inner { min-height:420px; display:grid; grid-template-columns:.82fr 1.18fr; }
+.yv-game-stage-inner[hidden] { display:none; }
+.yv-game-scene { position:relative; display:grid; overflow:hidden; place-items:center; padding:30px; border-right:1px solid var(--line); background:radial-gradient(circle at 50% 45%,rgba(49,215,255,.15),transparent 35%); }
+.yv-game-orbit { position:absolute; width:260px; height:260px; border:1px dashed rgba(49,215,255,.38); border-radius:50%; animation:yv-game-spin 18s linear infinite; }
+.yv-game-orbit-small { width:190px; height:190px; animation-direction:reverse; animation-duration:12s; }
+.yv-game-core { width:126px; height:126px; display:grid; place-items:center; border:2px solid rgba(255,255,255,.52); border-radius:32px; color:#fff; background:linear-gradient(145deg,rgba(20,121,255,.94),rgba(49,215,255,.78)); box-shadow:0 0 65px rgba(49,215,255,.34); transform:rotate(-5deg); transition:transform .4s cubic-bezier(.2,.8,.2,1); font-size:28px; font-weight:950; letter-spacing:-.04em; }
+.yv-game-core.is-active { transform:rotate(5deg) scale(1.1); }
+.yv-game-satellite { position:absolute; width:58px; height:58px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.17); border-radius:18px; color:#dff8ff; background:#0e2138; box-shadow:0 12px 35px rgba(0,0,0,.34); font-size:13px; font-weight:900; }
+.yv-game-satellite-1 { transform:translate(-135px,-90px); }
+.yv-game-satellite-2 { transform:translate(135px,-70px); }
+.yv-game-satellite-3 { transform:translate(-130px,105px); }
+.yv-game-satellite-4 { transform:translate(130px,110px); }
+.yv-game-gameplay { display:flex; flex-direction:column; justify-content:center; padding:34px clamp(24px,5vw,58px); }
+.yv-game-step { color:var(--cyan); font-size:12px; font-weight:950; letter-spacing:.15em; text-transform:uppercase; }
+.yv-game-question { margin:11px 0 12px; font-size:clamp(26px,4vw,42px); line-height:1.06; letter-spacing:-.045em; }
+.yv-game-context { margin:0 0 22px; color:#b9cada; }
+.yv-game-answers { display:grid; gap:11px; }
+.yv-game-answer { width:100%; min-height:58px; display:flex; align-items:center; gap:13px; padding:13px 16px; border:1px solid rgba(255,255,255,.14); border-radius:17px; color:#fff; background:rgba(255,255,255,.055); cursor:pointer; font-weight:800; text-align:left; transition:transform .2s,border-color .2s,background .2s; }
+.yv-game-answer:hover,.yv-game-answer:focus-visible { border-color:rgba(49,215,255,.7); background:rgba(49,215,255,.1); transform:translateX(5px); }
+.yv-game-answer:disabled { cursor:wait; opacity:.72; }
+.yv-game-answer-mark { width:34px; height:34px; flex:0 0 34px; display:grid; place-items:center; border-radius:11px; background:rgba(255,255,255,.1); }
+.yv-game-progress { height:5px; background:rgba(255,255,255,.08); }
+.yv-game-progress i { width:0; height:100%; display:block; background:linear-gradient(90deg,var(--blue),var(--cyan)); transition:width .4s; }
+.yv-game-result { padding:46px clamp(22px,5vw,64px); text-align:center; }
+.yv-game-result[hidden] { display:none; }
+.yv-game-score-ring { --yv-game-score:0%; position:relative; width:136px; height:136px; display:grid; place-items:center; margin:0 auto 20px; border-radius:50%; background:conic-gradient(var(--cyan) var(--yv-game-score),rgba(255,255,255,.1) 0); }
+.yv-game-score-ring::after { content:""; position:absolute; inset:9px; border-radius:50%; background:#0a1728; }
+.yv-game-score-ring strong { position:relative; z-index:1; font-size:31px; }
+.yv-game-result h3 { margin:8px 0 12px; font-size:clamp(34px,6vw,60px); line-height:1.04; letter-spacing:-.055em; }
+.yv-game-result p { max-width:700px; margin:0 auto 24px; color:#c1d0df; font-size:18px; }
+.yv-game-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:11px; }
+.yv-game-note { margin-top:18px; color:#8da1b8; font-size:12px; text-align:center; }
+.yv-game-spark { position:absolute; z-index:5; width:7px; height:7px; border-radius:50%; background:var(--cyan); pointer-events:none; animation:yv-game-pop .65s ease-out forwards; }
+@keyframes yv-game-spin { to { transform:rotate(360deg); } }
+@keyframes yv-game-pop { to { opacity:0; transform:translate(var(--yv-game-x),var(--yv-game-y)) scale(0); } }
+
 @media (max-width: 1100px) {
   .navlinks {
     gap: 11px;
@@ -667,6 +726,25 @@ body.chaos-mode::after {
   .hero-card {
     max-width: 620px;
   }
+
+  .yv-game-stage-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .yv-game-scene {
+    min-height: 220px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .yv-game-orbit { width: 190px; height: 190px; }
+  .yv-game-orbit-small { width: 140px; height: 140px; }
+  .yv-game-core { width: 94px; height: 94px; border-radius: 25px; font-size: 22px; }
+  .yv-game-satellite { width: 46px; height: 46px; border-radius: 14px; font-size: 11px; }
+  .yv-game-satellite-1 { transform:translate(-100px,-62px); }
+  .yv-game-satellite-2 { transform:translate(100px,-52px); }
+  .yv-game-satellite-3 { transform:translate(-96px,72px); }
+  .yv-game-satellite-4 { transform:translate(96px,78px); }
 }
 
 @media (max-width: 620px) {
@@ -716,6 +794,51 @@ body.chaos-mode::after {
 
   .footer-links {
     justify-content: flex-start;
+  }
+
+  .yv-game-topline {
+    margin-bottom: 28px;
+  }
+
+  .yv-game-tag {
+    display: none;
+  }
+
+  .yv-game-heading h2 {
+    font-size: clamp(38px, 12vw, 54px);
+  }
+
+  .yv-game-stage {
+    border-radius: 24px;
+  }
+
+  .yv-game-scene {
+    min-height: 200px;
+  }
+
+  .yv-game-orbit-small,
+  .yv-game-satellite-4 {
+    display: none;
+  }
+
+  .yv-game-satellite-1 { transform:translate(-85px,-55px); }
+  .yv-game-satellite-2 { transform:translate(85px,-45px); }
+  .yv-game-satellite-3 { transform:translate(-85px,60px); }
+
+  .yv-game-gameplay {
+    padding: 26px 18px 30px;
+  }
+
+  .yv-game-question {
+    font-size: 27px;
+  }
+
+  .yv-game-answer:hover {
+    transform: none;
+  }
+
+  .yv-game-actions .btn {
+    width: 100%;
   }
 }
 

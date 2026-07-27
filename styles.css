@@ -577,6 +577,124 @@ footer {
   align-items: center;
 }
 
+/* Pages de service : même identité visuelle, lecture plus éditoriale. */
+.page-hero {
+  padding: 86px 0 64px;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(49, 215, 255, 0.14), transparent 26%),
+    linear-gradient(145deg, #020408, #071525);
+}
+
+.page-hero .container,
+.page-content {
+  max-width: 980px;
+}
+
+.page-hero h1 {
+  max-width: 900px;
+  font-size: clamp(42px, 7vw, 76px);
+}
+
+.page-lead {
+  max-width: 800px;
+  color: #c1d0e2;
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+.breadcrumbs {
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.breadcrumbs a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--cyan);
+}
+
+.page-content > h2 {
+  margin: 52px 0 14px;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.page-content > p,
+.page-content li {
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.page-content strong {
+  color: var(--text);
+}
+
+.feature-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.feature-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(7, 17, 31, 0.82);
+}
+
+.feature-table th,
+.feature-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.feature-table th {
+  color: var(--cyan);
+}
+
+.feature-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.page-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.page-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--cyan);
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 750;
+}
+
+.demo-placeholder {
+  padding: 30px;
+  border: 1px dashed rgba(49, 215, 255, 0.44);
+  border-radius: 22px;
+  color: var(--muted);
+  background: rgba(49, 215, 255, 0.04);
+  text-align: center;
+}
+
+.legal-note {
+  padding: 18px 20px;
+  border-left: 4px solid var(--cyan);
+  border-radius: 0 16px 16px 0;
+  color: var(--muted);
+  background: rgba(49, 215, 255, 0.06);
+}
+
 .footer-fun {
   border: 0;
   padding: 0;

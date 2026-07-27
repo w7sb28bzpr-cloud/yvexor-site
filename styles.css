@@ -128,10 +128,6 @@ header {
   white-space: nowrap;
 }
 
-.navlinks a:hover {
-  color: var(--cyan);
-}
-
 .nav-cta,
 .btn {
   min-height: 48px;
@@ -157,11 +153,6 @@ header {
 .btn-secondary {
   border-color: var(--line);
   background: rgba(255, 255, 255, 0.06);
-}
-
-.btn:hover,
-.nav-cta:hover {
-  transform: translateY(-2px);
 }
 
 .mobile-toggle {
@@ -369,12 +360,6 @@ details p,
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
-.card:hover {
-  border-color: rgba(49, 215, 255, 0.3);
-  box-shadow: var(--shadow);
-  transform: translateY(-4px);
-}
-
 .icon {
   font-size: 28px;
 }
@@ -388,6 +373,9 @@ details p,
 }
 
 .card a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: var(--cyan);
   font-weight: 850;
 }
@@ -479,8 +467,28 @@ details {
 }
 
 summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   font-weight: 850;
+}
+
+@media (hover: hover) {
+  .navlinks a:hover {
+    color: var(--cyan);
+  }
+
+  .btn:hover,
+  .nav-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .card:hover {
+    border-color: rgba(49, 215, 255, 0.3);
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+  }
 }
 
 .cta-section {
@@ -520,6 +528,9 @@ summary {
 }
 
 .contact-pro-card a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: var(--cyan);
 }
 
@@ -557,6 +568,13 @@ footer {
   gap: 16px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.footer-links a,
+.footer-fun {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer-fun {
@@ -667,6 +685,10 @@ body.chaos-mode::after {
 }
 
 @media (max-width: 900px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
   .nav {
     min-height: 68px;
   }
@@ -814,6 +836,12 @@ body.chaos-mode::after {
 
   .yv-game-scene {
     min-height: 200px;
+  }
+
+  .yv-game-glow {
+    width: 260px;
+    height: 260px;
+    filter: blur(70px);
   }
 
   .yv-game-orbit-small,

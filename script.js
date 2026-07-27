@@ -1,6 +1,6 @@
 const PHONE_NUMBER = '+33756913013';
 const WEBSITE_URL = 'https://yvexor.com/';
-const SMS_MESSAGE = 'Bonjour, je vous contacte depuis le site YVEXOR. Je souhaite obtenir plus d’informations sur vos services.';
+const SMS_MESSAGE = 'Bonjour YVEXOR, je souhaite vous présenter un projet et échanger sur la solution la plus adaptée à mon activité.';
 
 const menuButton = document.getElementById('mobile-menu-button');
 const navigation = document.getElementById('main-navigation');
@@ -14,6 +14,7 @@ function setMobileMenu(open) {
   if (!menuButton || !navigation) return;
 
   navigation.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open && window.innerWidth <= 900);
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
   menuButton.querySelector('span').textContent = open ? '×' : '☰';
@@ -74,7 +75,7 @@ function escapeVCardText(value) {
 }
 
 function buildVCard() {
-  const note = 'Contact uniquement par SMS. YVEXOR conçoit des systèmes automatisés sur mesure : IA privée, agents de veille, applications, domotique, caisses tactiles, systèmes de paiement et automatisations métier.';
+  const note = 'YVEXOR conçoit des logiciels de caisse, intelligences artificielles, automatisations, applications métier et solutions domotiques sur mesure pour les professionnels.';
 
   return [
     'BEGIN:VCARD',
@@ -82,7 +83,7 @@ function buildVCard() {
     'N:YVEXOR;;;;',
     'FN:YVEXOR',
     'ORG:YVEXOR',
-    'TITLE:' + escapeVCardText('Automatisation, IA, applications, domotique et caisses tactiles'),
+    'TITLE:' + escapeVCardText('IA, automatisation, logiciels sur mesure, domotique et YVEXOR POS'),
     'TEL;TYPE=CELL,VOICE,MSG:' + PHONE_NUMBER,
     'URL:' + WEBSITE_URL,
     'NOTE:' + escapeVCardText(note),
@@ -201,12 +202,13 @@ chaosButton?.addEventListener('click', () => {
     if (progressBar) progressBar.style.width = `${(value / situations.length) * 100}%`;
   }
 
-  function renderSituation() {
+  function renderSituation(moveFocus = false) {
     const item = situations[situationIndex];
     gameLocked = false;
     step.textContent = `Situation ${situationIndex + 1} sur ${situations.length}`;
     question.textContent = item.question;
     context.textContent = item.context;
+    question.setAttribute('tabindex', '-1');
     core.textContent = item.mark;
     scene.dataset.scene = item.scene;
     answers.replaceChildren();
@@ -226,6 +228,8 @@ chaosButton?.addEventListener('click', () => {
       button.addEventListener('click', (event) => chooseAnswer(value, event));
       answers.appendChild(button);
     });
+
+    if (moveFocus) question.focus();
   }
 
   function createSparks(event) {
@@ -257,7 +261,7 @@ chaosButton?.addEventListener('click', () => {
 
     window.setTimeout(() => {
       core.classList.remove('is-active');
-      if (situationIndex < situations.length) renderSituation();
+      if (situationIndex < situations.length) renderSituation(true);
       else showResult();
     }, reduceMotion ? 0 : 360);
   }
@@ -296,8 +300,7 @@ chaosButton?.addEventListener('click', () => {
     playArea.hidden = false;
     scoreRing.style.setProperty('--yv-game-score', '0%');
     updateProgress(0);
-    renderSituation();
-    step.focus?.();
+    renderSituation(true);
   }
 
   smsButton?.setAttribute('href', buildSmsUrl(gameSmsMessage));

@@ -5,6 +5,24 @@ const SMS_MESSAGE = 'Bonjour YVEXOR, je souhaite vous présenter un projet et é
 const menuButton = document.getElementById('mobile-menu-button');
 const navigation = document.getElementById('main-navigation');
 const statusElement = document.getElementById('contact-status');
+const navigationDropdowns = navigation?.querySelectorAll('.nav-dropdown') ?? [];
+
+function normalizedPath(pathname) {
+  return pathname.replace(/\/index\.html$/, '/').replace(/\/+$/, '') || '/';
+}
+
+navigation?.querySelectorAll('a[href]').forEach((link) => {
+  const linkUrl = new URL(link.href, window.location.href);
+  if (linkUrl.origin !== window.location.origin || linkUrl.hash) return;
+  if (normalizedPath(linkUrl.pathname) !== normalizedPath(window.location.pathname)) return;
+
+  link.setAttribute('aria-current', 'page');
+  link.closest('.nav-dropdown')?.classList.add('has-current');
+});
+
+document.querySelectorAll('.icon').forEach((icon) => {
+  icon.setAttribute('aria-hidden', 'true');
+});
 
 function isMobileMenuOpen() {
   return navigation?.classList.contains('open') ?? false;
@@ -25,24 +43,36 @@ menuButton?.addEventListener('click', () => {
 });
 
 navigation?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => setMobileMenu(false));
+  link.addEventListener('click', () => {
+    setMobileMenu(false);
+    navigationDropdowns.forEach((dropdown) => dropdown.removeAttribute('open'));
+  });
 });
 
 document.addEventListener('click', (event) => {
-  if (!isMobileMenuOpen()) return;
-  if (navigation?.contains(event.target) || menuButton?.contains(event.target)) return;
-  setMobileMenu(false);
-});
+  navigationDropdowns.forEach((dropdown) => {
+    if (!dropdown.contains(event.target)) dropdown.removeAttribute('open');
+  });
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && isMobileMenuOpen()) {
+  if (isMobileMenuOpen() && !navigation?.contains(event.target) && !menuButton?.contains(event.target)) {
     setMobileMenu(false);
-    menuButton?.focus();
   }
 });
 
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+
+  navigationDropdowns.forEach((dropdown) => dropdown.removeAttribute('open'));
+  if (!isMobileMenuOpen()) return;
+  setMobileMenu(false);
+  menuButton?.focus();
+});
+
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 900) setMobileMenu(false);
+  if (window.innerWidth > 900) {
+    setMobileMenu(false);
+    navigationDropdowns.forEach((dropdown) => dropdown.removeAttribute('open'));
+  }
 });
 
 function setStatus(message) {
@@ -58,6 +88,15 @@ function buildSmsUrl(message = SMS_MESSAGE) {
   const separator = isAppleMobileDevice() ? '&' : '?';
   return `sms:${PHONE_NUMBER}${separator}body=${encodeURIComponent(message)}`;
 }
+
+const mobileContactBar = document.createElement('aside');
+mobileContactBar.className = 'mobile-contact-bar';
+mobileContactBar.setAttribute('aria-label', 'Contact rapide YVEXOR');
+mobileContactBar.innerHTML = `
+  <a href="tel:${PHONE_NUMBER}" aria-label="Appeler YVEXOR">Appeler</a>
+  <a data-sms href="sms:${PHONE_NUMBER}" aria-label="Envoyer un SMS à YVEXOR">Envoyer un SMS</a>
+`;
+document.body.appendChild(mobileContactBar);
 
 document.querySelectorAll('[data-sms]').forEach((link) => {
   link.setAttribute('href', buildSmsUrl());

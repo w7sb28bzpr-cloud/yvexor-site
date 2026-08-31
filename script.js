@@ -105,6 +105,40 @@ document.querySelectorAll('[data-sms]').forEach((link) => {
   });
 });
 
+const commissionCalculator = document.querySelector('[data-commission-calculator]');
+
+if (commissionCalculator) {
+  const offer = commissionCalculator.querySelector('#partner-offer');
+  const quantity = commissionCalculator.querySelector('#partner-quantity');
+  const commissionOutput = commissionCalculator.querySelector('#partner-commission');
+  const annualOutput = commissionCalculator.querySelector('#partner-annual');
+  const formatMoney = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+
+  function updatePartnerCommission() {
+    const selectedOption = offer.options[offer.selectedIndex];
+    const price = Number(selectedOption.value);
+    const clients = Math.max(1, Number(quantity.value) || 1);
+    const commission = price * clients * 0.15;
+    const isMonthly = selectedOption.dataset.kind === 'monthly';
+
+    commissionOutput.textContent = isMonthly
+      ? `${formatMoney.format(commission)} / mois`
+      : formatMoney.format(commission);
+    annualOutput.textContent = isMonthly
+      ? `${formatMoney.format(commission * 12)} sur 12 mois actifs`
+      : 'Commission unique après encaissement';
+  }
+
+  offer.addEventListener('change', updatePartnerCommission);
+  quantity.addEventListener('input', updatePartnerCommission);
+  updatePartnerCommission();
+}
+
 function escapeVCardText(value) {
   return value
     .replace(/\\/g, '\\\\')

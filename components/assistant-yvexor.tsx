@@ -22,7 +22,7 @@ export function AssistantYvexor() {
     <div className="assistant-head">
       <span className="assistant-status"><i/> Interface locale en préparation</span>
       <h2 id="assistant-title">Expliquez votre besoin avec vos mots.</h2>
-      <p>Nous vérifions d’abord si une solution YVEXOR existe déjà. Sinon, nous cherchons l’adaptation ou la première version sur mesure la plus cohérente.</p>
+      <p>Nous vérifions d’abord si une solution existe, puis quelles données, quels outils et quelles ressaisies doivent être reliés. Sinon, nous cherchons la première version sur mesure la plus cohérente.</p>
     </div>
     <form onSubmit={submit} className="assistant-form">
       <label htmlFor="project-idea" className="sr-only">Décrivez votre idée ou votre problème</label>

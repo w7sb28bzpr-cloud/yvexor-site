@@ -11,6 +11,7 @@ const examples = [
 
 export function AssistantYvexor() {
   const [message, setMessage] = useState("");
+  const [objective, setObjective] = useState("");
   const [notice, setNotice] = useState(false);
 
   function submit(event: FormEvent) {
@@ -25,6 +26,7 @@ export function AssistantYvexor() {
       <p>Nous vérifions d’abord si une solution existe, puis quelles données, quels outils et quelles ressaisies doivent être reliés. Sinon, nous cherchons la première version sur mesure la plus cohérente.</p>
     </div>
     <form onSubmit={submit} className="assistant-form">
+      <fieldset className="assistant-objectives"><legend>Quel est l’objectif principal du projet ?</legend>{["Améliorer mon entreprise actuelle", "Vendre un nouveau service", "Créer une application payante", "Générer des revenus par abonnement", "Créer une marketplace", "Tester une idée", "Autre"].map(option => <button type="button" className={objective === option ? "is-selected" : ""} aria-pressed={objective === option} onClick={() => setObjective(option)} key={option}>{option}</button>)}</fieldset>
       <label htmlFor="project-idea" className="sr-only">Décrivez votre idée ou votre problème</label>
       <textarea id="project-idea" value={message} onChange={event => { setMessage(event.target.value); setNotice(false); }} placeholder="Expliquez votre besoin, votre métier ou votre idée…" rows={4}/>
       <div className="assistant-examples" aria-label="Exemples de besoins">
@@ -35,6 +37,6 @@ export function AssistantYvexor() {
         <a href="mailto:contact@yvexor.com?subject=Mon%20projet%20YVEXOR">Je préfère parler directement à YVEXOR</a>
       </div>
     </form>
-    {notice && <div className="assistant-notice" role="status"><strong>L’Assistant YVEXOR est en préparation.</strong><p>Aucune analyse automatique n’est simulée. Vous pouvez déjà nous transmettre ce besoin pour une étude humaine.</p><a href={`mailto:contact@yvexor.com?subject=Mon%20projet%20YVEXOR&body=${encodeURIComponent(message)}`}>Envoyer mon besoin à YVEXOR →</a></div>}
+    {notice && <div className="assistant-notice" role="status"><strong>L’Assistant YVEXOR est en préparation.</strong><p>Aucune analyse automatique n’est simulée. Vous pouvez déjà nous transmettre ce besoin pour une étude humaine.</p><a href={`mailto:contact@yvexor.com?subject=Mon%20projet%20YVEXOR&body=${encodeURIComponent(`${objective ? `Objectif : ${objective}\n\n` : ""}${message}`)}`}>Envoyer mon besoin à YVEXOR →</a></div>}
   </section>;
 }

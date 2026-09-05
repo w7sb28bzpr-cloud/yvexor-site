@@ -47,10 +47,10 @@ export const solutionOffers = [
 ] as const;
 
 export const budgetGuidance = [
-  { title: "Solution existante", price: "À partir de quelques dizaines d’euros par mois", text: "Caisse, logiciel existant ou services selon la solution et la configuration." },
-  { title: "Premier besoin digital", price: "À partir de quelques centaines d’euros", text: "Site, formulaire, réservation ou besoin ciblé." },
-  { title: "Première solution métier", price: "Souvent quelques milliers d’euros", text: "Application, gestion, espace client ou automatisation selon le périmètre." },
-  { title: "Projet ambitieux", price: "Définissons d’abord la première version", text: "Prototype, MVP et développement progressif avant une plateforme complète." },
+  { title: "Solution existante", price: "À partir de quelques dizaines d’euros par mois", note: "Selon la solution et la configuration.", text: "Caisse, logiciel existant ou services.", badge: "Abonnement, licence ou formule adaptée selon le dossier", cta: "Trouver ma solution" },
+  { title: "Premier besoin digital", price: "À partir de quelques centaines d’euros", note: "Conception et mise en service selon le besoin.", text: "Site, formulaire, réservation ou besoin ciblé.", badge: "Première étape adaptée au périmètre", cta: "Décrire mon besoin" },
+  { title: "Première solution métier", price: "Souvent quelques milliers d’euros de projet", note: "Pas nécessairement à régler ou à construire en une seule fois.", text: "Application, gestion, espace client ou automatisation selon le périmètre.", badge: "Paiement / développement adaptable selon le dossier", cta: "Voir comment démarrer" },
+  { title: "Projet ambitieux", price: "Définissons d’abord la première version", note: "Le budget d’une plateforme complète peut être important.", text: "Prototype, MVP, lancement limité ou développement progressif avant de construire la suite.", badge: "Tester l’usage avant d’étendre", cta: "Construire mon MVP" },
 ] as const;
 
 export const collaborationModels = ["Projet", "Abonnement", "Licence", "Projet + services", "Paiement échelonné", "Développement par étapes", "MVP", "Formule adaptée"] as const;

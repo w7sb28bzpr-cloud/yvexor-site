@@ -3,10 +3,10 @@
 import { FormEvent, useState } from "react";
 
 const examples = [
-  "Je suis boulanger et je veux simplifier mes commandes.",
-  "Je perds du temps à suivre mes interventions.",
-  "Je voudrais créer une application pour mes clients.",
-  "J’ai une idée qui n’existe pas encore.",
+  "Je cherche une caisse pour ma boulangerie.",
+  "Je veux mieux suivre mes interventions.",
+  "Je voudrais automatiser mes réservations.",
+  "J’ai une idée d’application.",
 ];
 
 export function AssistantYvexor() {
@@ -22,11 +22,11 @@ export function AssistantYvexor() {
     <div className="assistant-head">
       <span className="assistant-status"><i/> Interface locale en préparation</span>
       <h2 id="assistant-title">Expliquez votre besoin avec vos mots.</h2>
-      <p>Votre métier apporte le contexte. Notre point de départ reste le problème à résoudre et la première version réellement utile.</p>
+      <p>Nous vérifions d’abord si une solution YVEXOR existe déjà. Sinon, nous cherchons l’adaptation ou la première version sur mesure la plus cohérente.</p>
     </div>
     <form onSubmit={submit} className="assistant-form">
       <label htmlFor="project-idea" className="sr-only">Décrivez votre idée ou votre problème</label>
-      <textarea id="project-idea" value={message} onChange={event => { setMessage(event.target.value); setNotice(false); }} placeholder="Décrivez votre idée ou votre problème…" rows={4}/>
+      <textarea id="project-idea" value={message} onChange={event => { setMessage(event.target.value); setNotice(false); }} placeholder="Expliquez votre besoin, votre métier ou votre idée…" rows={4}/>
       <div className="assistant-examples" aria-label="Exemples de besoins">
         {examples.map(example => <button type="button" key={example} onClick={() => { setMessage(example); setNotice(false); }}>{example}</button>)}
       </div>

@@ -1,0 +1,6 @@
+import type{AnchorHTMLAttributes,ReactNode}from"react";
+export function ArrowIcon(){return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg>}
+export function ActionLink({children,className="",...props}:AnchorHTMLAttributes<HTMLAnchorElement>){return <a className={`action-link ${className}`.trim()} {...props}>{children}<ArrowIcon/></a>}
+export function SectionHeading({eyebrow,title,intro}:{eyebrow:string;title:string;intro?:string}){return <header className="section-heading"><span>{eyebrow}</span><h2>{title}</h2>{intro&&<p>{intro}</p>}</header>}
+export function ChevronIcon(){return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6"/></svg>}
+export function Icon({name}:{name:string}){const paths:Record<string,ReactNode>={home:<><path d="m3 9 7-6 7 6v8H5V9"/><path d="M8 17v-5h4v5"/></>,solutions:<><rect x="3" y="3" width="6" height="6" rx="2"/><rect x="11" y="3" width="6" height="6" rx="2"/><rect x="3" y="11" width="6" height="6" rx="2"/><path d="M14 12v5m-2-2h5"/></>,project:<><path d="M10 2v16M2 10h16"/></>,sectors:<><circle cx="10" cy="10" r="7"/><path d="M3 10h14M10 3c2 2 3 4 3 7s-1 5-3 7c-2-2-3-4-3-7s1-5 3-7"/></>,brand:<><path d="M3 4h4l3 5 3-5h4l-5 8v4H8v-4z"/><path d="m13 10 4 6h-4l-3-5"/></>};return <svg className="nav-icon" viewBox="0 0 20 20" aria-hidden="true">{paths[name]}</svg>}

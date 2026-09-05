@@ -1,6 +1,12 @@
-const CACHE = "yvexor-maintenance-v1";
-self.addEventListener("install", e => e.waitUntil(caches.open(CACHE).then(c => c.addAll(["/", "/manifest.webmanifest", "/icon.svg"]))));
-self.addEventListener("activate", e => e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))));
-self.addEventListener("fetch", e => { if (e.request.method === "GET") e.respondWith(fetch(e.request).then(r => { const copy=r.clone(); caches.open(CACHE).then(c=>c.put(e.request,copy)); return r; }).catch(()=>caches.match(e.request).then(r=>r||caches.match("/")))); });
-self.addEventListener("sync", e => { if(e.tag === "yvexor-contact") e.waitUntil(Promise.resolve()); });
-self.addEventListener("push", e => { const data=e.data?.json() || {}; e.waitUntil(self.registration.showNotification(data.title || "YVEXOR", { body:data.body || "Votre projet avance.", icon:"/icon.svg" })); });
+const CACHE = "yvexor-v1-2026-09-05";
+const CORE = ["/", "/manifest.webmanifest", "/app-icon-192.png", "/app-icon-512.png"];
+self.addEventListener("install", event => { self.skipWaiting(); event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE))); });
+self.addEventListener("activate", event => { event.waitUntil(Promise.all([caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))), self.clients.claim()])); });
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET" || new URL(event.request.url).origin !== self.location.origin) return;
+  if (event.request.mode === "navigate") {
+    event.respondWith(fetch(event.request).then(response => { const copy=response.clone(); event.waitUntil(caches.open(CACHE).then(cache => cache.put(event.request,copy))); return response; }).catch(() => caches.match(event.request).then(match => match || caches.match("/"))));
+    return;
+  }
+  event.respondWith(caches.match(event.request).then(match => match || fetch(event.request).then(response => { if(response.ok) event.waitUntil(caches.open(CACHE).then(cache => cache.put(event.request,response.clone()))); return response; })));
+});

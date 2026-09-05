@@ -1,10 +1,15 @@
 {
-  "name": "YVEXOR — Agence tech",
+  "name": "YVEXOR",
   "short_name": "YVEXOR",
-  "description": "Produits digitaux, automatisation et IA pour entreprises ambitieuses.",
+  "description": "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#080a09",
-  "theme_color": "#c8ff33",
-  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+  "scope": "/",
+  "orientation": "any",
+  "background_color": "#05070a",
+  "theme_color": "#05070a",
+  "icons": [
+    { "src": "/app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
 }

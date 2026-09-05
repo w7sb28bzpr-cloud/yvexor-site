@@ -3,8 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yvexor.com"),
-  title: "YVEXOR — Produits digitaux, IA & automatisation",
-  description: "YVEXOR transforme les opérations des entreprises en produits digitaux rapides, clairs et rentables.",
+  title: "YVEXOR — Maintenance en cours",
+  description: "Le site YVEXOR évolue. Nous revenons rapidement.",
+  robots: { index: false, follow: false },
   manifest: "/manifest.webmanifest",
   openGraph: { title: "YVEXOR — La tech qui fait avancer", description: "Produits digitaux, IA et automatisation. Tarifs clairs, résultat mesurable.", images: ["/yvexor-social.jpg"] },
   twitter: { card: "summary_large_image", title: "YVEXOR — La tech qui fait avancer", description: "Produits digitaux, IA et automatisation.", images: ["/yvexor-social.jpg"] }

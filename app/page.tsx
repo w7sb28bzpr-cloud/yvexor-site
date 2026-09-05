@@ -3,6 +3,7 @@ import { AssistantYvexor } from "../components/assistant-yvexor";
 import { BrandLogo } from "../components/brand-logo";
 import { BudgetSection } from "../components/budget-section";
 import { ConnectedEcosystem } from "../components/connected-ecosystem";
+import { FuturisticEffects } from "../components/futuristic-effects";
 import { MobileTabBar, SiteHeader } from "../components/navigation";
 import { ActionLink, ChevronIcon, SectionHeading } from "../components/ui";
 import { collaborationModels, existingSolutions, solutionOffers } from "../data/public-offer";
@@ -19,8 +20,8 @@ const reasons = [
 ];
 
 export default function Home() {
-  return <><SiteHeader/><main>
-    <section className="hero hero-with-assistant" id="accueil"><div className="hero-orbit" aria-hidden="true"><i/><i/><i/></div><div className="hero-content"><BrandLogo compact/><p className="eyebrow">YVEXOR · La solution la plus cohérente</p><h1>Votre problème métier.<br/><span>Construisons la solution.</span></h1><p className="hero-copy">Une solution existe peut-être déjà. Sinon, nous pouvons l’adapter ou construire la vôtre.</p></div><div className="hero-assistant" id="assistant"><AssistantYvexor/></div></section>
+  return <><FuturisticEffects/><SiteHeader/><main>
+    <section className="hero hero-with-assistant" id="accueil"><div className="hero-orbit" aria-hidden="true"><i/><i/><i/></div><div className="hero-content"><div className="hero-logo-pulse"><BrandLogo compact/></div><p className="eyebrow">YVEXOR · La solution la plus cohérente</p><h1><span className="hero-line-one">Votre problème métier.</span><br/><span className="hero-line-two">Construisons la solution.</span></h1><p className="hero-copy">Une solution existe peut-être déjà. Sinon, nous pouvons l’adapter ou construire la vôtre.</p></div><div className="hero-assistant" id="assistant"><AssistantYvexor/></div></section>
 
     <section className="section direct-doors" id="solutions"><SectionHeading eyebrow="Vous savez déjà ce qu’il vous faut ?" title="Accédez directement à votre point de départ." intro="Ces accès sont des portes d’entrée, jamais des limites."/><div className="door-grid">{doors.map((door, index) => <a href={index < 2 ? `#${index === 0 ? "caisse-commerce" : "restauration"}` : "#sur-mesure"} key={door} className={index === 0 ? "door-featured" : ""}><span>0{index + 1}</span><strong>{door}</strong><ChevronIcon/></a>)}</div></section>
 

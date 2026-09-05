@@ -5,6 +5,7 @@ import { BudgetSection } from "../components/budget-section";
 import { ConnectedEcosystem } from "../components/connected-ecosystem";
 import { FuturisticEffects } from "../components/futuristic-effects";
 import { MobileTabBar, SiteHeader } from "../components/navigation";
+import { SmsLink } from "../components/sms-link";
 import { ActionLink, ChevronIcon, SectionHeading } from "../components/ui";
 import { collaborationModels, existingSolutions, solutionOffers } from "../data/public-offer";
 
@@ -43,6 +44,6 @@ export default function Home() {
 
     <section className="section why" id="yvexor"><SectionHeading eyebrow="Pourquoi YVEXOR" title="Le besoin d’abord. La technologie ensuite."/><div className="reason-list">{reasons.map(reason => <article key={reason[0]}><span>{reason[0]}</span><div><h3>{reason[1]}</h3><p>{reason[2]}</p></div></article>)}</div></section>
 
-    <section className="final-cta" id="projet"><div className="final-glow" aria-hidden="true"/><BrandLogo compact/><h2>Vous avez un besoin. Cherchons la solution la plus cohérente.</h2><p>Solution disponible, adaptation, première version ou projet entièrement nouveau : commençons par comprendre ce qui doit être résolu.</p><div className="hero-actions"><ActionLink href="#assistant" className="primary">Décrire mon besoin</ActionLink><a className="phone" href="tel:+33756913013">Parler à YVEXOR · 07 56 91 30 13</a></div></section>
+    <section className="final-cta" id="projet"><div className="final-glow" aria-hidden="true"/><BrandLogo compact/><h2>Vous avez un besoin. Cherchons la solution la plus cohérente.</h2><p>Solution disponible, adaptation, première version ou projet entièrement nouveau : commençons par comprendre ce qui doit être résolu.</p><div className="hero-actions"><ActionLink href="#assistant" className="primary">Décrire mon besoin</ActionLink><SmsLink className="phone">Parler à YVEXOR · 07 56 91 30 13</SmsLink></div></section>
   </main><footer className="footer"><BrandLogo/><p>Solutions digitales, logiciels métier, IA et systèmes connectés.</p><div><a href="/mentions-legales/">Mentions légales</a><a href="/politique-confidentialite/">Confidentialité</a></div><small>© 2026 YVEXOR</small></footer><MobileTabBar/></>;
 }

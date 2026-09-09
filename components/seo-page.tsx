@@ -1,0 +1,15 @@
+import { BrandLogo } from "./brand-logo";
+import { MobileTabBar, SiteHeader } from "./navigation";
+import { SmsLink } from "./sms-link";
+import { ActionLink } from "./ui";
+import type { SeoPage as SeoPageData } from "../data/seo-pages";
+
+export function SeoPage({page}:{page:SeoPageData}){
+  return <><SiteHeader root/><main className="seo-page" id="contenu">
+    <section className="seo-hero" id="accueil"><div className="seo-orbit" aria-hidden="true"/><nav className="seo-breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>{page.eyebrow}</span></nav><p className="eyebrow">{page.eyebrow}</p><h1>{page.title}</h1><p className="seo-lead">{page.intro}</p><div className="hero-actions"><ActionLink className="primary" href="/#assistant">Présenter mon projet</ActionLink><SmsLink className="phone">SMS · 07 56 91 30 13</SmsLink></div></section>
+    <section className={`seo-content ${page.kind?`seo-content--${page.kind}`:""}`} id="solutions">{page.sections.map((section,index)=><article className="seo-section" key={section.title}><span>0{index+1}</span><div><h2>{section.title}</h2><p>{section.text}</p>{section.items&&<ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul>}</div></article>)}</section>
+    {page.kind==="contact"&&<section className="seo-contact"><p className="eyebrow">Contact professionnel</p><h2>Un échange simple, sans formulaire inutile.</h2><div className="hero-actions"><a className="action-link primary" href="tel:+33756913013">Appeler le 07 56 91 30 13</a><SmsLink className="action-link secondary">Envoyer un SMS</SmsLink></div></section>}
+    <aside className="seo-related" id="exemples"><p className="eyebrow">Continuer votre recherche</p><div>{page.related.map(slug=><a href={`/${slug}/`} key={slug}>{slug.replaceAll("-"," ")}<b aria-hidden="true">→</b></a>)}</div></aside>
+    <section className="seo-final" id="assistant"><BrandLogo compact/><h2>Votre besoin d’abord. La technologie ensuite.</h2><p>Nous cherchons la base, le périmètre et la première étape les plus cohérents.</p><ActionLink className="primary" href="/#assistant">Parler à YVEXOR</ActionLink></section>
+  </main><footer className="footer"><BrandLogo/><p>Solutions digitales, logiciels métier, IA et systèmes connectés.</p><div><a href="/mentions-legales/">Mentions légales</a><a href="/politique-confidentialite/">Confidentialité</a></div><small>© 2026 YVEXOR</small></footer><MobileTabBar root/></>;
+}

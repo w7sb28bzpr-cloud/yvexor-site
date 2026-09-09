@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./star-sky.css";
+import { StarSky } from "../components/star-sky";
 import { PwaRegister } from "../components/pwa-register";
 
 export const metadata: Metadata = {
@@ -14,4 +16,4 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: "YVEXOR — Votre problème métier. Construisons la solution.", description: "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.", images: ["https://yvexor.com/yvexor-social-v1.jpg"] }
 };
 export const viewport: Viewport = { themeColor: "#05070a", width: "device-width", initialScale: 1, viewportFit: "cover" };
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="fr"><body><PwaRegister/>{children}</body></html>; }
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="fr"><body><PwaRegister/><StarSky/>{children}</body></html>; }

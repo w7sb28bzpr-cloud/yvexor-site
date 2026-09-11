@@ -17,7 +17,7 @@ function SolutionIcon({name}:{name:string}) { return <svg viewBox="0 0 24 24" fi
 const solutions = [
   { title: "Caisse & Commerce", description: "Solutions de caisse, gestion des ventes, stocks, clients et statistiques.", icon: "cart", image: "commerce", href: "/logiciel-caisse-marseille/" },
   { title: "Restauration", description: "Tables, commandes, cuisine, réservations et fidélité selon vos besoins.", icon: "restaurant", image: "restaurant", href: "/solutions-restaurants/" },
-  { title: "Hôtels & Hébergement", description: "Des outils sur mesure pour les réservations, les chambres et les services.", icon: "bed", image: "hotel", href: "#sur-mesure" },
+  { title: "Hôtels & Hébergement", description: "Réservations, séjour, équipes et chambres connectées : un ensemble adapté à votre établissement.", icon: "bed", image: "hotel", href: "/solutions-hotels/" },
   { title: "Domotique & Bâtiments", description: "Automatisation, confort et pilotage à distance de vos équipements.", icon: "home", image: "maison", href: "#ecosysteme" },
   { title: "Applications métier", description: "Web, iPhone ou Android : vos outils métier, avec publication sur les stores selon le projet.", icon: "apps", image: "logiciel", href: "/applications-metier/" },
   { title: "Systèmes connectés", description: "Relier logiciels, messages, API et équipements, jusqu’au suivi de votre flotte.", icon: "network", image: null, href: "/systemes-connectes/" },

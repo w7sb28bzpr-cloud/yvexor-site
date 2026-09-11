@@ -21,6 +21,9 @@ const solutions = [
   { title: "Domotique & Bâtiments", description: "Automatisation, confort et pilotage à distance de vos équipements.", icon: "home", image: "maison", href: "#ecosysteme" },
   { title: "Applications métier", description: "Vos outils de réservation, planning et suivi, adaptés à votre activité.", icon: "apps", image: "logiciel", href: "#sur-mesure" },
   { title: "Systèmes connectés", description: "Relier logiciels, API, TPE, imprimantes et objets connectés.", icon: "network", image: null, href: "#ecosysteme" },
+  { title: "Site & présence web", description: "Présenter votre activité, recevoir des demandes ou proposer un service en ligne.", icon: "apps", image: "logiciel", href: "/site-presence-web/" },
+  { title: "Automatisation & IA", description: "Messages, documents, données : relier vos outils et simplifier vos tâches selon vos règles.", icon: "network", image: "automation", href: "/automatisation-entreprise/" },
+  { title: "Votre idée sur mesure", description: "Location, plateforme, nouveau service… Partons de votre idée, même si elle ne rentre dans aucune case.", icon: "cloud", image: "earth", href: "/logiciel-sur-mesure/" },
 ] as const;
 
 export function SolutionDoors() {
@@ -28,17 +31,16 @@ export function SolutionDoors() {
     <header className="solution-doors-heading">
       <p className="eyebrow">Vous savez déjà ce qu’il vous faut ?</p>
       <h2 id="solution-doors-title">Accédez directement<br/>à votre <span>point de départ.</span></h2>
-      <p>Ces accès sont des portes d’entrée, jamais des limites.<br/>Chaque projet est unique, on l’adapte à vos besoins.</p>
+      <p>Vos messages, vos outils, vos idées : ces exemples sont des points de départ, pas des limites.<br/>Nous étudions ce qui peut être relié, simplifié ou créé sur mesure selon votre besoin.</p>
     </header>
     <div className="solution-doors-list">
       {solutions.map((solution,index)=><a className={`solution-door ${index===0?"solution-door-featured":""} solution-door-${solution.image||"network"}`} href={solution.href} key={solution.title} aria-labelledby={`solution-door-title-${index}`}>
-        {solution.image ? <img className="solution-door-photo" src={`/solution-${solution.image}-v1.webp`} width="960" height={solution.image==="restaurant"?1440:solution.image==="hotel"?540:640} alt="" loading="lazy" decoding="async"/> : <div className="solution-network-diagram" aria-hidden="true"><svg className="solution-network-links" viewBox="0 0 300 180"><path d="M65 50 150 125 235 50"/></svg><span className="network-printer"><SolutionIcon name="printer"/></span><span className="network-cloud"><SolutionIcon name="cloud"/></span><span className="network-phone"><SolutionIcon name="phone"/></span></div>}
+        {solution.image ? <img className="solution-door-photo" src={solution.image==="automation"?"/yvexor-automation-768-v1.webp":solution.image==="earth"?"/yvexor-connected-earth-768-v1.webp":`/solution-${solution.image}-v1.webp`} width="960" height={solution.image==="restaurant"?1440:solution.image==="hotel"?540:640} alt="" loading="lazy" decoding="async"/> : <div className="solution-network-diagram" aria-hidden="true"><svg className="solution-network-links" viewBox="0 0 300 180"><path d="M65 50 150 125 235 50"/></svg><span className="network-printer"><SolutionIcon name="printer"/></span><span className="network-cloud"><SolutionIcon name="cloud"/></span><span className="network-phone"><SolutionIcon name="phone"/></span></div>}
         <div className="solution-door-badge"><span>{String(index+1).padStart(2,"0")}</span><div><SolutionIcon name={solution.icon}/></div></div>
         <div className="solution-door-copy"><h3 id={`solution-door-title-${index}`}>{solution.title}</h3><p>{solution.description}</p><span className="solution-door-discover">Découvrir <ArrowIcon/></span></div>
         <span className="solution-door-chevron"><ChevronIcon/></span>
       </a>)}
     </div>
-    <nav className="solution-other-doors" aria-label="Autres besoins"><a href="#sur-mesure">Site & présence web <span>↗</span></a><a href="/automatisation-entreprise/">Automatisation d’entreprise & IA <span>↗</span></a><a href="/contact/">Un autre projet ? <span>↗</span></a></nav>
     <p className="solution-photos-note">Visuels d’illustration, non contractuels. Les logiciels et équipements sont définis selon votre projet.</p>
   </section>;
 }

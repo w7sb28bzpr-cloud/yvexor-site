@@ -228,7 +228,8 @@ def activate_owner(request):
 
 
 def root(request):
-    return redirect('admin-home' if request.user.is_authenticated and request.user.is_staff else 'client-home')
+    admin_host = request.get_host().split(':')[0] == 'admin.yvexor.com'
+    return redirect('admin-home' if admin_host or (request.user.is_authenticated and request.user.is_staff) else 'client-home')
 
 
 @portal_required

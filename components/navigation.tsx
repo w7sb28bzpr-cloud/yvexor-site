@@ -9,7 +9,7 @@ export function SiteHeader({root=false}:{root?:boolean}) {
   return <header className={`site-header ${scrolled?"is-scrolled":""}`}>
     <a href={to("#accueil")} aria-label="YVEXOR — Accueil"><BrandLogo/></a>
     <nav aria-label="Navigation principale">{links.map(([label,href])=><a key={href} href={to(href)}>{label}</a>)}</nav>
-    <a className="header-cta" href={to("/contact/")}>Parler de mon projet</a>
+    <a className="header-cta portal-join" href="https://client.yvexor.com/">Rejoignez-nous</a>
     <details className="header-menu" onKeyDown={event=>{if(event.key==="Escape"){event.currentTarget.open=false;event.currentTarget.querySelector("summary")?.focus()}}}>
       <summary aria-label="Menu de navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
       <nav aria-label="Accès rapides mobile">{links.map(([label,href])=><a key={href} href={to(href)} onClick={event=>{event.currentTarget.closest("details")?.removeAttribute("open")}}>{label}</a>)}</nav>

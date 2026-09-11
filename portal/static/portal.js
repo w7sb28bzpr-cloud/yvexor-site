@@ -9,6 +9,19 @@ function updateGate() {
   app.hidden = needsInstall;
 }
 updateGate();
+const platform = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ? 'ios' : /Android/.test(navigator.userAgent) ? 'android' : 'desktop';
+document.querySelectorAll('[data-platform]').forEach(guide => { guide.open = guide.dataset.platform === platform; });
+document.querySelectorAll('[data-password-toggle]').forEach(button => {
+  const input = document.getElementById(button.dataset.passwordToggle);
+  if (!input) return;
+  button.hidden = false;
+  button.addEventListener('click', () => {
+    const show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    button.textContent = show ? 'Masquer le mot de passe' : 'Afficher le mot de passe';
+    button.setAttribute('aria-pressed', String(show));
+  });
+});
 window.matchMedia('(display-mode: standalone)').addEventListener('change', updateGate);
 let installPrompt;
 window.addEventListener('beforeinstallprompt', event => {

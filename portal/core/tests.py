@@ -118,6 +118,22 @@ class PortalTests(TestCase):
         self.assertEqual(self.client.post('/auth/signup/', payload).status_code, 200)
         self.assertEqual(User.objects.filter(is_superuser=True).count(), 1)
 
+    def test_signup_only_four_fields_with_strong_password(self):
+        response = self.client.get('/auth/signup/')
+        self.assertEqual(list(response.context['form'].fields), ['first_name', 'last_name', 'email', 'password1'])
+        self.assertContains(response, 'autocomplete="new-password"')
+        self.assertContains(response, 'autocomplete="username"')
+        payload = {'first_name': 'Rapide', 'last_name': 'Client', 'email': 'quick@example.com', 'password1': '12345678'}
+        self.assertEqual(self.client.post('/auth/signup/', payload).status_code, 200)
+        self.assertFalse(User.objects.filter(email='quick@example.com').exists())
+        payload['password1'] = 'FastButStrongPassword!2026'
+        self.assertEqual(self.client.post('/auth/signup/', payload).status_code, 302)
+        user = User.objects.get(email='quick@example.com')
+        self.assertTrue(user.check_password(payload['password1']))
+        self.assertEqual(user.phone, '')
+        self.assertFalse(user.is_staff)
+        self.assertEqual(Membership.objects.get(user=user).organization.name, 'Rapide Client')
+
     def test_rate_limit(self):
         for _ in range(11):
             response = self.client.post('/auth/login/', {'email':'a@example.com','password':'wrong'})

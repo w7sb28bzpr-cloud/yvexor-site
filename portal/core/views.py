@@ -126,7 +126,7 @@ def signup(request):
                     user = form.save(commit=False)
                     user.username = str(uuid.uuid4())
                     user.save()
-                    org = Organization.objects.create(name=form.cleaned_data['company'])
+                    org = Organization.objects.create(name=(user.first_name + ' ' + user.last_name).strip()[:160])
                     Membership.objects.create(user=user, organization=org)
                     audit(user, 'account.created', org.id)
                     notify_team('Nouveau client : '+org.name, reverse('client-detail',args=[org.pk]))

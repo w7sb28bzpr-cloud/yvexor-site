@@ -1,0 +1,27 @@
+{% load static %}
+<section class="install-gate" id="install-gate" hidden aria-labelledby="install-title">
+<div class="install-card">
+<div class="wordmark">YV<span>E</span>XOR</div>
+<p class="eyebrow">VOTRE ESPACE CLIENT{% if admin_surface %} · ADMIN{% endif %}</p>
+<h1 id="install-title">YVEXOR sur votre écran d’accueil.</h1>
+<p>Installez l’application, puis créez votre compte ou connectez-vous. Vos projets et vos échanges restent au même endroit.</p>
+<button id="install-button" hidden>Installer YVEXOR</button>
+<div id="install-help">
+<details class="install-guide" data-platform="ios" open>
+<summary>iPhone / iPad · Safari</summary>
+<p class="guide-intro">Ouvrez cette page dans Safari. Si vous venez d’un SMS ou d’un réseau social, utilisez son menu pour ouvrir le lien dans Safari.</p>
+<ol class="install-steps">
+<li><span class="step-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15V2m-4 4 4-4 4 4M7 10H4v11h16V10h-3"/></svg></span><div><strong>1. Touchez Partager</strong><p>Repérez le carré avec une flèche vers le haut. Selon votre version de Safari, ouvrez d’abord le menu <b>…</b>.</p></div></li>
+<li><span class="step-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 7v10M7 12h10"/></svg></span><div><strong>2. Sur l’écran d’accueil</strong><p>Faites défiler les actions du menu et choisissez <b>Sur l’écran d’accueil</b>. Si l’option manque, cherchez-la dans <b>Modifier les actions</b>.</p></div></li>
+<li><span class="step-symbol" aria-hidden="true">✓</span><div><strong>3. Confirmez avec Ajouter</strong><p>Si Safari propose <b>Ouvrir comme app web</b>, laissez cette option activée, puis touchez <b>Ajouter</b>.</p></div></li>
+<li><img class="step-symbol app-step-icon" src="{% static 'apple-touch-icon.png' %}" alt="Icône YVEXOR" width="48" height="48"><div><strong>4. Ouvrez l’icône YVEXOR</strong><p>Revenez sur l’écran d’accueil de votre téléphone et touchez la nouvelle icône. Vous pourrez créer votre compte dans l’application.</p></div></li>
+</ol>
+</details>
+<details class="install-guide" data-platform="android">
+<summary>Android · Chrome</summary>
+<ol class="install-steps"><li><span class="step-symbol" aria-hidden="true">⋮</span><div><strong>1. Ouvrez le menu de Chrome</strong><p>Touchez les trois points, puis <b>Ajouter à l’écran d’accueil</b> ou <b>Installer l’application</b>.</p></div></li><li><span class="step-symbol" aria-hidden="true">＋</span><div><strong>2. Confirmez l’installation</strong><p>Choisissez <b>Installer</b> si cette option est proposée, puis validez.</p></div></li><li><img class="step-symbol app-step-icon" src="{% static 'apple-touch-icon.png' %}" alt="Icône YVEXOR" width="48" height="48"><div><strong>3. Lancez YVEXOR depuis son icône</strong><p>Créez votre compte ou connectez-vous : vous êtes dans votre application.</p></div></li></ol>
+</details>
+<details class="install-guide" data-platform="desktop"><summary>Ordinateur · Chrome ou Edge</summary><ol class="install-steps"><li><span class="step-symbol" aria-hidden="true">＋</span><div><strong>1. Installez depuis le navigateur</strong><p>Utilisez le bouton d’installation ci-dessus s’il apparaît, ou le menu du navigateur : <b>Installer YVEXOR</b> / <b>Applications</b>.</p></div></li><li><img class="step-symbol app-step-icon" src="{% static 'apple-touch-icon.png' %}" alt="Icône YVEXOR" width="48" height="48"><div><strong>2. Ouvrez l’application YVEXOR</strong><p>Lancez-la depuis le raccourci créé sur votre ordinateur.</p></div></li></ol></details>
+</div>
+<p class="install-reassurance">Déjà installé ? Fermez cette page et ouvrez l’icône YVEXOR. Installer le site vitrine n’installe pas automatiquement l’espace client.</p>
+</div></section>

@@ -1,0 +1,22 @@
+[Unit]
+Description=YVEXOR Client and Admin portal
+After=network.target postgresql.service
+Requires=postgresql.service
+
+[Service]
+User=yvexor
+Group=yvexor
+WorkingDirectory=/opt/yvexor/portal
+EnvironmentFile=/etc/yvexor/portal.env
+ExecStart=/opt/yvexor/venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8100 --workers 2 --timeout 30 --error-logfile -
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/yvexor
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

@@ -7,3 +7,13 @@ node_modules/
 .next/
 out/
 *.tsbuildinfo
+
+# Portail indépendant : environnements, secrets et données jamais publiés.
+portal/.venv/
+portal/.env
+portal/*.sqlite3
+portal/staticfiles/
+portal/__pycache__/
+**/__pycache__/
+portal/private/
+portal/.pytest_cache/

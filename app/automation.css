@@ -1,0 +1,19 @@
+.automation-page .seo-hero{padding-bottom:2.5rem}
+.automation-showcase{display:grid;grid-template-columns:1.5fr 1fr;align-items:center;max-width:var(--content);margin:0 auto 4rem;padding:0 1.5rem;gap:2.5rem}
+.automation-showcase figure{margin:0;min-width:0}
+.automation-showcase img{display:block;width:100%;height:auto;border-radius:28px;border:1px solid #153750}
+.automation-showcase figcaption{color:#94a3b8;font-size:.75rem;margin-top:.7rem}
+.automation-showcase-copy h2{font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:1.04;letter-spacing:-.045em;margin:1rem 0}
+.automation-showcase-copy h2 span{color:#24baff}
+.automation-showcase-copy>p:not(.eyebrow){color:#b4c0d0}
+.automation-showcase nav{display:grid;gap:.5rem;margin-top:1.5rem}
+.automation-showcase nav a{display:flex;justify-content:space-between;gap:1rem;align-items:center;min-height:48px;padding:.65rem 1rem;border:1px solid #1e3449;border-radius:12px;background:#09121f}
+.automation-showcase nav span{color:#24baff}
+.automation-showcase a:focus-visible{outline:2px solid #24baff;outline-offset:4px}
+.automation-page .seo-content{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.automation-page .seo-section{display:block;min-width:0;padding:2rem;border:1px solid #1b2b3e;border-radius:24px;background:linear-gradient(145deg,#0b1727e8,#080d15ed);scroll-margin-top:110px}
+.automation-page .seo-section>span{display:block;color:#24baff;margin-bottom:1.2rem}
+.automation-page .seo-section h2{font-size:clamp(1.6rem,2.6vw,2.3rem);line-height:1.12}
+.automation-page .seo-section li{border-radius:12px;font-size:.9rem}
+.automation-page .seo-section:last-child{grid-column:1/-1;border-color:#186398;background:linear-gradient(120deg,#08203b,#080e18)}
+@media(max-width:760px){.automation-showcase{grid-template-columns:1fr;padding:0 1rem;gap:1.5rem;margin-bottom:2rem}.automation-showcase-copy h2{font-size:2.5rem}.automation-page .seo-content{grid-template-columns:1fr}.automation-page .seo-section{padding:1.4rem}.automation-page .seo-breadcrumb{flex-wrap:wrap}.automation-showcase img{border-radius:20px}}

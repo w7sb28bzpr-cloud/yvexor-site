@@ -18,6 +18,13 @@ Le schéma « Systèmes connectés » et les pictogrammes sont des éléments SV
 
 ## Planète connectée et bandeau alpin
 
+## Automatisation d’entreprise — 11 septembre 2026
+
+`public/yvexor-automation-768-v1.webp` et `public/yvexor-automation-1440-v1.webp` : illustration générée avec l’outil intégré image_gen, optimisée avec Sharp. Visuel conceptuel, pas une capture de logiciel livré. La brochure source privée n’est pas publiée.
+
+Prompt final : Use case: stylized-concept. Asset type: landscape 1536x1024 illustration for YVEXOR enterprise automation service page. Premium cinematic 3D editorial illustration of a midnight-black glass desktop workspace: a sleek laptop showing abstract blue dashboard charts (no text), a few floating translucent glass tiles with simple envelope, document, inventory cube symbols, connected by restrained electric-blue and cyan light paths to a central luminous node. Scene communicates connected business processes, not a robot or sci-fi city. Sophisticated black and deep navy palette, controlled cyan glow, realistic glass and metal, dark studio background seamlessly fading to near-black edges. Beautiful clear composition, generous breathing room, laptop lower right and connected tiles distributed across center, all objects fit fully inside frame. No typography, no letters, no numbers, no logos, no watermarks. This is a conceptual illustration not an actual software screenshot.
+
+
 - `public/yvexor-alpine-horizon-768-v1.webp` et `public/yvexor-alpine-horizon-1600-v1.webp` : Felix Mittermeier, https://www.pexels.com/photo/body-of-water-near-mountain-2832064/ (licence Pexels ci-dessus). Paysage illustratif, sans revendication d’implantation locale.
 - `public/yvexor-connected-earth-768-v1.webp` et `public/yvexor-connected-earth-1440-v1.webp` : illustration originale produite avec l’outil intégré image_gen, puis redimensionnée et compressée avec Sharp. Les connexions ne représentent pas un réseau réel de clients ou d’implantations YVEXOR.
 

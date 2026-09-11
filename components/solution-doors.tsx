@@ -38,7 +38,7 @@ export function SolutionDoors() {
         <span className="solution-door-chevron"><ChevronIcon/></span>
       </a>)}
     </div>
-    <nav className="solution-other-doors" aria-label="Autres besoins"><a href="#sur-mesure">Site & présence web <span>↗</span></a><a href="#sur-mesure">IA & automatisation <span>↗</span></a><a href="/contact/">Un autre projet ? <span>↗</span></a></nav>
+    <nav className="solution-other-doors" aria-label="Autres besoins"><a href="#sur-mesure">Site & présence web <span>↗</span></a><a href="/automatisation-entreprise/">Automatisation d’entreprise & IA <span>↗</span></a><a href="/contact/">Un autre projet ? <span>↗</span></a></nav>
     <p className="solution-photos-note">Visuels d’illustration, non contractuels. Les logiciels et équipements sont définis selon votre projet.</p>
   </section>;
 }

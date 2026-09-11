@@ -5,6 +5,7 @@ import "./bespoke.css";
 import "./visual-home.css";
 import "./solution-doors.css";
 import "./connected-world.css";
+import "./automation.css";
 import { StarSky } from "../components/star-sky";
 import { PwaRegister } from "../components/pwa-register";
 

@@ -7,6 +7,7 @@ import { FuturisticEffects } from "../components/futuristic-effects";
 import { MobileTabBar, SiteHeader } from "../components/navigation";
 import { SectionHeading } from "../components/ui";
 import { SolutionDoors } from "../components/solution-doors";
+import { HistoryTeaser } from "../components/history-link";
 
 const reasons = [
   ["01", "Une relation directe", "Vous parlez à des personnes qui comprennent réellement le projet et ses contraintes."],
@@ -34,7 +35,7 @@ export default function Home() {
 
     <ActivityExamples/>
 
-    <section className="section why" id="yvexor"><SectionHeading eyebrow="Pourquoi YVEXOR" title="Le besoin d’abord. La technologie ensuite."/><div className="reason-list">{reasons.map(reason => <article key={reason[0]}><span>{reason[0]}</span><div><h3>{reason[1]}</h3><p>{reason[2]}</p></div></article>)}</div></section>
+    <section className="section why" id="yvexor"><SectionHeading eyebrow="Pourquoi YVEXOR" title="Le besoin d’abord. La technologie ensuite."/><div className="reason-list">{reasons.map(reason => <article key={reason[0]}><span>{reason[0]}</span><div><h3>{reason[1]}</h3><p>{reason[2]}</p></div></article>)}</div><HistoryTeaser/></section>
 
     <section className="final-cta horizon-banner" id="projet"><img className="horizon-photo" src="/yvexor-alpine-horizon-1600-v1.webp" srcSet="/yvexor-alpine-horizon-768-v1.webp 768w, /yvexor-alpine-horizon-1600-v1.webp 1600w" sizes="100vw" width="1600" height="576" alt="" loading="lazy" decoding="async"/><p className="eyebrow">Des idées qui vont plus loin</p><h2>De votre idée<br/>à <span>de nouvelles possibilités.</span></h2><p>Présentez votre idée, demandez un devis et retrouvez nos échanges dans votre espace client. Ensemble, construisons la première étape utile.</p><div className="hero-actions"><a className="action-link primary" href="https://client.yvexor.com/">Rejoignez-nous pour en discuter →</a><a href="/contact/" className="phone">Tous les moyens de contact</a></div></section>
   </main><footer className="footer"><BrandLogo/><p>Solutions digitales, logiciels métier, IA et systèmes connectés.</p><div><a href="/mentions-legales/">Mentions légales</a><a href="/politique-confidentialite/">Confidentialité</a></div><small>© 2026 YVEXOR</small></footer><MobileTabBar/></>;

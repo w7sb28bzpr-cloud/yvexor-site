@@ -1,0 +1,7 @@
+.teaser { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:28px; align-items:center; margin-top:40px; padding:30px 0 0; border-top:1px solid #254259; }
+.teaser h3 { max-width:640px; margin:0 0 14px; font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.25; letter-spacing:-.025em; }
+.teaser p:not(:global(.eyebrow)) { max-width:650px; margin:0; color:#aebed0; font-size:1rem; }
+.link { padding-inline:0; color:#73ccff; text-align:left; justify-content:flex-start; }
+.link:hover { color:white; }
+.link svg { flex-shrink:0; }
+@media(max-width:1000px) { .teaser {grid-template-columns:1fr;gap:16px} }

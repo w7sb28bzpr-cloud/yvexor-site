@@ -1,11 +1,14 @@
 from django.urls import path
 from core import views as v
+from core import commerce as c
+from core import collaboration as collab
 
 urlpatterns = [
     path('', v.root), path('client/', v.client_home, name='client-home'),
     path('admin/', v.admin_home, name='admin-home'),
     path('auth/login/', v.signin, name='login'), path('auth/signup/', v.signup, name='signup'),
     path('auth/logout/', v.signout, name='logout'), path('auth/mfa/', v.mfa, name='mfa'),
+    path('auth/confirm/', v.mfa, name='mfa-confirm'),
     path('auth/mfa/qr/', v.mfa_qr, name='mfa-qr'), path('auth/activate/', v.activate_owner, name='activate'),
     path('requests/', v.request_list, name='requests'), path('requests/new/', v.new_request, name='request-new'),
     path('requests/<uuid:pk>/', v.request_detail, name='request-detail'),
@@ -15,6 +18,25 @@ urlpatterns = [
     path('messages/', v.inbox, name='inbox'), path('admin/clients/', v.clients, name='clients'),
     path('admin/clients/<uuid:pk>/', v.client_detail, name='client-detail'),
     path('account/', v.account, name='account'),
+    path('quotes/',c.quotes,name='quotes'),
+    path('requests/<uuid:request_id>/quote/',c.quote_edit,name='quote-new'),
+    path('quotes/<uuid:pk>/',c.quote_detail,name='quote-detail'),
+    path('quotes/<uuid:pk>/edit/',c.quote_edit,name='quote-edit'),
+    path('quotes/<uuid:pk>/send/',c.quote_send,name='quote-send'),
+    path('quotes/<uuid:pk>/decision/',c.quote_decide,name='quote-decide'),
+    path('quotes/<uuid:pk>/document/<uuid:version_id>/',c.quote_document,name='quote-document'),
+    path('solutions/',c.solutions,name='solutions'),
+    path('admin/clients/<uuid:organization_id>/solution/',c.solution_edit,name='solution-new'),
+    path('admin/clients/<uuid:organization_id>/solution/<uuid:pk>/',c.solution_edit,name='solution-edit'),
+    path('documents/',collab.documents,name='documents'),
+    path('requests/<uuid:pk>/upload/',collab.upload,name='upload'),
+    path('documents/<uuid:pk>/download/',collab.download,name='download'),
+    path('notifications/',collab.notifications,name='notifications'),
+    path('notifications/read/',collab.notifications_read,name='notifications-read'),
+    path('api/summary/',collab.summary,name='summary'),
+    path('api/requests/<uuid:pk>/messages/',collab.thread,name='thread'),
+    path('api/requests/<uuid:pk>/read/',collab.thread_read,name='thread-read'),
+    path('admin/clients/<uuid:pk>/note/',collab.internal_note,name='internal-note'),
     path('manifest-<str:surface>.webmanifest', v.manifest), path('sw.js', v.service_worker),
     path('health/', v.health),
 ]

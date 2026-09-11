@@ -22,6 +22,52 @@ document.getElementById('install-button').addEventListener('click', async () => 
 });
 window.addEventListener('appinstalled', () => { document.getElementById('install-help').textContent = 'Application installée. Ouvrez maintenant YVEXOR depuis son icône.'; });
 const wizard = document.getElementById('request-wizard');
+const addLine = document.getElementById('add-quote-item');
+if (addLine) addLine.addEventListener('click', () => {
+  const total = document.getElementById('id_items-TOTAL_FORMS');
+  const index = Number(total.value);
+  if (index >= 30) return;
+  const clone = document.getElementById('quote-item-template').content.cloneNode(true);
+  clone.querySelectorAll('*').forEach(element => {
+    for (const attr of ['name', 'id', 'for']) {
+      if (element.hasAttribute(attr)) element.setAttribute(attr, element.getAttribute(attr).replaceAll('__prefix__', String(index)));
+    }
+  });
+  document.getElementById('quote-items').appendChild(clone);
+  total.value = String(index + 1);
+  addLine.disabled = index + 1 >= 30;
+});
+async function refreshMessages() {
+  if (document.hidden || app.hidden) return;
+  try {
+    const badge = document.getElementById('notification-count');
+    if (badge) {
+      const response = await fetch('/api/summary/', {headers:{Accept:'application/json'}});
+      if (response.ok && response.headers.get('content-type')?.includes('application/json')) badge.textContent = String((await response.json()).unread);
+    }
+    const thread = document.querySelector('[data-thread-url]');
+    if (!thread) return;
+    const response = await fetch(thread.dataset.threadUrl, {headers:{Accept:'application/json'}});
+    if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) return;
+    const data = await response.json();
+    if (!data.messages.length) return;
+    const signature = JSON.stringify(data.messages);
+    if (thread.dataset.signature !== signature) {
+      const fragment = document.createDocumentFragment();
+      for (const message of data.messages) {
+        const row = document.createElement('article'); row.className = 'bubble' + (message.mine ? ' mine' : '');
+        const author = document.createElement('strong'); author.textContent = message.author;
+        const body = document.createElement('div'); body.className = 'message-body'; body.textContent = message.body;
+        const date = document.createElement('small'); date.textContent = message.date + ' · ' + (message.read ? 'Lu' : 'Envoyé');
+        row.append(author, body, date); fragment.appendChild(row);
+      }
+      thread.replaceChildren(fragment); thread.dataset.signature = signature;
+    }
+    const csrf = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+    if (csrf) await fetch(thread.dataset.readUrl, {method:'POST', headers:{'X-CSRFToken':csrf}});
+  } catch { /* A temporary connection failure must preserve the visible conversation. */ }
+}
+setInterval(refreshMessages, 15000);
 if (wizard) {
   const review = document.getElementById('request-review');
   const reviewButton = document.getElementById('review-request');

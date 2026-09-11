@@ -2,6 +2,7 @@
 set -euo pipefail
 test "$(hostname)" = "yvexor-espace-client-01"
 cd /opt/yvexor/portal
+install -d -m 0700 -o yvexor -g yvexor /var/lib/yvexor/files
 set -a
 source /etc/yvexor/portal.env
 set +a

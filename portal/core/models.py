@@ -1,4 +1,5 @@
 import uuid
+from decimal import Decimal
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -90,3 +91,92 @@ class OwnerInvite(models.Model):
     email = models.EmailField()
     expires_at = models.DateTimeField()
     used_at = models.DateTimeField(null=True)
+
+
+class Attachment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    request = models.ForeignKey(Request, on_delete=models.PROTECT, related_name='attachments')
+    uploaded_by = models.ForeignKey(User, on_delete=models.PROTECT)
+    original_name = models.CharField(max_length=180)
+    storage_name = models.CharField(max_length=80, unique=True)
+    size = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    path = models.CharField(max_length=240)
+    created_at = models.DateTimeField(auto_now_add=True)
+    read_at = models.DateTimeField(null=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+
+class InternalNote(models.Model):
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    body = models.TextField(max_length=5000)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Solution(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    organization = models.ForeignKey(Organization, on_delete=models.PROTECT)
+    name = models.CharField(max_length=160)
+    description = models.TextField(max_length=2000, blank=True)
+    url = models.URLField(max_length=500)
+    active = models.BooleanField(default=True)
+
+
+class Quote(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    request = models.ForeignKey(Request, on_delete=models.PROTECT, related_name='quotes')
+    title = models.CharField(max_length=160)
+    issuer_name = models.CharField(max_length=160)
+    issuer_details = models.TextField(max_length=2000)
+    client_details = models.TextField(max_length=2000)
+    currency = models.CharField(max_length=3, choices=[('EUR', 'EUR'), ('CHF', 'CHF')])
+    valid_until = models.DateField()
+    conditions = models.TextField(max_length=5000)
+    status = models.CharField(max_length=12, choices=[('draft','Brouillon'),('sent','Envoyé'),('accepted','Accepté'),('refused','Refusé')], default='draft')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    @property
+    def reference(self):
+        return 'YVX-' + str(self.pk).upper()
+
+
+class QuoteItem(models.Model):
+    quote = models.ForeignKey(Quote, on_delete=models.CASCADE, related_name='items')
+    label = models.CharField(max_length=240)
+    quantity = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
+    unit_price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
+    tax_rate = models.DecimalField(max_digits=5, decimal_places=2, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    position = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        ordering = ['position','id']
+
+
+class QuoteVersion(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    quote = models.ForeignKey(Quote, on_delete=models.PROTECT, related_name='versions')
+    number = models.PositiveIntegerField()
+    snapshot = models.JSONField()
+    sent_by = models.ForeignKey(User, on_delete=models.PROTECT)
+    sent_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['quote','number'], name='unique_quote_version')]
+        ordering = ['-number']
+
+
+class QuoteDecision(models.Model):
+    version = models.OneToOneField(QuoteVersion, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    decision = models.CharField(max_length=12, choices=[('accepted','Accepté'),('refused','Refusé')])
+    decided_at = models.DateTimeField(auto_now_add=True)

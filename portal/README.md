@@ -1,14 +1,14 @@
-# YVEXOR Portal — lot de test 1
+# YVEXOR Portal — lot de test 2
 
 Application indépendante du site public Next.js. Voir PLAN.md pour le périmètre et les lots suivants.
 
 ## Fonctionnel
 
-Inscription email (non vérifié dans ce lot), organisation isolée, sessions serveur persistantes 90 jours, activation propriétaire à usage unique, MFA TOTP Admin obligatoire, demandes, messages texte avec lecture, conversion en projet, avancement, dossiers clients, PWA sans cache de données privées.
+Inscription email (non vérifié dans ce lot), organisation isolée, sessions serveur persistantes 90 jours, activation propriétaire à usage unique, MFA TOTP Admin obligatoire, demandes, messages avec lecture et actualisation à 15 secondes, conversion en projet, avancement, dossiers clients, notes internes, solutions livrées, PWA sans cache de données privées. Documents privés téléchargés en pièce jointe (10 Mo/fichier, 200 Mo/organisation, 2 Go global). Notifications internes lorsque l’application est ouverte. Devis en EUR/CHF avec montants décimaux, TVA explicitement saisie, versions envoyées figées et document imprimable. Envoi soumis à MFA récent ; acceptation/refus réservé à un client dont l’email est vérifié. Un devis accepté ne peut plus être modifié via l’application.
 
 ## Pas encore livré
 
-Google/Apple, validation email/récupération, pièces jointes, push, devis/paiements/factures, rôles autres que propriétaire. Pas de données sensibles/réelles avant configuration de récupération et sauvegarde externe testée. Les comptes non vérifiés ne sont associés à aucun dossier préexistant.
+Google/Apple, validation email/récupération, push hors application, paiements/factures, rôles autres que propriétaire. Stripe reporté explicitement par le propriétaire. Sans email configuré, l’acceptation des devis reste bloquée : aucun compte n’est marqué vérifié artificiellement. Analyse antivirus non disponible : les fichiers ne sont jamais servis en ligne dans l’origine authentifiée. Pas de données sensibles/réelles avant configuration de récupération et sauvegarde externe testée. Les comptes non vérifiés ne sont associés à aucun dossier préexistant.
 
 ## Local
 

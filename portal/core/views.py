@@ -25,6 +25,7 @@ from django.views.decorators.http import require_POST, require_GET
 from django_otp.plugins.otp_totp.models import TOTPDevice
 from .forms import LoginForm, SignupForm, RequestForm, MessageForm, ProjectForm
 from .models import User, Organization, Membership, Request, Project, Message, AuditEvent, LoginAttempt, OwnerInvite
+from .services import notify_team, notify_client
 
 
 def audit(user, action, obj=''):
@@ -128,6 +129,7 @@ def signup(request):
                     org = Organization.objects.create(name=form.cleaned_data['company'])
                     Membership.objects.create(user=user, organization=org)
                     audit(user, 'account.created', org.id)
+                    notify_team('Nouveau client : '+org.name, reverse('client-detail',args=[org.pk]))
             except IntegrityError:
                 form.add_error('email', 'Cette inscription ne peut pas être terminée. Essayez de vous connecter.')
             else:
@@ -149,7 +151,8 @@ def signout(request):
 def mfa(request):
     if not request.user.is_staff:
         return HttpResponse(status=403)
-    if request.user.is_verified():
+    step_up = request.path == '/auth/confirm/'
+    if request.user.is_verified() and not step_up:
         return redirect('admin-home')
     device = TOTPDevice.objects.filter(user=request.user).first()
     if not device:
@@ -168,7 +171,8 @@ def mfa(request):
                     django_otp.login(request, device)
                     request.session['mfa_at'] = time.time()
                     audit(request.user, 'login.mfa')
-                    return redirect('admin-home')
+                    destination = request.session.pop('reauth_next', '/admin/')
+                    return redirect(destination)
                 error = 'Code incorrect ou expiré. Essayez le prochain code.'
     return render(request, 'mfa.html', {'setup': setup, 'error': error})
 
@@ -277,6 +281,7 @@ def new_request(request):
                 item.organization = org
                 item.save()
                 audit(request.user, 'request.created', item.id)
+                notify_team('Nouvelle demande : '+item.title, reverse('request-detail',args=[item.pk]))
             messages.success(request, 'Votre demande a bien été envoyée à YVEXOR.')
             return redirect('request-detail', pk=item.pk)
     return render(request, 'form.html', {'form': form, 'title': 'Une nouvelle idée ?', 'action': 'Envoyer ma demande', 'section': 'requests', 'wizard': True})
@@ -294,11 +299,16 @@ def request_detail(request, pk):
                 Message.objects.create(request=item, author=request.user, body=form.cleaned_data['body'], from_team=request.user.is_staff)
                 item.save(update_fields=['updated_at'])
                 audit(request.user, 'message.sent', item.id)
+                if request.user.is_staff:
+                    notify_client(item.organization,'Nouveau message YVEXOR : '+item.title,reverse('request-detail',args=[item.pk]))
+                else:
+                    notify_team('Nouveau message : '+item.title,reverse('request-detail',args=[item.pk]))
             return redirect('request-detail', pk=pk)
     item.thread.filter(from_team=not request.user.is_staff, read_at__isnull=True).update(read_at=timezone.now())
     return render(request, 'request.html', {'item': item, 'form': form,
         'thread': item.thread.select_related('author'), 'team': request.user.is_staff,
-        'states': Request.STATES, 'section': 'requests',
+          'states': Request.STATES, 'section': 'requests',
+          'quotes': item.quotes.all() if request.user.is_staff else item.quotes.filter(versions__isnull=False).distinct(),
         'project': Project.objects.filter(source=item).first()})
 
 
@@ -326,6 +336,7 @@ def convert(request, pk):
             item.status = 'project'
             item.save()
             audit(request.user, 'project.created', project.pk)
+            notify_client(item.organization,'Votre projet est lancé : '+project.name,reverse('project-detail',args=[project.pk]))
     return redirect('project-detail', pk=project.pk)
 
 
@@ -345,6 +356,7 @@ def project_detail(request, pk):
         if request.method == 'POST' and form.is_valid():
             form.save()
             audit(request.user, 'project.updated', pk)
+            notify_client(project.organization,'Projet mis à jour : '+project.name,reverse('project-detail',args=[pk]))
             messages.success(request, 'Le suivi client a été mis à jour.')
             return redirect('project-detail', pk=pk)
     elif request.method != 'GET':
@@ -371,6 +383,7 @@ def client_detail(request, pk):
     audit(request.user, 'client.viewed', pk)
     return render(request, 'client.html', {'org': org, 'contacts': User.objects.filter(membership__organization=org),
         'requests': Request.objects.filter(organization=org), 'projects': Project.objects.filter(organization=org),
+        'notes': org.internalnote_set.select_related('author').order_by('-created_at'),
         'team': True, 'section': 'clients'})
 
 

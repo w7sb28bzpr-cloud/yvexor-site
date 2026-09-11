@@ -81,6 +81,21 @@ class AuditEvent(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+class DirectMessage(models.Model):
+    organization = models.ForeignKey(Organization, on_delete=models.PROTECT, related_name='direct_messages')
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    body = models.TextField(max_length=10000)
+    from_team = models.BooleanField(default=False)
+    client_nonce = models.UUIDField(default=uuid.uuid4)
+    created_at = models.DateTimeField(auto_now_add=True)
+    read_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['id']
+        constraints = [models.UniqueConstraint(fields=['author', 'client_nonce'], name='unique_direct_message_send')]
+        indexes = [models.Index(fields=['organization', 'id'])]
+
+
 class LoginAttempt(models.Model):
     key = models.CharField(max_length=64, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)

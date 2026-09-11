@@ -119,9 +119,10 @@ def notifications_read(request):
 @portal_required
 @require_GET
 def summary(request):
+    from .messaging import unread_count
     rows = Notification.objects.filter(user=request.user,read_at__isnull=True)
     latest = rows.first()
-    return JsonResponse({'unread':rows.count(),'latest':{'id':latest.pk,'title':latest.title,'path':latest.path} if latest else None})
+    return JsonResponse({'unread':rows.count(),'chat_unread':unread_count(request.user),'latest':{'id':latest.pk,'title':latest.title,'path':latest.path} if latest else None})
 
 
 @portal_required

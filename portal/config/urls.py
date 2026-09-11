@@ -2,6 +2,7 @@ from django.urls import path
 from core import views as v
 from core import commerce as c
 from core import collaboration as collab
+from core import messaging as chat
 
 urlpatterns = [
     path('', v.root), path('client/', v.client_home, name='client-home'),
@@ -15,7 +16,10 @@ urlpatterns = [
     path('requests/<uuid:pk>/status/', v.request_status, name='request-status'),
     path('requests/<uuid:pk>/convert/', v.convert, name='convert'),
     path('projects/', v.projects, name='projects'), path('projects/<uuid:pk>/', v.project_detail, name='project-detail'),
-    path('messages/', v.inbox, name='inbox'), path('admin/clients/', v.clients, name='clients'),
+    path('messages/', chat.inbox, name='inbox'), path('admin/clients/', v.clients, name='clients'),
+    path('messages/<uuid:pk>/', chat.conversation, name='conversation'),
+    path('api/messages/<uuid:pk>/', chat.updates, name='chat-updates'),
+    path('api/messages/<uuid:pk>/read/', chat.mark_read, name='chat-read'),
     path('admin/clients/<uuid:pk>/', v.client_detail, name='client-detail'),
     path('account/', v.account, name='account'),
     path('quotes/',c.quotes,name='quotes'),

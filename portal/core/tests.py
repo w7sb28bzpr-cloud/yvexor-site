@@ -35,6 +35,84 @@ class PortalTests(TestCase):
         for route in ['/client/', '/admin/', '/requests/', '/projects/', '/account/']:
             self.assertEqual(self.client.get(route).status_code, 302)
 
+    def test_direct_chat_roundtrip_and_read_receipts(self):
+        import uuid
+        from .models import DirectMessage
+        self.client.force_login(self.a)
+        url = reverse('conversation', args=[self.org_a.pk])
+        data = {'body': 'Bonjour Yannick !', 'client_nonce': str(uuid.uuid4()), 'from_team': 'true'}
+        response = self.client.post(url, data, HTTP_ACCEPT='application/json')
+        self.assertEqual(response.status_code, 200)
+        row = DirectMessage.objects.get()
+        self.assertFalse(row.from_team)
+        self.assertEqual(row.author_id, self.a.pk)
+        self.client.post(url, data, HTTP_ACCEPT='application/json')
+        self.assertEqual(DirectMessage.objects.count(), 1)
+        self.owner_login()
+        response = self.client.get(reverse('chat-updates', args=[self.org_a.pk]))
+        self.assertEqual(response.json()['messages'][0]['body'], 'Bonjour Yannick !')
+        self.client.post(reverse('chat-read', args=[self.org_a.pk]), {'through': row.pk})
+        row.refresh_from_db(); self.assertIsNotNone(row.read_at)
+        reply = self.client.post(url, {'body': 'Bonjour Alice, parlons de votre idée.', 'client_nonce': str(uuid.uuid4())}, HTTP_ACCEPT='application/json')
+        self.assertEqual(reply.status_code, 200)
+        self.client.force_login(self.a)
+        response = self.client.get(reverse('chat-updates', args=[self.org_a.pk]), {'after': row.pk})
+        self.assertEqual(response.json()['messages'][0]['author'], 'Yannick · YVEXOR')
+        self.assertEqual(response.json()['last_read'], row.pk)
+        self.assertEqual(response.json()['messages'][0]['body'], 'Bonjour Alice, parlons de votre idée.')
+
+    def test_direct_chat_tenant_isolation_and_mfa(self):
+        import uuid
+        from .models import DirectMessage
+        DirectMessage.objects.create(organization=self.org_a, author=self.a, body='Privé Alice')
+        self.client.force_login(self.b)
+        for name in ['conversation', 'chat-updates', 'chat-read']:
+            url = reverse(name, args=[self.org_a.pk])
+            response = self.client.post(url, {'body': 'intrusion', 'client_nonce': str(uuid.uuid4()), 'through': 999}) if name != 'chat-updates' else self.client.get(url)
+            self.assertEqual(response.status_code, 404)
+        self.assertNotContains(self.client.get('/messages/'), 'Privé Alice')
+        self.assertEqual(DirectMessage.objects.count(), 1)
+        self.client.force_login(self.owner)
+        self.assertRedirects(self.client.get(reverse('conversation', args=[self.org_a.pk])), '/auth/mfa/', fetch_redirect_response=False)
+
+    def test_direct_chat_validation_and_history(self):
+        import uuid
+        from .models import DirectMessage
+        self.client.force_login(self.a)
+        url = reverse('conversation', args=[self.org_a.pk])
+        for body in ['', '   ', 'a' * 10001]:
+            self.assertEqual(self.client.post(url, {'body': body, 'client_nonce': str(uuid.uuid4())}, HTTP_ACCEPT='application/json').status_code, 400)
+        self.client.post(url, {'body': '<script>alert(1)</script>', 'client_nonce': str(uuid.uuid4())})
+        self.assertNotContains(self.client.get(url), '<script>alert(1)</script>')
+        DirectMessage.objects.bulk_create([DirectMessage(organization=self.org_a, author=self.a, body=str(i)) for i in range(110)])
+        response = self.client.get(url)
+        first = response.context['first_id']
+        self.assertEqual(len(response.context['chat_rows']), 100)
+        older = self.client.get(reverse('chat-updates', args=[self.org_a.pk]), {'before': first})
+        self.assertEqual(len(older.json()['messages']), 11)
+        self.assertEqual(self.client.get(reverse('chat-updates', args=[self.org_a.pk]), {'after': '-x'}).status_code, 400)
+
+    def test_request_visual_choices_are_saved(self):
+        self.client.force_login(self.a)
+        self.client.post('/requests/new/', {'title': 'Application mobile', 'body': 'Une idée à développer', 'category': 'app', 'budget': 'medium', 'timeline': 'month', 'details': 'À préciser ensemble'})
+        item = Request.objects.get(title='Application mobile')
+        self.assertIn('Application', item.details)
+        self.assertIn('1 000 – 5 000 €', item.details)
+        self.assertIn('1 mois', item.details)
+
+    def test_direct_chat_requires_csrf_and_keeps_unseen_unread(self):
+        from .models import DirectMessage
+        secure = Client(enforce_csrf_checks=True)
+        secure.force_login(self.a)
+        self.assertEqual(secure.post(reverse('conversation', args=[self.org_a.pk]), {'body': 'Sans jeton'}).status_code, 403)
+        self.client.force_login(self.a)
+        first = DirectMessage.objects.create(organization=self.org_a, author=self.owner, from_team=True, body='Visible')
+        second = DirectMessage.objects.create(organization=self.org_a, author=self.owner, from_team=True, body='Pas encore affiché')
+        self.client.post(reverse('chat-read', args=[self.org_a.pk]), {'through': first.pk})
+        first.refresh_from_db(); second.refresh_from_db()
+        self.assertIsNotNone(first.read_at)
+        self.assertIsNone(second.read_at)
+
     def test_tenant_cannot_read_or_write_another_request(self):
         self.client.force_login(self.b)
         url = reverse('request-detail', args=[self.item.pk])

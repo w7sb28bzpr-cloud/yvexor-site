@@ -38,11 +38,26 @@ class SignupForm(forms.ModelForm):
 
 
 class RequestForm(forms.ModelForm):
+    category = forms.ChoiceField(label='Quel type de projet ?', required=False, initial='other', choices=[('web','Site web'),('app','Application'),('pos','Caisse & POS'),('automation','IA & automatisation'),('marketing','Marketing digital'),('other','Autre')], widget=forms.RadioSelect)
+    budget = forms.ChoiceField(label='Budget estimé (facultatif)', required=False, initial='unknown', choices=[('unknown','À définir'),('small','Moins de 1 000 €'),('medium','1 000 – 5 000 €'),('large','5 000 € et plus')], widget=forms.RadioSelect)
+    timeline = forms.ChoiceField(label='Délai souhaité (facultatif)', required=False, initial='unknown', choices=[('unknown','À définir'),('month','1 mois'),('quarter','2 – 3 mois'),('urgent','Urgent')], widget=forms.RadioSelect)
+
     class Meta:
         model = Request
-        fields = ['title', 'body', 'details']
+        fields = ['category', 'title', 'body', 'budget', 'timeline', 'details']
         labels = {'title': 'Un titre pour votre idée', 'body': 'Quel est votre besoin ?', 'details': 'Précisions : délais, contexte, budget souhaité (facultatif)'}
         widgets = {'body': forms.Textarea(attrs={'rows': 7, 'placeholder': 'Je voudrais créer un site, améliorer mon application…'}), 'details': forms.Textarea(attrs={'rows': 3})}
+
+    def clean(self):
+        data = super().clean()
+        selected = [self.fields[key].label + ' : ' + dict(self.fields[key].choices)[data[key]]
+                    for key in ['category', 'budget', 'timeline'] if data.get(key)]
+        combined = '\n'.join(selected + ([data['details']] if data.get('details') else []))
+        if len(combined) > 3000:
+            self.add_error('details', 'Ces précisions sont trop longues. Raccourcissez-les légèrement.')
+        else:
+            data['details'] = combined
+        return data
 
 
 class MessageForm(forms.Form):

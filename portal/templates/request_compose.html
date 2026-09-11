@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block content %}
+<a class="back-link" href="{% url 'requests' %}">← Mes demandes</a>
+<div class="request-heading"><p class="eyebrow">NOUVELLE DEMANDE</p><h1>Parlez-nous de votre idée <span>✦</span></h1><p>Décrivez votre projet, même s’il n’est pas encore totalement défini. Nous vous aidons à le structurer.</p></div>
+<ol class="request-steps" aria-label="Étapes de votre demande"><li id="step-idea" aria-current="step"><span>1</span>Votre idée</li><li id="step-review"><span>2</span>Vérification</li><li><span>3</span>Envoi</li></ol>
+<section class="panel request-panel"><form method="post" id="request-wizard">{% csrf_token %}{{ form.non_field_errors }}
+<div id="request-fields">
+<fieldset class="project-types"><legend>{{ form.category.label }}</legend>{{ form.category.errors }}<div class="type-grid">{% for radio in form.category %}<label class="type-option">{{ radio.tag }}<span>{% include 'icon.html' with icon=radio.data.value %}<strong>{{ radio.choice_label }}</strong></span></label>{% endfor %}</div></fieldset>
+<p><label for="{{ form.title.id_for_label }}">Un titre pour votre idée</label>{{ form.title.errors }}{{ form.title }}</p>
+<p><label for="{{ form.body.id_for_label }}">Quel est votre besoin ?</label>{{ form.body.errors }}{{ form.body }}</p>
+<fieldset class="choice-chips"><legend>{{ form.budget.label }}</legend>{{ form.budget.errors }}<div>{% for radio in form.budget %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></fieldset>
+<fieldset class="choice-chips"><legend>{{ form.timeline.label }}</legend>{{ form.timeline.errors }}<div>{% for radio in form.timeline %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></fieldset>
+<p><label for="{{ form.details.id_for_label }}">Autres précisions (facultatif)</label>{{ form.details.errors }}{{ form.details }}</p>
+<p class="attachment-hint">{% include 'icon.html' with icon='document' %}<span>Des documents à partager ?<small>Vous pourrez joindre vos fichiers et images à la demande après son envoi.</small></span></p>
+</div>
+<div id="request-review" hidden><h2>Votre projet en résumé</h2><div id="review-content"></div><button type="button" class="secondary" id="edit-request">Modifier</button></div><button type="button" id="review-request" hidden>Vérifier ma demande →</button><button type="submit" id="submit-request">{{ action }} →</button>
+</form></section><p class="request-reassurance">YVEXOR étudie votre demande et vous répond directement dans votre espace.</p>
+{% endblock %}

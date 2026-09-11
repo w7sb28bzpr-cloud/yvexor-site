@@ -56,7 +56,10 @@ async function refreshMessages() {
     const badge = document.getElementById('notification-count');
     if (badge) {
       const response = await fetch('/api/summary/', {headers:{Accept:'application/json'}});
-      if (response.ok && response.headers.get('content-type')?.includes('application/json')) badge.textContent = String((await response.json()).unread);
+      if (response.ok && response.headers.get('content-type')?.includes('application/json')) {
+        const counts=await response.json(); badge.textContent=String(counts.unread); badge.hidden=!counts.unread;
+        document.querySelectorAll('[data-chat-count]').forEach(el=>{el.textContent=String(counts.chat_unread||0);el.hidden=!counts.chat_unread;});
+      }
     }
     const thread = document.querySelector('[data-thread-url]');
     if (!thread) return;
@@ -92,10 +95,15 @@ if (wizard) {
     for (const field of ['title','body','details']) {
       const p = document.createElement('p'); p.textContent = wizard.elements[field].value; target.appendChild(p);
     }
+    for(const field of ['category','budget','timeline']){const selected=wizard.querySelector(`input[name="${field}"]:checked`);if(selected){const p=document.createElement('p');p.textContent=selected.closest('label').textContent.trim();target.appendChild(p);}}
+    document.getElementById('request-fields').hidden=true;
+    document.getElementById('step-idea').removeAttribute('aria-current');document.getElementById('step-review').setAttribute('aria-current','step');
     review.hidden = false; submit.hidden = false; reviewButton.hidden = true;
     review.scrollIntoView({behavior: 'smooth', block: 'center'});
   });
   document.getElementById('edit-request').addEventListener('click', () => {
+    document.getElementById('request-fields').hidden=false;
+    document.getElementById('step-review').removeAttribute('aria-current');document.getElementById('step-idea').setAttribute('aria-current','step');
     review.hidden = true; submit.hidden = true; reviewButton.hidden = false;
     wizard.elements.title.focus();
   });

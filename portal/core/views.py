@@ -238,22 +238,26 @@ def client_home(request):
         return redirect('admin-home')
     rows = allowed_requests(request.user)
     projects = allowed_projects(request.user)
-    unread = Message.objects.filter(request__in=rows, from_team=True, read_at__isnull=True).count()
+    from .messaging import unread_count
+    from .models import Notification
+    unread = unread_count(request.user) + Message.objects.filter(request__in=rows, from_team=True, read_at__isnull=True).count()
     org = Organization.objects.filter(membership__user=request.user).first()
-    return render(request, 'dashboard.html', {'org': org, 'requests': rows[:5], 'projects': projects[:4],
+    return render(request, 'client_dashboard.html', {'org': org, 'requests': rows.exclude(status='project')[:3], 'projects': projects.exclude(status='done').order_by('-updated_at')[:2],
+        'activity': Notification.objects.filter(user=request.user)[:4],
         'open_count': rows.exclude(status__in=['done', 'refused']).count(),
         'project_count': projects.exclude(status='done').count(), 'unread': unread, 'section': 'home'})
 
 
 @team_required
 def admin_home(request):
+    from .messaging import unread_count
     rows = allowed_requests(request.user).select_related('organization')
     recent_messages = Message.objects.filter(from_team=False).select_related('request', 'author').order_by('-created_at')[:5]
     return render(request, 'dashboard.html', {'team': True, 'requests': rows[:8],
         'projects': Project.objects.select_related('organization').order_by('-updated_at')[:4],
         'client_count': Organization.objects.count(), 'open_count': rows.filter(status='new').count(),
         'project_count': Project.objects.exclude(status='done').count(),
-        'unread': Message.objects.filter(from_team=False, read_at__isnull=True).count(),
+        'unread': unread_count(request.user) + Message.objects.filter(from_team=False, read_at__isnull=True).count(),
         'recent_messages': recent_messages, 'section': 'home'})
 
 
@@ -285,7 +289,7 @@ def new_request(request):
                 notify_team('Nouvelle demande : '+item.title, reverse('request-detail',args=[item.pk]))
             messages.success(request, 'Votre demande a bien été envoyée à YVEXOR.')
             return redirect('request-detail', pk=item.pk)
-    return render(request, 'form.html', {'form': form, 'title': 'Une nouvelle idée ?', 'action': 'Envoyer ma demande', 'section': 'requests', 'wizard': True})
+    return render(request, 'request_compose.html', {'form': form, 'title': 'Une nouvelle idée ?', 'action': 'Envoyer ma demande', 'section': 'requests', 'wizard': True})
 
 
 @portal_required

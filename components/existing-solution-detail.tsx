@@ -1,5 +1,4 @@
 import { existingSolutions } from "../data/public-offer";
-import { SmsLink } from "./sms-link";
 import { CommercePricing } from "./commerce-pricing";
 
 export function ExistingSolutionDetail({restaurant=false}:{restaurant?:boolean}) {
@@ -14,7 +13,7 @@ export function ExistingSolutionDetail({restaurant=false}:{restaurant?:boolean})
       <div className="capability-cloud" aria-label="Fonctions possibles">{solution.capabilities.map(item=><span key={item}>{item}</span>)}</div>
       <p className="configuration-note">Les fonctions disponibles dépendent de la configuration retenue. Le matériel, les options, les intégrations et la mise en service sont étudiés selon votre besoin.</p>
       <div className="model-line">{solution.models.map(model=><span key={model}>{model}</span>)}</div>
-      <SmsLink className="action-link primary">{solution.cta} →</SmsLink>
+      <a className="action-link primary" href="https://client.yvexor.com/">{solution.cta} →</a>
       <p className="configuration-note">Photo d’illustration, non contractuelle : elle ne représente pas nécessairement le logiciel ou le matériel proposé.</p>
     </article>
     {!restaurant&&<CommercePricing/>}

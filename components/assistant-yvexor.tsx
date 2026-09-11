@@ -26,7 +26,7 @@ export function AssistantYvexor() {
       <p className="assistant-audience-note">L’Assistant distinguera un besoin d’entreprise d’une nouvelle activité, puis adaptera le périmètre, le modèle économique et la première étape à étudier.</p>
       <div className="analysis-path is-preview" aria-label="Fonctionnement prévu de l’assistant"><span>Compréhension</span><span>Structuration</span><span>Première solution</span><span>Budget / modèle</span></div>
       <div className="assistant-actions">
-        <SmsLink className="assistant-submit"><i aria-hidden="true"/><span>Présenter mon projet à YVEXOR</span><b aria-hidden="true">→</b></SmsLink>
+        <a className="assistant-submit" href="https://client.yvexor.com/"><i aria-hidden="true"/><span>Présenter mon projet à YVEXOR</span><b aria-hidden="true">→</b></a>
         <SmsLink>Parler à YVEXOR · 07 56 91 30 13</SmsLink>
       </div>
     </div>

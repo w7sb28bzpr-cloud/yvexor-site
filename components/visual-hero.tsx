@@ -9,8 +9,8 @@ export function VisualHero() {
         <h1>Votre besoin.<br/>Votre idée.<br/><span>Construisons<br/>la solution.</span></h1>
         <p className="hero-copy">Nous concevons des logiciels et applications sur mesure pour améliorer votre activité ou lancer un nouveau service. Une base existe déjà ? Nous pouvons l’adapter, la connecter ou développer ce qui manque.</p>
         <div className="visual-hero-actions">
-          <SmsLink className="action-link primary">Discuter de mon projet <ArrowIcon/></SmsLink>
-          <a className="visual-secondary" href="#exemples">Explorer les possibilités <span aria-hidden="true">↗</span></a>
+          <a className="action-link primary" href="https://client.yvexor.com/">Rejoignez-nous <ArrowIcon/></a>
+          <SmsLink className="visual-secondary">Envoyer un SMS <span aria-hidden="true">↗</span></SmsLink>
         </div>
         <p className="service-area">France, Suisse et au-delà · À distance ou sur place selon le projet.</p><ul className="visual-principles" aria-label="Notre approche"><li>Sur mesure</li><li>Évolutif</li><li>Un interlocuteur direct</li></ul>
       </div>

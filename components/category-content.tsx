@@ -1,12 +1,11 @@
 import { offerDestinations, solutionOffers } from "../data/public-offer";
-import { SmsLink } from "./sms-link";
 
 export function CategoryPrice({slug}: {slug:string}) {
   const offer = solutionOffers.find(item => offerDestinations[item.id] === `/${slug}/`);
   if (!offer) return null;
   return <section className="section category-pricing" id="tarifs" aria-labelledby="category-price-title">
     <p className="eyebrow">Budget & formule</p><h2 id="category-price-title">Un point de départ clair.</h2>
-    <article className="category-price-card"><span>{offer.name}</span><h3>{offer.startingPriceLabel}</h3><p>{offer.description}</p><p className="category-price-note">{offer.pricingDisclaimer}</p><SmsLink className="action-link primary" message={`Bonjour YVEXOR, je souhaite parler de votre offre ${offer.name}, ${offer.startingPriceLabel.toLowerCase()}. Mon besoin : `}>Étudier mon projet</SmsLink></article>
+    <article className="category-price-card"><span>{offer.name}</span><h3>{offer.startingPriceLabel}</h3><p>{offer.description}</p><p className="category-price-note">{offer.pricingDisclaimer}</p><a className="action-link primary" href="https://client.yvexor.com/">Étudier mon projet</a></article>
     <details className="audit-disclosure"><summary>Abonnement et coût du projet</summary><p>Ce repère concerne l’utilisation ou les services de la formule retenue. Il ne couvre pas automatiquement la création complète d’un logiciel sur mesure. Le devis distingue la mise en place, les développements, les coûts tiers et les conditions d’engagement.</p></details>
   </section>;
 }
@@ -29,7 +28,7 @@ export function CommerceBenefits() {
     <article><h3>Adapter à votre métier</h3><p>Articles, stock ou fidélité : le périmètre est défini avec vous, pas ajouté par défaut.</p></article>
     <article><h3>Un interlocuteur direct</h3><p>Logiciel, matériel et mise en service étudiés ensemble selon vos besoins.</p></article>
   </div><h2 className="category-sector-title">Quel est votre commerce ?</h2><div className="category-sectors">
-    <article><img src="/solution-commerce-v1.webp" width="960" height="640" alt="" loading="lazy"/><div><h3>Boutiques & commerces de proximité</h3><p>Vente au comptoir, articles et suivi du stock selon la formule.</p><SmsLink message="Bonjour YVEXOR, je cherche une caisse pour ma boutique ou mon commerce de proximité. Mon besoin : ">Étudier ma caisse →</SmsLink></div></article>
+    <article><img src="/solution-commerce-v1.webp" width="960" height="640" alt="" loading="lazy"/><div><h3>Boutiques & commerces de proximité</h3><p>Vente au comptoir, articles et suivi du stock selon la formule.</p><a href="https://client.yvexor.com/">Étudier ma caisse →</a></div></article>
     <article><img src="/solution-restaurant-v1.webp" width="960" height="1440" alt="" loading="lazy"/><div><h3>Restauration & vente à emporter</h3><p>Service, commandes et cuisine : découvrez le parcours dédié.</p><a href="/solutions-restaurants/">Voir la restauration →</a></div></article>
   </div><p className="category-price-note">Visuels d’illustration. Votre activité n’est pas citée ? Nous étudions aussi votre besoin.</p></section>;
 }

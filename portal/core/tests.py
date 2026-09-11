@@ -186,3 +186,13 @@ class PortalTests(TestCase):
         self.assertTrue(cookie['secure'])
         self.assertTrue(cookie['httponly'])
         self.assertEqual(cookie['samesite'], 'Lax')
+
+    def test_app_navigation_stays_inside_portal(self):
+        for url in ['/auth/login/', '/auth/signup/']:
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 200)
+            self.assertNotContains(response, 'href="https://yvexor.com"')
+            self.assertNotContains(response, 'Retour au site')
+        self.client.force_login(self.a)
+        response = self.client.get('/client/')
+        self.assertNotContains(response, 'href="https://yvexor.com"')

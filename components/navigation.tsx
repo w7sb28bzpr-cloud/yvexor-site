@@ -1,19 +1,19 @@
 "use client";
 import{CSSProperties,useEffect,useState}from"react";import{BrandLogo}from"./brand-logo";import{Icon}from"./ui";
-const items=[{label:"Accueil",href:"#accueil",icon:"home"},{label:"Solutions",href:"#solutions",icon:"solutions"},{label:"Projet",href:"#assistant",icon:"project",featured:true},{label:"Exemples",href:"#exemples",icon:"sectors"},{label:"YVEXOR",href:"#yvexor",icon:"brand"}];
+const items=[{label:"Accueil",href:"#accueil",icon:"home"},{label:"Solutions",href:"#solutions",icon:"solutions"},{label:"Projet",href:"/contact/",icon:"project",featured:true},{label:"Exemples",href:"#exemples",icon:"sectors"},{label:"YVEXOR",href:"#yvexor",icon:"brand"}];
 export function SiteHeader({root=false}:{root?:boolean}) {
   const [scrolled,setScrolled]=useState(false);
-  const to=(hash:string)=>root?`/${hash}`:hash;
-  const links=[["Solutions","#solutions"],["Caisse & Commerce","#caisse-commerce"],["Budgets","#budgets"],["Exemples","#exemples"],["YVEXOR","#yvexor"]];
+  const to=(hash:string)=>root&&hash.startsWith("#")?`/${hash}`:hash;
+  const links=[["Solutions","#solutions"],["Caisse & Commerce","/logiciel-caisse-marseille/"],["Budgets","#budgets"],["Exemples","#exemples"],["YVEXOR","#yvexor"]];
   useEffect(()=>{const onScroll=()=>setScrolled(scrollY>12);onScroll();addEventListener("scroll",onScroll,{passive:true});return()=>removeEventListener("scroll",onScroll)},[]);
   return <header className={`site-header ${scrolled?"is-scrolled":""}`}>
     <a href={to("#accueil")} aria-label="YVEXOR — Accueil"><BrandLogo/></a>
     <nav aria-label="Navigation principale">{links.map(([label,href])=><a key={href} href={to(href)}>{label}</a>)}</nav>
-    <a className="header-cta" href={to("#assistant")}>Parler de mon projet</a>
+    <a className="header-cta" href={to("/contact/")}>Parler de mon projet</a>
     <details className="header-menu" onKeyDown={event=>{if(event.key==="Escape"){event.currentTarget.open=false;event.currentTarget.querySelector("summary")?.focus()}}}>
       <summary aria-label="Menu de navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
       <nav aria-label="Accès rapides mobile">{links.map(([label,href])=><a key={href} href={to(href)} onClick={event=>{event.currentTarget.closest("details")?.removeAttribute("open")}}>{label}</a>)}</nav>
     </details>
   </header>;
 }
-export function MobileTabBar({root=false}:{root?:boolean}){const[active,setActive]=useState("#accueil");useEffect(()=>{if(root)return;const ids=items.map(i=>i.href.slice(1)),observer=new IntersectionObserver(es=>{const visible=es.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(visible)setActive(`#${visible.target.id}`)},{rootMargin:"-30% 0px -55%",threshold:[0,.2,.5]});ids.forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});return()=>observer.disconnect()},[root]);return <nav className="mobile-tabs" aria-label="Navigation mobile"><i className="mobile-active-light" style={{"--active-index":root?0:items.findIndex(item=>item.href===active)} as CSSProperties}/>{items.map(item=><a key={item.href} href={root?`/${item.href}`:item.href} className={`${(!root&&active===item.href)||root&&item.href==="#accueil"?"is-active":""} ${item.featured?"is-featured":""}`} aria-current={(!root&&active===item.href)||root&&item.href==="#accueil"?"page":undefined} onClick={()=>setActive(item.href)}><span><Icon name={item.icon}/></span><small>{item.label}</small></a>)}</nav>}
+export function MobileTabBar({root=false}:{root?:boolean}){const[active,setActive]=useState("#accueil");useEffect(()=>{if(root)return;const ids=items.filter(i=>i.href.startsWith("#")).map(i=>i.href.slice(1)),observer=new IntersectionObserver(es=>{const visible=es.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(visible)setActive(`#${visible.target.id}`)},{rootMargin:"-30% 0px -55%",threshold:[0,.2,.5]});ids.forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});return()=>observer.disconnect()},[root]);return <nav className="mobile-tabs" aria-label="Navigation mobile"><i className="mobile-active-light" style={{"--active-index":root?0:items.findIndex(item=>item.href===active)} as CSSProperties}/>{items.map(item=><a key={item.href} href={root&&item.href.startsWith("#")?`/${item.href}`:item.href} className={`${(!root&&active===item.href)||root&&item.href==="#accueil"?"is-active":""} ${item.featured?"is-featured":""}`} aria-current={(!root&&active===item.href)||root&&item.href==="#accueil"?"page":undefined} onClick={()=>setActive(item.href)}><span><Icon name={item.icon}/></span><small>{item.label}</small></a>)}</nav>}

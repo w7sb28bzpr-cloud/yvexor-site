@@ -15,8 +15,8 @@ const icons: Record<string, ReactNode> = {
 function SolutionIcon({name}:{name:string}) { return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icons[name]}</svg>; }
 
 const solutions = [
-  { title: "Caisse & Commerce", description: "Solutions de caisse, gestion des ventes, stocks, clients et statistiques.", icon: "cart", image: "commerce", href: "#caisse-commerce" },
-  { title: "Restauration", description: "Tables, commandes, cuisine, réservations et fidélité selon vos besoins.", icon: "restaurant", image: "restaurant", href: "#restauration" },
+  { title: "Caisse & Commerce", description: "Solutions de caisse, gestion des ventes, stocks, clients et statistiques.", icon: "cart", image: "commerce", href: "/logiciel-caisse-marseille/" },
+  { title: "Restauration", description: "Tables, commandes, cuisine, réservations et fidélité selon vos besoins.", icon: "restaurant", image: "restaurant", href: "/solutions-restaurants/" },
   { title: "Hôtels & Hébergement", description: "Des outils sur mesure pour les réservations, les chambres et les services.", icon: "bed", image: "hotel", href: "#sur-mesure" },
   { title: "Domotique & Bâtiments", description: "Automatisation, confort et pilotage à distance de vos équipements.", icon: "home", image: "maison", href: "#ecosysteme" },
   { title: "Applications métier", description: "Vos outils de réservation, planning et suivi, adaptés à votre activité.", icon: "apps", image: "logiciel", href: "#sur-mesure" },
@@ -38,7 +38,7 @@ export function SolutionDoors() {
         <span className="solution-door-chevron"><ChevronIcon/></span>
       </a>)}
     </div>
-    <nav className="solution-other-doors" aria-label="Autres besoins"><a href="#sur-mesure">Site & présence web <span>↗</span></a><a href="#sur-mesure">IA & automatisation <span>↗</span></a><a href="#assistant">Un autre projet ? <span>↗</span></a></nav>
+    <nav className="solution-other-doors" aria-label="Autres besoins"><a href="#sur-mesure">Site & présence web <span>↗</span></a><a href="#sur-mesure">IA & automatisation <span>↗</span></a><a href="/contact/">Un autre projet ? <span>↗</span></a></nav>
     <p className="solution-photos-note">Visuels d’illustration, non contractuels. Les logiciels et équipements sont définis selon votre projet.</p>
   </section>;
 }

@@ -1,4 +1,3 @@
-import { AssistantYvexor } from "./assistant-yvexor";
 import { SmsLink } from "./sms-link";
 import { ArrowIcon } from "./ui";
 
@@ -23,6 +22,5 @@ export function VisualHero() {
       </figure>
     </div>
     <div className="hero-shortcuts" aria-label="Accès directs"><a href="#solutions">Solutions <span>↗</span></a><a href="#budgets">Budgets & tarifs <span>↗</span></a><a href="#exemples">Idées de projets <span>↗</span></a></div>
-    <div className="hero-assistant" id="assistant"><AssistantYvexor/></div>
   </section>;
 }

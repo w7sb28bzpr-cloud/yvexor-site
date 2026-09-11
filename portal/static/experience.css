@@ -9,7 +9,11 @@
    navigation in normal flex flow avoids fixed-bottom focus/scroll jumps. */
 @media(max-width:720px){
  html.portal-active,html.portal-active body{height:100%;overflow:hidden;overscroll-behavior:none}
- html.portal-active #application{position:fixed;top:var(--app-top,0px);left:0;right:0;height:var(--app-height,100dvh);display:flex;flex-direction:column;overflow:hidden}
+ /* Installed iOS apps can under-report visualViewport.height by their safe
+    areas even without a keyboard. Use the full CSS viewport at rest; only
+    follow the visual viewport while an editor's keyboard is actually open. */
+ html.portal-active #application{position:fixed;top:0;left:0;right:0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+ html.portal-active.keyboard-open #application{top:var(--app-top,0px);height:var(--app-height,100vh)}
  html.portal-active .workspace{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;width:100%}
  html.portal-active .workspace>.topbar{flex-shrink:0;padding:calc(16px + var(--safe-top,env(safe-area-inset-top,0px))) 20px 16px}
  html.portal-active .workspace>main{flex:1;min-height:0;width:100%;overflow-y:auto;overscroll-behavior-y:contain;padding-bottom:24px;scroll-padding-block:20px}

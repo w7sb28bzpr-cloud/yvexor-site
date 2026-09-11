@@ -1,0 +1,48 @@
+.solution-doors{position:relative;max-width:1120px;padding-top:5rem;padding-bottom:5rem;isolation:isolate}
+.solution-doors:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 85% 25%,#0067d51a,transparent 55%)}
+.solution-doors-heading{margin:0 0 2.2rem;padding-inline:1rem}
+.solution-doors-heading .eyebrow{font-size:.85rem;letter-spacing:.09em;color:#28baff;margin-bottom:.6rem}
+.solution-doors-heading h2{margin:0;font-size:clamp(2rem,4.8vw,3.7rem);font-weight:800;line-height:1.08;letter-spacing:-.045em;color:#f5f7fa}
+.solution-doors-heading h2 span{color:#00a7ff}
+.solution-doors-heading>p:last-child{margin:1rem 0 0;color:#aab7c8;font-size:1.05rem;line-height:1.5}
+.solution-doors-list{display:grid;gap:.75rem}
+.solution-door{position:relative;isolation:isolate;display:flex;align-items:center;gap:1.4rem;min-height:190px;padding:1.6rem 3.5rem 1.6rem 1.6rem;overflow:hidden;border:1px solid #075389;border-radius:28px;background:#031222;transition:border-color .2s,box-shadow .2s}
+.solution-door-featured{border-color:#008dff;box-shadow:0 0 26px #0083ff25,inset 0 0 28px #007dff12}
+.solution-door:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#021325 0%,#031426fa 31%,#031426eb 46%,#0314264a 65%,#03142612 84%,#020e1bd9 100%),linear-gradient(0deg,#031222a6,transparent 42%,#03122233)}
+.solution-door-photo{position:absolute;z-index:-2;right:0;top:0;width:59%;height:100%;object-fit:cover;object-position:center;mask-image:linear-gradient(90deg,transparent,#000 28%);filter:brightness(.8) saturate(.85);transition:transform .65s ease}
+.solution-door-restaurant .solution-door-photo{object-position:50% 44%}
+.solution-door-logiciel .solution-door-photo{object-position:70% 50%}
+.solution-door-badge{align-self:flex-start;flex-shrink:0;width:58px;padding-top:.05rem;color:#00b7ff}
+.solution-door-badge>span{display:block;font-size:.8rem;margin-bottom:.3rem;font-weight:650}
+.solution-door-badge>div{display:grid;place-items:center;width:58px;height:58px;border:1px solid #0068a5;border-radius:17px;color:#e0efff;background:linear-gradient(135deg,#054578,#001124 70%);box-shadow:inset 0 0 14px #0089ff24,0 0 18px #007dff12}
+.solution-door-badge svg{width:31px;height:31px;filter:drop-shadow(0 0 5px #75bfff66)}
+.solution-door-copy{width:52%;position:relative;z-index:1}
+.solution-door-copy h3{margin:0 0 .5rem;font-size:1.4rem;font-weight:750;letter-spacing:-.02em;line-height:1.2;color:#f5f8ff}
+.solution-door-copy p{max-width:390px;margin:0;color:#b9c6d8;font-size:1rem;line-height:1.45}
+.solution-door-discover{display:inline-flex;align-items:center;gap:.55rem;min-height:34px;margin-top:.8rem;padding:.3rem .8rem;border:1px solid #34556f;border-radius:999px;font-size:.85rem;font-weight:650;background:linear-gradient(110deg,#183b59aa,#031324cc);box-shadow:inset 0 1px 7px #aad5ff1a;color:#ecf6ff}
+.solution-door-featured .solution-door-discover{border-color:#008bea;background:linear-gradient(100deg,#0066b9bb,#002846cc)}
+.solution-door-discover svg{width:18px;height:18px;fill:none;stroke:#7ad6ff;stroke-width:1.6}
+.solution-door-chevron{position:absolute;right:1.3rem;top:50%;transform:translateY(-50%);color:#00b4ff}
+.solution-door-chevron svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:2}
+.solution-door:hover,.solution-door:focus-visible{border-color:#1dbaff;box-shadow:0 0 24px #008cff30}
+@media(hover:hover){.solution-door:hover .solution-door-photo{transform:scale(1.035)}}
+.solution-network-diagram{position:absolute;z-index:-2;right:3%;width:42%;top:0;height:100%;background:radial-gradient(ellipse at 50% 70%,#0056a74d,transparent 65%)}
+.solution-network-links{position:absolute;width:100%;height:100%;fill:none;stroke:#1395ff;stroke-width:1;filter:drop-shadow(0 0 5px #009dff)}
+.solution-network-diagram>span{position:absolute;display:grid;place-items:center;width:62px;height:62px;border:1px solid #1268a6;border-radius:20px;background:linear-gradient(140deg,#093461,#06101e);box-shadow:0 0 22px #048bff33;color:#aad6ff;transform:translate(-50%,-50%)}
+.solution-network-diagram>span svg{width:32px;height:32px}.network-printer{left:22%;top:28%}.network-phone{left:78%;top:28%}.network-cloud{left:50%;top:70%}
+.solution-other-doors{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:1.4rem 0 0}
+.solution-other-doors a{display:flex;align-items:center;gap:.7rem;min-height:44px;padding:.55rem .85rem;border:1px solid #1b3d57;border-radius:12px;font-size:.85rem;color:#bfd3e9;background:#071625}
+.solution-other-doors a:hover{border-color:#20b6ff}.solution-other-doors span{color:#28baff}
+.solution-photos-note{color:#8b9caf;font-size:.75rem;text-align:center;margin:1.2rem auto 0;max-width:640px}
+@media(max-width:600px){
+ .solution-doors{padding:3.5rem .85rem}.solution-doors-heading{padding-inline:.35rem;margin-bottom:1.5rem}.solution-doors-heading .eyebrow{font-size:.75rem;letter-spacing:.055em}
+ .solution-doors-heading h2{font-size:clamp(1.85rem,7.2vw,2.7rem)}.solution-doors-heading>p:last-child{font-size:1rem}
+ .solution-doors-list{gap:.6rem}.solution-door{min-height:175px;border-radius:22px;padding:1rem 1.65rem 1rem .85rem;gap:.7rem;align-items:flex-start}
+ .solution-door-badge{width:37px}.solution-door-badge>div{width:37px;height:42px;border-radius:12px}.solution-door-badge svg{width:23px;height:23px}.solution-door-badge>span{font-size:.75rem}
+ .solution-door-copy{width:calc(100% - 44px);padding-top:.3rem}.solution-door-copy h3{font-size:1.06rem;max-width:95%;margin-bottom:.5rem}.solution-door-copy p{font-size:.875rem;max-width:78%;line-height:1.4}
+ .solution-door-photo{width:60%;filter:brightness(.68) saturate(.85)}.solution-door:after{background:linear-gradient(90deg,#021325 0%,#031426fa 21%,#031426e6 40%,#031426a3 61%,#03142633 85%,#020e1bbf 100%)}
+ .solution-door-discover{font-size:.8rem;min-height:32px;margin-top:.65rem;padding:.25rem .65rem}.solution-door-chevron{right:.4rem}.solution-door-chevron svg{width:21px;height:21px}
+ .solution-network-diagram{width:54%;right:0}.solution-network-diagram>span{width:42px;height:42px;border-radius:13px}.solution-network-diagram>span svg{width:24px;height:24px}
+ .solution-other-doors{justify-content:flex-start}.solution-other-doors a{font-size:.8rem}.solution-photos-note{text-align:left;font-size:.75rem}
+}
+@media(prefers-reduced-motion:reduce){.solution-door,.solution-door-photo{transition:none}.solution-door:hover .solution-door-photo{transform:none}}

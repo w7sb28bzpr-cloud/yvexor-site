@@ -3,6 +3,7 @@ import "./globals.css";
 import "./star-sky.css";
 import "./bespoke.css";
 import "./visual-home.css";
+import "./solution-doors.css";
 import { StarSky } from "../components/star-sky";
 import { PwaRegister } from "../components/pwa-register";
 

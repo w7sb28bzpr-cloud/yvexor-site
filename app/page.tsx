@@ -6,10 +6,9 @@ import { ConnectedEcosystem } from "../components/connected-ecosystem";
 import { FuturisticEffects } from "../components/futuristic-effects";
 import { MobileTabBar, SiteHeader } from "../components/navigation";
 import { SmsLink } from "../components/sms-link";
-import { ActionLink, ChevronIcon, SectionHeading } from "../components/ui";
+import { ActionLink, SectionHeading } from "../components/ui";
+import { SolutionDoors } from "../components/solution-doors";
 import { collaborationModels, existingSolutions, solutionOffers } from "../data/public-offer";
-
-const doors = ["Caisse & Commerce", "Restauration", "Site & présence web", "Application métier", "IA & automatisation", "Systèmes connectés", "Autre besoin"];
 
 const reasons = [
   ["01", "Une relation directe", "Vous parlez à des personnes qui comprennent réellement le projet et ses contraintes."],
@@ -24,7 +23,7 @@ export default function Home() {
   return <><FuturisticEffects/><SiteHeader/><main>
     <VisualHero/>
 
-    <section className="section direct-doors" id="solutions"><SectionHeading eyebrow="Vous savez déjà ce qu’il vous faut ?" title="Accédez directement à votre point de départ." intro="Ces accès sont des portes d’entrée, jamais des limites."/><div className="door-grid">{doors.map((door, index) => <a href={index < 2 ? `#${index === 0 ? "caisse-commerce" : "restauration"}` : "#sur-mesure"} key={door} className={index === 0 ? "door-featured" : ""}><span>0{index + 1}</span><strong>{door}</strong><ChevronIcon/></a>)}</div></section>
+    <SolutionDoors/>
 
     <section className="section existing-section" id="solutions-yvexor"><SectionHeading eyebrow="Solutions YVEXOR disponibles" title="Une base existe peut-être déjà pour votre besoin." intro="Avant de concevoir un nouveau logiciel, nous regardons ce qui peut être configuré, adapté ou complété."/><div className="existing-grid">{existingSolutions.map((solution, index) => <article className={`existing-card ${index === 0 ? "existing-primary" : ""}`} id={solution.id === "yvexor-pos" ? "caisse-commerce" : "restauration"} key={solution.id}><div className="solution-labels"><span>Solution disponible</span>{solution.adaptable && <span>Adaptable</span>}</div><h3>{solution.name}</h3>{"startingPriceLabel" in solution && <strong className="existing-price">{solution.startingPriceLabel}</strong>}<p className="existing-lead">{solution.problem}</p><p>{solution.clients}</p><div className="capability-cloud" aria-label={`Fonctions possibles de ${solution.name}`}>{solution.capabilities.map(capability => <span key={capability}>{capability}</span>)}</div><p className="configuration-note">Selon la configuration, la solution peut intégrer ces fonctions. Le matériel, les options et la mise en service sont étudiés selon le besoin.</p><div className="model-line">{solution.models.map(model => <span key={model}>{model}</span>)}</div><ActionLink href="#assistant" className={index === 0 ? "primary" : "secondary"}>{solution.cta}</ActionLink></article>)}</div></section>
 

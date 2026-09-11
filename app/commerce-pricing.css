@@ -1,0 +1,8 @@
+.commerce-pricing{background:#05090f;color:#f2f8ff;border-radius:24px;padding:2rem 1rem}.commerce-pricing h2,.commerce-pricing h3{color:#f2f8ff}
+.commerce-pricing>h2{font-size:clamp(2rem,5vw,4rem);line-height:1.08;margin:.5rem 0 1rem;letter-spacing:-.04em}
+.commerce-pricing p{color:#b5c3d4}.commerce-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+.commerce-plan{display:flex;flex-direction:column;min-width:0;padding:1.7rem;border:1px solid #1c547d;border-radius:24px;background:linear-gradient(145deg,#0b213a,#080e18)}
+.commerce-plan h3{font-size:1.7rem;margin:0}.commerce-price span{display:block;font-size:.9rem}.commerce-price strong{display:block;color:#f2f8ff;font-size:3.6rem;letter-spacing:-.06em;line-height:1.2}
+.commerce-plan ul{padding-left:1.1rem;color:#c3d3e5;margin-bottom:2rem}.commerce-plan li{margin:.7rem 0}.commerce-plan .action-link{margin-top:auto;text-align:center;justify-content:center;white-space:normal}
+.commerce-terms{padding:2rem;border:1px solid #24364d;border-radius:24px;background:#09111b}.commerce-terms h3{font-size:1.5rem}.commerce-terms p{max-width:900px}.commerce-terms .action-link{text-align:center;white-space:normal}
+@media(max-width:800px){.commerce-plans{grid-template-columns:1fr}.commerce-plan,.commerce-terms{padding:1.4rem}.commerce-price strong{font-size:4rem}}

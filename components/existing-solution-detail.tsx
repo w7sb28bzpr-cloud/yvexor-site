@@ -1,5 +1,6 @@
 import { existingSolutions } from "../data/public-offer";
 import { SmsLink } from "./sms-link";
+import { CommercePricing } from "./commerce-pricing";
 
 export function ExistingSolutionDetail({restaurant=false}:{restaurant?:boolean}) {
   const solution=existingSolutions[restaurant?1:0];
@@ -16,6 +17,7 @@ export function ExistingSolutionDetail({restaurant=false}:{restaurant?:boolean})
       <SmsLink className="action-link primary">{solution.cta} →</SmsLink>
       <p className="configuration-note">Photo d’illustration, non contractuelle : elle ne représente pas nécessairement le logiciel ou le matériel proposé.</p>
     </article>
+    {!restaurant&&<CommercePricing/>}
     <a href="/#solutions" className="action-link secondary" style={{marginTop:"24px"}}>← Toutes les solutions</a>
   </section>;
 }

@@ -1,7 +1,18 @@
-.teaser { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:28px; align-items:center; margin-top:40px; padding:30px 0 0; border-top:1px solid #254259; }
-.teaser h3 { max-width:640px; margin:0 0 14px; font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.25; letter-spacing:-.025em; }
-.teaser p:not(:global(.eyebrow)) { max-width:650px; margin:0; color:#aebed0; font-size:1rem; }
-.link { padding-inline:0; color:#73ccff; text-align:left; justify-content:flex-start; }
+.teaser { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:48px; align-items:center; margin-top:48px; padding:clamp(24px,4vw,48px); border:1px solid #254259; border-radius:24px; background:radial-gradient(ellipse at 90% 50%,#09385b70,transparent 65%),linear-gradient(130deg,#0b1725,#070d15); }
+.copy {min-width:0}
+.teaser h3 { max-width:640px; margin:0 0 22px; font-size:clamp(1.9rem,3.3vw,2.8rem); line-height:1.12; letter-spacing:-.035em; text-wrap:balance; }
+.copy p:not(:global(.eyebrow)) { max-width:650px; margin:0 0 16px; color:#b3c4d6; font-size:1rem; line-height:1.75; }
+.link { padding-inline:0; color:#73ccff; text-align:left; justify-content:flex-start; min-height:48px; }
 .link:hover { color:white; }
 .link svg { flex-shrink:0; }
-@media(max-width:1000px) { .teaser {grid-template-columns:1fr;gap:16px} }
+.visual {margin:0;min-width:0}
+.visual figcaption {display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;color:#b4d4ec;font-size:.8125rem;letter-spacing:.06em;text-align:center}
+.visual figcaption b {font-size:1.4rem;font-weight:400;color:#5bcaff}
+.visual ol {list-style:none;padding:0;margin:22px auto 0;max-width:300px}
+.visual li {display:flex;flex-direction:column;align-items:center}
+.node {display:flex;align-items:center;gap:16px;width:100%;padding:11px 16px;border:1px solid #31546e;border-radius:12px;color:#e1effc;font-size:.9375rem;background:#0a1a2a}
+.node small {font-size:.75rem;color:#79afcf;letter-spacing:.1em}
+.connector {display:block;color:#61c9ff;font-size:1.125rem;line-height:1.5;padding:2px 0}
+.visual>p {text-align:center;font-size:.8125rem;color:#96b7d0;margin:18px 0 0}
+@media(max-width:900px) { .teaser {grid-template-columns:1fr;gap:28px}.visual{padding-top:24px;border-top:1px solid #234158}.visual ol{max-width:360px} }
+@media(max-width:420px) { .teaser {padding:22px 18px;border-radius:18px}.visual figcaption{gap:8px;font-size:.75rem}.link{font-size:.9375rem} }

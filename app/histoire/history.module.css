@@ -1,4 +1,4 @@
-.page { position:relative; z-index:2; background:var(--bg); padding:0 max(24px,env(safe-area-inset-right)) 80px max(24px,env(safe-area-inset-left)); }
+.page { position:relative; z-index:2; background:var(--bg); padding:0 max(24px,env(safe-area-inset-right)) 80px max(24px,env(safe-area-inset-left)); overflow-wrap:anywhere; hyphens:auto; }
 .hero,.chapter { max-width:1120px; margin:auto; }
 .hero { padding:130px 0 32px; }
 .heroTop { display:flex; justify-content:space-between; gap:20px; padding-bottom:34px; color:#91a6bc; font-size:.875rem; }
@@ -9,7 +9,7 @@
 .hero h1 em { color:#67caff; font-style:normal; }
 .heroBottom { display:grid; grid-template-columns:1.4fr 1fr; align-items:center; gap:80px; padding:32px 0; }
 .heroBottom p,.copy p { font-size:1.0625rem; color:#b4c1d0; line-height:1.8; }
-.worlds { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; padding:30px 0; text-transform:uppercase; letter-spacing:.14em; font-size:.875rem; border-block:1px solid #173146; text-align:center; background:radial-gradient(ellipse at center,#08315180,transparent 70%); }
+.worlds { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:20px; padding:30px 0; text-transform:uppercase; letter-spacing:.14em; font-size:.875rem; border-block:1px solid #173146; text-align:center; background:radial-gradient(ellipse at center,#08315180,transparent 70%); overflow-wrap:anywhere; min-width:0; }
 .worlds b { color:#55caff; font-size:2.2rem; font-weight:400; transform:rotate(90deg); }
 .chapter { padding:44px 0; border-top:1px solid #1a2b3a; }
 .copy { max-width:700px; margin:auto; }

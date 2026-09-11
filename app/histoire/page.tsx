@@ -6,8 +6,8 @@ import { BrandLogo } from "../../components/brand-logo";
 import { ActionLink } from "../../components/ui";
 import styles from "./history.module.css";
 
-const title = "Histoire de YVEXOR — Du monde physique aux systèmes connectés";
-const description = "Découvrez la vision à l’origine de YVEXOR : connecter logiciels, automatisations, équipements et systèmes pour construire des solutions adaptées aux besoins réels des entreprises.";
+const title = "L’approche YVEXOR — Au-delà du logiciel";
+const description = "Découvrez l’approche YVEXOR : connecter logiciels, automatisations, IA, équipements et systèmes pour construire des solutions adaptées aux besoins réels des entreprises.";
 export const metadata: Metadata = {
   title, description, alternates: { canonical: "https://yvexor.com/histoire/" },
   openGraph: { title, description, url: "https://yvexor.com/histoire/", siteName: "YVEXOR", type: "article", images: ["https://yvexor.com/yvexor-social-v1.jpg"] },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 export default function HistoryPage() {
   return <><SiteHeader root/><main className={styles.page} id="histoire">
     <header className={styles.hero}>
-      <div className={styles.heroTop}><a href="/#yvexor">YVEXOR / Notre histoire</a><span>Une vision, avant les outils</span></div>
-      <p className={styles.label}>L’histoire YVEXOR</p>
+      <div className={styles.heroTop}><a href="/#yvexor">YVEXOR / Notre approche</a><span>Au-delà du logiciel</span></div>
+      <p className={styles.label}>L’approche YVEXOR</p>
       <h1>Et si quelque chose qui n’a jamais été connecté <em>pouvait le devenir ?</em></h1>
       <div className={styles.heroBottom}><p>YVEXOR n’est pas né avec l’idée de créer un logiciel de plus. À l’origine, il y avait surtout une curiosité : comprendre comment les choses fonctionnent, les modifier et chercher comment leur faire faire davantage.</p><div className={styles.worlds} aria-label="Le monde physique et le monde numérique peuvent échanger"><span>Physique</span><b aria-hidden="true">↕</b><span>Numérique</span></div></div>
     </header>

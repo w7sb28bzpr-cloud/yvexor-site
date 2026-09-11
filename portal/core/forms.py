@@ -1,7 +1,23 @@
 from django import forms
 from django.conf import settings
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import User, Request, Project
+
+
+class CompactPasswordChangeForm(PasswordChangeForm):
+    """Presentation only; Django keeps all password validation and save logic."""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        labels = {'old_password': 'Ancien mot de passe', 'new_password1': 'Nouveau mot de passe',
+                  'new_password2': 'Confirmer le nouveau mot de passe'}
+        for name, field in self.fields.items():
+            field.label = labels[name]
+            field.help_text = ''
+            field.widget.attrs.update({'autocomplete': 'current-password' if name == 'old_password' else 'new-password',
+                'autocapitalize': 'none', 'spellcheck': 'false', 'autocorrect': 'off',
+                'enterkeyhint': 'done' if name == 'new_password2' else 'next'})
+        self.fields['new_password1'].widget.attrs.update({'minlength': 12, 'aria-describedby': 'password-checklist password-security-note'})
 
 
 class SignupForm(forms.ModelForm):
@@ -46,7 +62,7 @@ class RequestForm(forms.ModelForm):
         model = Request
         fields = ['category', 'title', 'body', 'budget', 'timeline', 'details']
         labels = {'title': 'Un titre pour votre idée', 'body': 'Quel est votre besoin ?', 'details': 'Précisions : délais, contexte, budget souhaité (facultatif)'}
-        widgets = {'body': forms.Textarea(attrs={'rows': 7, 'placeholder': 'Je voudrais créer un site, améliorer mon application…'}), 'details': forms.Textarea(attrs={'rows': 3})}
+        widgets = {'title': forms.TextInput(attrs={'enterkeyhint': 'next'}), 'body': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Je voudrais créer un site, améliorer mon application…', 'enterkeyhint': 'enter'}), 'details': forms.Textarea(attrs={'rows': 3, 'enterkeyhint': 'enter'})}
 
     def clean(self):
         data = super().clean()

@@ -12,7 +12,6 @@ from django import forms
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
@@ -23,7 +22,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_POST, require_GET
 from django_otp.plugins.otp_totp.models import TOTPDevice
-from .forms import LoginForm, SignupForm, RequestForm, MessageForm, ProjectForm
+from .forms import LoginForm, SignupForm, RequestForm, MessageForm, ProjectForm, CompactPasswordChangeForm
 from .models import User, Organization, Membership, Request, Project, Message, AuditEvent, LoginAttempt, OwnerInvite
 from .services import notify_team, notify_client
 
@@ -394,7 +393,7 @@ def client_detail(request, pk):
 
 @portal_required
 def account(request):
-    form = PasswordChangeForm(request.user, request.POST or None)
+    form = CompactPasswordChangeForm(request.user, request.POST or None)
     if request.method == 'POST':
         throttled = limited(request, 'password-change', str(request.user.pk))
         if form.is_valid() and not throttled:

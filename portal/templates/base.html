@@ -1,5 +1,12 @@
 {% load static %}<!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#030c16"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="robots" content="noindex,nofollow"><title>YVEXOR · {% if team %}Admin{% else %}Espace client{% endif %}</title><link rel="icon" href="{% static 'icon.svg' %}"><link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}"><link rel="manifest" href="/manifest-{% if team or request.user.is_staff or admin_surface %}admin{% else %}client{% endif %}.webmanifest"><link rel="stylesheet" href="{% static 'portal.css' %}"><link rel="stylesheet" href="{% static 'experience.css' %}"><script defer src="{% static 'portal.js' %}"></script></head>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=contain">
+<meta name="theme-color" content="#030c16"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="robots" content="noindex,nofollow"><title>YVEXOR · {% if team %}Admin{% else %}Espace client{% endif %}</title><link rel="icon" href="{% static 'icon.svg' %}"><link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}"><link rel="manifest" href="/manifest-{% if team or request.user.is_staff or admin_surface %}admin{% else %}client{% endif %}.webmanifest">
+<link rel="stylesheet" href="{% static 'portal.css' %}"><link rel="stylesheet" href="{% static 'experience.css' %}?v=mobile4">
+<link rel="stylesheet" href="{% static 'mobile-layout.css' %}">
+<script defer src="{% static 'portal.js' %}?v=mobile4"></script><script defer src="{% static 'mobile-layout.js' %}"></script></head>
 <body class="{% if chat_mode %}chat-page{% endif %}">
 {% include 'install_guide.html' %}
 <div id="application">

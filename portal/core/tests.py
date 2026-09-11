@@ -273,6 +273,32 @@ class PortalTests(TestCase):
         self.assertEqual(self.client.get('/client/').status_code, 200)
         self.assertEqual(other.get('/client/').status_code, 302)
 
+    def test_compact_password_form_preserves_django_validation(self):
+        from django.contrib.auth.forms import PasswordChangeForm
+        from .forms import CompactPasswordChangeForm
+        for password in ['short', '123456789012345', 'password123456', 'a@example.com', 'NewStrongSecret!2030']:
+            payload = {'old_password': 'secure-long-password', 'new_password1': password, 'new_password2': password}
+            original = PasswordChangeForm(self.a, payload)
+            compact = CompactPasswordChangeForm(self.a, payload)
+            self.assertEqual(compact.is_valid(), original.is_valid())
+            self.assertEqual(compact.errors.as_data().keys(), original.errors.as_data().keys())
+        for old, confirmation in [('wrong', 'NewStrongSecret!2030'), ('secure-long-password', 'different')]:
+            form = CompactPasswordChangeForm(self.a, {'old_password': old,
+                'new_password1': 'NewStrongSecret!2030', 'new_password2': confirmation})
+            self.assertFalse(form.is_valid())
+
+    def test_mobile_account_password_presentation(self):
+        self.client.force_login(self.a)
+        response = self.client.get('/account/')
+        self.assertContains(response, 'La modification déconnectera vos autres appareils.')
+        self.assertContains(response, 'autocomplete="current-password"', count=1)
+        self.assertContains(response, 'autocomplete="new-password"', count=2)
+        self.assertContains(response, 'data-password-eye', count=3)
+        self.assertContains(response, 'mobile-layout.js')
+        self.assertContains(response, 'viewport-fit=contain')
+        self.assertNotContains(response, 'black-translucent')
+        self.assertNotContains(response, 'Ce mot de passe est trop court.')
+
     @override_settings(SESSION_COOKIE_SECURE=True)
     def test_secure_cookie_flags(self):
         response = self.client.post('/auth/login/', {'email':'a@example.com','password':'secure-long-password','remember':'on'})

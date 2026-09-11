@@ -10,41 +10,21 @@ function updateGate() {
   document.documentElement.classList.toggle('portal-active', !needsInstall && !!app.querySelector('.workspace'));
 }
 updateGate();
-// One viewport owner: mobile chrome stays outside the scrolling content. iOS
-// can pan its visual viewport as well as resize it when the keyboard opens.
-(() => {
-  const root = document.documentElement, viewport = window.visualViewport;
-  let frame;
-  function layout() {
-    frame = null;
-    // Do not counteract the user's pinch zoom with a smaller application layout.
-    if (viewport && Math.abs(viewport.scale - 1) > 0.05) return;
-    root.style.setProperty('--app-height', (viewport?.height || window.innerHeight) + 'px');
-    root.style.setProperty('--app-top', (viewport?.offsetTop || 0) + 'px');
-    const editing = document.activeElement?.matches('input, textarea, [contenteditable="true"]');
-    root.classList.toggle('keyboard-open', !!editing && window.innerHeight - (viewport?.height || window.innerHeight) > 120);
-    window.dispatchEvent(new Event('portal:viewport'));
-  }
-  function schedule() { if (!frame) frame = requestAnimationFrame(layout); }
-  viewport?.addEventListener('resize', schedule);
-  viewport?.addEventListener('scroll', schedule);
-  window.addEventListener('resize', schedule);
-  window.addEventListener('pageshow', schedule);
-  document.addEventListener('focusin', schedule);
-  document.addEventListener('focusout', schedule);
-  layout();
-})();
 const platform = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ? 'ios' : /Android/.test(navigator.userAgent) ? 'android' : 'desktop';
 document.querySelectorAll('[data-platform]').forEach(guide => { guide.open = guide.dataset.platform === platform; });
 document.querySelectorAll('[data-password-toggle]').forEach(button => {
   const input = document.getElementById(button.dataset.passwordToggle);
   if (!input) return;
   button.hidden = false;
+  if (button.hasAttribute('data-password-eye')) button.addEventListener('pointerdown', event => event.preventDefault());
   button.addEventListener('click', () => {
     const show = input.type === 'password';
     input.type = show ? 'text' : 'password';
-    button.textContent = show ? 'Masquer le mot de passe' : 'Afficher le mot de passe';
+    if (button.hasAttribute('data-password-eye')) {
+      button.setAttribute('aria-label', (show ? 'Masquer : ' : 'Afficher : ') + input.labels[0].textContent.trim());
+    } else button.textContent = show ? 'Masquer le mot de passe' : 'Afficher le mot de passe';
     button.setAttribute('aria-pressed', String(show));
+    if (button.hasAttribute('data-password-eye')) input.focus({preventScroll:true});
   });
 });
 window.matchMedia('(display-mode: standalone)').addEventListener('change', updateGate);

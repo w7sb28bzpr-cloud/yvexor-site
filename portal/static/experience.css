@@ -4,25 +4,3 @@
 @media(min-width:1101px){.topbar-brand{font-size:1rem}.topbar-brand small{display:none}}
 @media(max-width:1000px){.client-home-grid{grid-template-columns:1fr}.client-resources{grid-template-columns:1fr}.client-resources a{padding:15px 18px}.client-home-grid>.panel{padding:20px}}
 @media(max-width:720px){.topbar{padding:18px 20px;background:linear-gradient(115deg,#041524,#061c32)}.topbar-brand{font-size:1.5rem;letter-spacing:.12em}.topbar-tools{gap:12px}.topbar .identity>span:last-child{display:none}.topbar .avatar{width:40px;height:40px;font-size:.95rem}.workspace main{padding-top:24px}.client-welcome{min-height:200px;padding-top:8px}.client-welcome>div:first-child{max-width:90%}.client-welcome .eyebrow{letter-spacing:.22em}.client-welcome p:not(.eyebrow){font-size:1rem}.welcome-orbit{right:-250px;top:30px}.client-stats{gap:8px}.client-stats>a{padding:13px 10px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;border-radius:13px}.client-stats .metric-icon{width:34px;height:34px;border-radius:10px}.client-stats .metric-icon .ui-icon{width:20px;height:20px}.client-stats strong{font-size:1.6rem}.client-stats>a>span:last-child{font-size:.75rem}.client-actions{gap:10px;margin-bottom:23px}.client-actions .button{padding:15px 12px;gap:8px;font-size:.85rem;flex-wrap:wrap;min-height:100px}.client-actions .button>.ui-icon{width:24px;height:24px}.client-actions .button b{display:none}.client-actions .button small{font-size:.72rem}.client-home-grid{gap:0}.client-home-grid .section-heading h2{font-size:1.05rem}.focus-project{padding:14px;gap:12px}.focus-project .project-symbol{width:42px;height:48px;border-radius:12px}.focus-project .project-symbol .ui-icon{width:23px;height:23px}.focus-project small{font-size:.7rem}.activity-row strong{font-size:.875rem}.activity-row .metric-icon{width:35px;height:39px}.request-heading h1{font-size:2rem}.request-heading>p:last-child{font-size:1rem}.request-steps{gap:8px}.request-steps li{font-size:.7rem;gap:7px}.request-steps li>span{width:28px;height:28px}.request-panel{padding:18px 14px}.type-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.type-option>span{min-height:95px}.request-panel label{font-size:.9375rem}.choice-chips label span{font-size:.75rem;padding:10px 11px}.conversation-list{padding:0 15px}.conversation-link{gap:11px}.conversation-preview>strong{font-size:.9rem}.conversation-meta time{font-size:.65rem}.conversation-preview>span{font-size:.8125rem}.chat-avatar{width:43px;height:43px;flex-basis:43px}.chat-page .workspace>.topbar{display:none}.chat-page .workspace main{padding:0}.chat-shell{border:0;border-radius:0;height:var(--chat-height,100dvh)}.chat-header{padding:max(12px,env(safe-area-inset-top)) 12px 12px;gap:9px}.chat-header h1{font-size:1rem}.chat-header p{font-size:.7rem}.chat-header .chat-avatar{width:38px;height:38px;flex-basis:38px}.chat-contact{font-size:.7rem;max-width:45px}.chat-timeline{padding:20px 14px}.chat-bubble{max-width:86%;padding:10px 14px}.chat-composer{padding:10px 12px max(12px,env(safe-area-inset-bottom))}.chat-empty{margin-top:12vh}.chat-body{font-size:1rem}}
-.topbar{padding-top:calc(16px + env(safe-area-inset-top,0px))}
-/* Mobile app frame: only main (or the conversation timeline) scrolls. Keeping
-   navigation in normal flex flow avoids fixed-bottom focus/scroll jumps. */
-@media(max-width:720px){
- html.portal-active,html.portal-active body{height:100%;overflow:hidden;overscroll-behavior:none}
- /* Installed iOS apps can under-report visualViewport.height by their safe
-    areas even without a keyboard. Use the full CSS viewport at rest; only
-    follow the visual viewport while an editor's keyboard is actually open. */
- html.portal-active #application{position:fixed;top:0;left:0;right:0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
- html.portal-active.keyboard-open #application{top:var(--app-top,0px);height:var(--app-height,100vh)}
- html.portal-active .workspace{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;width:100%}
- html.portal-active .workspace>.topbar{flex-shrink:0;padding:calc(16px + var(--safe-top,env(safe-area-inset-top,0px))) 20px 16px}
- html.portal-active .workspace>main{flex:1;min-height:0;width:100%;overflow-y:auto;overscroll-behavior-y:contain;padding-bottom:24px;scroll-padding-block:20px}
- html.portal-active .mobile-nav{position:static;flex-shrink:0;padding:5px 3px max(6px,var(--safe-bottom,env(safe-area-inset-bottom,0px)))}
- html.portal-active.keyboard-open .mobile-nav{display:none}
- html.portal-active .chat-page .workspace>main{padding:0;overflow:hidden;display:flex;flex-direction:column}
- html.portal-active .chat-shell{height:auto;max-height:none;min-height:0;flex:1}
- html.portal-active .chat-header{padding-top:calc(12px + var(--safe-top,env(safe-area-inset-top,0px)))}
- html.portal-active .chat-composer{padding-bottom:calc(12px + var(--safe-bottom,env(safe-area-inset-bottom,0px)))}
- html.portal-active.keyboard-open .chat-composer{padding-bottom:12px}
- html.portal-active .chat-timeline{overflow-anchor:none;-webkit-overflow-scrolling:touch}
-}

@@ -1,5 +1,5 @@
 import { ActivityExamples } from "../components/activity-examples";
-import { AssistantYvexor } from "../components/assistant-yvexor";
+import { VisualHero } from "../components/visual-hero";
 import { BrandLogo } from "../components/brand-logo";
 import { BudgetSection } from "../components/budget-section";
 import { ConnectedEcosystem } from "../components/connected-ecosystem";
@@ -22,7 +22,7 @@ const reasons = [
 
 export default function Home() {
   return <><FuturisticEffects/><SiteHeader/><main>
-    <section className="hero hero-with-assistant" id="accueil"><div className="hero-orbit" aria-hidden="true"><i/><i/><i/></div><div className="hero-content"><div className="hero-stellar-halo" aria-hidden="true"><i/><i/><i/></div><p className="eyebrow">YVEXOR · Logiciels sur mesure & systèmes connectés</p><h1><span className="hero-line-one">Votre besoin. Votre idée.</span><br/><span className="hero-line-two">Construisons la solution.</span></h1><p className="hero-copy">Nous concevons des logiciels et applications sur mesure pour améliorer votre activité ou lancer un nouveau service. Une base existe peut-être déjà : nous pouvons l’adapter, la connecter ou développer ce qui manque.</p><a className="hero-project-link" href="#exemples">De la location en libre-service à votre propre plateforme : voir les possibilités →</a></div><div className="hero-assistant" id="assistant"><AssistantYvexor/></div></section>
+    <VisualHero/>
 
     <section className="section direct-doors" id="solutions"><SectionHeading eyebrow="Vous savez déjà ce qu’il vous faut ?" title="Accédez directement à votre point de départ." intro="Ces accès sont des portes d’entrée, jamais des limites."/><div className="door-grid">{doors.map((door, index) => <a href={index < 2 ? `#${index === 0 ? "caisse-commerce" : "restauration"}` : "#sur-mesure"} key={door} className={index === 0 ? "door-featured" : ""}><span>0{index + 1}</span><strong>{door}</strong><ChevronIcon/></a>)}</div></section>
 

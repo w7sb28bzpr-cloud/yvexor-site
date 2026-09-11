@@ -18,7 +18,7 @@ const solutions = [
   { title: "Caisse & Commerce", description: "Solutions de caisse, gestion des ventes, stocks, clients et statistiques.", icon: "cart", image: "commerce", href: "/logiciel-caisse-marseille/" },
   { title: "Restauration", description: "Tables, commandes, cuisine, réservations et fidélité selon vos besoins.", icon: "restaurant", image: "restaurant", href: "/solutions-restaurants/" },
   { title: "Hôtels & Hébergement", description: "Réservations, séjour, équipes et chambres connectées : un ensemble adapté à votre établissement.", icon: "bed", image: "hotel", href: "/solutions-hotels/" },
-  { title: "Domotique & Bâtiments", description: "Automatisation, confort et pilotage à distance de vos équipements.", icon: "home", image: "maison", href: "#ecosysteme" },
+  { title: "Domotique & Bâtiments", description: "Lumières, accès, confort et énergie : des scénarios pensés autour de votre lieu.", icon: "home", image: "maison", href: "/domotique-batiments/" },
   { title: "Applications métier", description: "Web, iPhone ou Android : vos outils métier, avec publication sur les stores selon le projet.", icon: "apps", image: "logiciel", href: "/applications-metier/" },
   { title: "Systèmes connectés", description: "Relier logiciels, messages, API et équipements, jusqu’au suivi de votre flotte.", icon: "network", image: null, href: "/systemes-connectes/" },
   { title: "Site & présence web", description: "Présenter votre activité, recevoir des demandes ou proposer un service en ligne.", icon: "apps", image: "logiciel", href: "/site-presence-web/" },

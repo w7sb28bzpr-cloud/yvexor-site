@@ -11,7 +11,7 @@ import type { SeoPage as SeoPageData } from "../data/seo-pages";
 export function SeoPage({page}:{page:SeoPageData}){
   const automation=page.slug==="automatisation-entreprise";
   const detail=!page.kind&&!["mentions-legales","politique-confidentialite"].includes(page.slug);
-  const artwork=page.slug==="logiciel-caisse-marseille"?"solution-commerce-v1.webp":page.slug==="solutions-restaurants"?"solution-restaurant-v1.webp":page.slug==="solutions-hotels"?"solution-hotel-v1.webp":page.slug.includes("ia")||page.slug.includes("intelligence")?"yvexor-automation-768-v1.webp":"solution-logiciel-v1.webp";
+  const artwork=page.slug==="domotique-batiments"?"solution-maison-v1.webp":page.slug==="logiciel-caisse-marseille"?"solution-commerce-v1.webp":page.slug==="solutions-restaurants"?"solution-restaurant-v1.webp":page.slug==="solutions-hotels"?"solution-hotel-v1.webp":page.slug.includes("ia")||page.slug.includes("intelligence")?"yvexor-automation-768-v1.webp":"solution-logiciel-v1.webp";
   return <><SiteHeader root/><main className={`seo-page${automation?" automation-page":""}${detail?" detail-page":""}`} id="contenu">
     <div className="detail-back-wrap"><BackLink/></div>
     <section className="seo-hero" id="accueil"><div className="seo-orbit" aria-hidden="true"/><nav className="seo-breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>{page.eyebrow}</span></nav><p className="eyebrow">{page.eyebrow}</p><h1>{page.title}</h1><p className="seo-lead">{page.intro}</p><div className="hero-actions"><SmsLink className="action-link primary">Présenter mon projet</SmsLink><SmsLink className="phone">SMS · 07 56 91 30 13</SmsLink></div></section>

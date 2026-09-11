@@ -15,3 +15,12 @@ Licence : https://www.pexels.com/license/ — utilisation sur un site commercial
 Ces images illustrent des secteurs d’activité. Elles ne sont ni des réalisations client YVEXOR, ni des captures du logiciel YVEXOR, ni une promesse concernant le matériel livré. Le composant affiche une mention non contractuelle.
 
 Le schéma « Systèmes connectés » et les pictogrammes sont des éléments SVG natifs du site. Aucune nouvelle image IA n’a été générée pour cette section.
+
+## Planète connectée et bandeau alpin
+
+- `public/yvexor-alpine-horizon-768-v1.webp` et `public/yvexor-alpine-horizon-1600-v1.webp` : Felix Mittermeier, https://www.pexels.com/photo/body-of-water-near-mountain-2832064/ (licence Pexels ci-dessus). Paysage illustratif, sans revendication d’implantation locale.
+- `public/yvexor-connected-earth-768-v1.webp` et `public/yvexor-connected-earth-1440-v1.webp` : illustration originale produite avec l’outil intégré image_gen, puis redimensionnée et compressée avec Sharp. Les connexions ne représentent pas un réseau réel de clients ou d’implantations YVEXOR.
+
+Prompt final utilisé :
+
+Use case: stylized-concept. Asset type: premium website hero artwork, standalone image, landscape 3:2. Create a cinematic photorealistic Earth seen from low orbit at night, Europe and the Mediterranean visible, France near the center of the illuminated visible region. A striking thin electric-blue atmospheric rim, realistic coastlines and city lights. Elegant luminous cyan and blue curved network arcs connect a few bright nodes across western Europe and extend toward the horizon. The planet occupies the right and lower portions, dark empty space at upper left; black navy background #05070a, all outer edges fade naturally to near-black. Powerful, sophisticated and spacious rather than busy. Restrained stars, deep ocean blues, delicate white-blue city lights, realistic cloud wisps. NO words, NO logos, NO labels, NO UI, NO devices, NO flags, NO country border outlines, NO infographic frame. This is a conceptual illustration of connectivity, not a real network map. Suitable for YVEXOR dark blue website, readable as an image on mobile.

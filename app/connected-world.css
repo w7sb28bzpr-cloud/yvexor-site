@@ -1,0 +1,17 @@
+.planet-hero{background:radial-gradient(ellipse at 82% 30%,#0076e71c,transparent 60%)}
+.planet-hero .visual-hero-grid{grid-template-columns:1fr 1.2fr;gap:0;max-width:1360px}
+.planet-hero .hero-product-visual{margin-left:-2rem}
+.connected-earth{position:relative;isolation:isolate}
+.connected-earth img{mask-image:linear-gradient(180deg,transparent,#000 10%,#000 82%,transparent);border-radius:24px}
+.earth-signal{position:absolute;border:1px solid #7dddff;border-radius:50%;width:22px;height:22px;transform:translate(-50%,-50%);box-shadow:0 0 16px #37bfff;pointer-events:none;animation:earthSignal 4s ease-out infinite}
+.earth-signal-one{left:59.4%;top:45.6%}.earth-signal-two{left:45.7%;top:60%;animation-delay:2s}
+@keyframes earthSignal{0%{opacity:.65;transform:translate(-50%,-50%) scale(.3)}75%,100%{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
+.final-cta.horizon-banner{position:relative;isolation:isolate;overflow:hidden;min-height:440px;padding:5.5rem max(1.5rem,calc((100vw - 1180px)/2));text-align:left;align-items:flex-start;background:#071423}
+.final-cta.horizon-banner>.horizon-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;z-index:-2}
+.horizon-banner:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#041121ee,#061322b3 52%,#0613223b),linear-gradient(0deg,#05070a,transparent 30%,#05070a66)}
+.final-cta.horizon-banner h2{max-width:760px;margin:.8rem 0 1.2rem;font-size:clamp(2.4rem,4.2vw,4rem);line-height:1.05;font-weight:800}
+.horizon-banner h2 span{color:#18bdff}.final-cta.horizon-banner p{max-width:650px;margin-left:0;margin-right:0;color:#c6d6e5}
+.final-cta.horizon-banner .eyebrow{color:#59d1ff;letter-spacing:.14em;font-size:.75rem}
+.horizon-banner .hero-actions{justify-content:flex-start}
+@media(max-width:820px){.planet-hero .visual-hero-grid{grid-template-columns:1fr;gap:2rem}.planet-hero .hero-product-visual{margin-inline:-1rem}.planet-hero .visual-caption-top{padding-inline:1rem}.final-cta.horizon-banner{min-height:480px;padding:4rem 1.25rem 5rem}.horizon-photo{object-position:65% center}.horizon-banner:before{background:linear-gradient(90deg,#041121dc,#06132265),linear-gradient(0deg,#05070a,transparent 45%,#05070a44)}.horizon-banner .hero-actions{width:100%}}
+@media(prefers-reduced-motion:reduce){.earth-signal{animation:none;opacity:0}}

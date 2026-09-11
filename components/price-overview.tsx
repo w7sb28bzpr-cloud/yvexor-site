@@ -1,7 +1,9 @@
-import { solutionOffers } from "../data/public-offer";
-
-const destinations:Record<string,string>={SITE_WEB:"/site-presence-web/",CAISSE_COMMERCE:"/logiciel-caisse-marseille/",IA_AUTOMATISATION:"/automatisation-entreprise/",APPLICATION_METIER:"/applications-metier/",SYSTEMES_CONNECTES:"/systemes-connectes/",PLATEFORME_SAAS:"/logiciel-sur-mesure/"};
-export function PriceOverview(){return <div id="sur-mesure" className="price-overview">
- <div className="price-highlights"><a href="/site-presence-web/"><span>Mini-site d’une page</span><strong>Dès 400 € HT</strong><p>Création et mise en ligne. Paiement en une fois possible ; services récurrents précisés séparément.</p><b>Voir le périmètre →</b></a><a href="/logiciel-caisse-marseille/"><span>Caisse & Commerce</span><strong>Dès 29 € HT/mois</strong><p>Encaissement pour un petit commerce à un poste, hors stock. Installation et matériel selon devis.</p><b>Comparer les formules →</b></a><a href="/contact/"><span>Votre projet sur mesure</span><strong>Sur devis</strong><p>Applications, IA, domotique ou systèmes connectés : une première étape adaptée au besoin.</p><b>Présenter mon projet →</b></a></div>
- <details className="audit-disclosure"><summary>Autres repères d’abonnement et services</summary><p>Ces montants concernent une formule d’utilisation ou des services définis, pas la création complète d’un logiciel. La mise en place, le développement et les coûts tiers sont précisés au devis.</p><div className="price-service-list">{solutionOffers.map(offer=><a href={destinations[offer.id]} key={offer.id}><strong>{offer.name}</strong><span>{offer.startingPriceLabel}</span><small>{offer.pricingDisclaimer}</small></a>)}</div></details>
- </div>}
+import { offerDestinations, solutionOffers } from "../data/public-offer";
+export function PriceOverview() {
+  return <div id="sur-mesure" className="price-overview">
+    <div className="price-highlights">{solutionOffers.map(offer => <a href={offerDestinations[offer.id]+"#tarifs"} key={offer.id}>
+      <span>{offer.name}</span><strong>{offer.startingPriceLabel}</strong><p>{offer.description}</p><b>Voir la formule et les détails →</b>
+    </a>)}</div>
+    <p className="audit-budget-note">Repères d’abonnement. La création, la mise en service et les éventuels frais tiers sont précisés dans chaque rubrique et au devis.</p>
+  </div>;
+}

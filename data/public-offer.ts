@@ -1,3 +1,5 @@
+export const offerDestinations: Record<string, string> = { SITE_WEB: "/site-presence-web/", CAISSE_COMMERCE: "/logiciel-caisse-marseille/", IA_AUTOMATISATION: "/automatisation-entreprise/", APPLICATION_METIER: "/applications-metier/", SYSTEMES_CONNECTES: "/systemes-connectes/", PLATEFORME_SAAS: "/logiciel-sur-mesure/" };
+
 export const existingSolutions = [
   {
     id: "yvexor-pos",

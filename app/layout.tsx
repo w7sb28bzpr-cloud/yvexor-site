@@ -9,6 +9,7 @@ import "./automation.css";
 import "./commerce-pricing.css";
 import "./detail-pages.css";
 import "./audit-refinements.css";
+import "./category-journeys.css";
 import { StarSky } from "../components/star-sky";
 import { PwaRegister } from "../components/pwa-register";
 

@@ -21,7 +21,7 @@ const solutions = [
   { title: "Domotique & Bâtiments", description: "Électricité et domotique de A à Z avec nos électriciens, ou adaptation de votre installation.", icon: "home", image: "maison", href: "/domotique-batiments/" },
   { title: "Applications métier", description: "Web, iPhone ou Android : vos outils métier, avec publication sur les stores selon le projet.", icon: "apps", image: "logiciel", href: "/applications-metier/" },
   { title: "Systèmes connectés", description: "Relier logiciels, messages, API et équipements, jusqu’au suivi de votre flotte.", icon: "network", image: null, href: "/systemes-connectes/" },
-  { title: "Site & présence web", description: "Présenter votre activité, recevoir des demandes ou proposer un service en ligne.", icon: "apps", image: "logiciel", href: "/site-presence-web/" },
+  { title: "Site & présence web", description: "Présenter votre activité, recevoir des demandes ou proposer un service en ligne.", icon: "apps", image: "web", href: "/site-presence-web/" },
   { title: "Automatisation & IA", description: "Messages, documents, données : relier vos outils et simplifier vos tâches selon vos règles.", icon: "network", image: "automation", href: "/automatisation-entreprise/" },
   { title: "Votre idée sur mesure", description: "Location, plateforme, nouveau service… Partons de votre idée, même si elle ne rentre dans aucune case.", icon: "cloud", image: "earth", href: "/logiciel-sur-mesure/" },
 ] as const;

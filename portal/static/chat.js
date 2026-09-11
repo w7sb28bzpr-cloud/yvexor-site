@@ -44,15 +44,20 @@
    input.value='';input.style.height='';form.elements.client_nonce.value=data.nonce;status.textContent='Envoyé';
    await sync();timeline.scrollTop=timeline.scrollHeight;await read();
   }catch(error){status.textContent=error.message||'Envoi impossible. Votre texte est conservé, réessayez.';}
-  finally{busy=false;send.disabled=false;input.readOnly=false;input.focus();}
+  finally{busy=false;send.disabled=false;input.readOnly=false;input.focus({preventScroll:true});}
  });
- input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(input.scrollHeight,130)+'px';});
+ input.addEventListener('input',()=>{const stick=nearBottom();input.style.height='auto';input.style.height=Math.min(input.scrollHeight,130)+'px';if(stick)timeline.scrollTop=timeline.scrollHeight;});
  older.addEventListener('click',async()=>{older.disabled=true;const height=timeline.scrollHeight;
   try{const response=await fetch(shell.dataset.updates+'?before='+first,{headers:{Accept:'application/json'}});if(!response.ok)throw Error();const data=await response.json();[...data.messages].reverse().forEach(row=>add(row,true));older.hidden=!data.has_more;timeline.scrollTop+=timeline.scrollHeight-height;}catch{status.textContent='Impossible de charger les anciens messages. Réessayez.';}finally{older.disabled=false;}
  });
  timeline.addEventListener('scroll',()=>{if(nearBottom())read();},{passive:true});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden){clearTimeout(timer);tick();}});
- const viewport=window.visualViewport;
- function resize(){if(viewport){shell.style.setProperty('--chat-height',Math.max(240,viewport.height-shell.getBoundingClientRect().top-8)+'px');if(document.activeElement===input)timeline.scrollTop=timeline.scrollHeight;}}
- viewport?.addEventListener('resize',resize);resize();timeline.scrollTop=timeline.scrollHeight;tick();
+ let followLatest=true;
+ timeline.addEventListener('scroll',()=>{followLatest=nearBottom();},{passive:true});
+ // Resize the timeline, never the document or the contact header. Preserve a
+ // reader's position in history; bring the latest replies into view when typing.
+ const observer=new ResizeObserver(()=>{if(followLatest||document.activeElement===input)timeline.scrollTop=timeline.scrollHeight;});
+ observer.observe(timeline);
+ window.addEventListener('portal:viewport',()=>{if(document.activeElement===input)timeline.scrollTop=timeline.scrollHeight;});
+ timeline.scrollTop=timeline.scrollHeight;tick();
 })();

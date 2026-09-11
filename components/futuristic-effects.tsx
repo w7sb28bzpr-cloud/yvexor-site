@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 export function FuturisticEffects() {
   const [visible, setVisible] = useState(true);
   useEffect(() => {
-    const updateVisibility = () => setVisible(!document.hidden);
+    let heroInView = false;
+    const updateVisibility = () => setVisible(!document.hidden && heroInView);
     const hero = document.getElementById("accueil");
-    const observer = hero ? new IntersectionObserver(([entry]) => setVisible(!document.hidden && entry.isIntersecting), { threshold: .05 }) : null;
+    const observer = hero ? new IntersectionObserver(([entry]) => { heroInView = entry.isIntersecting; updateVisibility(); }, { threshold: .05 }) : null;
     if (hero) observer?.observe(hero);
     document.addEventListener("visibilitychange", updateVisibility);
     return () => { observer?.disconnect(); document.removeEventListener("visibilitychange", updateVisibility); };

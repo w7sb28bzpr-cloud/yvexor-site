@@ -12,7 +12,7 @@ export function VisualHero() {
           <SmsLink className="action-link primary">Discuter de mon projet <ArrowIcon/></SmsLink>
           <a className="visual-secondary" href="#exemples">Explorer les possibilités <span aria-hidden="true">↗</span></a>
         </div>
-        <ul className="visual-principles" aria-label="Notre approche"><li>Sur mesure</li><li>Évolutif</li><li>Un interlocuteur direct</li></ul>
+        <p className="service-area">France, Suisse et au-delà · À distance ou sur place selon le projet.</p><ul className="visual-principles" aria-label="Notre approche"><li>Sur mesure</li><li>Évolutif</li><li>Un interlocuteur direct</li></ul>
       </div>
       <figure className="hero-product-visual">
         <div className="visual-caption-top"><span aria-hidden="true"/> Des idées. Des outils. Des connexions.</div>

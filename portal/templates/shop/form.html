@@ -1,0 +1,1 @@
+{% extends 'shop/base.html' %}{% block shop %}<h1>{{ title }}</h1><section class="panel"><form method="post">{% csrf_token %}{{ form.as_p }}<button>Enregistrer le brouillon</button></form></section>{% endblock %}

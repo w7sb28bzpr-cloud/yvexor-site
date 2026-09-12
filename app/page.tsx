@@ -8,6 +8,7 @@ import { MobileTabBar, SiteHeader } from "../components/navigation";
 import { SectionHeading } from "../components/ui";
 import { SolutionDoors } from "../components/solution-doors";
 import { HistoryTeaser } from "../components/history-link";
+import { MaterialCatalogue } from "../components/material-catalogue";
 
 const reasons = [
   ["01", "Une relation directe", "Vous parlez à des personnes qui comprennent réellement le projet et ses contraintes."],
@@ -34,6 +35,7 @@ export default function Home() {
 
 
     <ActivityExamples/>
+    <section className="section" id="materiel"><SectionHeading eyebrow="Matériel" title="Le matériel qui complète vos solutions YVEXOR."/><p>Écrans, imprimantes, scanners et équipements professionnels disponibles directement auprès de YVEXOR.</p><MaterialCatalogue featured/></section>
 
     <section className="section why" id="yvexor"><SectionHeading eyebrow="Pourquoi YVEXOR" title="Le besoin d’abord. La technologie ensuite."/><div className="reason-list">{reasons.map(reason => <article key={reason[0]}><span>{reason[0]}</span><div><h3>{reason[1]}</h3><p>{reason[2]}</p></div></article>)}</div><HistoryTeaser/></section>
 

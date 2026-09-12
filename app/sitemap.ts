@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: "https://yvexor.com/" },
     { url: "https://yvexor.com/histoire/" },
+    { url: "https://yvexor.com/materiel/" },
     ...seoPages.map(({ slug }) => ({
       url: `https://yvexor.com/${slug}/`,
     })),

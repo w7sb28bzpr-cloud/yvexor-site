@@ -4,7 +4,7 @@ const items=[{label:"Accueil",href:"#accueil",icon:"home"},{label:"Solutions",hr
 export function SiteHeader({root=false}:{root?:boolean}) {
   const [scrolled,setScrolled]=useState(false);
   const to=(hash:string)=>root&&hash.startsWith("#")?`/${hash}`:hash;
-  const links=[["Solutions","#solutions"],["Caisse & Commerce","/logiciel-caisse-marseille/"],["Budgets","#budgets"],["Exemples","#exemples"],["YVEXOR","#yvexor"]];
+  const links=[["Solutions","#solutions"],["Matériel","/materiel/"],["Caisse & Commerce","/logiciel-caisse-marseille/"],["Budgets","#budgets"],["Exemples","#exemples"],["YVEXOR","#yvexor"]];
   useEffect(()=>{const onScroll=()=>setScrolled(scrollY>12);onScroll();addEventListener("scroll",onScroll,{passive:true});return()=>removeEventListener("scroll",onScroll)},[]);
   return <header className={`site-header ${scrolled?"is-scrolled":""}`}>
     <a href={to("#accueil")} aria-label="YVEXOR — Accueil"><BrandLogo/></a>

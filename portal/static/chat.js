@@ -12,6 +12,7 @@
   const meta=document.createElement('small'), time=document.createElement('time');time.textContent=row.date;meta.append(time);
   if(row.mine){const receipt=document.createElement('span');receipt.className='chat-receipt';receipt.textContent=row.read?' · Lu':' · Envoyé';meta.append(receipt);}
   bubble.append(body,meta);prepend?list.prepend(bubble):list.append(bubble);seen.add(row.id);
+  if(row.payment){const card=document.createElement('a');card.href=row.payment.url;card.className='button secondary';card.textContent=row.payment.credits+' crédits · Voir le paiement';bubble.append(card);}
   first=first?Math.min(first,row.id):row.id;last=Math.max(last,row.id);document.getElementById('chat-empty').hidden=true;
  }
  async function read(){

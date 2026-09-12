@@ -1,4 +1,5 @@
 import uuid
+from decimal import Decimal
 from django import forms
 from django.db import transaction
 from django.db.models import Count, Max, Q
@@ -30,9 +31,14 @@ class ChatForm(forms.Form):
 
 
 def serialize(row, user):
-    return {'id': row.pk, 'body': row.body, 'mine': row.author_id == user.pk,
+    payment = getattr(row, 'paymentrequest', None)
+    data = {'id': row.pk, 'body': row.body, 'mine': row.author_id == user.pk,
             'author': 'Yannick · YVEXOR' if row.from_team else row.author.first_name or 'Client',
             'date': timezone.localtime(row.created_at).strftime('%d/%m/%Y %H:%M'), 'read': bool(row.read_at)}
+    if payment:
+        data['payment'] = {'url':reverse('shop-payment',args=[payment.pk]),'status':payment.get_status_display(),
+            'credits':format(Decimal(payment.credits_cents) / 100, '.2f')}
+    return data
 
 
 @portal_required

@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% load static %}{% block content %}
+<link rel="stylesheet" href="{% static 'shop.css' %}">
+<div class="shop-shell"><nav class="shop-nav" aria-label="Boutique et crédits"><a href="{% url 'shop-catalogue' %}">Boutique</a><a href="{% url 'shop-orders' %}">Commandes</a><a href="{% url 'shop-payments' %}">Paiements</a>{% if team %}<a href="{% url 'shop-admin' %}">Produits Admin</a><a href="{% url 'shop-categories' %}">Catégories</a><a href="{% url 'clients' %}">Crédits clients</a>{% else %}<a href="{% url 'shop-cart' %}">Panier</a><a href="{% url 'shop-wallet' %}">Crédits YVEXOR</a>{% endif %}</nav>{% block shop %}{% endblock %}</div>
+{% endblock %}

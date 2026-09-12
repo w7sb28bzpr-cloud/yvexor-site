@@ -195,3 +195,7 @@ class QuoteDecision(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     decision = models.CharField(max_length=12, choices=[('accepted','Accepté'),('refused','Refusé')])
     decided_at = models.DateTimeField(auto_now_add=True)
+
+
+from .shop_models import (Category, Product, ProductImage, Wallet, WalletTransaction,
+    Order, OrderItem, OrderStatusHistory, PaymentRequest, PaymentStatusHistory, CreditTopup, ShopEvent)

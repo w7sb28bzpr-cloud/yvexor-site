@@ -92,8 +92,9 @@ def allowed_projects(user):
 
 
 def signin(request):
+    remember_shop_destination(request)
     if request.user.is_authenticated:
-        return redirect('admin-home' if request.user.is_staff else 'client-home')
+        return redirect('admin-home' if request.user.is_staff else request.session.pop('shop_next', '/client/'))
     form = LoginForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         email = form.cleaned_data['email'].lower()
@@ -107,12 +108,13 @@ def signin(request):
                 login(request, user)
                 request.session.set_expiry(settings.SESSION_COOKIE_AGE if form.cleaned_data['remember'] else 0)
                 audit(user, 'login.password')
-                return redirect('mfa' if user.is_staff else 'client-home')
+                return redirect('mfa' if user.is_staff else request.session.pop('shop_next', '/client/'))
             form.add_error(None, 'Adresse e-mail ou mot de passe incorrect.')
     return render(request, 'auth.html', {'form': form, 'title': 'Heureux de vous retrouver', 'action': 'Se connecter', 'login_page': True})
 
 
 def signup(request):
+    remember_shop_destination(request)
     if request.user.is_authenticated:
         return redirect('client-home')
     form = SignupForm(request.POST or None)
@@ -134,8 +136,17 @@ def signup(request):
             else:
                 login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 request.session.set_expiry(settings.SESSION_COOKIE_AGE)
-                return redirect('client-home')
+                return redirect(request.session.pop('shop_next', '/client/'))
     return render(request, 'auth.html', {'form': form, 'title': 'Votre espace, vos projets', 'action': 'Créer mon compte', 'signup_page': True})
+
+
+def remember_shop_destination(request):
+    from urllib.parse import urlsplit
+    target = request.GET.get('next', '')
+    parsed = urlsplit(target)
+    if not parsed.netloc and not parsed.scheme and not target.startswith('//') and '\\' not in target and len(target) <= 500:
+        if parsed.path.startswith(('/catalogue/', '/panier/', '/commandes/', '/paiements/')):
+            request.session['shop_next'] = target
 
 
 @require_POST

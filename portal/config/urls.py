@@ -1,10 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from core import views as v
 from core import commerce as c
 from core import collaboration as collab
 from core import messaging as chat
 
 urlpatterns = [
+    path('', include('core.shop_urls')),
     path('', v.root), path('client/', v.client_home, name='client-home'),
     path('admin/', v.admin_home, name='admin-home'),
     path('auth/login/', v.signin, name='login'), path('auth/signup/', v.signup, name='signup'),

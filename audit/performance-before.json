@@ -1,0 +1,29 @@
+{
+  "conditions": "Single cold Chromium desktop-engine run, 390x844, no CPU/network throttling. Lab observations, NOT field Core Web Vitals or INP.",
+  "results": [
+    {
+      "route": "/",
+      "lcp": 772,
+      "cls": 0,
+      "resources": 16,
+      "jsTransfer": 110228,
+      "imageTransfer": 160226
+    },
+    {
+      "route": "/logiciel-sur-mesure/",
+      "lcp": 292,
+      "cls": 0,
+      "resources": 10,
+      "jsTransfer": 106607,
+      "imageTransfer": 0
+    },
+    {
+      "route": "/materiel/",
+      "lcp": 620,
+      "cls": 0,
+      "resources": 13,
+      "jsTransfer": 108187,
+      "imageTransfer": 0
+    }
+  ]
+}

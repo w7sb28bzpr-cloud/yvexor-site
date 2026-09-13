@@ -1,0 +1,5433 @@
+{
+  "date": "2026-09-13T13:43:46.577Z",
+  "origin": "https://yvexor.com",
+  "rows": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 112918,
+      "title": "YVEXOR — Solutions digitales sur mesure",
+      "description": "YVEXOR transforme les problèmes métier en applications, logiciels, automatisations et systèmes connectés sur mesure.",
+      "canonical": "https://yvexor.com/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Votre besoin.Votre idée.Construisonsla solution."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Votre besoin.Votre idée.Construisonsla solution."
+        ],
+        [
+          "H2",
+          "Accédez directementà votre point de départ."
+        ],
+        [
+          "H3",
+          "Caisse & Commerce"
+        ],
+        [
+          "H3",
+          "Restauration"
+        ],
+        [
+          "H3",
+          "Hôtels & Hébergement"
+        ],
+        [
+          "H3",
+          "Domotique & Bâtiments"
+        ],
+        [
+          "H3",
+          "Applications métier"
+        ],
+        [
+          "H3",
+          "Systèmes connectés"
+        ],
+        [
+          "H3",
+          "Site & présence web"
+        ],
+        [
+          "H3",
+          "Automatisation & IA"
+        ],
+        [
+          "H3",
+          "Votre idée sur mesure"
+        ],
+        [
+          "H3",
+          "Notre approche"
+        ],
+        [
+          "H2",
+          "Une information. Plusieurs usages. Pas de ressaisie inutile."
+        ],
+        [
+          "H3",
+          "Une modification. Les outils concernés suivent."
+        ],
+        [
+          "H2",
+          "Des repères clairs pour commencer."
+        ],
+        [
+          "H3",
+          "Solution existante"
+        ],
+        [
+          "H3",
+          "Premier besoin digital"
+        ],
+        [
+          "H3",
+          "Première solution métier"
+        ],
+        [
+          "H3",
+          "Projet ambitieux"
+        ],
+        [
+          "H3",
+          "Une première étape, puis la suite."
+        ],
+        [
+          "H2",
+          "Vous imaginez un service. Nous pouvons en concevoir les outils."
+        ],
+        [
+          "H3",
+          "Lancer une location en libre-service"
+        ],
+        [
+          "H3",
+          "Créer votre plateforme de services"
+        ],
+        [
+          "H3",
+          "Construire le logiciel de votre métier"
+        ],
+        [
+          "H3",
+          "Commerce"
+        ],
+        [
+          "H3",
+          "Restaurant"
+        ],
+        [
+          "H3",
+          "Garage"
+        ],
+        [
+          "H3",
+          "Hôtel"
+        ],
+        [
+          "H3",
+          "Immobilier"
+        ],
+        [
+          "H3",
+          "Entreprise"
+        ],
+        [
+          "H3",
+          "Autre métier / autre idée"
+        ],
+        [
+          "H2",
+          "Le matériel qui complète vos solutions YVEXOR."
+        ],
+        [
+          "H2",
+          "Le besoin d’abord. La technologie ensuite."
+        ],
+        [
+          "H3",
+          "Une relation directe"
+        ],
+        [
+          "H3",
+          "Une base existante quand elle peut servir"
+        ],
+        [
+          "H3",
+          "Des outils qui communiquent"
+        ],
+        [
+          "H3",
+          "Un projet adapté à votre réalité"
+        ],
+        [
+          "H3",
+          "Une solution qui évolue"
+        ],
+        [
+          "H3",
+          "Une tarification transparente"
+        ],
+        [
+          "H3",
+          "Connecter ce qui ne l’était pas."
+        ],
+        [
+          "H2",
+          "De votre idéeà de nouvelles possibilités."
+        ]
+      ],
+      "og": {
+        "og:title": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:description": "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.",
+        "og:url": "https://yvexor.com/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "#accueil",
+          "text": ""
+        },
+        {
+          "href": "#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "sms:+33756913013?body=Bonjour%20YVEXOR%2C%20je%20souhaite%20vous%20pr%C3%A9senter%20mon%20projet%20et%20%C3%A9changer%20sur%20la%20solution%20la%20plus%20adapt%C3%A9e%20%C3%A0%20mon%20besoin.",
+          "text": "Envoyer un SMS ↗"
+        },
+        {
+          "href": "#solutions",
+          "text": "Solutions ↗"
+        },
+        {
+          "href": "#budgets",
+          "text": "Budgets & tarifs ↗"
+        },
+        {
+          "href": "#exemples",
+          "text": "Idées de projets ↗"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "01Caisse & CommerceSolutions de caisse, gestion des ventes, stocks, clients et statistiques.Découvrir"
+        },
+        {
+          "href": "/solutions-restaurants/",
+          "text": "02RestaurationTables, commandes, cuisine, réservations et fidélité selon vos besoins.Découvrir"
+        },
+        {
+          "href": "/solutions-hotels/",
+          "text": "03Hôtels & HébergementRéservations, séjour, équipes et chambres connectées : un ensemble adapté à votre établissement.Découvrir"
+        },
+        {
+          "href": "/domotique-batiments/",
+          "text": "04Domotique & BâtimentsÉlectricité et domotique de A à Z avec nos électriciens, ou adaptation de votre installation.Découvrir"
+        },
+        {
+          "href": "/applications-metier/",
+          "text": "05Applications métierWeb, iPhone ou Android : vos outils métier, avec publication sur les stores selon le projet.Découvrir"
+        },
+        {
+          "href": "/systemes-connectes/",
+          "text": "06Systèmes connectésRelier logiciels, messages, API et équipements, jusqu’au suivi de votre flotte.Découvrir"
+        },
+        {
+          "href": "/site-presence-web/",
+          "text": "07Site & présence webPrésenter votre activité, recevoir des demandes ou proposer un service en ligne.Découvrir"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "08Automatisation & IAMessages, documents, données : relier vos outils et simplifier vos tâches selon vos règles.Découvrir"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "09Votre idée sur mesureLocation, plateforme, nouveau service… Partons de votre idée, même si elle ne rentre dans aucune case.Découvrir"
+        },
+        {
+          "href": "/histoire/",
+          "text": "10Notre approcheAu-delà du logiciel : découvrez notre vision pour connecter applications, équipements et monde physique.Découvrir"
+        },
+        {
+          "href": "/site-presence-web/#tarifs",
+          "text": "Site & présence webÀ partir de 29 €/moisPrésence web, hébergement et services selon la formule.Voir la formule et les détails →"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/#tarifs",
+          "text": "Caisse & CommerceÀ partir de 29 € HT/moisEncaisser, gérer les articles et les clients, puis faire évoluer la solution avec votre activité.Voir la formule et les détails →"
+        },
+        {
+          "href": "/automatisation-entreprise/#tarifs",
+          "text": "IA & automatisationÀ partir de 49 €/moisAutomatisations, assistants et services intelligents selon le besoin.Voir la formule et les détails →"
+        },
+        {
+          "href": "/applications-metier/#tarifs",
+          "text": "Application métierÀ partir de 69 €/moisPour une solution basée sur une configuration ou une base YVEXOR adaptée.Voir la formule et les détails →"
+        },
+        {
+          "href": "/systemes-connectes/#tarifs",
+          "text": "Systèmes connectésÀ partir de 99 €/moisPilotage, données, alertes ou services connectés selon le projet.Voir la formule et les détails →"
+        },
+        {
+          "href": "/logiciel-sur-mesure/#tarifs",
+          "text": "Plateforme & SaaSÀ partir de 149 €/moisServices et infrastructure pour une plateforme évolutive.Voir la formule et les détails →"
+        },
+        {
+          "href": "/contact/",
+          "text": "Trouver ma solution →"
+        },
+        {
+          "href": "/contact/",
+          "text": "Décrire mon besoin →"
+        },
+        {
+          "href": "/contact/",
+          "text": "Voir comment démarrer →"
+        },
+        {
+          "href": "/contact/",
+          "text": "Construire mon MVP →"
+        },
+        {
+          "href": "/contact/",
+          "text": "Parler de mon budget"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Découvrir notre approche"
+        },
+        {
+          "href": "/contact/",
+          "text": "Parler de mon idée"
+        },
+        {
+          "href": "/contact/",
+          "text": "Parler de mon idée"
+        },
+        {
+          "href": "/contact/",
+          "text": "Parler de mon idée"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "01Commerce"
+        },
+        {
+          "href": "/solutions-restaurants/",
+          "text": "02Restaurant"
+        },
+        {
+          "href": "/logiciel-garage/",
+          "text": "03Garage"
+        },
+        {
+          "href": "/solutions-hotels/",
+          "text": "04Hôtel"
+        },
+        {
+          "href": "/domotique-batiments/",
+          "text": "05Immobilier"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "06Entreprise"
+        },
+        {
+          "href": "/contact/",
+          "text": "Décrire mon besoin"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Voir le matériel →"
+        },
+        {
+          "href": "https://client.yvexor.com/catalogue/",
+          "text": "Consulter le catalogue dans l’espace YVEXOR"
+        },
+        {
+          "href": "/histoire/",
+          "text": "Découvrir notre approche"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour en discuter →"
+        },
+        {
+          "href": "/contact/",
+          "text": "Tous les moyens de contact"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "accueil",
+        "solutions",
+        "solution-doors-title",
+        "solution-door-title-0",
+        "solution-door-title-1",
+        "solution-door-title-2",
+        "solution-door-title-3",
+        "solution-door-title-4",
+        "solution-door-title-5",
+        "solution-door-title-6",
+        "solution-door-title-7",
+        "solution-door-title-8",
+        "solution-door-title-9",
+        "ecosysteme",
+        "budgets",
+        "sur-mesure",
+        "services-mensuels",
+        "exemples",
+        "materiel",
+        "yvexor",
+        "history-teaser-title",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-connected-earth-1440-v1.webp",
+          "alt": "Illustration de la Terre de nuit, avec des connexions lumineuses bleues au-dessus de l’Europe.",
+          "width": "1440",
+          "height": "960",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-commerce-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/solution-restaurant-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "1440",
+          "loading": "lazy"
+        },
+        {
+          "src": "/solution-hotel-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "540",
+          "loading": "lazy"
+        },
+        {
+          "src": "/solution-maison-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/solution-logiciel-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/solution-web-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/yvexor-automation-768-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/yvexor-connected-earth-768-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/yvexor-connected-hero-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/yvexor-alpine-horizon-1600-v1.webp",
+          "alt": "",
+          "width": "1600",
+          "height": "576",
+          "loading": "lazy"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Logiciels sur mesure & systèmes connectés",
+        "Nous concevons des logiciels et applications sur mesure pour améliorer votre activité ou lancer un nouveau service. Une base existe déjà ? Nous pouvons l’adapter, la connecter ou développer ce qui manque.",
+        "France, Suisse et au-delà · À distance ou sur place selon le projet.",
+        "Vous savez déjà ce qu’il vous faut ?",
+        "Vos messages, vos outils, vos idées : ces exemples sont des points de départ, pas des limites.Nous étudions ce qui peut être relié, simplifié ou créé sur mesure selon votre besoin.",
+        "Solutions de caisse, gestion des ventes, stocks, clients et statistiques.",
+        "Tables, commandes, cuisine, réservations et fidélité selon vos besoins.",
+        "Réservations, séjour, équipes et chambres connectées : un ensemble adapté à votre établissement.",
+        "Électricité et domotique de A à Z avec nos électriciens, ou adaptation de votre installation.",
+        "Web, iPhone ou Android : vos outils métier, avec publication sur les stores selon le projet.",
+        "Relier logiciels, messages, API et équipements, jusqu’au suivi de votre flotte.",
+        "Présenter votre activité, recevoir des demandes ou proposer un service en ligne.",
+        "Messages, documents, données : relier vos outils et simplifier vos tâches selon vos règles.",
+        "Location, plateforme, nouveau service… Partons de votre idée, même si elle ne rentre dans aucune case.",
+        "Au-delà du logiciel : découvrez notre vision pour connecter applications, équipements et monde physique.",
+        "Visuels d’illustration, non contractuels. Les logiciels et équipements sont définis selon votre projet.",
+        "YVEXOR peut concevoir un environnement où les modules concernés partagent les mêmes données. Vos outils peuvent enfin travailler ensemble.",
+        "Exemple de circulation possible selon la configuration et les modules réellement connectés.",
+        "C’est aussi cela, le sur-mesure YVEXOR : réunir des briques existantes, les connecter, adapter certaines fonctions et développer uniquement ce qui manque.",
+        "Prix de création, abonnement et mise en service sont distingués. Le devis confirme les fonctions et les services inclus.",
+        "Présence web, hébergement et services selon la formule.",
+        "Encaisser, gérer les articles et les clients, puis faire évoluer la solution avec votre activité.",
+        "Automatisations, assistants et services intelligents selon le besoin.",
+        "Pour une solution basée sur une configuration ou une base YVEXOR adaptée.",
+        "Pilotage, données, alertes ou services connectés selon le projet.",
+        "Services et infrastructure pour une plateforme évolutive.",
+        "Repères d’abonnement. La création, la mise en service et les éventuels frais tiers sont précisés dans chaque rubrique et au devis.",
+        "Caisse, logiciel existant ou services.",
+        "Site, formulaire, réservation ou besoin ciblé.",
+        "Application, gestion, espace client ou automatisation selon le périmètre.",
+        "L’objectif est d’abord de définir la première version réellement utile : prototype, MVP, lancement limité ou développement progressif.",
+        "Selon le dossier et après accord, nous pouvons organiser le projet par phases, prévoir des échéances ou étudier une formule avec abonnement. Le devis précise le coût total, le premier paiement et les engagements.",
+        "Ces repères sont indicatifs et ne constituent pas un devis. Aucune modalité de paiement n’est automatique ; elle dépend du projet et d’une validation YVEXOR.",
+        "Nous pouvons étudier une première version utile, puis un développement par étapes. Un montage commercial spécifique reste exceptionnel et nécessite une étude et un accord contractuel préalable.",
+        "Après la mise en service, l’hébergement, les sauvegardes, la maintenance et l’assistance sont définis selon vos besoins dans la proposition.",
+        "Voici des exemples de projets à étudier ensemble, pas des produits déjà disponibles : nous définissons une première version utile, puis ses évolutions.",
+        "Trottinettes, vélos ou matériel : application client, réservation, paiement et gestion du parc peuvent être conçus sur mesure.",
+        "Le déverrouillage et le suivi à distance dépendent des équipements et interfaces compatibles.",
+        "Mise en relation, réservations, comptes clients et espace professionnel : réunissez les outils nécessaires à votre propre activité.",
+        "Les paiements et intégrations sont définis selon les prestataires retenus.",
+        "Planning, devis, interventions, stock et notifications : un outil pensé pour votre façon de travailler.",
+        "Nous adaptons une base existante ou développons les fonctions manquantes.",
+        "Votre activité n’est pas affichée ? Ce n’est pas une limite. Artisan, cabinet, association, transport, salle de sport, indépendant ou startup : expliquez-nous simplement votre besoin.",
+        "Écrans, imprimantes, scanners et équipements professionnels disponibles directement auprès de YVEXOR.",
+        "Chargement du catalogue…",
+        "Voir le matériel →",
+        "Vous parlez à des personnes qui comprennent réellement le projet et ses contraintes.",
+        "Nous ne recréons pas obligatoirement ce qui existe déjà.",
+        "Une donnée peut alimenter plusieurs fonctions lorsque les modules sont reliés.",
+        "Besoin, budget, temps disponible et priorités sont pris en compte.",
+        "Commencez par l’essentiel puis ajoutez ce qui devient utile.",
+        "Des repères publics, puis une proposition adaptée au périmètre.",
+        "Au-delà du logiciel",
+        "Un objet, une machine ou un équipement n’a pas forcément besoin d’avoir été conçu comme connecté pour pouvoir communiquer avec une application, un serveur ou un autre système.",
+        "Découvrez comment YVEXOR imagine des solutions où logiciel, automatisation, IA et monde physique peuvent fonctionner ensemble.",
+        "Une information. Une action en retour.",
+        "Des idées qui vont plus loin",
+        "Présentez votre idée, demandez un devis et retrouvez nos échanges dans votre espace client. Ensemble, construisons la première étape utile."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 8971
+    },
+    {
+      "path": "/histoire/",
+      "status": 200,
+      "bytes": 57038,
+      "title": "L’approche YVEXOR — Au-delà du logiciel",
+      "description": "Découvrez l’approche YVEXOR : connecter logiciels, automatisations, IA, équipements et systèmes pour construire des solutions adaptées aux besoins réels des entreprises.",
+      "canonical": "https://yvexor.com/histoire/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Et si quelque chose qui n’a jamais été connecté pouvait le devenir ?"
+      ],
+      "headings": [
+        [
+          "H1",
+          "Et si quelque chose qui n’a jamais été connecté pouvait le devenir ?"
+        ],
+        [
+          "H2",
+          "Connecter ce qui ne l’était pas."
+        ],
+        [
+          "H2",
+          "Ils peuvent communiquer."
+        ],
+        [
+          "H2",
+          "Le logiciel ne s’arrête plus à l’écran."
+        ],
+        [
+          "H3",
+          "Une information.Plusieurs usages."
+        ],
+        [
+          "H2",
+          "Une idée. Plusieurs technologies."
+        ],
+        [
+          "H2",
+          "C’est de cette vision qu’est né YVEXOR."
+        ],
+        [
+          "H2",
+          "Et lorsqu’une idée semble impossible ?"
+        ]
+      ],
+      "og": {
+        "og:title": "L’approche YVEXOR — Au-delà du logiciel",
+        "og:description": "Découvrez l’approche YVEXOR : connecter logiciels, automatisations, IA, équipements et systèmes pour construire des solutions adaptées aux besoins réels des entreprises.",
+        "og:url": "https://yvexor.com/histoire/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:type": "article"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR / Notre approche"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Parler de mon projet"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "Découvrir YVEXOR"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "histoire",
+        "connect-title",
+        "demo-title",
+        "communicate-title",
+        "screen-title",
+        "technologies-title",
+        "birth-title",
+        "ending-title",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "L’approche YVEXOR",
+        "YVEXOR n’est pas né avec l’idée de créer un logiciel de plus. À l’origine, il y avait surtout une curiosité : comprendre comment les choses fonctionnent, les modifier et chercher comment leur faire faire davantage.",
+        "De l’informatique à l’électronique, des automatismes aux véhicules, puis au développement et aux systèmes connectés : les technologies changeaient. La question restait la même.",
+        "Pourquoi est-ce qu’on ne pourrait pas faire autrement ?",
+        "Un objet n’a pas nécessairement besoin d’avoir été conçu comme « connecté » pour pouvoir communiquer avec le numérique. Un interrupteur peut devenir une information sur une application. Une machine peut transmettre son état à un serveur. Et une application peut, en retour, transmettre une instruction à un système physique.",
+        "Touchez l’interrupteur. Suivez le signal.",
+        "Action physique → système → information numérique.",
+        "Démonstration pédagogique uniquement. Aucun équipement réel n’est connecté à cette page.",
+        "Activez JavaScript pour essayer l’interrupteur. Le parcours ci-dessus illustre les échanges dans les deux sens.",
+        "Le monde physique et le monde numérique ne sont finalement pas deux univers séparés.",
+        "Une caisse peut communiquer avec un stock. Un site internet avec une machine. Une réservation peut déclencher plusieurs actions. Une application peut centraliser les informations de plusieurs systèmes.",
+        "Un équipement existant peut recevoir de nouvelles fonctionnalités. Et l’intelligence artificielle peut analyser, comprendre ou automatiser une partie de ces échanges.",
+        "Une disponibilité change.L’information peut circuler.",
+        "Schéma conceptuel : les échanges dépendent des interfaces disponibles et des contraintes de chaque système.",
+        "Le véritable potentiel apparaît lorsque les technologies commencent à communiquer entre elles.",
+        "C’est pour cette raison que YVEXOR ne se limite pas à une seule technologie. Selon le problème à résoudre, un projet peut nécessiter une application, un logiciel métier, une API, un serveur, une automatisation, de l’intelligence artificielle, de l’électronique ou un système connecté.",
+        "Parfois une seule suffit. Parfois plusieurs doivent fonctionner ensemble.",
+        "Le besoin détermine la technologie.Jamais l’inverse.",
+        "Plusieurs technologies.Une solution cohérente.",
+        "Aujourd’hui, YVEXOR imagine et développe des solutions numériques et connectées pour les professionnels.",
+        "L’objectif n’est pas d’ajouter de la technologie partout. Il est de comprendre un fonctionnement, identifier ce qui pourrait être simplifié, connecté ou automatisé, puis construire la solution adaptée.",
+        "Du commerce à la restauration ou à l’hôtellerie, d’une application métier à une plateforme ou à un système connecté, cette logique reste la même.",
+        "C’est à la technologie de s’adapter à l’activité.Pas l’activité à la technologie.",
+        "Certaines demandes commencent simplement par :",
+        "« J’aimerais pouvoir faire ça… mais je ne sais pas si c’est possible. »",
+        "C’est souvent là que commence un projet YVEXOR.",
+        "Voyons comment on peut le construire.",
+        "Yannick MarasciaFondateur de YVEXOR",
+        "Des idées qui avancent.",
+        "Vous avez une idée, un besoin ou un fonctionnement que vous aimeriez améliorer ?"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 4082
+    },
+    {
+      "path": "/materiel/",
+      "status": 200,
+      "bytes": 36756,
+      "title": "Matériel professionnel | YVEXOR",
+      "description": "Découvrez le matériel disponible auprès de YVEXOR. Catalogue et prix actualisés, achat depuis votre espace client.",
+      "canonical": "https://yvexor.com/materiel/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Le matériel qui complète vos solutions YVEXOR."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Le matériel qui complète vos solutions YVEXOR."
+        ]
+      ],
+      "og": {
+        "og:title": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:description": "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.",
+        "og:url": "https://yvexor.com/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/catalogue/",
+          "text": "Consulter le catalogue dans l’espace YVEXOR"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "MATÉRIEL",
+        "Écrans, imprimantes, scanners et équipements professionnels disponibles directement auprès de YVEXOR.",
+        "Chargement du catalogue…"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": false
+      },
+      "textLength": 269
+    },
+    {
+      "path": "/domotique-batiments/",
+      "status": 200,
+      "bytes": 54447,
+      "title": "Votre lieu. Vos habitudes. Votre futur.",
+      "description": "Domotique YVEXOR sur mesure : éclairage, accès, confort, énergie et pilotage local selon les équipements. Projet progressif sur devis, abonnement possible.",
+      "canonical": "https://yvexor.com/domotique-batiments/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Votre lieu. Vos habitudes. Votre futur."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Votre lieu. Vos habitudes. Votre futur."
+        ],
+        [
+          "H2",
+          "Du confort, pas une collection de gadgets"
+        ],
+        [
+          "H2",
+          "Vous rentrez. Le lieu se prépare."
+        ],
+        [
+          "H2",
+          "Un geste pour passer en mode nuit"
+        ],
+        [
+          "H2",
+          "Des alertes pour les anomalies utiles"
+        ],
+        [
+          "H2",
+          "Résidences et syndics : piloter par zone"
+        ],
+        [
+          "H2",
+          "Un fonctionnement local peut être étudié"
+        ],
+        [
+          "H2",
+          "Une intelligence que vous gardez sous contrôle"
+        ],
+        [
+          "H2",
+          "Votre projet de A à Z, avec nos électriciens"
+        ],
+        [
+          "H2",
+          "Un bien plus agréable à vivre et à présenter"
+        ],
+        [
+          "H2",
+          "Sur devis, avec la possibilité de commencer petit"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Votre lieu. Vos habitudes. Votre futur.",
+        "og:description": "Domotique YVEXOR sur mesure : éclairage, accès, confort, énergie et pilotage local selon les équipements. Projet progressif sur devis, abonnement possible.",
+        "og:url": "https://yvexor.com/domotique-batiments/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "/solutions-hotels/",
+          "text": "Hôtellerie→"
+        },
+        {
+          "href": "/systemes-connectes/",
+          "text": "API, équipements & suivi de flotte→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-maison-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Domotique & bâtiments",
+        "Maison, appartement, résidence secondaire ou parties communes : nous partons de vos habitudes pour rendre les lieux plus simples à vivre et à gérer. Un premier scénario utile peut suffire pour commencer, sans refaire toute l’installation.",
+        "Lumières, volets, chauffage, accès et capteurs peuvent être réunis dans un pilotage cohérent lorsque les équipements le permettent. Application, tablette, interface web ou commandes physiques sont choisies selon les occupants.",
+        "Un scénario d’arrivée peut éclairer les zones utiles et ajuster l’ambiance selon les règles choisies. L’ouverture d’un portail ou d’un accès reste conditionnée aux autorisations, aux équipements compatibles et aux sécurités de l’installation.",
+        "Éteindre les lumières inutiles, fermer les volets compatibles ou ajuster la température : plusieurs actions peuvent être regroupées. Les commandes manuelles et le comportement en cas de panne sont définis avec vous.",
+        "Un capteur de fuite, une température inhabituelle ou un équipement indisponible peut déclencher une notification selon la configuration. Les scénarios automatiques sont testés et ne remplacent pas les dispositifs de sécurité requis.",
+        "Escaliers, halls, parkings et locaux techniques peuvent fonctionner selon les horaires et la présence. Le suivi des consommations aide à repérer les usages inutiles, sans promettre une économie chiffrée avant étude.",
+        "Un serveur local ou une interface privée peut limiter la dépendance aux services externes selon l’architecture retenue. Nous précisons les données utilisées, les accès à distance, les fonctions disponibles sans Internet et la maintenance nécessaire.",
+        "Des automatismes avancés peuvent tenir compte de l’heure, de l’occupation ou des usages autorisés. Une IA éventuelle est étudiée pour un besoin précis, avec des actions explicables et désactivables plutôt qu’une autonomie imposée.",
+        "YVEXOR peut prendre en charge l’ensemble du projet : étude, travaux électriques, équipements, domotique, configuration et mise en service avec ses électriciens. Vous avez déjà votre électricien ? Nous pouvons aussi intervenir uniquement sur la partie connectée, avec les responsabilités et qualifications nécessaires définies selon le chantier.",
+        "Pour un propriétaire ou une agence, des scénarios simples peuvent rendre les usages du logement plus concrets lors d’une visite. Nous étudions le confort et la différenciation recherchés, sans garantir une hausse du prix de vente.",
+        "Un besoin ciblé ne suppose pas automatiquement un projet à plusieurs milliers d’euros ; le budget dépend du matériel, de l’installation et des fonctions souhaitées. La proposition distingue étude, équipements, mise en service et services récurrents, avec abonnement possible selon les services retenus.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 3980
+    },
+    {
+      "path": "/applications-metier/",
+      "status": 200,
+      "bytes": 50950,
+      "title": "Votre métier, dans une application pensée pour vous.",
+      "description": "Applications métier YVEXOR : web, PWA, iPhone et Android, avec accompagnement à la publication sur l’App Store et Google Play selon le projet.",
+      "canonical": "https://yvexor.com/applications-metier/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Votre métier, dans une application pensée pour vous."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Votre métier, dans une application pensée pour vous."
+        ],
+        [
+          "H2",
+          "Un point de départ clair."
+        ],
+        [
+          "H3",
+          "À partir de 69 €/mois"
+        ],
+        [
+          "H2",
+          "Du navigateur à l’application mobile"
+        ],
+        [
+          "H2",
+          "App Store & Google Play : une possibilité à étudier"
+        ],
+        [
+          "H2",
+          "Les fonctions utiles, pas une liste imposée"
+        ],
+        [
+          "H2",
+          "Un devis qui distingue chaque poste"
+        ],
+        [
+          "H2",
+          "Commencer avec une première version utile"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Votre métier, dans une application pensée pour vous.",
+        "og:description": "Applications métier YVEXOR : web, PWA, iPhone et Android, avec accompagnement à la publication sur l’App Store et Google Play selon le projet.",
+        "og:url": "https://yvexor.com/applications-metier/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#tarifs",
+          "text": "Tarifs"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier mon projet"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "/systemes-connectes/",
+          "text": "API, équipements & suivi de flotte→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "tarifs",
+        "category-price-title",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-logiciel-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Applications web & mobiles",
+        "Clients, salariés ou équipes terrain : nous construisons le parcours utile sur les appareils qu’ils utilisent réellement. Une première version peut ensuite évoluer avec votre activité.",
+        "Budget & formule",
+        "Pour une solution basée sur une configuration ou une base YVEXOR adaptée.",
+        "Le développement spécifique et la mise en service sont étudiés selon le projet.",
+        "Ce repère concerne l’utilisation ou les services de la formule retenue. Il ne couvre pas automatiquement la création complète d’un logiciel sur mesure. Le devis distingue la mise en place, les développements, les coûts tiers et les conditions d’engagement.",
+        "Une application web s’utilise dans le navigateur ; une PWA peut aussi être installable sur les appareils compatibles. Une application iPhone ou Android fait l’objet d’un choix technique adapté : être installable ne signifie pas être publiée sur un store.",
+        "YVEXOR peut concevoir ou adapter votre application et accompagner sa soumission sur l’App Store et Google Play. La publication dépend des exigences et de l’acceptation des plateformes ; elle n’est pas garantie par la seule réalisation de l’application.",
+        "Notifications, caméra, scan, géolocalisation ou fonctionnement hors ligne peuvent être étudiés selon vos usages. Leur disponibilité dépend des appareils, des autorisations et de l’architecture retenue.",
+        "La conception, les adaptations mobiles et l’accompagnement à la publication sont chiffrés selon le projet. Les comptes développeur, frais Apple ou Google et services externes ne sont inclus que si le devis le précise.",
+        "Le budget dépend des fonctions, des utilisateurs, des données et des connexions nécessaires. Développement par étapes, paiement échelonné ou abonnement peuvent être étudiés après accord, avec un périmètre et des engagements définis.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 2823
+    },
+    {
+      "path": "/systemes-connectes/",
+      "status": 200,
+      "bytes": 48795,
+      "title": "Vos outils échangent. Votre activité avance.",
+      "description": "YVEXOR étudie vos connexions entre logiciels, API, messages, équipements et systèmes de suivi de flotte.",
+      "canonical": "https://yvexor.com/systemes-connectes/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Vos outils échangent. Votre activité avance."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Vos outils échangent. Votre activité avance."
+        ],
+        [
+          "H2",
+          "Un point de départ clair."
+        ],
+        [
+          "H3",
+          "À partir de 99 €/mois"
+        ],
+        [
+          "H2",
+          "Relier les outils déjà en place"
+        ],
+        [
+          "H2",
+          "Location et suivi de flotte"
+        ],
+        [
+          "H2",
+          "Du logiciel aux équipements"
+        ],
+        [
+          "H2",
+          "Matériel et services : un budget distinct"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Vos outils échangent. Votre activité avance.",
+        "og:description": "YVEXOR étudie vos connexions entre logiciels, API, messages, équipements et systèmes de suivi de flotte.",
+        "og:url": "https://yvexor.com/systemes-connectes/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#tarifs",
+          "text": "Tarifs"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier mon projet"
+        },
+        {
+          "href": "/applications-metier/",
+          "text": "Applications web & mobiles→"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "Automatisation d’entreprise & IA métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "tarifs",
+        "category-price-title",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-logiciel-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "API, équipements & suivi de flotte",
+        "Une demande reçue, une position remontée ou un changement de stock peut alimenter les bons outils. Nous vérifions les accès, les équipements et les interfaces avant de définir les connexions possibles.",
+        "Budget & formule",
+        "Pilotage, données, alertes ou services connectés selon le projet.",
+        "Matériel et installation chiffrés séparément lorsqu’ils sont nécessaires.",
+        "Ce repère concerne l’utilisation ou les services de la formule retenue. Il ne couvre pas automatiquement la création complète d’un logiciel sur mesure. Le devis distingue la mise en place, les développements, les coûts tiers et les conditions d’engagement.",
+        "Messagerie, CRM, planning, facturation et services de paiement peuvent parfois communiquer grâce à leurs interfaces. Chaque connexion est étudiée selon les accès autorisés, les limites techniques et les conditions des fournisseurs.",
+        "Un projet de location peut associer clients, véhicules, réservations et suivi d’entretien dans un même environnement. Une carte de flotte, des remontées GPS et des alertes peuvent être ajoutées selon le matériel, la connectivité et les autorisations applicables.",
+        "Terminaux, imprimantes, bornes, capteurs ou trackers nécessitent des interfaces compatibles et des tests réels. Nous distinguons ce qui peut être connecté, adapté ou développé avant de promettre un fonctionnement.",
+        "Le devis distingue le développement, l’hébergement et l’accompagnement des équipements et consommations externes. Trackers, cartes SIM, données mobiles, SMS, cartographie ou API sont chiffrés selon le besoin, sans forfait universel.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 2411
+    },
+    {
+      "path": "/site-presence-web/",
+      "status": 200,
+      "bytes": 48551,
+      "title": "Votre activité mérite sa place en ligne.",
+      "description": "YVEXOR conçoit votre présence web : présentation, demandes clients et services en ligne, selon votre activité et votre budget.",
+      "canonical": "https://yvexor.com/site-presence-web/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Votre activité mérite sa place en ligne."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Votre activité mérite sa place en ligne."
+        ],
+        [
+          "H2",
+          "Votre site. Votre rythme."
+        ],
+        [
+          "H3",
+          "À partir de 29 €/mois"
+        ],
+        [
+          "H3",
+          "Paiement en une fois"
+        ],
+        [
+          "H2",
+          "Que voulez-vous rendre possible ?"
+        ],
+        [
+          "H3",
+          "Présenter votre activité"
+        ],
+        [
+          "H3",
+          "Recevoir des demandes"
+        ],
+        [
+          "H3",
+          "Vendre ou lancer un service"
+        ],
+        [
+          "H2",
+          "Pourquoi le construire avec YVEXOR ?"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Votre activité mérite sa place en ligne.",
+        "og:description": "YVEXOR conçoit votre présence web : présentation, demandes clients et services en ligne, selon votre activité et votre budget.",
+        "og:url": "https://yvexor.com/site-presence-web/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#tarifs",
+          "text": "Tarifs"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Parler de mon site"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Demander mon devis"
+        },
+        {
+          "href": "/applications-metier/",
+          "text": "Découvrir les applications métier →"
+        },
+        {
+          "href": "/applications-metier/",
+          "text": "Applications web & mobiles→"
+        },
+        {
+          "href": "/systemes-connectes/",
+          "text": "API, équipements & suivi de flotte→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "tarifs",
+        "web-pricing-title",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-web-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Site & présence web",
+        "Présenter votre savoir-faire, recevoir des demandes ou lancer un service : votre site part d’un objectif concret, pas d’un modèle imposé.",
+        "Une formule adaptée à votre projet",
+        "Présence web, hébergement et services selon la formule retenue.",
+        "Création et mise en service chiffrées selon votre projet.",
+        "Vous préférez régler la création de votre site en une fois ? Nous vous proposons un devis adapté.",
+        "Hébergement, domaine et suivi précisés séparément.",
+        "Pages et fonctionnalités, création, mise en ligne, nom de domaine, hébergement, maintenance, frais tiers et conditions d’engagement : vous connaissez le coût de départ et les éventuels frais récurrents avant de vous engager. L’abonnement affiché n’est pas le prix d’une création complète sur mesure.",
+        "Un site utile à vos clients",
+        "Vos services, vos réalisations et un contact facile à trouver.",
+        "Devis, prises de rendez-vous ou réservations selon votre activité.",
+        "Boutique, espace client ou parcours en ligne adapté à votre idée.",
+        "Un interlocuteur direct, un affichage pensé pour le mobile et un site qui peut évoluer avec votre activité.",
+        "Les demandes de votre site peuvent être reliées à votre messagerie, votre planning ou vos logiciels, selon les interfaces disponibles. Une application métier sert plutôt à gérer les opérations : équipes, dossiers, stocks ou processus internes.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 2165
+    },
+    {
+      "path": "/agence-ia-marseille/",
+      "status": 200,
+      "bytes": 44291,
+      "title": "Une IA utile à votre entreprise, où que vous soyez.",
+      "description": "YVEXOR conçoit des assistants, agents IA et automatisations métier à Marseille, à distance et partout en France selon les projets.",
+      "canonical": "https://yvexor.com/agence-ia-marseille/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Une IA utile à votre entreprise, où que vous soyez."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Une IA utile à votre entreprise, où que vous soyez."
+        ],
+        [
+          "H2",
+          "De l’IA reliée au métier"
+        ],
+        [
+          "H2",
+          "Une mise en œuvre mesurée"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Une IA utile à votre entreprise, où que vous soyez.",
+        "og:description": "YVEXOR conçoit des assistants, agents IA et automatisations métier à Marseille, à distance et partout en France selon les projets.",
+        "og:url": "https://yvexor.com/agence-ia-marseille/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "/intelligence-artificielle-entreprise/",
+          "text": "Assistants & agents IA→"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "Automatisation d’entreprise & IA métier→"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-automation-768-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "IA métier · France, Suisse et au-delà",
+        "Votre métier et vos données guident le projet, pas votre adresse. Nous étudions vos usages à distance et organisons un accompagnement sur place lorsqu’il est nécessaire.",
+        "Un assistant peut analyser des documents, qualifier des demandes ou préparer une action, avec validation humaine lorsque le sujet l’exige.",
+        "Nous vérifions les données, les outils compatibles et le résultat attendu avant de proposer un prototype ou une première automatisation.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 1117
+    },
+    {
+      "path": "/automatisation-entreprise/",
+      "status": 200,
+      "bytes": 62982,
+      "title": "Vos données. Vos processus. Votre intelligence.",
+      "description": "YVEXOR conçoit vos automatisations et votre IA métier : e-mails, stocks, documents, veille et pilotage. Projet sur devis, abonnement possible selon le périmètre.",
+      "canonical": "https://yvexor.com/automatisation-entreprise/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Vos données. Vos processus. Votre intelligence."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Vos données. Vos processus. Votre intelligence."
+        ],
+        [
+          "H2",
+          "Vos outils.Enfin reliés."
+        ],
+        [
+          "H2",
+          "Un point de départ clair."
+        ],
+        [
+          "H3",
+          "À partir de 49 €/mois"
+        ],
+        [
+          "H2",
+          "Commencer petit, sans tout remplacer"
+        ],
+        [
+          "H2",
+          "Des e-mails qui deviennent des actions"
+        ],
+        [
+          "H2",
+          "Un exemple : « 40 unités pour vendredi »"
+        ],
+        [
+          "H2",
+          "Stocks, achats et prévisions"
+        ],
+        [
+          "H2",
+          "Veille et pilotage de l’activité"
+        ],
+        [
+          "H2",
+          "Moins de ressaisie administrative"
+        ],
+        [
+          "H2",
+          "Une IA qui travaille selon vos règles"
+        ],
+        [
+          "H2",
+          "Observer. Relier. Automatiser."
+        ],
+        [
+          "H2",
+          "Sur devis, avec abonnement possible"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Vos données. Vos processus. Votre intelligence.",
+        "og:description": "YVEXOR conçoit vos automatisations et votre IA métier : e-mails, stocks, documents, veille et pilotage. Projet sur devis, abonnement possible selon le périmètre.",
+        "og:url": "https://yvexor.com/automatisation-entreprise/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#tarifs",
+          "text": "Tarifs"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "#automatisation-2",
+          "text": "E-mails & demandes ↗"
+        },
+        {
+          "href": "#automatisation-4",
+          "text": "Stocks & prévisions ↗"
+        },
+        {
+          "href": "#automatisation-7",
+          "text": "IA métier ↗"
+        },
+        {
+          "href": "#automatisation-9",
+          "text": "Budget & abonnement ↗"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier mon projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Toutes les solutions"
+        },
+        {
+          "href": "/intelligence-artificielle-entreprise/",
+          "text": "Assistants & agents IA→"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "tarifs",
+        "category-price-title",
+        "solutions",
+        "automatisation-1",
+        "automatisation-2",
+        "automatisation-3",
+        "automatisation-4",
+        "automatisation-5",
+        "automatisation-6",
+        "automatisation-7",
+        "automatisation-8",
+        "automatisation-9",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-automation-1440-v1.webp",
+          "alt": "Illustration de documents, e-mails et stocks connectés à un tableau de bord.",
+          "width": "1536",
+          "height": "1024",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Automatisation d’entreprise & IA métier",
+        "Vos équipes ressaisissent les mêmes informations, cherchent des documents ou répètent les mêmes tâches ? Nous pouvons relier vos outils et concevoir des automatismes selon vos règles, en commençant par un seul besoin utile.",
+        "Moins de tâches. Plus de maîtrise.",
+        "Une information arrive. Les bonnes actions suivent, dans le cadre que vous avez défini.",
+        "Budget & formule",
+        "Automatisations, assistants et services intelligents selon le besoin.",
+        "Configuration, intégrations et consommation de services tiers selon le projet.",
+        "Ce repère concerne l’utilisation ou les services de la formule retenue. Il ne couvre pas automatiquement la création complète d’un logiciel sur mesure. Le devis distingue la mise en place, les développements, les coûts tiers et les conditions d’engagement.",
+        "Un premier projet ne nécessite pas forcément un investissement de plusieurs milliers d’euros : une tâche ciblée peut constituer le point de départ. Nous vérifions vos outils, les accès disponibles et la faisabilité avant de définir le périmètre.",
+        "Selon le projet, le système peut classer les demandes, extraire les informations utiles et préparer une réponse. Il peut aussi créer une tâche ou prévenir la bonne personne, avec validation humaine selon vos règles.",
+        "Une demande client arrive par e-mail : le système peut reconnaître le client, consulter le stock et vérifier les règles convenues. Il prépare alors une réponse ou alerte l’équipe, sans engager une commande hors du cadre autorisé.",
+        "Nous pouvons relier les ventes, les commandes et les stocks pour repérer les ruptures, les surstocks ou les anomalies. Les prévisions et suggestions d’achat dépendent de la qualité des données et des hypothèses retenues.",
+        "Suivez les évolutions pertinentes de votre marché et rassemblez vos indicateurs dans un tableau de bord adapté à votre activité. Les sources autorisées, les seuils d’alerte et les hypothèses de prévision sont définis ensemble.",
+        "Un outil peut collecter et classer les factures, extraire leurs informations et préparer des rapprochements. Les écritures, déclarations et actions engageantes restent soumises aux contrôles et validations des personnes compétentes.",
+        "Votre assistant métier peut s’appuyer sur les documents, procédures et sources que vous avez validés pour aider vos équipes. Nous définissons ce qu’il peut proposer, les sources à citer et les situations à transmettre à un humain.",
+        "Vous expliquez votre fonctionnement ; nous identifions les tâches utiles à simplifier et les outils compatibles. Une première version est ensuite testée avec vous avant d’étendre les automatismes.",
+        "Le budget dépend des connexions, des volumes et du développement nécessaires ; un abonnement peut être proposé selon les services retenus. La proposition distingue la mise en place, les services récurrents et les éventuels coûts d’outils tiers ou de consommation IA.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 5038
+    },
+    {
+      "path": "/contact/",
+      "status": 200,
+      "bytes": 43491,
+      "title": "Parlons de votre besoin ou de votre idée.",
+      "description": "Contactez YVEXOR par téléphone ou SMS pour présenter un projet de logiciel, IA, automatisation, caisse ou système connecté.",
+      "canonical": "https://yvexor.com/contact/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Parlons de votre besoin ou de votre idée."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Parlons de votre besoin ou de votre idée."
+        ],
+        [
+          "H2",
+          "Préparer votre message"
+        ],
+        [
+          "H2",
+          "France, Suisse et au-delà"
+        ],
+        [
+          "H2",
+          "Un échange simple, sans formulaire inutile."
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Parlons de votre besoin ou de votre idée.",
+        "og:description": "Contactez YVEXOR par téléphone ou SMS pour présenter un projet de logiciel, IA, automatisation, caisse ou système connecté.",
+        "og:url": "https://yvexor.com/contact/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "tel:+33756913013",
+          "text": "Appeler le 07 56 91 30 13"
+        },
+        {
+          "href": "sms:+33756913013?body=Bonjour%20YVEXOR%2C%20je%20souhaite%20vous%20pr%C3%A9senter%20mon%20projet%20et%20%C3%A9changer%20sur%20la%20solution%20la%20plus%20adapt%C3%A9e%20%C3%A0%20mon%20besoin.",
+          "text": "Envoyer un SMS"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "/faq/",
+          "text": "Questions fréquentes→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Un échange direct",
+        "Expliquez votre activité, le problème rencontré et le résultat recherché. Nous choisirons ensemble la première étape utile.",
+        "Indiquez votre activité, la difficulté principale, les utilisateurs concernés, votre priorité et votre budget disponible aujourd’hui.",
+        "YVEXOR accompagne vos projets sans se limiter à une ville. Les prestations numériques peuvent être réalisées à distance ; les interventions sur place sont organisées selon le lieu, le chantier et les équipes nécessaires.",
+        "Contact professionnel",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 1050
+    },
+    {
+      "path": "/faq/",
+      "status": 200,
+      "bytes": 45749,
+      "title": "Les réponses utiles avant de lancer un projet.",
+      "description": "Réponses sur les solutions YVEXOR, les budgets, abonnements, logiciels sur mesure, IA et systèmes connectés.",
+      "canonical": "https://yvexor.com/faq/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Les réponses utiles avant de lancer un projet."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Les réponses utiles avant de lancer un projet."
+        ],
+        [
+          "H2",
+          "Faut-il payer tout le projet immédiatement ?"
+        ],
+        [
+          "H2",
+          "Un abonnement est-il obligatoire ?"
+        ],
+        [
+          "H2",
+          "YVEXOR développe-t-il sur mesure ?"
+        ],
+        [
+          "H2",
+          "Peut-on commencer avec un petit budget ?"
+        ],
+        [
+          "H2",
+          "Peut-on lancer une application ou un SaaS ?"
+        ],
+        [
+          "H2",
+          "Les systèmes connectés fonctionnent-ils avec tous les équipements ?"
+        ],
+        [
+          "H2",
+          "YVEXOR possède-t-il des solutions existantes ?"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Les réponses utiles avant de lancer un projet.",
+        "og:description": "Réponses sur les solutions YVEXOR, les budgets, abonnements, logiciels sur mesure, IA et systèmes connectés.",
+        "og:url": "https://yvexor.com/faq/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce→"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Questions fréquentes",
+        "Les modalités exactes dépendent toujours du périmètre confirmé dans une proposition YVEXOR.",
+        "Non nécessairement. Selon le dossier et après accord, le projet peut être organisé par étapes, échéances, MVP, abonnement ou formule hybride.",
+        "Non. Selon la solution, une licence, un achat, un abonnement ou un projet accompagné de services peuvent être proposés.",
+        "Oui, après avoir vérifié si une base existante peut être adaptée ou connectée afin de développer uniquement ce qui manque.",
+        "Un budget plus petit implique généralement un périmètre initial plus ciblé. Nous cherchons alors la première version réellement utile.",
+        "Oui. Le cadrage, le prototype et le MVP permettent de tester l’usage avant d’étendre le produit.",
+        "Non. Les possibilités dépendent des matériels, protocoles et interfaces disponibles, qui doivent être étudiés.",
+        "Oui, notamment Caisse & Commerce. D’autres besoins peuvent partir d’une base adaptable ou nécessiter du sur-mesure.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 1632
+    },
+    {
+      "path": "/intelligence-artificielle-entreprise/",
+      "status": 200,
+      "bytes": 44046,
+      "title": "Une intelligence artificielle intégrée au travail réel.",
+      "description": "Assistants et agents IA pour entreprises : analyse, exploitation de données, automatisation et intégration métier encadrée.",
+      "canonical": "https://yvexor.com/intelligence-artificielle-entreprise/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Une intelligence artificielle intégrée au travail réel."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Une intelligence artificielle intégrée au travail réel."
+        ],
+        [
+          "H2",
+          "Des usages concrets"
+        ],
+        [
+          "H2",
+          "Pas d’IA magique"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Une intelligence artificielle intégrée au travail réel.",
+        "og:description": "Assistants et agents IA pour entreprises : analyse, exploitation de données, automatisation et intégration métier encadrée.",
+        "og:url": "https://yvexor.com/intelligence-artificielle-entreprise/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "/agence-ia-marseille/",
+          "text": "IA métier · France, Suisse et au-delà→"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "Automatisation d’entreprise & IA métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-automation-768-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Assistants & agents IA",
+        "L’IA devient utile lorsqu’elle s’appuie sur des données pertinentes, des règles claires et un niveau d’autonomie adapté.",
+        "YVEXOR peut étudier l’analyse de documents, la recherche d’informations, la préparation de réponses et l’assistance aux équipes.",
+        "La qualité dépend des sources, des accès et des contrôles. Les décisions sensibles peuvent rester soumises à validation humaine.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 1001
+    },
+    {
+      "path": "/logiciel-caisse-marseille/",
+      "status": 200,
+      "bytes": 55542,
+      "title": "Une caisse pensée pour votre commerce. Où que vous soyez.",
+      "description": "YVEXOR Caisse & Commerce à partir de 29 € ht/mois, en France, en Suisse et ailleurs selon le projet. Matériel et mise en service selon vos besoins.",
+      "canonical": "https://yvexor.com/logiciel-caisse-marseille/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Une caisse pensée pour votre commerce. Où que vous soyez."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Une caisse pensée pour votre commerce. Où que vous soyez."
+        ],
+        [
+          "H2",
+          "Encaisser. Gérer. Piloter."
+        ],
+        [
+          "H3",
+          "Encaisser"
+        ],
+        [
+          "H3",
+          "Gérer"
+        ],
+        [
+          "H3",
+          "Piloter"
+        ],
+        [
+          "H3",
+          "Votre métier fait la différence."
+        ],
+        [
+          "H3",
+          "Un projet plus spécifique ? Sur devis."
+        ],
+        [
+          "H2",
+          "Un métier, un parcours adapté"
+        ],
+        [
+          "H2",
+          "Pourquoi choisir YVEXOR ?"
+        ],
+        [
+          "H3",
+          "Commencer simplement"
+        ],
+        [
+          "H3",
+          "Adapter à votre métier"
+        ],
+        [
+          "H3",
+          "Un interlocuteur direct"
+        ],
+        [
+          "H2",
+          "Quel est votre commerce ?"
+        ],
+        [
+          "H3",
+          "Boutiques & commerces de proximité"
+        ],
+        [
+          "H3",
+          "Restauration & vente à emporter"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Une caisse pensée pour votre commerce. Où que vous soyez.",
+        "og:description": "YVEXOR Caisse & Commerce à partir de 29 € ht/mois, en France, en Suisse et ailleurs selon le projet. Matériel et mise en service selon vos besoins.",
+        "og:url": "https://yvexor.com/logiciel-caisse-marseille/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#tarifs",
+          "text": "Tarifs"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier cette formule"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier cette formule"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier cette formule"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Trouver la formule adaptée à mon commerce"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier ma caisse →"
+        },
+        {
+          "href": "/solutions-restaurants/",
+          "text": "Voir la restauration →"
+        },
+        {
+          "href": "/solutions-restaurants/",
+          "text": "Restauration→"
+        },
+        {
+          "href": "/tarifs-partenariat/",
+          "text": "Repères publics→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "tarifs",
+        "tarifs-caisse",
+        "commerce-pricing-title",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-commerce-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-commerce-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "lazy"
+        },
+        {
+          "src": "/solution-restaurant-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "1440",
+          "loading": "lazy"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "YVEXOR Caisse & Commerce",
+        "Encaissez, suivez votre activité et faites évoluer vos outils métier. Nous accompagnons les commerces en France, en Suisse et ailleurs selon le projet, à distance ou sur place selon les besoins.",
+        "Votre caisse, à votre rythme",
+        "Commencez par l’essentiel, puis faites évoluer votre solution selon votre activité.",
+        "À partir de29 €HT / mois",
+        "Une première caisse pour un petit commerce à un seul poste.",
+        "À partir de79 €HT / mois",
+        "Passez de l’encaissement au suivi quotidien de votre activité.",
+        "À partir de129 €HT / mois",
+        "Une organisation plus complète, adaptée à votre métier.",
+        "Boutique : codes-barres et inventaire. Salon : rendez-vous et produits. Garage : pièces et atelier. Boulangerie : précommandes et suivi des produits. Ces exemples sont étudiés selon les fonctions disponibles, les adaptations et les connexions nécessaires.",
+        "Multi-sites, bornes, équipements connectés, automatisations ou IA : nous définissons ensemble le périmètre utile. Une licence perpétuelle peut également être étudiée, avec les services associés précisés séparément.",
+        "Prix de départ, pas un forfait couvrant toutes les possibilités : les activités plus exigeantes peuvent démarrer à 49 € HT/mois ou davantage. Le devis confirme les fonctions, postes, utilisateurs, assistance, maintenance et conditions d’engagement.",
+        "Matériel, installation, configuration, reprise de données, développements spécifiques et éventuels services tiers sont chiffrés séparément selon le besoin. L’abonnement ne représente donc pas nécessairement la totalité du montant à prévoir au démarrage.",
+        "Boutique, boulangerie, salon ou garage : la configuration part de votre activité, du nombre de postes et des fonctions utiles. La formule Encaisser ne comprend pas la gestion de stock ; celle-ci est proposée à partir de la formule Gérer.",
+        "Caisse & Commerce",
+        "Une caisse centrée sur l’encaissement, puis des fonctions de gestion selon la formule choisie.",
+        "Articles, stock ou fidélité : le périmètre est défini avec vous, pas ajouté par défaut.",
+        "Logiciel, matériel et mise en service étudiés ensemble selon vos besoins.",
+        "Vente au comptoir, articles et suivi du stock selon la formule.",
+        "Service, commandes et cuisine : découvrez le parcours dédié.",
+        "Visuels d’illustration. Votre activité n’est pas citée ? Nous étudions aussi votre besoin.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 3555
+    },
+    {
+      "path": "/logiciel-garage/",
+      "status": 200,
+      "bytes": 43911,
+      "title": "Relier le suivi du garage autour d’un même outil.",
+      "description": "Logiciel adaptable ou sur mesure pour garage : clients, véhicules, interventions, devis, planning et notifications.",
+      "canonical": "https://yvexor.com/logiciel-garage/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Relier le suivi du garage autour d’un même outil."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Relier le suivi du garage autour d’un même outil."
+        ],
+        [
+          "H2",
+          "Une base métier à définir"
+        ],
+        [
+          "H2",
+          "Évoluer progressivement"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Relier le suivi du garage autour d’un même outil.",
+        "og:description": "Logiciel adaptable ou sur mesure pour garage : clients, véhicules, interventions, devis, planning et notifications.",
+        "og:url": "https://yvexor.com/logiciel-garage/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "Automatisation d’entreprise & IA métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-logiciel-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Cas d’usage · Garage",
+        "YVEXOR peut étudier une solution réunissant les informations utiles sans prétendre que chaque fonction est déjà disponible universellement.",
+        "Les fonctions sont classées selon leur état : disponibles, adaptables, à connecter ou à développer.",
+        "Une première version peut couvrir le parcours essentiel, puis intégrer des automatismes ou équipements compatibles après validation.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 1009
+    },
+    {
+      "path": "/logiciel-sur-mesure/",
+      "status": 200,
+      "bytes": 49476,
+      "title": "Votre problème ou votre idée devient une première solution réaliste.",
+      "description": "YVEXOR conçoit des logiciels sur mesure, applications métier et MVP en adaptant l’existant et en développant ce qui manque.",
+      "canonical": "https://yvexor.com/logiciel-sur-mesure/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Votre problème ou votre idée devient une première solution réaliste."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Votre problème ou votre idée devient une première solution réaliste."
+        ],
+        [
+          "H2",
+          "Un point de départ clair."
+        ],
+        [
+          "H3",
+          "À partir de 149 €/mois"
+        ],
+        [
+          "H2",
+          "Du besoin au produit"
+        ],
+        [
+          "H2",
+          "Un périmètre cohérent avec le budget"
+        ],
+        [
+          "H2",
+          "Votre idée ne rentre dans aucune case ?"
+        ],
+        [
+          "H2",
+          "Du prototype au lancement"
+        ],
+        [
+          "H2",
+          "Un projet viable, techniquement et financièrement"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Votre problème ou votre idée devient une première solution réaliste.",
+        "og:description": "YVEXOR conçoit des logiciels sur mesure, applications métier et MVP en adaptant l’existant et en développant ce qui manque.",
+        "og:url": "https://yvexor.com/logiciel-sur-mesure/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#tarifs",
+          "text": "Tarifs"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Étudier mon projet"
+        },
+        {
+          "href": "/applications-metier/",
+          "text": "Applications web & mobiles→"
+        },
+        {
+          "href": "/systemes-connectes/",
+          "text": "API, équipements & suivi de flotte→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "tarifs",
+        "category-price-title",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-logiciel-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Logiciels métier",
+        "Nous cherchons d’abord une base existante, puis nous adaptons, connectons et développons uniquement les fonctions nécessaires.",
+        "Budget & formule",
+        "Services et infrastructure pour une plateforme évolutive.",
+        "Conception et développement initial étudiés selon l’ambition du projet.",
+        "Ce repère concerne l’utilisation ou les services de la formule retenue. Il ne couvre pas automatiquement la création complète d’un logiciel sur mesure. Le devis distingue la mise en place, les développements, les coûts tiers et les conditions d’engagement.",
+        "L’usage prioritaire guide le cadrage, le prototype et le MVP avant une évolution plus large.",
+        "Le budget aide à choisir la première étape. Les phases ou modalités possibles restent soumises à l’étude et à un accord YVEXOR.",
+        "Service de location, plateforme de mise en relation, espace professionnel ou logiciel propre à votre métier : ces exemples sont des points de départ. Nous étudions les utilisateurs, les contraintes et la première version réellement utile, sans promettre une plateforme complète au prix d’un prototype.",
+        "Un prototype sert à valider le parcours ; une première version exploitable couvre les fonctions essentielles pour vos premiers utilisateurs. Les fonctions avancées, le volume et les intégrations sont ensuite dimensionnés progressivement.",
+        "Le devis distingue développement initial, mise en service, services récurrents et coûts tiers. Un périmètre réduit, des échéances ou une formule avec abonnement peuvent être étudiés après accord, sans confondre prix total et montant à payer au démarrage.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 2409
+    },
+    {
+      "path": "/mentions-legales/",
+      "status": 200,
+      "bytes": 42376,
+      "title": "Mentions légales",
+      "description": "Informations légales et coordonnées actuellement connues du site officiel YVEXOR.",
+      "canonical": "https://yvexor.com/mentions-legales/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Mentions légales"
+      ],
+      "headings": [
+        [
+          "H1",
+          "Mentions légales"
+        ],
+        [
+          "H2",
+          "Éditeur du site"
+        ],
+        [
+          "H2",
+          "Hébergement"
+        ],
+        [
+          "H2",
+          "Propriété intellectuelle"
+        ],
+        [
+          "H2",
+          "Responsabilité"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Mentions légales",
+        "og:description": "Informations légales et coordonnées actuellement connues du site officiel YVEXOR.",
+        "og:url": "https://yvexor.com/mentions-legales/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Protection des informations→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Informations du site",
+        "Cette migration reprend uniquement les informations vérifiables déjà présentes, sans inventer d’identité juridique.",
+        "Nom commercial : YVEXOR. Site : https://yvexor.com/. Téléphone : 07 56 91 30 13.",
+        "Le site est diffusé avec GitHub Pages, un service de GitHub, Inc.",
+        "Les textes, éléments graphiques, marques et contenus propres à YVEXOR ne peuvent pas être réutilisés comme s’ils appartenaient à un tiers.",
+        "Les fonctions, compatibilités, délais, tarifs et modalités applicables sont ceux confirmés dans une proposition ou un contrat.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 941
+    },
+    {
+      "path": "/politique-confidentialite/",
+      "status": 200,
+      "bytes": 42700,
+      "title": "Politique de confidentialité",
+      "description": "Fonctionnement actuel des données, liens SMS et téléphone sur le site officiel YVEXOR.",
+      "canonical": "https://yvexor.com/politique-confidentialite/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Politique de confidentialité"
+      ],
+      "headings": [
+        [
+          "H1",
+          "Politique de confidentialité"
+        ],
+        [
+          "H2",
+          "Données collectées"
+        ],
+        [
+          "H2",
+          "Téléphone et SMS"
+        ],
+        [
+          "H2",
+          "Cookies et audience"
+        ],
+        [
+          "H2",
+          "Hébergement"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Politique de confidentialité",
+        "og:description": "Fonctionnement actuel des données, liens SMS et téléphone sur le site officiel YVEXOR.",
+        "og:url": "https://yvexor.com/politique-confidentialite/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Informations du site→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Protection des informations",
+        "Le site public ne propose actuellement ni compte client, ni paiement Stripe, ni Assistant OpenAI actif.",
+        "Aucun formulaire n’est envoyé à un serveur YVEXOR et aucun compte utilisateur n’est créé sur le site actuel.",
+        "Les liens ouvrent l’application correspondante. Aucun appel ni message n’est envoyé automatiquement ; vous gardez le contrôle avant l’envoi.",
+        "Aucun outil de mesure d’audience, cookie publicitaire ou traceur tiers n’est intégré actuellement.",
+        "L’hébergeur peut traiter les informations techniques nécessaires à la diffusion et à la sécurité du site, conformément à ses obligations.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 1022
+    },
+    {
+      "path": "/solutions-hotels/",
+      "status": 200,
+      "bytes": 52825,
+      "title": "Connecter les services utiles autour du séjour.",
+      "description": "Solutions numériques et systèmes connectés pour hôtels : réservation, accès, chambre, équipe, restauration, parking et énergie.",
+      "canonical": "https://yvexor.com/solutions-hotels/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Connecter les services utiles autour du séjour."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Connecter les services utiles autour du séjour."
+        ],
+        [
+          "H2",
+          "Votre établissement, pas un modèle imposé"
+        ],
+        [
+          "H2",
+          "De la réservation à l’arrivée"
+        ],
+        [
+          "H2",
+          "Un séjour plus simple pour le client"
+        ],
+        [
+          "H2",
+          "Réception, ménage et maintenance reliés"
+        ],
+        [
+          "H2",
+          "Restaurant, bar et prestations du séjour"
+        ],
+        [
+          "H2",
+          "Chambres connectées, commandes simples"
+        ],
+        [
+          "H2",
+          "Parking, recharge et services complémentaires"
+        ],
+        [
+          "H2",
+          "Automatiser sans perdre le sens de l’accueil"
+        ],
+        [
+          "H2",
+          "Sur devis, module par module"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Connecter les services utiles autour du séjour.",
+        "og:description": "Solutions numériques et systèmes connectés pour hôtels : réservation, accès, chambre, équipe, restauration, parking et énergie.",
+        "og:url": "https://yvexor.com/solutions-hotels/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "Automatisation d’entreprise & IA métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-hotel-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Cas d’usage · Hôtellerie",
+        "Chaque connexion dépend des systèmes et équipements disponibles. YVEXOR étudie ce qui peut être conçu, adapté ou relié.",
+        "Hôtel indépendant, résidence, appart’hôtel, gîte ou maison d’hôtes : nous partons de votre fonctionnement réel. Vous pouvez conserver vos outils et ajouter un module utile, ou étudier un environnement plus complet.",
+        "Site, réservation directe et espace client peuvent réunir les informations utiles au séjour. Confirmations, horaires, parking et demandes particulières peuvent être transmis selon les règles définies avec l’équipe.",
+        "Une application ou un espace client peut permettre de préparer son arrivée, demander un service ou réserver une table. Les demandes sensibles ou particulières restent orientées vers votre équipe.",
+        "Le départ d’un client peut déclencher une tâche de ménage et préparer les étapes suivantes du séjour. Les chambres prêtes, occupées ou nécessitant une intervention deviennent visibles selon les droits de chaque équipe.",
+        "Selon les outils compatibles, les consommations peuvent être reliées au client ou à sa chambre pour faciliter le suivi. Stocks, achats et préparation de la facturation sont étudiés dans le périmètre retenu.",
+        "Accès temporaires, lumière, température ou stores peuvent participer à des scénarios d’arrivée, de nuit ou d’inoccupation. Les possibilités dépendent des équipements et des installations, sans garantie d’économie chiffrée.",
+        "Réservation de recharge, suivi des disponibilités ou services de spa et de location peuvent être intégrés progressivement. Les installations électriques et autres interventions réglementées sont réalisées avec les professionnels qualifiés nécessaires, après étude technique.",
+        "Alertes de stock, demandes non traitées, analyse d’occupation ou assistant d’information peuvent soutenir les équipes. Les prévisions reposent sur les données disponibles et les demandes nécessitant une décision humaine restent supervisées.",
+        "Le budget dépend des chambres, des utilisateurs, des connexions et du matériel nécessaires ; un abonnement ou une mise en œuvre par étapes peut être étudié. Le devis distingue développement, installation, équipements, services récurrents et coûts tiers, sans imposer de remplacer tout votre système.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 3415
+    },
+    {
+      "path": "/solutions-restaurants/",
+      "status": 200,
+      "bytes": 49997,
+      "title": "Une donnée. Plusieurs usages dans le restaurant.",
+      "description": "Caisse et outils numériques pour restaurants : service, cuisine, bar, stock, réservation, planning et pilotage.",
+      "canonical": "https://yvexor.com/solutions-restaurants/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Une donnée. Plusieurs usages dans le restaurant."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Une donnée. Plusieurs usages dans le restaurant."
+        ],
+        [
+          "H2",
+          "Une caisse n’est que le point de départ"
+        ],
+        [
+          "H2",
+          "Votre salle, votre site, vos réservations"
+        ],
+        [
+          "H2",
+          "Stocks, achats et marges"
+        ],
+        [
+          "H2",
+          "Des équipes mieux coordonnées"
+        ],
+        [
+          "H2",
+          "Une IA encadrée par votre métier"
+        ],
+        [
+          "H2",
+          "Abonnement ou licence : choisir le bon périmètre"
+        ],
+        [
+          "H2",
+          "Des besoins avancés à valider ensemble"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Une donnée. Plusieurs usages dans le restaurant.",
+        "og:description": "Caisse et outils numériques pour restaurants : service, cuisine, bar, stock, réservation, planning et pilotage.",
+        "og:url": "https://yvexor.com/solutions-restaurants/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "#solutions",
+          "text": "Possibilités"
+        },
+        {
+          "href": "#projet",
+          "text": "Mon projet"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce→"
+        },
+        {
+          "href": "/automatisation-entreprise/",
+          "text": "Automatisation d’entreprise & IA métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/solution-restaurant-v1.webp",
+          "alt": "",
+          "width": "960",
+          "height": "640",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Cas d’usage · Restauration",
+        "La caisse peut devenir le point de départ d’un environnement cohérent, selon la configuration et les outils réellement connectables.",
+        "YVEXOR peut relier la prise de commande, le service, la cuisine et le bar pour limiter les ressaisies. Le parcours est adapté à votre établissement et aux appareils réellement compatibles.",
+        "Un site et un parcours de réservation peuvent compléter l’organisation du restaurant. Commande en ligne, borne ou écran client sont étudiés selon vos usages, avec le matériel et les intégrations précisés au devis.",
+        "Les ventes, achats et factures peuvent alimenter un suivi des stocks et des coûts lorsque les données nécessaires sont disponibles. Analyse des marges, extraction de factures et prévisions sont des possibilités à cadrer, pas des fonctions incluses dans toute formule.",
+        "Planning, rôles et accès peuvent être organisés autour du service et des responsabilités de chacun. Les besoins de réseau professionnel, de recherche de renfort ou de rapprochement de profils sont étudiés séparément, sans présumer qu’un réseau actif est déjà disponible.",
+        "Un assistant peut aider à exploiter les données autorisées pour préparer une analyse, signaler une anomalie ou proposer une action. Les sources, les accès et les validations humaines sont définis avant sa mise en service.",
+        "Une première caisse peut évoluer vers un service connecté, puis un pilotage plus complet. L’abonnement ou la licence perpétuelle, les services récurrents, le matériel et les options font l’objet d’une proposition adaptée à votre établissement.",
+        "Multi-sites, automatisations financières ou connexion à une solution de paie nécessitent un cadrage spécifique et, selon le sujet, des partenaires compétents. Nous distinguons l’existant, les adaptations et les développements avant tout engagement.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 2780
+    },
+    {
+      "path": "/tarifs-partenariat/",
+      "status": 200,
+      "bytes": 44464,
+      "title": "Des modèles clairs, adaptés au périmètre.",
+      "description": "Tarifs et modèles YVEXOR : abonnement, licence, projet personnalisé, MVP, développement progressif et partenariat exceptionnel.",
+      "canonical": "https://yvexor.com/tarifs-partenariat/",
+      "robots": "index, follow",
+      "lang": "fr",
+      "h1": [
+        "Des modèles clairs, adaptés au périmètre."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Des modèles clairs, adaptés au périmètre."
+        ],
+        [
+          "H2",
+          "Abonnement"
+        ],
+        [
+          "H2",
+          "Licence ou achat"
+        ],
+        [
+          "H2",
+          "Projet personnalisé"
+        ],
+        [
+          "H2",
+          "MVP et organisation progressive"
+        ],
+        [
+          "H2",
+          "Partenariat exceptionnel"
+        ],
+        [
+          "H2",
+          "Votre besoin d’abord. La technologie ensuite."
+        ]
+      ],
+      "og": {
+        "og:title": "Des modèles clairs, adaptés au périmètre.",
+        "og:description": "Tarifs et modèles YVEXOR : abonnement, licence, projet personnalisé, MVP, développement progressif et partenariat exceptionnel.",
+        "og:url": "https://yvexor.com/tarifs-partenariat/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Solutions digitales sur mesure",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "/#accueil",
+          "text": ""
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/materiel/",
+          "text": "Matériel"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce"
+        },
+        {
+          "href": "/#budgets",
+          "text": "Budgets"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        },
+        {
+          "href": "/#solutions",
+          "text": "← Retour"
+        },
+        {
+          "href": "/",
+          "text": "Accueil"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour votre projet"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Toutes les solutions"
+        },
+        {
+          "href": "/logiciel-caisse-marseille/",
+          "text": "Caisse & Commerce→"
+        },
+        {
+          "href": "/logiciel-sur-mesure/",
+          "text": "Logiciels métier→"
+        },
+        {
+          "href": "/contact/",
+          "text": "Un échange direct→"
+        },
+        {
+          "href": "https://client.yvexor.com/",
+          "text": "Rejoignez-nous pour échanger"
+        },
+        {
+          "href": "/mentions-legales/",
+          "text": "Mentions légales"
+        },
+        {
+          "href": "/politique-confidentialite/",
+          "text": "Confidentialité"
+        },
+        {
+          "href": "/#accueil",
+          "text": "Accueil"
+        },
+        {
+          "href": "/#solutions",
+          "text": "Solutions"
+        },
+        {
+          "href": "/contact/",
+          "text": "Projet"
+        },
+        {
+          "href": "/#exemples",
+          "text": "Exemples"
+        },
+        {
+          "href": "/#yvexor",
+          "text": "YVEXOR"
+        }
+      ],
+      "ids": [
+        "contenu",
+        "accueil",
+        "solutions",
+        "exemples",
+        "projet",
+        "_R_"
+      ],
+      "images": [
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        },
+        {
+          "src": "/yvexor-logo-officiel-v2.jpg",
+          "alt": "YVEXOR",
+          "width": "680",
+          "height": "440",
+          "loading": "auto"
+        }
+      ],
+      "paragraphs": [
+        "Repères publics",
+        "Les prix publics sont des points de départ. Une proposition précise distingue l’utilisation, la mise en service, le matériel et le développement spécifique.",
+        "À partir de 29 €/mois pour une présence web, à partir de 29 € ht/mois pour Caisse & Commerce et à partir de 49 €/mois pour certaines automatisations, selon la formule et la configuration.",
+        "Une acquisition directe peut être étudiée lorsque le modèle de la solution le permet. Le périmètre et les services associés sont précisés dans la proposition.",
+        "Le cadrage, le développement et la mise en service sont chiffrés selon les fonctions réellement nécessaires.",
+        "Plusieurs phases, échéances ou une formule hybride peuvent être étudiées sans diminuer la valeur du travail. Rien n’est automatique.",
+        "Un modèle commercial spécifique peut être étudié uniquement après analyse du potentiel, validation YVEXOR et contrat détaillé.",
+        "Continuer votre recherche",
+        "Nous cherchons la base, le périmètre et la première étape les plus cohérents."
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": true,
+        "footer": true
+      },
+      "textLength": 1344
+    },
+    {
+      "path": "/a-propos/",
+      "status": 200,
+      "bytes": 32862,
+      "title": "YVEXOR — À propos",
+      "description": "YVEXOR transforme les problèmes métier en applications, logiciels, automatisations et systèmes connectés sur mesure.",
+      "canonical": "https://yvexor.com/",
+      "robots": "noindex, follow",
+      "lang": "fr",
+      "h1": [
+        "Cette page a rejoint le nouveau site."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Cette page a rejoint le nouveau site."
+        ]
+      ],
+      "og": {
+        "og:title": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:description": "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.",
+        "og:url": "https://yvexor.com/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "https://yvexor.com/#yvexor",
+          "text": "Découvrir YVEXOR"
+        }
+      ],
+      "ids": [
+        "_R_"
+      ],
+      "images": [],
+      "paragraphs": [
+        "YVEXOR",
+        "Redirection en cours. Découvrir YVEXOR"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": false,
+        "footer": false
+      },
+      "textLength": 81
+    },
+    {
+      "path": "/realisations/",
+      "status": 200,
+      "bytes": 32906,
+      "title": "YVEXOR — Exemples de solutions",
+      "description": "YVEXOR transforme les problèmes métier en applications, logiciels, automatisations et systèmes connectés sur mesure.",
+      "canonical": "https://yvexor.com/",
+      "robots": "noindex, follow",
+      "lang": "fr",
+      "h1": [
+        "Cette page a rejoint le nouveau site."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Cette page a rejoint le nouveau site."
+        ]
+      ],
+      "og": {
+        "og:title": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:description": "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.",
+        "og:url": "https://yvexor.com/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "https://yvexor.com/#exemples",
+          "text": "Voir les exemples"
+        }
+      ],
+      "ids": [
+        "_R_"
+      ],
+      "images": [],
+      "paragraphs": [
+        "YVEXOR",
+        "Redirection en cours. Voir les exemples"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": false,
+        "footer": false
+      },
+      "textLength": 82
+    },
+    {
+      "path": "/yvexor-pos/",
+      "status": 200,
+      "bytes": 33052,
+      "title": "YVEXOR — Caisse & Commerce",
+      "description": "YVEXOR transforme les problèmes métier en applications, logiciels, automatisations et systèmes connectés sur mesure.",
+      "canonical": "https://yvexor.com/logiciel-caisse-marseille/",
+      "robots": "noindex, follow",
+      "lang": "fr",
+      "h1": [
+        "Cette page a rejoint le nouveau site."
+      ],
+      "headings": [
+        [
+          "H1",
+          "Cette page a rejoint le nouveau site."
+        ]
+      ],
+      "og": {
+        "og:title": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:description": "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.",
+        "og:url": "https://yvexor.com/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [
+        {
+          "href": "https://yvexor.com/logiciel-caisse-marseille/",
+          "text": "Découvrir Caisse & Commerce"
+        }
+      ],
+      "ids": [
+        "_R_"
+      ],
+      "images": [],
+      "paragraphs": [
+        "YVEXOR",
+        "Redirection en cours. Découvrir Caisse & Commerce"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": false,
+        "footer": false
+      },
+      "textLength": 92
+    },
+    {
+      "path": "/seo-introuvable-audit/",
+      "status": 404,
+      "bytes": 33082,
+      "title": "404: This page could not be found.",
+      "description": "YVEXOR transforme les problèmes métier en applications, logiciels, automatisations et systèmes connectés sur mesure.",
+      "canonical": "https://yvexor.com/",
+      "robots": "noindex",
+      "lang": "fr",
+      "h1": [
+        "404"
+      ],
+      "headings": [
+        [
+          "H1",
+          "404"
+        ],
+        [
+          "H2",
+          "This page could not be found."
+        ]
+      ],
+      "og": {
+        "og:title": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:description": "Solutions digitales, logiciels métier, IA et systèmes connectés adaptés à votre activité.",
+        "og:url": "https://yvexor.com/",
+        "og:site_name": "YVEXOR",
+        "og:image": "https://yvexor.com/yvexor-social-v1.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "YVEXOR — Votre problème métier. Construisons la solution.",
+        "og:type": "website"
+      },
+      "jsonLd": [],
+      "links": [],
+      "ids": [
+        "_R_"
+      ],
+      "images": [],
+      "paragraphs": [],
+      "landmarks": {
+        "main": 0,
+        "header": false,
+        "footer": false
+      },
+      "textLength": 0
+    }
+  ],
+  "broken": [],
+  "orphans": [],
+  "redirects": [
+    {
+      "url": "http://yvexor.com/",
+      "status": 301,
+      "location": "https://yvexor.com/"
+    },
+    {
+      "url": "https://www.yvexor.com/",
+      "status": 301,
+      "location": "https://yvexor.com/"
+    },
+    {
+      "url": "http://www.yvexor.com/",
+      "status": 301,
+      "location": "https://yvexor.com/"
+    },
+    {
+      "url": "https://yvexor.com/contact",
+      "status": 301,
+      "location": "https://yvexor.com/contact/"
+    }
+  ],
+  "robots": "User-Agent: *\nAllow: /\n\nUser-Agent: OAI-SearchBot\nAllow: /\n\nSitemap: https://yvexor.com/sitemap.xml\n"
+}

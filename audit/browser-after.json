@@ -1,0 +1,305 @@
+{
+  "base": "http://127.0.0.1:3021",
+  "results": [
+    {
+      "route": "/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/histoire/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/materiel/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/domotique-batiments/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/applications-metier/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/systemes-connectes/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/site-presence-web/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/agence-ia-marseille/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/automatisation-entreprise/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/contact/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/faq/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/intelligence-artificielle-entreprise/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-caisse-marseille/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-garage/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-sur-mesure/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/mentions-legales/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/politique-confidentialite/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/solutions-hotels/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/solutions-restaurants/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/tarifs-partenariat/",
+      "width": 320,
+      "ok": true
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/histoire/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/materiel/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/domotique-batiments/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/applications-metier/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/systemes-connectes/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/site-presence-web/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/agence-ia-marseille/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/automatisation-entreprise/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/contact/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/faq/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/intelligence-artificielle-entreprise/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-caisse-marseille/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-garage/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-sur-mesure/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/mentions-legales/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/politique-confidentialite/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/solutions-hotels/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/solutions-restaurants/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/tarifs-partenariat/",
+      "width": 390,
+      "ok": true
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/histoire/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/materiel/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/domotique-batiments/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/applications-metier/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/systemes-connectes/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/site-presence-web/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/agence-ia-marseille/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/automatisation-entreprise/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/contact/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/faq/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/intelligence-artificielle-entreprise/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-caisse-marseille/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-garage/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/logiciel-sur-mesure/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/mentions-legales/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/politique-confidentialite/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/solutions-hotels/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/solutions-restaurants/",
+      "width": 1440,
+      "ok": true
+    },
+    {
+      "route": "/tarifs-partenariat/",
+      "width": 1440,
+      "ok": true
+    }
+  ]
+}

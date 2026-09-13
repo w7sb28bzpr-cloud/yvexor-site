@@ -28,6 +28,7 @@ for(const [route,html]of pages){for(const a of tags(html,'a')){if(!a.href||/^(te
 for(const route of aliases){assert.ok(!pages.has(route));assert.match(read(route.slice(1)+'index.html'),/noindex/);}
 for(const entry of fs.readdirSync(root,{withFileTypes:true})){if(entry.isDirectory()&&!['_next','404'].includes(entry.name)&&fs.existsSync(path.join(root,entry.name,'index.html')))assert.ok(pages.has('/'+entry.name+'/')||aliases.includes('/'+entry.name+'/'),'Public route absent from sitemap: '+entry.name);}
 assert.match(read('404.html'),/noindex/);assert.match(read('404.html'),/Cette page est introuvable/);
+assert.match(read('404.html'),/<title>Page introuvable \| YVEXOR<\/title>/);
 assert.match(read('robots.txt'),/Allow: \/\s/);assert.match(read('robots.txt'),/Sitemap: https:\/\/yvexor.com\/sitemap.xml/);
 assert.ok(!read('materiel/index.html').includes('Chargement du catalogue…'),'Catalogue is only a JavaScript loading state');
 console.log(`PASS: ${routes.length} indexable pages — unique metadata, canonicals, HTML content, JSON-LD, images, internal links, sitemap, robots and 404.`);

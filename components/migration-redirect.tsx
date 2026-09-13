@@ -5,7 +5,7 @@ type MigrationRedirectProps = {
 
 export function MigrationRedirect({ destination, label }: MigrationRedirectProps) {
   return (
-    <main className="seo-page">
+    <main className="seo-page" id="contenu">
       <meta httpEquiv="refresh" content={`0;url=${destination}`} />
       <section className="seo-hero">
         <p className="seo-eyebrow">YVEXOR</p>

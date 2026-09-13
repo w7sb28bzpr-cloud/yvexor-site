@@ -1,18 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./material-catalogue.module.css";
+import type { Catalogue } from "../lib/catalogue";
 
 const origin = "https://client.yvexor.com";
-type Product = {name:string;slug:string;sku:string;category:string;short_description:string;description:string;price_cents:number;credits_cents:number;tax_percent:string;shipping_cents:number;features:Record<string,string>;availability:string;available:boolean;images:{url:string;alt:string}[];url:string};
-type Catalogue = {products:Product[];categories:{name:string;slug:string}[];pages:number;page:number};
 // API amounts are integers. Formatting is not used for any financial calculation.
 const amount = (cents:number) => `${Math.trunc(cents/100).toLocaleString("fr-FR")},${String(cents%100).padStart(2,"0")}`;
 
-export function MaterialCatalogue({featured=false}:{featured?:boolean}) {
-  const [data,setData]=useState<Catalogue|null>(null),[error,setError]=useState(false),[query,setQuery]=useState(""),[category,setCategory]=useState(""),[page,setPage]=useState(1);
+export function MaterialCatalogue({featured=false,initialData}:{featured?:boolean;initialData:Catalogue}) {
+  const [data,setData]=useState<Catalogue|null>(initialData),[error,setError]=useState(false),[query,setQuery]=useState(""),[category,setCategory]=useState(""),[page,setPage]=useState(1);
   const [slug,setSlug]=useState("");
   useEffect(()=>{if(!featured)setSlug(new URLSearchParams(location.search).get("article")||"");},[featured]);
-  useEffect(()=>{const controller=new AbortController();setError(false);setData(null);
+  useEffect(()=>{const controller=new AbortController();setError(false);
     const params=new URLSearchParams({q:query,category,page:String(page)});if(featured)params.set("featured","1");if(slug)params.set("slug",slug);
     fetch(`${origin}/api/catalogue/?${params}`,{signal:controller.signal,credentials:"omit",cache:"no-store"})
       .then(r=>{if(!r.ok)throw Error();return r.json();}).then(setData).catch(e=>{if(e.name!=="AbortError")setError(true);});

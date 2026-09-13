@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test:seo": "node scripts/seo-check.cjs"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",

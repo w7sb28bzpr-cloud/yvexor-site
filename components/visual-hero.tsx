@@ -6,13 +6,13 @@ export function VisualHero() {
     <div className="visual-hero-grid">
       <div className="hero-content">
         <p className="eyebrow">Logiciels sur mesure & systèmes connectés</p>
-        <h1>Votre besoin.<br/>Votre idée.<br/><span>Construisons<br/>la solution.</span></h1>
+        <h1>Logiciels sur mesure<br/><span>et systèmes<br/>connectés.</span></h1>
         <p className="hero-copy">Nous concevons des logiciels et applications sur mesure pour améliorer votre activité ou lancer un nouveau service. Une base existe déjà ? Nous pouvons l’adapter, la connecter ou développer ce qui manque.</p>
         <div className="visual-hero-actions">
           <a className="action-link primary" href="https://client.yvexor.com/">Rejoignez-nous <ArrowIcon/></a>
           <SmsLink className="visual-secondary">Envoyer un SMS <span aria-hidden="true">↗</span></SmsLink>
         </div>
-        <p className="service-area">France, Suisse et au-delà · À distance ou sur place selon le projet.</p><ul className="visual-principles" aria-label="Notre approche"><li>Sur mesure</li><li>Évolutif</li><li>Un interlocuteur direct</li></ul>
+        <p className="service-area">Marseille · PACA · France à distance.<br/>Interventions sur place et en Suisse selon le projet.</p><ul className="visual-principles" aria-label="Notre approche"><li>Sur mesure</li><li>Évolutif</li><li>Un interlocuteur direct</li></ul>
       </div>
       <figure className="hero-product-visual">
         <div className="visual-caption-top"><span aria-hidden="true"/> Des idées. Des outils. Des connexions.</div>

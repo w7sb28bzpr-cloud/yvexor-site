@@ -1,7 +1,8 @@
 import { solutionOffers } from "./public-offer";
+import { editorial } from "./seo-improvements";
 
 export type SeoSection={title:string;text:string;items?:string[]};
-export type SeoPage={slug:string;eyebrow:string;title:string;description:string;intro:string;sections:SeoSection[];related:string[];kind?:"faq"|"contact"|"pricing"};
+export type SeoPage={slug:string;eyebrow:string;title:string;metaTitle?:string;description:string;intro:string;sections:SeoSection[];related:string[];cta?:string;service?:boolean;faq?:SeoSection[];kind?:"faq"|"contact"|"pricing"};
 
 const offer=(id:string)=>solutionOffers.find(item=>item.id===id)!;
 const caisse=offer("CAISSE_COMMERCE"),web=offer("SITE_WEB"),ia=offer("IA_AUTOMATISATION");
@@ -15,7 +16,7 @@ const baseSeoPages:SeoPage[]=[
   {title:"Résidences et syndics : piloter par zone",text:"Escaliers, halls, parkings et locaux techniques peuvent fonctionner selon les horaires et la présence. Le suivi des consommations aide à repérer les usages inutiles, sans promettre une économie chiffrée avant étude."},
   {title:"Un fonctionnement local peut être étudié",text:"Un serveur local ou une interface privée peut limiter la dépendance aux services externes selon l’architecture retenue. Nous précisons les données utilisées, les accès à distance, les fonctions disponibles sans Internet et la maintenance nécessaire."},
   {title:"Une intelligence que vous gardez sous contrôle",text:"Des automatismes avancés peuvent tenir compte de l’heure, de l’occupation ou des usages autorisés. Une IA éventuelle est étudiée pour un besoin précis, avec des actions explicables et désactivables plutôt qu’une autonomie imposée."},
-  {title:"Votre projet de A à Z, avec nos électriciens",text:"YVEXOR peut prendre en charge l’ensemble du projet : étude, travaux électriques, équipements, domotique, configuration et mise en service avec ses électriciens. Vous avez déjà votre électricien ? Nous pouvons aussi intervenir uniquement sur la partie connectée, avec les responsabilités et qualifications nécessaires définies selon le chantier."},
+  {title:"Du cadrage à la mise en service",text:"Le projet peut réunir étude, équipements, configuration et mise en service. Les travaux électriques nécessitent les professionnels qualifiés appropriés, avec les responsabilités définies selon le chantier. Vous avez déjà votre électricien ? La partie connectée peut être étudiée avec lui."},
   {title:"Un bien plus agréable à vivre et à présenter",text:"Pour un propriétaire ou une agence, des scénarios simples peuvent rendre les usages du logement plus concrets lors d’une visite. Nous étudions le confort et la différenciation recherchés, sans garantir une hausse du prix de vente."},
   {title:"Sur devis, avec la possibilité de commencer petit",text:"Un besoin ciblé ne suppose pas automatiquement un projet à plusieurs milliers d’euros ; le budget dépend du matériel, de l’installation et des fonctions souhaitées. La proposition distingue étude, équipements, mise en service et services récurrents, avec abonnement possible selon les services retenus.",items:["Un scénario ou une zone pour commencer","Une réalisation en une fois ou par étapes","Compatibilités, tests et accompagnement précisés au devis"]}
  ],related:["solutions-hotels","systemes-connectes","contact"]},
@@ -79,5 +80,20 @@ const additionalSections:Record<string,SeoSection[]>={
  "site-presence-web":[{title:"Du site vitrine au service en ligne",text:"Boutique en ligne, demandes de devis, réservation ou espace client : votre site peut aller au-delà de la présentation. Paiement, comptes et connexions métier sont cadrés selon vos besoins et les services retenus."},{title:"Et si votre projet devient une application ?",text:"Une application web, une PWA installable ou une version iPhone et Android peut prolonger votre service. Le choix se fait selon les usages ; une publication sur les stores nécessite une préparation et une validation spécifiques."}],
  "logiciel-sur-mesure":[{title:"Votre idée ne rentre dans aucune case ?",text:"Service de location, plateforme de mise en relation, espace professionnel ou logiciel propre à votre métier : ces exemples sont des points de départ. Nous étudions les utilisateurs, les contraintes et la première version réellement utile, sans promettre une plateforme complète au prix d’un prototype."},{title:"Du prototype au lancement",text:"Un prototype sert à valider le parcours ; une première version exploitable couvre les fonctions essentielles pour vos premiers utilisateurs. Les fonctions avancées, le volume et les intégrations sont ensuite dimensionnés progressivement."},{title:"Un projet viable, techniquement et financièrement",text:"Le devis distingue développement initial, mise en service, services récurrents et coûts tiers. Un périmètre réduit, des échéances ou une formule avec abonnement peuvent être étudiés après accord, sans confondre prix total et montant à payer au démarrage."}]
 };
-export const seoPages:SeoPage[]=baseSeoPages.map(page=>({...page,sections:[...(["solutions-hotels","solutions-restaurants"].includes(page.slug)?[]:page.sections),...(additionalSections[page.slug]??[])],related:page.slug==="site-presence-web"||page.slug==="logiciel-sur-mesure"?["applications-metier","systemes-connectes","contact"]:page.related}));
+export const seoPages:SeoPage[]=baseSeoPages.map(page=>{
+ const improvements=editorial[page.slug];
+ const result={...page,...improvements,sections:[...(["solutions-hotels","solutions-restaurants"].includes(page.slug)?[]:page.sections),...(additionalSections[page.slug]??[]),...(improvements?.sections??[])],related:improvements?.related??page.related};
+ if(page.slug==="politique-confidentialite"){
+  result.intro="Le site public présente les services et le matériel YVEXOR. Il propose des liens vers un espace client distinct pour créer un compte, échanger et suivre ses demandes.";
+  result.sections=[
+   {title:"Navigation sur le site public",text:"Le site public ne comporte pas de formulaire d’inscription intégré. Le catalogue charge les informations des articles depuis le service YVEXOR. Les hébergeurs peuvent traiter les données techniques nécessaires à la diffusion et à la sécurité."},
+   {title:"Espace client et échanges",text:"L’inscription, la connexion, les messages, documents et commandes sont gérés dans l’espace client, sur client.yvexor.com. Les données que vous y fournissez servent au fonctionnement du compte et au suivi de vos demandes. Évitez de transmettre des données sensibles sans nécessité."},
+   {title:"PWA et stockage sur votre appareil",text:"Le site utilise un service worker et un cache local pour son fonctionnement en application web. L’espace client utilise également une session de connexion. Ces mécanismes fonctionnels ne constituent pas une mesure d’audience publicitaire."},
+   {title:"Téléphone et SMS",text:"Les liens ouvrent votre application de téléphone ou de messagerie. Aucun appel ni SMS n’est envoyé automatiquement : vous gardez le contrôle de l’envoi."},
+   {title:"Audience et demandes relatives aux données",text:"Aucun outil publicitaire ou de mesure d’audience tiers n’est intégré au site public. Pour une question relative à vos informations, contactez YVEXOR au 07 56 91 30 13. Les modalités applicables à votre prestation sont à préciser lors du cadrage."}
+  ];
+ }
+ if(page.slug==="mentions-legales")result.intro="Informations de contact et de diffusion du site officiel YVEXOR.";
+ return result;
+});
 export const seoPageBySlug=Object.fromEntries(seoPages.map(page=>[page.slug,page])) as Record<string,SeoPage>;

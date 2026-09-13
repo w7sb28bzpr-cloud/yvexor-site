@@ -10,6 +10,14 @@ const base = process.env.HISTORY_PREVIEW_URL || 'http://localhost:3021';
   try {
     for (const width of [320, 375, 390, 430, 768, 1440, 1920]) {
       const context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' });
+      // The production API intentionally does not allow localhost CORS.
+      // Local QA reads the same public data through the test request context.
+      if (/localhost|127\.0\.0\.1/.test(base)) await context.route('https://client.yvexor.com/api/catalogue/**', async route => {
+        try {
+        const response = await context.request.get(route.request().url());
+        await route.fulfill({ status: response.status(), body: await response.body(), headers: { 'content-type': 'application/json', 'access-control-allow-origin': '*' } });
+        } catch(error) { if (!/already handled|Target.*closed|context disposed/i.test(error.message)) throw error; }
+      });
       const page = await context.newPage();
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
@@ -78,6 +86,7 @@ const base = process.env.HISTORY_PREVIEW_URL || 'http://localhost:3021';
       await page.waitForURL(base + '/histoire/');
       assert.deepEqual(errors, []);
       console.log(`PASS layout, keyboard activation, reverse path, reduced motion, navigation and links at ${width}px`);
+      await context.unrouteAll({behavior:'wait'});
       await context.close();
     }
     const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'no-preference', serviceWorkers: 'block' });

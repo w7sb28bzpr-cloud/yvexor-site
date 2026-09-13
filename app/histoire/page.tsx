@@ -5,6 +5,7 @@ import { HistoryConnections } from "../../components/history-connections";
 import { BrandLogo } from "../../components/brand-logo";
 import { ActionLink } from "../../components/ui";
 import styles from "./history.module.css";
+import { PageData } from "../../components/structured-data";
 
 const title = "L’approche YVEXOR — Au-delà du logiciel";
 const description = "Découvrez l’approche YVEXOR : connecter logiciels, automatisations, IA, équipements et systèmes pour construire des solutions adaptées aux besoins réels des entreprises.";
@@ -15,11 +16,11 @@ export const metadata: Metadata = {
 };
 
 export default function HistoryPage() {
-  return <><SiteHeader root/><main className={styles.page} id="histoire">
+  return <><PageData path="/histoire/" title={title} description={description} type="AboutPage"/><SiteHeader root/><main className={styles.page} id="contenu">
     <header className={styles.hero}>
-      <div className={styles.heroTop}><a href="/#yvexor">YVEXOR / Notre approche</a><span>Au-delà du logiciel</span></div>
+      <nav className={styles.heroTop} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-current="page">Notre approche</span></nav>
       <p className={styles.label}>L’approche YVEXOR</p>
-      <h1>Et si quelque chose qui n’a jamais été connecté <em>pouvait le devenir ?</em></h1>
+      <h1>L’approche YVEXOR : <em>connecter le logiciel au monde réel.</em></h1>
       <div className={styles.heroBottom}><p>YVEXOR n’est pas né avec l’idée de créer un logiciel de plus. À l’origine, il y avait surtout une curiosité : comprendre comment les choses fonctionnent, les modifier et chercher comment leur faire faire davantage.</p><div className={styles.worlds} aria-label="Le monde physique et le monde numérique peuvent échanger"><span>Physique</span><b aria-hidden="true">↕</b><span>Numérique</span></div></div>
     </header>
     <section className={styles.chapter} aria-labelledby="connect-title">

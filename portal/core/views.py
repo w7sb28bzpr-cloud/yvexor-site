@@ -284,7 +284,8 @@ def request_list(request):
 def new_request(request):
     if request.user.is_staff:
         return HttpResponse('Créez une demande depuis un compte client pour ce premier lot.', status=403)
-    form = RequestForm(request.POST or None)
+    from .caisse import draft_initial
+    form = RequestForm(request.POST or None, initial=draft_initial(request.session.get('caisse_draft')))
     if request.method == 'POST' and form.is_valid():
         if limited(request, 'request', str(request.user.pk)):
             form.add_error(None, 'Trop de demandes rapprochées. Réessayez dans 15 minutes.')
@@ -297,6 +298,7 @@ def new_request(request):
                 item.save()
                 audit(request.user, 'request.created', item.id)
                 notify_team('Nouvelle demande : '+item.title, reverse('request-detail',args=[item.pk]))
+            request.session.pop('caisse_draft', None)
             messages.success(request, 'Votre demande a bien été envoyée à YVEXOR.')
             return redirect('request-detail', pk=item.pk)
     return render(request, 'request_compose.html', {'form': form, 'title': 'Une nouvelle idée ?', 'action': 'Envoyer ma demande', 'section': 'requests', 'wizard': True})

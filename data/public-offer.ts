@@ -1,16 +1,18 @@
-export const offerDestinations: Record<string, string> = { SITE_WEB: "/site-presence-web/", CAISSE_COMMERCE: "/logiciel-caisse-marseille/", IA_AUTOMATISATION: "/automatisation-entreprise/", APPLICATION_METIER: "/applications-metier/", SYSTEMES_CONNECTES: "/systemes-connectes/", PLATEFORME_SAAS: "/logiciel-sur-mesure/" };
+import caisseCatalogue from "./caisses.json";
+const caisseStart=caisseCatalogue.plans[0].monthly;
+export const offerDestinations: Record<string, string> = { SITE_WEB: "/site-presence-web/", CAISSE_COMMERCE: "/caisse/", IA_AUTOMATISATION: "/automatisation-entreprise/", APPLICATION_METIER: "/applications-metier/", SYSTEMES_CONNECTES: "/systemes-connectes/", PLATEFORME_SAAS: "/logiciel-sur-mesure/" };
 
 export const existingSolutions = [
   {
     id: "yvexor-pos",
-    name: "Caisse & Commerce",
+    name: "YVEXOR Caisses",
     status: "Solution YVEXOR disponible",
     problem: "Encaissement, gestion et outils métier dans une solution qui peut évoluer avec votre commerce.",
     clients: "Commerces de proximité, boutiques, alimentation, boulangeries, snacks et activités nécessitant encaissement et gestion.",
-    capabilities: ["Encaissement", "Articles et catégories", "TVA", "Stock", "Clients et historique", "Fournisseurs", "Promotions et fidélité", "Statistiques", "Multi-utilisateurs", "Multi-sites"],
+    capabilities: ["Encaissement", "Articles et catégories", "TVA", "Historique des ventes", "Stock selon formule et validation", "Pilotage selon périmètre confirmé"],
     adaptable: true,
-    startingMonthlyPrice: 29,
-    startingPriceLabel: "À partir de 29 € HT/mois",
+    startingMonthlyPrice: caisseStart,
+    startingPriceLabel: `À partir de ${caisseStart} € HT/mois`,
     setupRequired: true,
     customDevelopmentPossible: true,
     hardwarePossible: true,
@@ -41,7 +43,7 @@ export const customCapabilities = [
 
 export const solutionOffers = [
   { id: "SITE_WEB", name: "Site & présence web", status: "Adaptable", startingMonthlyPrice: 29, startingPriceLabel: "À partir de 29 €/mois", description: "Présence web, hébergement et services selon la formule.", setupRequired: true, customDevelopmentPossible: true, hardwarePossible: false, pricingDisclaimer: "Conception et mise en service selon le projet.", cta: "Découvrir" },
-  { id: "CAISSE_COMMERCE", name: "Caisse & Commerce", status: "Solution YVEXOR disponible", startingMonthlyPrice: 29, startingPriceLabel: "À partir de 29 € HT/mois", description: "Encaisser, gérer les articles et les clients, puis faire évoluer la solution avec votre activité.", setupRequired: true, customDevelopmentPossible: true, hardwarePossible: true, pricingDisclaimer: "Entrée encaissement pour petit commerce à un poste, hors stock. Matériel, installation et configuration chiffrés séparément selon le besoin.", cta: "Découvrir la caisse" },
+  { id: "CAISSE_COMMERCE", name: "YVEXOR Caisses", status: "Configuration selon votre métier", startingMonthlyPrice: caisseStart, startingPriceLabel: `À partir de ${caisseStart} € HT/mois`, description: "Commerce, snack et beauté : un écosystème commun, configuré selon votre métier.", setupRequired: true, customDevelopmentPossible: true, hardwarePossible: true, pricingDisclaimer: "Essentiel sans stock. Matériel et logiciel séparés ; fonctions et compatibilité confirmées au devis.", cta: "Découvrir les caisses" },
   { id: "IA_AUTOMATISATION", name: "IA & automatisation", status: "Adaptable ou sur mesure", startingMonthlyPrice: 49, startingPriceLabel: "À partir de 49 €/mois", description: "Automatisations, assistants et services intelligents selon le besoin.", setupRequired: true, customDevelopmentPossible: true, hardwarePossible: false, pricingDisclaimer: "Configuration, intégrations et consommation de services tiers selon le projet.", cta: "Étudier mon besoin" },
   { id: "APPLICATION_METIER", name: "Application métier", status: "Base adaptable", startingMonthlyPrice: 69, startingPriceLabel: "À partir de 69 €/mois", description: "Pour une solution basée sur une configuration ou une base YVEXOR adaptée.", setupRequired: true, customDevelopmentPossible: true, hardwarePossible: false, pricingDisclaimer: "Le développement spécifique et la mise en service sont étudiés selon le projet.", cta: "Construire ma première version" },
   { id: "SYSTEMES_CONNECTES", name: "Systèmes connectés", status: "Adaptable ou sur mesure", startingMonthlyPrice: 99, startingPriceLabel: "À partir de 99 €/mois", description: "Pilotage, données, alertes ou services connectés selon le projet.", setupRequired: true, customDevelopmentPossible: true, hardwarePossible: true, pricingDisclaimer: "Matériel et installation chiffrés séparément lorsqu’ils sont nécessaires.", cta: "Présenter mon besoin" },

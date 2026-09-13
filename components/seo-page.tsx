@@ -2,7 +2,7 @@ import { BrandLogo } from "./brand-logo";
 import { MobileTabBar, SiteHeader } from "./navigation";
 import { SmsLink } from "./sms-link";
 
-import { CommercePricing } from "./commerce-pricing";
+
 import { AutomationShowcase } from "./automation-showcase";
 import { BackLink } from "./back-link";
 import { CategoryPrice, WebContent, CommerceBenefits } from "./category-content";
@@ -25,7 +25,7 @@ export function SeoPage({page}:{page:SeoPageData}){
     {automation&&<AutomationShowcase/>}
     {web&&<WebPricing/>}
     {hasPrice&&!web&&page.slug!=="logiciel-caisse-marseille"&&<CategoryPrice slug={page.slug}/>}
-    {page.slug==="logiciel-caisse-marseille"&&<CommercePricing/>}
+
     {detail&&!automation&&<figure className="detail-visual"><img src={`/${artwork}`} alt="" width="960" height={page.slug==="solutions-restaurants"?1440:page.slug==="solutions-hotels"?540:640} loading="lazy" decoding="async"/><figcaption>Visuel d’illustration · Le périmètre livré est défini avec vous.</figcaption></figure>}
     {web?<WebContent/>:<section className={`seo-content ${page.kind?`seo-content--${page.kind}`:""}`} id="solutions">{page.sections.map((section,index)=><article className="seo-section" id={automation?`automatisation-${index+1}`:undefined} key={section.title}><span>{String(index+1).padStart(2,"0")}</span><div><h2>{section.title}</h2><p>{section.text}</p>{section.items&&(detail?<details className="detail-expand"><summary>Explorer les possibilités</summary><ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul></details>:<ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul>)}</div></article>)}</section>}
     {page.slug==="logiciel-caisse-marseille"&&<CommerceBenefits/>}

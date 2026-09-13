@@ -12,7 +12,7 @@ for(const width of [320,390,1440]){const context=await browser.newContext({viewp
   results.push({route,width,ok:true});
  }
  await page.goto(base+'/materiel/');await page.getByRole('heading',{name:'Écran tactile 15,6 pouces',exact:true}).waitFor();await page.getByLabel('Rechercher du matériel').fill('introuvable-seo');await page.getByRole('button',{name:'Rechercher',exact:true}).click();await page.getByText('Aucun article disponible pour cette sélection.').waitFor();await page.getByLabel('Rechercher du matériel').fill('');await page.getByRole('button',{name:'Rechercher',exact:true}).click();await page.getByRole('link',{name:'Voir l’article →'}).click();await page.getByText('Référence : YV-ECRAN-156').waitFor();assert.ok((await page.getByRole('link',{name:'Se connecter pour acheter'}).getAttribute('href')).includes('next=%2Fcatalogue%2F'));
- await context.unrouteAll({behavior:'wait'});assert.deepEqual(errors,[]);await context.close();console.log('PASS 20 routes, navigation, catalogue/search/detail at '+width);
+ await context.unrouteAll({behavior:'wait'});assert.deepEqual(errors,[]);await context.close();console.log('PASS '+routes.length+' routes, navigation, catalogue/search/detail at '+width);
 }
 fs.writeFileSync(process.env.SEO_BROWSER_REPORT||'audit/browser-after.json',JSON.stringify({base,results},null,2));
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1});

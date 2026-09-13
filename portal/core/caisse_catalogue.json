@@ -1,0 +1,277 @@
+{
+  "version": 1,
+  "currency": "EUR",
+  "taxLabel": "HT",
+  "families": [
+    {
+      "id": "commerce",
+      "name": "Commerce & Vente",
+      "startingPrice": 49,
+      "description": "Votre comptoir, vos références, votre activité.",
+      "image": "solution-commerce-v1.webp",
+      "href": "/caisse/commerce/"
+    },
+    {
+      "id": "snack",
+      "name": "Snack & Restauration rapide",
+      "startingPrice": 49,
+      "description": "Du choix du menu au retrait de la commande.",
+      "image": "solution-restaurant-v1.webp",
+      "href": "/caisse/snack/"
+    },
+    {
+      "id": "salon",
+      "name": "Coiffure & Beauté",
+      "startingPrice": 60,
+      "description": "Rendez-vous, clients et encaissement dans un seul système.",
+      "image": "solution-logiciel-v1.webp",
+      "href": "/caisse/coiffure/"
+    },
+    {
+      "id": "restaurant",
+      "name": "Restaurant & Brasserie",
+      "description": "Découvrez YVEXOR Restaurant OS. Une gamme indépendante.",
+      "image": "solution-restaurant-v1.webp",
+      "href": "/solutions-restaurants/"
+    },
+    {
+      "id": "other",
+      "name": "Autre activité",
+      "description": "Votre métier ne rentre pas dans une case ? Parlons de votre organisation.",
+      "image": "solution-web-v1.webp",
+      "href": "/caisse/autre/"
+    }
+  ],
+  "plans": [
+    {
+      "id": "essentiel",
+      "name": "Essentiel",
+      "monthly": 49,
+      "families": [
+        "commerce",
+        "snack"
+      ],
+      "description": "Pour encaisser simplement.",
+      "recommended": false,
+      "features": [
+        "Encaissement et tickets",
+        "Articles, catégories, prix et TVA",
+        "Historique des ventes et chiffre d’affaires"
+      ],
+      "exclusion": "Sans gestion de stock"
+    },
+    {
+      "id": "stock",
+      "name": "Stock",
+      "monthly": 79,
+      "families": [
+        "commerce",
+        "snack"
+      ],
+      "description": "Pour suivre vos produits au quotidien.",
+      "recommended": true,
+      "features": [
+        "Le socle Essentiel",
+        "Quantités, mouvements et inventaires à valider en démonstration",
+        "Alertes et seuils selon configuration"
+      ],
+      "exclusion": "Gestion des recettes et balances non confirmée"
+    },
+    {
+      "id": "pilotage",
+      "name": "Pilotage",
+      "monthly": 119,
+      "families": [
+        "commerce",
+        "snack"
+      ],
+      "description": "Pour comprendre vos ventes et vos marges.",
+      "recommended": false,
+      "features": [
+        "Le périmètre Stock",
+        "Prix d’achat, marges et rentabilité à valider",
+        "Rapports et exports : périmètre confirmé au devis"
+      ],
+      "exclusion": "Ne remplace pas votre expert-comptable"
+    },
+    {
+      "id": "salon",
+      "name": "YVEXOR Salon",
+      "monthly": 60,
+      "families": [
+        "salon"
+      ],
+      "description": "Rendez-vous, clients et encaissement.",
+      "recommended": false,
+      "features": [
+        "Encaissement des prestations et produits",
+        "Agenda et suivi client prévus dans l’offre",
+        "Page de réservation prévue, distincte d’un site complet"
+      ],
+      "exclusion": "Disponibilité du parcours de réservation à confirmer avant souscription"
+    }
+  ],
+  "hardware": [
+    {
+      "id": "own",
+      "name": "Solution connectée — mon matériel",
+      "once": 0,
+      "description": "Vous avez déjà votre matériel ? Gardez-le. Aucun achat de poste YVEXOR obligatoire ; compatibilité à vérifier."
+    },
+    {
+      "id": "post",
+      "name": "Poste YVEXOR complet",
+      "once": 380,
+      "description": "Achat d’un poste physique, séparé de l’abonnement. Composition et compatibilité confirmées avant commande. Hors borne, écran cuisine supplémentaire et TPE."
+    }
+  ],
+  "options": [
+    {
+      "id": "website",
+      "name": "Site internet YVEXOR",
+      "monthly": 39,
+      "unit": "site",
+      "families": [
+        "commerce",
+        "snack",
+        "salon"
+      ],
+      "availability": "Sur configuration",
+      "description": "Présentation, horaires, contact et contenus adaptés à votre activité. Catalogue ou réservation uniquement après raccordement."
+    },
+    {
+      "id": "mobile",
+      "name": "Commande mobile / QR",
+      "monthly": 29,
+      "unit": "module",
+      "families": [
+        "snack"
+      ],
+      "availability": "Connexion à confirmer",
+      "description": "Parcours prévu : QR, menu, options, validation et transmission à la caisse. Paiement seulement si activé. Aucun téléchargement d’application prévu."
+    },
+    {
+      "id": "kiosk",
+      "name": "Logiciel borne de commande",
+      "monthly": 19,
+      "unit": "borne",
+      "families": [
+        "snack"
+      ],
+      "availability": "Connexion à confirmer",
+      "description": "Interface menu, suppléments, panier et numéro de commande. Logiciel par borne ; matériel et paiement séparés."
+    },
+    {
+      "id": "kitchen",
+      "name": "Écran cuisine supplémentaire",
+      "monthly": 9,
+      "unit": "écran",
+      "families": [
+        "snack"
+      ],
+      "availability": "Connexion à confirmer",
+      "description": "Cuisine, bar, préparation ou retrait. Matériel séparé. Le devis précise le dispositif initial ; aucun premier écran n’est présumé inclus."
+    }
+  ],
+  "intents": [
+    {
+      "id": "tpe",
+      "name": "Je souhaite un TPE / paiement CB",
+      "description": "Proposition personnalisée : terminal, prestataire, abonnement et commissions à définir. Aucun montant ajouté à l’estimation."
+    },
+    {
+      "id": "license",
+      "name": "Je préfère acheter le logiciel sans abonnement",
+      "description": "Licence sur proposition personnalisée. Aucun prix de licence déduit de l’abonnement ou du poste à 380 €."
+    }
+  ],
+  "cta": "Demander cette configuration",
+  "disclaimer": "Estimation commerciale, sans paiement ni engagement. Les fonctionnalités et la compatibilité sont validées en démonstration puis dans votre devis. Installation, configuration, prestations spécifiques et services tiers éventuels restent à chiffrer séparément.",
+  "professions": [
+    {
+      "slug": "commerce",
+      "family": "commerce",
+      "name": "Commerce & Vente"
+    },
+    {
+      "slug": "alimentation",
+      "family": "commerce",
+      "name": "Alimentation"
+    },
+    {
+      "slug": "epicerie",
+      "family": "commerce",
+      "name": "Épicerie"
+    },
+    {
+      "slug": "superette",
+      "family": "commerce",
+      "name": "Supérette"
+    },
+    {
+      "slug": "boulangerie",
+      "family": "commerce",
+      "name": "Boulangerie"
+    },
+    {
+      "slug": "patisserie",
+      "family": "commerce",
+      "name": "Pâtisserie"
+    },
+    {
+      "slug": "boucherie",
+      "family": "commerce",
+      "name": "Boucherie / Charcuterie / Traiteur"
+    },
+    {
+      "slug": "primeur",
+      "family": "commerce",
+      "name": "Primeur"
+    },
+    {
+      "slug": "fleuriste",
+      "family": "commerce",
+      "name": "Fleuriste"
+    },
+    {
+      "slug": "vetements",
+      "family": "commerce",
+      "name": "Mode / Vêtements / Chaussures"
+    },
+    {
+      "slug": "bijoux",
+      "family": "commerce",
+      "name": "Bijoux / Accessoires"
+    },
+    {
+      "slug": "tabac-presse",
+      "family": "commerce",
+      "name": "Tabac / Presse"
+    },
+    {
+      "slug": "snack",
+      "family": "snack",
+      "name": "Snack & Restauration rapide"
+    },
+    {
+      "slug": "coiffure",
+      "family": "salon",
+      "name": "Coiffure & Beauté"
+    },
+    {
+      "slug": "barber",
+      "family": "salon",
+      "name": "Barber"
+    },
+    {
+      "slug": "esthetique",
+      "family": "salon",
+      "name": "Esthétique / Institut"
+    },
+    {
+      "slug": "autre",
+      "family": "other",
+      "name": "Autre activité"
+    }
+  ]
+}

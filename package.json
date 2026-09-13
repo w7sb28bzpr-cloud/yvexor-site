@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/caisse-sync.cjs --check && next build",
     "start": "next start",
     "test:seo": "node scripts/seo-check.cjs"
   },

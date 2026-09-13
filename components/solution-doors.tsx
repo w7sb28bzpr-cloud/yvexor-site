@@ -15,7 +15,7 @@ const icons: Record<string, ReactNode> = {
 function SolutionIcon({name}:{name:string}) { return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icons[name]}</svg>; }
 
 const solutions = [
-  { title: "Caisse & Commerce", description: "Solutions de caisse, gestion des ventes, stocks, clients et statistiques.", icon: "cart", image: "commerce", href: "/logiciel-caisse-marseille/" },
+  { title: "YVEXOR Caisses", description: "Solutions de caisse, gestion des ventes, stocks, clients et statistiques.", icon: "cart", image: "commerce", href: "/caisse/" },
   { title: "Restauration", description: "Tables, commandes, cuisine, réservations et fidélité selon vos besoins.", icon: "restaurant", image: "restaurant", href: "/solutions-restaurants/" },
   { title: "Hôtels & Hébergement", description: "Réservations, séjour, équipes et chambres connectées : un ensemble adapté à votre établissement.", icon: "bed", image: "hotel", href: "/solutions-hotels/" },
   { title: "Domotique & Bâtiments", description: "Domotique et adaptation de votre installation, avec les professionnels qualifiés nécessaires selon le chantier.", icon: "home", image: "maison", href: "/domotique-batiments/" },

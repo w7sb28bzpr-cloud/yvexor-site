@@ -3,8 +3,10 @@ from core import views as v
 from core import commerce as c
 from core import collaboration as collab
 from core import messaging as chat
+from core import caisse
 
 urlpatterns = [
+    path('caisse/preparer/', caisse.prepare, name='caisse-prepare'),
     path('', include('core.shop_urls')),
     path('', v.root), path('client/', v.client_home, name='client-home'),
     path('admin/', v.admin_home, name='admin-home'),

@@ -1,4 +1,4 @@
-const CACHE = "yvexor-seo-2026-09-13";
+const CACHE = "yvexor-caisses-2026-09-13";
 const CORE = ["/", "/manifest.webmanifest", "/app-icon-192.png", "/app-icon-512.png"];
 self.addEventListener("install", event => { self.skipWaiting(); event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE))); });
 self.addEventListener("activate", event => { event.waitUntil(Promise.all([caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith("yvexor-") && key !== CACHE).map(key => caches.delete(key)))), self.clients.claim()])); });

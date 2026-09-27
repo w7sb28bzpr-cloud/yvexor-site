@@ -1,0 +1,1884 @@
+[
+  {
+    "id": "yvexor-appel-serveur-sans-fil-99",
+    "slug": "appel-serveur-sans-fil",
+    "name": "Système d'appel serveur sans fil avec bracelets vibrants",
+    "category": "Accessoires",
+    "sourceCategory": "Accessoires",
+    "price": 9900,
+    "currency": "EUR",
+    "priceLabel": "99 €",
+    "shortDescription": "Système d’appel sans fil avec boutons de table et bracelets récepteurs vibrants pour le service.",
+    "description": "Système d’appel sans fil avec boutons de table et bracelets récepteurs vibrants pour le service.",
+    "images": [
+      {
+        "src": "/media/boutique/appel-serveur-sans-fil-01.webp",
+        "small": "/media/boutique/appel-serveur-sans-fil-01-480.webp",
+        "medium": "/media/boutique/appel-serveur-sans-fil-01-960.webp",
+        "alt": "Système d'appel serveur sans fil avec bracelets vibrants — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Appel depuis la table",
+        "description": "Le client appuie sur un bouton pour signaler qu'il souhaite de l'aide ou passer une demande."
+      },
+      {
+        "title": "Alerte au poignet",
+        "description": "Le serveur reçoit directement la notification sur son bracelet récepteur."
+      },
+      {
+        "title": "Demandes différenciées",
+        "description": "Selon la configuration, l'écran du bracelet peut afficher un numéro ou un type de demande comme CALL, WATER ou ORDER."
+      },
+      {
+        "title": "Sans fil",
+        "description": "Pas besoin de câbler chaque table pour mettre en place le système."
+      },
+      {
+        "title": "Étanche",
+        "description": "Bracelet annoncé comme étanche, adapté à un usage de service professionnel."
+      },
+      {
+        "title": "Intégration YVEXOR",
+        "description": "Peut compléter une solution de salle, de prise de commande ou de gestion du personnel."
+      },
+      {
+        "title": "Restaurants",
+        "description": "Permet aux clients de signaler rapidement une demande sans chercher un serveur."
+      },
+      {
+        "title": "Bars & terrasses",
+        "description": "Pratique dans les espaces où le personnel ne voit pas toutes les tables en permanence."
+      },
+      {
+        "title": "Hôtels & lounges",
+        "description": "Peut servir pour les appels de service dans les zones d'accueil, salons ou espaces clients."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Système d'appel serveur sans fil"
+      },
+      {
+        "label": "Récepteur",
+        "value": "Bracelet vibrant avec affichage"
+      },
+      {
+        "label": "Émetteur",
+        "value": "Boutons d'appel sans fil pour table / comptoir"
+      },
+      {
+        "label": "Usage",
+        "value": "Restaurant, bar, hôtel, service client"
+      },
+      {
+        "label": "Signal",
+        "value": "Alerte par vibration et affichage selon configuration"
+      },
+      {
+        "label": "Conception",
+        "value": "Bracelet annoncé comme étanche"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "systeme-caisse-pos",
+      "terminal-mobile-commande-paiement",
+      "kds",
+      "borne-tactile"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-borne-murale-commande-paiement-469",
+    "slug": "borne-murale-commande-paiement",
+    "name": "Borne murale tout-en-un pour commande et paiement",
+    "category": "Bornes",
+    "sourceCategory": "Bornes",
+    "price": 46900,
+    "currency": "EUR",
+    "priceLabel": "469 €",
+    "shortDescription": "Borne murale YVEXOR avec écran tactile et impression ticket pour la commande et le paiement selon configuration.",
+    "description": "Borne murale YVEXOR avec écran tactile et impression ticket pour la commande et le paiement selon configuration.",
+    "images": [
+      {
+        "src": "/media/boutique/borne-murale-commande-paiement-01.webp",
+        "small": "/media/boutique/borne-murale-commande-paiement-01-480.webp",
+        "medium": "/media/boutique/borne-murale-commande-paiement-01-960.webp",
+        "alt": "Borne murale tout-en-un pour commande et paiement — vue 1",
+        "width": 1254,
+        "height": 1254
+      }
+    ],
+    "features": [
+      {
+        "title": "Commande tactile",
+        "description": "Interface directe pour parcourir un menu, choisir des produits et valider une commande."
+      },
+      {
+        "title": "Paiement intégré",
+        "description": "Peut accueillir une solution de paiement ou d'identification selon la configuration choisie."
+      },
+      {
+        "title": "Impression ticket",
+        "description": "Module d'impression intégré pour reçus, justificatifs ou tickets de commande."
+      },
+      {
+        "title": "Installation murale",
+        "description": "Format conçu pour libérer l'espace au sol et optimiser les petites surfaces."
+      },
+      {
+        "title": "Restaurants & commerces",
+        "description": "Adaptée aux parcours de commande en restauration rapide, retail et libre-service."
+      },
+      {
+        "title": "Interface YVEXOR",
+        "description": "Habillage, parcours client et intégration logicielle personnalisables selon votre activité."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Kiosque / borne POS murale tout-en-un"
+      },
+      {
+        "label": "Écran",
+        "value": "Écran tactile vertical"
+      },
+      {
+        "label": "Installation",
+        "value": "Fixation murale"
+      },
+      {
+        "label": "Impression",
+        "value": "Imprimante ticket intégrée sur la configuration présentée"
+      },
+      {
+        "label": "Paiement / identification",
+        "value": "Modules possibles selon configuration"
+      },
+      {
+        "label": "Usages",
+        "value": "Restaurant, supermarché, commerce, commande et paiement libre-service"
+      },
+      {
+        "label": "Personnalisation",
+        "value": "Interface et intégration YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "469 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "terminal-mobile-commande-paiement",
+      "systeme-caisse-pos"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-borne-paiement-especes-3099",
+    "slug": "borne-paiement-especes-tout-en-un",
+    "name": "Borne de paiement espèces tout-en-un",
+    "category": "Bornes",
+    "sourceCategory": "Imprimantes",
+    "price": 309900,
+    "currency": "EUR",
+    "priceLabel": "3 099 €",
+    "shortDescription": "Borne de paiement espèces YVEXOR avec écran tactile, lecteur de codes-barres, imprimante de reçus et gestion des billets/pièces selon configuration.",
+    "description": "Borne de paiement espèces YVEXOR avec écran tactile, lecteur de codes-barres, imprimante de reçus et gestion des billets/pièces selon configuration.",
+    "images": [
+      {
+        "src": "/media/boutique/borne-paiement-especes-tout-en-un-01.webp",
+        "small": "/media/boutique/borne-paiement-especes-tout-en-un-01-480.webp",
+        "medium": "/media/boutique/borne-paiement-especes-tout-en-un-01-960.webp",
+        "alt": "Borne de paiement espèces tout-en-un — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Paiement en billets",
+        "description": "La borne peut accepter les paiements en espèces via un module de lecture et de gestion des billets selon configuration."
+      },
+      {
+        "title": "Paiement en pièces",
+        "description": "Gestion des pièces et rendu de monnaie selon les modules installés."
+      },
+      {
+        "title": "Impression de reçus",
+        "description": "Imprimante intégrée pour tickets, justificatifs et reçus de transaction."
+      },
+      {
+        "title": "Lecteur code-barres / QR",
+        "description": "Scanner intégré pour identifier un article, un ticket, un code ou une transaction."
+      },
+      {
+        "title": "Écran tactile",
+        "description": "Interface verticale pour guider l'utilisateur pendant le paiement ou la commande."
+      },
+      {
+        "title": "Intégration YVEXOR",
+        "description": "Peut être reliée à un logiciel de caisse, de commande ou de paiement YVEXOR selon le projet."
+      },
+      {
+        "title": "Commerces & supérettes",
+        "description": "Encaissement autonome des paiements espèces et réduction de la charge au comptoir."
+      },
+      {
+        "title": "Restaurants & restauration rapide",
+        "description": "Peut compléter une borne de commande ou servir de point de paiement dédié."
+      },
+      {
+        "title": "Services & guichets",
+        "description": "Convient aux prestations nécessitant paiement, reçu et lecture de code dans un parcours automatisé."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Borne de paiement espèces en libre-service"
+      },
+      {
+        "label": "Paiement",
+        "value": "Billets et pièces selon configuration"
+      },
+      {
+        "label": "Rendu de monnaie",
+        "value": "Oui, selon les modules installés"
+      },
+      {
+        "label": "Écran",
+        "value": "Écran tactile vertical"
+      },
+      {
+        "label": "Impression",
+        "value": "Imprimante de reçus intégrée"
+      },
+      {
+        "label": "Scanner",
+        "value": "Lecteur code-barres / QR intégré"
+      },
+      {
+        "label": "Intégration",
+        "value": "SDK/API et développement YVEXOR selon projet"
+      },
+      {
+        "label": "Usage",
+        "value": "Commerce, restauration, libre-service, guichet de paiement"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "3 099 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "terminal-mobile-commande-paiement",
+      "systeme-caisse-pos"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-borne-paiement-especes-3500-2-visuels-separes",
+    "slug": "borne-paiement-especes-rendu-monnaie",
+    "name": "Borne de paiement espèces avec rendu de monnaie",
+    "category": "Bornes",
+    "sourceCategory": "Bornes",
+    "price": 350000,
+    "currency": "EUR",
+    "priceLabel": "3 500 €",
+    "shortDescription": "Borne de paiement espèces YVEXOR avec billets, pièces, rendu de monnaie, QR/NFC et impression ticket.",
+    "description": "Borne de paiement espèces YVEXOR avec billets, pièces, rendu de monnaie, QR/NFC et impression ticket.",
+    "images": [
+      {
+        "src": "/media/boutique/borne-paiement-especes-rendu-monnaie-01.webp",
+        "small": "/media/boutique/borne-paiement-especes-rendu-monnaie-01-480.webp",
+        "medium": "/media/boutique/borne-paiement-especes-rendu-monnaie-01-960.webp",
+        "alt": "Borne de paiement espèces avec rendu de monnaie — vue 1",
+        "width": 936,
+        "height": 1024
+      },
+      {
+        "src": "/media/boutique/borne-paiement-especes-rendu-monnaie-02.webp",
+        "small": "/media/boutique/borne-paiement-especes-rendu-monnaie-02-480.webp",
+        "medium": "/media/boutique/borne-paiement-especes-rendu-monnaie-02-960.webp",
+        "alt": "Borne de paiement espèces avec rendu de monnaie — vue 2",
+        "width": 768,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Encaissement en billets",
+        "description": "Module de gestion des billets pour accepter les paiements en espèces directement depuis la borne."
+      },
+      {
+        "title": "Encaissement en pièces",
+        "description": "Entrée dédiée aux pièces pour automatiser les paiements en monnaie."
+      },
+      {
+        "title": "Rendu de monnaie",
+        "description": "Système de recyclage et de restitution pour billets et pièces selon la configuration installée."
+      },
+      {
+        "title": "QR & NFC",
+        "description": "Zone de lecture QR / NFC intégrée pour compléter les parcours de paiement ou d'identification."
+      },
+      {
+        "title": "Impression ticket",
+        "description": "Imprimante de reçus intégrée pour éditer un justificatif à la fin de la transaction."
+      },
+      {
+        "title": "Écran de contrôle",
+        "description": "Écran supérieur permettant d'afficher une interface de paiement, des instructions ou des contenus personnalisés."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Borne de paiement espèces en libre-service"
+      },
+      {
+        "label": "Paiement billets",
+        "value": "Oui — module de gestion/recyclage de billets"
+      },
+      {
+        "label": "Paiement pièces",
+        "value": "Oui — entrée pièces dédiée"
+      },
+      {
+        "label": "Rendu de monnaie",
+        "value": "Oui — restitution billets et pièces selon configuration"
+      },
+      {
+        "label": "QR / NFC",
+        "value": "Lecteur intégré visible sur la configuration présentée"
+      },
+      {
+        "label": "Impression",
+        "value": "Imprimante ticket / reçu intégrée"
+      },
+      {
+        "label": "Écran",
+        "value": "Écran d'affichage et d'interaction intégré"
+      },
+      {
+        "label": "Personnalisation",
+        "value": "Habillage, interface et intégration logicielle YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "3 500 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "terminal-mobile-commande-paiement",
+      "systeme-caisse-pos"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-borne-tactile-879-galerie",
+    "slug": "borne-tactile",
+    "name": "Commande, accueil et libre-service sur une seule borne",
+    "category": "Bornes",
+    "sourceCategory": "Bornes",
+    "price": 87900,
+    "currency": "EUR",
+    "priceLabel": "879 €",
+    "shortDescription": "Borne tactile de commande et d’accueil, murale ou sur pied, avec impression ticket et interface personnalisable.",
+    "description": "Borne tactile de commande et d’accueil, murale ou sur pied, avec impression ticket et interface personnalisable.",
+    "images": [
+      {
+        "src": "/media/boutique/borne-tactile-01.webp",
+        "small": "/media/boutique/borne-tactile-01-480.webp",
+        "medium": "/media/boutique/borne-tactile-01-960.webp",
+        "alt": "Commande, accueil et libre-service sur une seule borne — vue 1",
+        "width": 1193,
+        "height": 1319
+      },
+      {
+        "src": "/media/boutique/borne-tactile-02.webp",
+        "small": "/media/boutique/borne-tactile-02-480.webp",
+        "medium": "/media/boutique/borne-tactile-02-960.webp",
+        "alt": "Commande, accueil et libre-service sur une seule borne — vue 2",
+        "width": 1254,
+        "height": 1254
+      }
+    ],
+    "features": [
+      {
+        "title": "Commande tactile",
+        "description": "Navigation intuitive pour sélectionner les produits et finaliser un parcours."
+      },
+      {
+        "title": "Impression ticket",
+        "description": "Module d'impression intégré sur la configuration présentée."
+      },
+      {
+        "title": "Paiement intégré",
+        "description": "Intégration possible d'une solution carte / sans contact selon configuration."
+      },
+      {
+        "title": "Installation flexible",
+        "description": "Version murale ou sur pied selon l'espace disponible."
+      },
+      {
+        "title": "Connectivité",
+        "description": "Connexion réseau / Wi‑Fi / 4G selon la configuration retenue."
+      },
+      {
+        "title": "Personnalisation",
+        "description": "Interface, branding et intégrations logicielles adaptés à votre activité."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Terminal tactile libre-service professionnel"
+      },
+      {
+        "label": "Format",
+        "value": "Installation murale ou sur pied"
+      },
+      {
+        "label": "Interface",
+        "value": "Écran tactile avec interface personnalisable"
+      },
+      {
+        "label": "Impression",
+        "value": "Imprimante ticket intégrée sur la configuration présentée"
+      },
+      {
+        "label": "Paiement",
+        "value": "Intégration possible selon la solution choisie"
+      },
+      {
+        "label": "Connectivité",
+        "value": "Réseau / Wi‑Fi / 4G selon configuration"
+      },
+      {
+        "label": "Prix",
+        "value": "879 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "terminal-mobile-commande-paiement",
+      "systeme-caisse-pos"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-borne-tactile-android-sur-pied-339-99",
+    "slug": "borne-tactile-android-sur-pied",
+    "name": "Borne tactile Android sur pied",
+    "category": "Bornes",
+    "sourceCategory": "Bornes",
+    "price": 33999,
+    "currency": "EUR",
+    "priceLabel": "339,99 €",
+    "shortDescription": "Borne tactile Android YVEXOR sur pied, disponible en 21, 24 et 32 pouces selon configuration.",
+    "description": "Borne tactile Android YVEXOR sur pied, disponible en 21, 24 et 32 pouces selon configuration.",
+    "images": [
+      {
+        "src": "/media/boutique/borne-tactile-android-sur-pied-01.webp",
+        "small": "/media/boutique/borne-tactile-android-sur-pied-01-480.webp",
+        "medium": "/media/boutique/borne-tactile-android-sur-pied-01-960.webp",
+        "alt": "Borne tactile Android sur pied — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Commande en libre-service",
+        "description": "Peut servir de borne de commande dans un restaurant, snack ou point de vente."
+      },
+      {
+        "title": "Affichage interactif",
+        "description": "Présentez catalogues, menus, services, promotions ou contenus dynamiques."
+      },
+      {
+        "title": "Accueil & orientation",
+        "description": "Utilisable dans un hall, hôtel, salon, showroom ou espace professionnel."
+      },
+      {
+        "title": "Écran tactile",
+        "description": "Navigation directe pour simplifier le parcours client ou visiteur."
+      },
+      {
+        "title": "Format sur pied",
+        "description": "Installation autonome sans fixation murale, facile à intégrer dans différents espaces."
+      },
+      {
+        "title": "Personnalisation YVEXOR",
+        "description": "Interface, contenus et logiciels peuvent être adaptés à votre activité."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Borne tactile Android sur pied"
+      },
+      {
+        "label": "Tailles disponibles",
+        "value": "21\" / 24\" / 32\" selon configuration"
+      },
+      {
+        "label": "Système",
+        "value": "Android"
+      },
+      {
+        "label": "Écran",
+        "value": "Tactile"
+      },
+      {
+        "label": "Installation",
+        "value": "Support sur pied"
+      },
+      {
+        "label": "Usages",
+        "value": "Affichage, commande, accueil, catalogue, salle de réunion, showroom"
+      },
+      {
+        "label": "Personnalisation",
+        "value": "Interface et intégration YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "339,99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "terminal-mobile-commande-paiement",
+      "systeme-caisse-pos"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-bracelet-connecte-caisse-99",
+    "slug": "bracelet-connecte-caisse",
+    "name": "Bracelet connecté relié à votre caisse YVEXOR",
+    "category": "Accessoires",
+    "sourceCategory": "Accessoires",
+    "price": 9900,
+    "currency": "EUR",
+    "priceLabel": "99 €",
+    "shortDescription": "Bracelet connecté YVEXOR relié à la caisse pour alertes, commandes et notifications serveur.",
+    "description": "Bracelet connecté YVEXOR relié à la caisse pour alertes, commandes et notifications serveur.",
+    "images": [
+      {
+        "src": "/media/boutique/bracelet-connecte-caisse-01.webp",
+        "small": "/media/boutique/bracelet-connecte-caisse-01-480.webp",
+        "medium": "/media/boutique/bracelet-connecte-caisse-01-960.webp",
+        "alt": "Bracelet connecté relié à votre caisse YVEXOR — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Nouvelle commande",
+        "description": "Le bracelet peut notifier un employé lorsqu'une nouvelle commande arrive dans le système."
+      },
+      {
+        "title": "Commande prête",
+        "description": "La cuisine peut déclencher une alerte lorsque la commande est prête à être servie."
+      },
+      {
+        "title": "Demande client",
+        "description": "Peut être associé à des boutons d'appel ou à des notifications de salle."
+      },
+      {
+        "title": "Vibration discrète",
+        "description": "L'alerte au poignet permet de prévenir un membre de l'équipe sans sonnerie gênante."
+      },
+      {
+        "title": "Connexion logicielle",
+        "description": "Intégration possible avec la caisse, le KDS ou les outils de service YVEXOR selon le projet."
+      },
+      {
+        "title": "Port quotidien",
+        "description": "Format léger et discret pensé pour accompagner les équipes pendant le service."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Bracelet connecté avec alerte vibrante"
+      },
+      {
+        "label": "Usage YVEXOR",
+        "value": "Notifications serveur, commandes, appels client, alertes internes"
+      },
+      {
+        "label": "Connexion",
+        "value": "Intégration logicielle selon configuration"
+      },
+      {
+        "label": "Alerte",
+        "value": "Vibration / notification"
+      },
+      {
+        "label": "Synchronisation",
+        "value": "Compatible avec un workflow connecté à la caisse YVEXOR selon projet"
+      },
+      {
+        "label": "Conception",
+        "value": "Bracelet portable pour usage professionnel"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "systeme-caisse-pos",
+      "terminal-mobile-commande-paiement",
+      "kds",
+      "borne-tactile"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-brochure-video-lcd-7-49-99",
+    "slug": "brochure-video-lcd-7",
+    "name": "Brochure vidéo LCD 7 pouces personnalisable",
+    "category": "Affichage",
+    "sourceCategory": "Affichage",
+    "price": 4999,
+    "currency": "EUR",
+    "priceLabel": "49,99 €",
+    "shortDescription": "Brochure vidéo LCD 7 pouces YVEXOR pour présentation commerciale, cadeaux, invitations et communication premium.",
+    "description": "Brochure vidéo LCD 7 pouces YVEXOR pour présentation commerciale, cadeaux, invitations et communication premium.",
+    "images": [
+      {
+        "src": "/media/boutique/brochure-video-lcd-7-01.webp",
+        "small": "/media/boutique/brochure-video-lcd-7-01-480.webp",
+        "medium": "/media/boutique/brochure-video-lcd-7-01-960.webp",
+        "alt": "Brochure vidéo LCD 7 pouces personnalisable — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Présentation commerciale",
+        "description": "Présentez une entreprise, un produit ou une offre avec vidéo, images et contenu imprimé dans un même support."
+      },
+      {
+        "title": "Communication événementielle",
+        "description": "Idéal pour lancement, invitation, mariage, événement professionnel ou présentation VIP."
+      },
+      {
+        "title": "Cadeau client",
+        "description": "Peut être utilisé comme support premium pour remercier un client ou accompagner une proposition commerciale."
+      },
+      {
+        "title": "Lecture vidéo intégrée",
+        "description": "L'écran LCD permet de diffuser une vidéo directement à l'ouverture selon la configuration choisie."
+      },
+      {
+        "title": "Format personnalisable",
+        "description": "Couverture, impression, contenu et habillage peuvent être adaptés à votre identité visuelle."
+      },
+      {
+        "title": "Branding YVEXOR",
+        "description": "Possibilité de créer une version totalement personnalisée pour votre entreprise ou votre campagne."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Brochure / livre vidéo avec écran LCD intégré"
+      },
+      {
+        "label": "Écran",
+        "value": "7 pouces"
+      },
+      {
+        "label": "Usage",
+        "value": "Présentation, publicité, invitation, carte de vœux, album, coffret cadeau, mailer"
+      },
+      {
+        "label": "Lecture",
+        "value": "Lecture de contenu vidéo intégrée"
+      },
+      {
+        "label": "Personnalisation",
+        "value": "Couverture, design et contenu selon projet"
+      },
+      {
+        "label": "Format",
+        "value": "Brochure rigide avec écran et commandes de lecture"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "49,99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "bracelet-connecte-caisse",
+      "borne-tactile",
+      "terminal-mobile-commande-paiement",
+      "imprimante-thermique-wifi"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-ecran-menu-android-10-1-109-99",
+    "slug": "ecran-menu-android-10-1",
+    "name": "Écran Android 10,1\" pour présentation de menu",
+    "category": "Affichage",
+    "sourceCategory": "Affichage",
+    "price": 10999,
+    "currency": "EUR",
+    "priceLabel": "109,99 €",
+    "shortDescription": "Écran Android 10,1 pouces YVEXOR en format L pour présentation de menus, affichage digital et terminal POS léger.",
+    "description": "Écran Android 10,1 pouces YVEXOR en format L pour présentation de menus, affichage digital et terminal POS léger.",
+    "images": [
+      {
+        "src": "/media/boutique/ecran-menu-android-10-1-01.webp",
+        "small": "/media/boutique/ecran-menu-android-10-1-01-480.webp",
+        "medium": "/media/boutique/ecran-menu-android-10-1-01-960.webp",
+        "alt": "Écran Android 10,1\" pour présentation de menu — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Menu digital",
+        "description": "Affichez plats, boissons, desserts, prix et promotions directement sur le comptoir."
+      },
+      {
+        "title": "Affichage dynamique",
+        "description": "Diffusez visuels, vidéos, promotions ou messages selon votre activité."
+      },
+      {
+        "title": "Format compact",
+        "description": "Le support en L permet de rester stable tout en prenant peu de place sur le comptoir."
+      },
+      {
+        "title": "Android",
+        "description": "Compatible avec des applications d'affichage, catalogue ou solutions métier selon configuration."
+      },
+      {
+        "title": "Restaurant & retail",
+        "description": "Convient aux restaurants, cafés, snacks, boutiques, salons et espaces d'accueil."
+      },
+      {
+        "title": "Personnalisation YVEXOR",
+        "description": "Interface, contenus et présentation peuvent être adaptés à l'identité du client."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Écran tactile Android de comptoir en forme de L"
+      },
+      {
+        "label": "Taille",
+        "value": "10,1 pouces"
+      },
+      {
+        "label": "Système",
+        "value": "Android"
+      },
+      {
+        "label": "Installation",
+        "value": "Pose sur comptoir / table"
+      },
+      {
+        "label": "Usages",
+        "value": "Menu digital, promotion, catalogue, affichage dynamique, POS léger"
+      },
+      {
+        "label": "Orientation",
+        "value": "Paysage ou portrait selon configuration"
+      },
+      {
+        "label": "Personnalisation",
+        "value": "Interface et intégration YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "109,99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "bracelet-connecte-caisse",
+      "borne-tactile",
+      "terminal-mobile-commande-paiement",
+      "imprimante-thermique-wifi"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-imprimante-thermique-pos-85",
+    "slug": "imprimante-thermique-pos",
+    "name": "Imprimante thermique POS 80 mm / 58 mm",
+    "category": "Imprimantes",
+    "sourceCategory": "Imprimantes",
+    "price": 8500,
+    "currency": "EUR",
+    "priceLabel": "85 €",
+    "shortDescription": "Imprimante thermique YVEXOR pour tickets de caisse et étiquettes, compatible formats 80 mm et 58 mm selon configuration.",
+    "description": "Imprimante thermique YVEXOR pour tickets de caisse et étiquettes, compatible formats 80 mm et 58 mm selon configuration.",
+    "images": [
+      {
+        "src": "/media/boutique/imprimante-thermique-pos-01.webp",
+        "small": "/media/boutique/imprimante-thermique-pos-01-480.webp",
+        "medium": "/media/boutique/imprimante-thermique-pos-01-960.webp",
+        "alt": "Imprimante thermique POS 80 mm / 58 mm — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Tickets de caisse",
+        "description": "Impression rapide des reçus et justificatifs directement depuis le système POS."
+      },
+      {
+        "title": "Formats 80 / 58 mm",
+        "description": "Compatible avec plusieurs formats de papier selon la configuration choisie."
+      },
+      {
+        "title": "Chargement facile",
+        "description": "Ouverture supérieure pour remplacer rapidement le rouleau de papier."
+      },
+      {
+        "title": "Impression thermique",
+        "description": "Pas de cartouche d’encre nécessaire pour l’impression quotidienne."
+      },
+      {
+        "title": "Étiquettes / codes-barres",
+        "description": "Peut convenir à certains usages d’étiquetage et de codes-barres selon le modèle configuré."
+      },
+      {
+        "title": "Intégration YVEXOR",
+        "description": "Compatible avec un poste de caisse, une borne ou un système d’encaissement YVEXOR selon projet."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Imprimante thermique POS"
+      },
+      {
+        "label": "Largeur papier",
+        "value": "80 mm / 58 mm selon configuration"
+      },
+      {
+        "label": "Usage",
+        "value": "Ticket de caisse, reçu, étiquette, code-barres"
+      },
+      {
+        "label": "Chargement",
+        "value": "Chargement papier simplifié par ouverture supérieure"
+      },
+      {
+        "label": "Technologie",
+        "value": "Impression thermique directe"
+      },
+      {
+        "label": "Intégration",
+        "value": "Compatible système POS / caisse selon configuration"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "85 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "systeme-caisse-pos",
+      "tiroir-caisse-4b3c",
+      "terminal-pos-portable",
+      "kds"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-imprimante-thermique-wifi-119-99",
+    "slug": "imprimante-thermique-wifi",
+    "name": "Imprimante thermique POS 58/80 mm connectée",
+    "category": "Imprimantes",
+    "sourceCategory": "Imprimantes",
+    "price": 11999,
+    "currency": "EUR",
+    "priceLabel": "119,99 €",
+    "shortDescription": "Imprimante thermique POS YVEXOR 58/80 mm avec Wi‑Fi, USB, LAN et options de connectivité selon configuration.",
+    "description": "Imprimante thermique POS YVEXOR 58/80 mm avec Wi‑Fi, USB, LAN et options de connectivité selon configuration.",
+    "images": [
+      {
+        "src": "/media/boutique/imprimante-thermique-wifi-01.webp",
+        "small": "/media/boutique/imprimante-thermique-wifi-01-480.webp",
+        "medium": "/media/boutique/imprimante-thermique-wifi-01-960.webp",
+        "alt": "Imprimante thermique POS 58/80 mm connectée — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Connexion Wi‑Fi",
+        "description": "Permet une installation plus libre sur le réseau du point de vente, selon la configuration retenue."
+      },
+      {
+        "title": "USB / LAN",
+        "description": "Peut aussi être reliée directement au poste de caisse ou au réseau Ethernet."
+      },
+      {
+        "title": "58 / 80 mm",
+        "description": "Largeur papier ajustable selon le type de ticket utilisé."
+      },
+      {
+        "title": "Impression rapide",
+        "description": "Vitesse annoncée jusqu’à 200 mm/s selon la configuration et les conditions d’utilisation."
+      },
+      {
+        "title": "Montage mural possible",
+        "description": "Peut être installée sur un mur ou à proximité d’un poste de préparation selon l’aménagement."
+      },
+      {
+        "title": "Intégration YVEXOR",
+        "description": "Compatible avec une caisse, une borne ou un système de commande YVEXOR selon projet."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Imprimante thermique POS"
+      },
+      {
+        "label": "Largeur papier",
+        "value": "58 mm / 80 mm réglable selon configuration"
+      },
+      {
+        "label": "Vitesse annoncée",
+        "value": "Jusqu’à 200 mm/s"
+      },
+      {
+        "label": "Connectivité",
+        "value": "Wi‑Fi ; USB / série / LAN / Bluetooth selon version"
+      },
+      {
+        "label": "Installation",
+        "value": "Sur comptoir ou montage mural selon configuration"
+      },
+      {
+        "label": "Usage",
+        "value": "Tickets de caisse, reçus, commandes restaurant, POS"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "119,99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "systeme-caisse-pos",
+      "tiroir-caisse-4b3c",
+      "terminal-pos-portable",
+      "kds"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-kds-389-99-catalogue",
+    "slug": "kds",
+    "name": "Écran tactile KDS de cuisine",
+    "category": "Affichage",
+    "sourceCategory": "Affichage",
+    "price": 38999,
+    "currency": "EUR",
+    "priceLabel": "389,99 €",
+    "shortDescription": "Écran tactile KDS de cuisine YVEXOR, IP65, étanche et résistant à la chaleur.",
+    "description": "Écran tactile KDS de cuisine YVEXOR, IP65, étanche et résistant à la chaleur.",
+    "images": [
+      {
+        "src": "/media/boutique/kds-01.webp",
+        "small": "/media/boutique/kds-01-480.webp",
+        "medium": "/media/boutique/kds-01-960.webp",
+        "alt": "Écran tactile KDS de cuisine — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Affichage KDS",
+        "description": "Visualisation claire des commandes, statuts et priorités en cuisine."
+      },
+      {
+        "title": "Écran tactile",
+        "description": "Interaction directe pour gérer les commandes et leur avancement."
+      },
+      {
+        "title": "Protection IP65",
+        "description": "Conçu pour mieux résister aux projections et aux environnements exigeants."
+      },
+      {
+        "title": "Résistant à la chaleur",
+        "description": "Adapté à l'utilisation en zone de préparation professionnelle."
+      },
+      {
+        "title": "Plusieurs tailles",
+        "description": "Disponible en 15,6\", 21,5\" et 23,8\" selon la configuration choisie."
+      },
+      {
+        "title": "Installation murale",
+        "description": "Format pensé pour libérer le plan de travail et rester visible par l'équipe."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Écran tactile KDS tout-en-un"
+      },
+      {
+        "label": "Tailles",
+        "value": "15,6\" / 21,5\" / 23,8\""
+      },
+      {
+        "label": "Protection",
+        "value": "IP65"
+      },
+      {
+        "label": "Conception",
+        "value": "Étanche et résistante à la chaleur"
+      },
+      {
+        "label": "Installation",
+        "value": "Fixation murale"
+      },
+      {
+        "label": "Usage",
+        "value": "Affichage professionnel des commandes en cuisine"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "389,99 €"
+      }
+    ],
+    "variants": [
+      {
+        "label": "Tailles",
+        "value": "15,6\" / 21,5\" / 23,8\""
+      }
+    ],
+    "relatedProducts": [
+      "bracelet-connecte-caisse",
+      "borne-tactile",
+      "terminal-mobile-commande-paiement",
+      "imprimante-thermique-wifi"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-lecteur-rfid-nfc-usb-50",
+    "slug": "lecteur-rfid-nfc-usb",
+    "name": "Lecteur RFID/NFC USB 13,56 MHz",
+    "category": "Accessoires",
+    "sourceCategory": "Accessoires",
+    "price": 5000,
+    "currency": "EUR",
+    "priceLabel": "50 €",
+    "shortDescription": "Lecteur-graveur RFID/NFC USB YVEXOR 13,56 MHz pour badges employés, identification et contrôle d’accès selon configuration.",
+    "description": "Lecteur-graveur RFID/NFC USB YVEXOR 13,56 MHz pour badges employés, identification et contrôle d’accès selon configuration.",
+    "images": [
+      {
+        "src": "/media/boutique/lecteur-rfid-nfc-usb-01.webp",
+        "small": "/media/boutique/lecteur-rfid-nfc-usb-01-480.webp",
+        "medium": "/media/boutique/lecteur-rfid-nfc-usb-01-960.webp",
+        "alt": "Lecteur RFID/NFC USB 13,56 MHz — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Autorisation d'accès caisse",
+        "description": "Un badge peut servir à identifier un employé avant l'ouverture d'une session de caisse."
+      },
+      {
+        "title": "Badgeuse employé",
+        "description": "Identification rapide d'un collaborateur pour pointage, présence ou prise de poste."
+      },
+      {
+        "title": "Contrôle d'accès",
+        "description": "Peut être intégré à un système logiciel pour autoriser certaines fonctions ou zones."
+      },
+      {
+        "title": "Lecture sans contact",
+        "description": "Lecture rapide de badges et porte-clés RFID/NFC compatibles."
+      },
+      {
+        "title": "Connexion USB",
+        "description": "Installation simple sur un poste de caisse ou un ordinateur compatible."
+      },
+      {
+        "title": "Intégration YVEXOR",
+        "description": "Peut être relié aux droits utilisateurs, profils employés et workflows métiers du logiciel."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Lecteur-graveur RFID/NFC sans contact"
+      },
+      {
+        "label": "Fréquence",
+        "value": "13,56 MHz"
+      },
+      {
+        "label": "Connexion",
+        "value": "USB"
+      },
+      {
+        "label": "Boîtier",
+        "value": "ABS"
+      },
+      {
+        "label": "Usages",
+        "value": "Badge employé, authentification, contrôle d'accès, caisse, pointage"
+      },
+      {
+        "label": "Intégration",
+        "value": "Compatible avec un développement logiciel YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "50 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "systeme-caisse-pos",
+      "terminal-mobile-commande-paiement",
+      "kds",
+      "borne-tactile"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-mini-caisse-android-369-99",
+    "slug": "mini-caisse-android",
+    "name": "Mini caisse Android tout-en-un",
+    "category": "Caisses & POS",
+    "sourceCategory": "Imprimantes",
+    "price": 36999,
+    "currency": "EUR",
+    "priceLabel": "369,99 €",
+    "shortDescription": "Mini caisse Android tout-en-un YVEXOR avec écran tactile, imprimante 58 mm, NFC et scanner selon configuration.",
+    "description": "Mini caisse Android tout-en-un YVEXOR avec écran tactile, imprimante 58 mm, NFC et scanner selon configuration.",
+    "images": [
+      {
+        "src": "/media/boutique/mini-caisse-android-01.webp",
+        "small": "/media/boutique/mini-caisse-android-01-480.webp",
+        "medium": "/media/boutique/mini-caisse-android-01-960.webp",
+        "alt": "Mini caisse Android tout-en-un — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Écran tactile",
+        "description": "Interface de commande et d'encaissement directement accessible sur le terminal."
+      },
+      {
+        "title": "Android",
+        "description": "Plateforme adaptée à l'intégration d'applications de caisse et de commande."
+      },
+      {
+        "title": "Imprimante 58 mm",
+        "description": "Impression de tickets intégrée pour éviter d'ajouter un périphérique séparé."
+      },
+      {
+        "title": "NFC / sans contact",
+        "description": "Zone de lecture sans contact visible sur la configuration présentée."
+      },
+      {
+        "title": "Scanner",
+        "description": "Module de lecture code-barres / QR selon la configuration retenue."
+      },
+      {
+        "title": "Intégration YVEXOR",
+        "description": "Peut être reliée au système de caisse, aux commandes et aux outils métier YVEXOR."
+      },
+      {
+        "title": "Restaurants & snacks",
+        "description": "Prise de commande et encaissement dans un format peu encombrant."
+      },
+      {
+        "title": "Boutiques & commerces",
+        "description": "Terminal compact pour les ventes, tickets et opérations de caisse quotidiennes."
+      },
+      {
+        "title": "Points de vente mobiles",
+        "description": "Solution pratique pour pop-up, événement ou comptoir secondaire."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Terminal POS Android tout-en-un"
+      },
+      {
+        "label": "Usage",
+        "value": "Commande, caisse et encaissement"
+      },
+      {
+        "label": "Système",
+        "value": "Android"
+      },
+      {
+        "label": "Impression",
+        "value": "Imprimante thermique 58 mm intégrée"
+      },
+      {
+        "label": "NFC",
+        "value": "Module sans contact selon configuration"
+      },
+      {
+        "label": "Scanner",
+        "value": "Lecture code-barres / QR selon configuration"
+      },
+      {
+        "label": "Personnalisation",
+        "value": "Interface et intégration YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "369,99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "tiroir-caisse-4b3c",
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "kds"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-robot-humanoide-35900",
+    "slug": "robot-humanoide",
+    "name": "Robot humanoïde avec développement personnalisé",
+    "category": "Robotique",
+    "sourceCategory": "Robotique",
+    "price": 3590000,
+    "currency": "EUR",
+    "priceLabel": "35 900 €",
+    "shortDescription": "Robot humanoïde YVEXOR basé sur une plateforme Unitree G1, avec développement personnalisé et intégration à vos systèmes selon projet.",
+    "description": "Robot humanoïde YVEXOR basé sur une plateforme Unitree G1, avec développement personnalisé et intégration à vos systèmes selon projet.",
+    "images": [
+      {
+        "src": "/media/boutique/robot-humanoide-01.webp",
+        "small": "/media/boutique/robot-humanoide-01-480.webp",
+        "medium": "/media/boutique/robot-humanoide-01-960.webp",
+        "alt": "Robot humanoïde avec développement personnalisé — vue 1",
+        "width": 1400,
+        "height": 1000
+      }
+    ],
+    "features": [
+      {
+        "title": "Développement métier",
+        "description": "Création de comportements, interfaces et workflows adaptés au besoin du client."
+      },
+      {
+        "title": "Connexion aux systèmes",
+        "description": "Intégration possible avec POS, ERP, CRM, IoT ou applications internes lorsque les interfaces techniques nécessaires sont disponibles."
+      },
+      {
+        "title": "Accueil & interaction",
+        "description": "Peut être utilisé pour orienter, informer ou interagir avec les visiteurs dans un environnement professionnel."
+      },
+      {
+        "title": "Événementiel & démonstration",
+        "description": "Une présence visuelle forte pour salons, showrooms, lancements, animations ou démonstrations technologiques."
+      },
+      {
+        "title": "Éducation & recherche",
+        "description": "Plateforme exploitable pour expérimentation, robotique, IA et développement logiciel."
+      },
+      {
+        "title": "Évolutif",
+        "description": "Le périmètre fonctionnel peut évoluer avec les besoins du projet et les capacités exposées par le SDK/API."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Robot humanoïde programmable"
+      },
+      {
+        "label": "Plateforme",
+        "value": "Unitree G1 / configuration selon projet"
+      },
+      {
+        "label": "Développement",
+        "value": "Personnalisation logicielle YVEXOR sur cahier des charges"
+      },
+      {
+        "label": "Intégration",
+        "value": "Connexion possible à des systèmes tiers via API, SDK ou passerelle lorsque disponible"
+      },
+      {
+        "label": "Usages",
+        "value": "Accueil, événementiel, éducation, recherche, démonstration, automatisation"
+      },
+      {
+        "label": "Interface",
+        "value": "Applications et systèmes métier selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "35 900 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "borne-tactile",
+      "tablette-android-poe-nfc",
+      "ecran-menu-android-10-1"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-systeme-caisse-pos-480",
+    "slug": "systeme-caisse-pos",
+    "name": "Système de caisse POS complet avec écran tactile",
+    "category": "Caisses & POS",
+    "sourceCategory": "Imprimantes",
+    "price": 48000,
+    "currency": "EUR",
+    "priceLabel": "480 €",
+    "shortDescription": "Système de caisse POS YVEXOR avec écran tactile, tiroir-caisse, imprimante ticket et scanner code-barres.",
+    "description": "Système de caisse POS YVEXOR avec écran tactile, tiroir-caisse, imprimante ticket et scanner code-barres.",
+    "images": [
+      {
+        "src": "/media/boutique/systeme-caisse-pos-01.webp",
+        "small": "/media/boutique/systeme-caisse-pos-01-480.webp",
+        "medium": "/media/boutique/systeme-caisse-pos-01-960.webp",
+        "alt": "Système de caisse POS complet avec écran tactile — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Écran tactile",
+        "description": "Terminal tactile principal pour piloter la caisse et les opérations de vente."
+      },
+      {
+        "title": "Double affichage",
+        "description": "Configuration visible avec écran opérateur et écran secondaire orienté client."
+      },
+      {
+        "title": "Tiroir-caisse",
+        "description": "Compartiments billets et pièces intégrés pour l'encaissement espèces."
+      },
+      {
+        "title": "Imprimante ticket",
+        "description": "Impression rapide des tickets de caisse et justificatifs de vente."
+      },
+      {
+        "title": "Scanner code-barres",
+        "description": "Lecture des articles et références pour accélérer l'encaissement."
+      },
+      {
+        "title": "Personnalisation YVEXOR",
+        "description": "Interface, configuration et intégration logicielle adaptées à votre activité."
+      },
+      {
+        "title": "Restaurants & snacks",
+        "description": "Prise de commande et encaissement sur un poste tactile compact."
+      },
+      {
+        "title": "Commerces & boutiques",
+        "description": "Lecture articles, encaissement et impression ticket depuis un seul poste."
+      },
+      {
+        "title": "Salons & services",
+        "description": "Une solution simple pour les activités nécessitant une caisse tactile complète."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Système de point de vente POS tout-en-un"
+      },
+      {
+        "label": "Écran",
+        "value": "Écran tactile — configuration 15 / 17 pouces selon version"
+      },
+      {
+        "label": "Affichage client",
+        "value": "Second écran visible sur la configuration présentée"
+      },
+      {
+        "label": "Tiroir-caisse",
+        "value": "Tiroir avec compartiments billets et pièces"
+      },
+      {
+        "label": "Impression",
+        "value": "Imprimante ticket incluse dans la configuration présentée"
+      },
+      {
+        "label": "Scanner",
+        "value": "Scanner code-barres inclus dans la configuration présentée"
+      },
+      {
+        "label": "Usage",
+        "value": "Retail, salons, boutiques, restaurants et autres points de vente"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "480 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "tiroir-caisse-4b3c",
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "kds"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-tablette-android-poe-nfc-189-99",
+    "slug": "tablette-android-poe-nfc",
+    "name": "Tablette Android POE avec NFC",
+    "category": "Affichage",
+    "sourceCategory": "Affichage",
+    "price": 18999,
+    "currency": "EUR",
+    "priceLabel": "189,99 €",
+    "shortDescription": "Tablette Android YVEXOR POE/NFC pour salle de réunion, affichage, commande et signalétique.",
+    "description": "Tablette Android YVEXOR POE/NFC pour salle de réunion, affichage, commande et signalétique.",
+    "images": [
+      {
+        "src": "/media/boutique/tablette-android-poe-nfc-01.webp",
+        "small": "/media/boutique/tablette-android-poe-nfc-01-480.webp",
+        "medium": "/media/boutique/tablette-android-poe-nfc-01-960.webp",
+        "alt": "Tablette Android POE avec NFC — vue 1",
+        "width": 1536,
+        "height": 1024
+      },
+      {
+        "src": "/media/boutique/tablette-android-poe-nfc-02.webp",
+        "small": "/media/boutique/tablette-android-poe-nfc-02-480.webp",
+        "medium": "/media/boutique/tablette-android-poe-nfc-02-960.webp",
+        "alt": "Tablette Android POE avec NFC — vue 2",
+        "width": 1586,
+        "height": 992
+      }
+    ],
+    "features": [
+      {
+        "title": "Réservation de salles",
+        "description": "Affichage des disponibilités, réunions et statuts directement à l'entrée d'une salle."
+      },
+      {
+        "title": "Affichage dynamique",
+        "description": "Informations, signalétique, menus, messages ou contenus interactifs."
+      },
+      {
+        "title": "Commande / POS",
+        "description": "Utilisable comme écran de commande ou interface tactile sur comptoir."
+      },
+      {
+        "title": "POE",
+        "description": "Alimentation via Ethernet pour simplifier l'installation et réduire le câblage."
+      },
+      {
+        "title": "NFC",
+        "description": "Lecture sans contact pour identification, badges ou parcours métier."
+      },
+      {
+        "title": "Éclairage LED",
+        "description": "Bordure lumineuse adaptée à la signalétique et aux statuts visuels."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Tablette Android tactile professionnelle"
+      },
+      {
+        "label": "Système",
+        "value": "Android 11"
+      },
+      {
+        "label": "Tailles",
+        "value": "8\" / 10\" / 13\" / 15\""
+      },
+      {
+        "label": "Alimentation",
+        "value": "POE / Ethernet selon configuration"
+      },
+      {
+        "label": "NFC",
+        "value": "Intégré"
+      },
+      {
+        "label": "Installation",
+        "value": "Murale ou sur pied"
+      },
+      {
+        "label": "Usages",
+        "value": "Réunion, signalétique, POS, commande, affichage dynamique"
+      },
+      {
+        "label": "Personnalisation",
+        "value": "Interface et intégration YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "189,99 €"
+      }
+    ],
+    "variants": [
+      {
+        "label": "Tailles",
+        "value": "8\" / 10\" / 13\" / 15\""
+      }
+    ],
+    "relatedProducts": [
+      "bracelet-connecte-caisse",
+      "borne-tactile",
+      "terminal-mobile-commande-paiement",
+      "imprimante-thermique-wifi"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-terminal-mobile-commande-paiement-320",
+    "slug": "terminal-mobile-commande-paiement",
+    "name": "Terminal mobile Android pour commande et paiement",
+    "category": "Caisses & POS",
+    "sourceCategory": "Caisses & POS",
+    "price": 32000,
+    "currency": "EUR",
+    "priceLabel": "320 €",
+    "shortDescription": "Terminal mobile Android YVEXOR pour prise de commande, paiement CB et impression de ticket.",
+    "description": "Terminal mobile Android YVEXOR pour prise de commande, paiement CB et impression de ticket.",
+    "images": [
+      {
+        "src": "/media/boutique/terminal-mobile-commande-paiement-01.webp",
+        "small": "/media/boutique/terminal-mobile-commande-paiement-01-480.webp",
+        "medium": "/media/boutique/terminal-mobile-commande-paiement-01-960.webp",
+        "alt": "Terminal mobile Android pour commande et paiement — vue 1",
+        "width": 1400,
+        "height": 1000
+      }
+    ],
+    "features": [
+      {
+        "title": "Prise de commande mobile",
+        "description": "Le personnel peut saisir les commandes directement à table ou en déplacement."
+      },
+      {
+        "title": "Paiement carte bancaire",
+        "description": "Encaissement CB possible selon le module de paiement et le prestataire configurés."
+      },
+      {
+        "title": "Sans contact",
+        "description": "Prise en charge possible du paiement sans contact selon la configuration matérielle et logicielle."
+      },
+      {
+        "title": "Impression ticket",
+        "description": "Imprimante intégrée pour remettre un reçu directement au client."
+      },
+      {
+        "title": "Connexion mobile",
+        "description": "4G, Wi‑Fi et Bluetooth Low Energy selon la version choisie."
+      },
+      {
+        "title": "Intégration YVEXOR",
+        "description": "Peut être relié au système de caisse, au KDS et aux outils de gestion YVEXOR selon projet."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Terminal POS mobile Android"
+      },
+      {
+        "label": "Système",
+        "value": "Android 14"
+      },
+      {
+        "label": "Mémoire",
+        "value": "2 / 3 / 4 Go RAM selon configuration"
+      },
+      {
+        "label": "Stockage",
+        "value": "12 / 32 / 64 Go selon configuration"
+      },
+      {
+        "label": "Connectivité",
+        "value": "4G / Wi‑Fi / BLE"
+      },
+      {
+        "label": "Paiement",
+        "value": "Carte bancaire / sans contact selon configuration et prestataire"
+      },
+      {
+        "label": "Usage",
+        "value": "Prise de commande, encaissement, impression ticket"
+      },
+      {
+        "label": "Intégration",
+        "value": "SDK disponible côté matériel ; intégration logicielle YVEXOR selon projet"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "320 €"
+      }
+    ],
+    "variants": [
+      {
+        "label": "Mémoire",
+        "value": "2 / 3 / 4 Go RAM selon configuration"
+      },
+      {
+        "label": "Stockage",
+        "value": "12 / 32 / 64 Go selon configuration"
+      }
+    ],
+    "relatedProducts": [
+      "tiroir-caisse-4b3c",
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "kds"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-terminal-pos-portable-189-99",
+    "slug": "terminal-pos-portable",
+    "name": "Terminal POS portable avec imprimante intégrée",
+    "category": "Caisses & POS",
+    "sourceCategory": "Imprimantes",
+    "price": 18999,
+    "currency": "EUR",
+    "priceLabel": "189,99 €",
+    "shortDescription": "Terminal POS portable YVEXOR 5,5 pouces avec imprimante thermique intégrée.",
+    "description": "Terminal POS portable YVEXOR 5,5 pouces avec imprimante thermique intégrée.",
+    "images": [
+      {
+        "src": "/media/boutique/terminal-pos-portable-01.webp",
+        "small": "/media/boutique/terminal-pos-portable-01-480.webp",
+        "medium": "/media/boutique/terminal-pos-portable-01-960.webp",
+        "alt": "Terminal POS portable avec imprimante intégrée — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "Écran tactile 5,5\"",
+        "description": "Format compact pensé pour une utilisation mobile et une prise en main rapide."
+      },
+      {
+        "title": "Imprimante intégrée",
+        "description": "Impression directe des tickets et reçus depuis le terminal."
+      },
+      {
+        "title": "Paiement sans contact",
+        "description": "Compatible avec les parcours NFC selon configuration et solution de paiement retenue."
+      },
+      {
+        "title": "Lecture QR Code",
+        "description": "Utilisable pour paiement, identification, fidélité ou parcours client."
+      },
+      {
+        "title": "Connectivité mobile",
+        "description": "Wi‑Fi / 4G / Bluetooth selon la configuration matérielle choisie."
+      },
+      {
+        "title": "Interface YVEXOR",
+        "description": "Personnalisation de l’interface, des écrans et du workflow selon votre activité."
+      },
+      {
+        "title": "Restaurants & bars",
+        "description": "Prise de commande et encaissement directement en salle."
+      },
+      {
+        "title": "Commerces",
+        "description": "Encaissement mobile en boutique, sur stand ou en zone d’affluence."
+      },
+      {
+        "title": "Événements & livraison",
+        "description": "Solution portable pour les usages nécessitant mobilité et impression de ticket."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Terminal POS portable tout-en-un"
+      },
+      {
+        "label": "Format",
+        "value": "Écran tactile 5,5 pouces"
+      },
+      {
+        "label": "Impression",
+        "value": "Imprimante thermique intégrée"
+      },
+      {
+        "label": "NFC",
+        "value": "Compatible paiement / lecture sans contact selon configuration"
+      },
+      {
+        "label": "QR Code",
+        "value": "Lecture QR pour paiement ou parcours métier"
+      },
+      {
+        "label": "Connectivité",
+        "value": "Wi‑Fi / 4G / Bluetooth selon version"
+      },
+      {
+        "label": "Logiciel",
+        "value": "Configuration et intégration YVEXOR selon usage"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "189,99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "tiroir-caisse-4b3c",
+      "imprimante-thermique-pos",
+      "lecteur-rfid-nfc-usb",
+      "kds"
+    ],
+    "active": true
+  },
+  {
+    "id": "yvexor-tiroir-caisse-4b3c-79-99",
+    "slug": "tiroir-caisse-4b3c",
+    "name": "Tiroir-caisse métal 4 billets / 3 pièces",
+    "category": "Accessoires",
+    "sourceCategory": "Accessoires",
+    "price": 7999,
+    "currency": "EUR",
+    "priceLabel": "79,99 €",
+    "shortDescription": "Tiroir-caisse métal YVEXOR 4 billets / 3 pièces, format compact pour systèmes POS, commerces et restaurants.",
+    "description": "Tiroir-caisse métal YVEXOR 4 billets / 3 pièces, format compact pour systèmes POS, commerces et restaurants.",
+    "images": [
+      {
+        "src": "/media/boutique/tiroir-caisse-4b3c-01.webp",
+        "small": "/media/boutique/tiroir-caisse-4b3c-01-480.webp",
+        "medium": "/media/boutique/tiroir-caisse-4b3c-01-960.webp",
+        "alt": "Tiroir-caisse métal 4 billets / 3 pièces — vue 1",
+        "width": 1536,
+        "height": 1024
+      }
+    ],
+    "features": [
+      {
+        "title": "4 compartiments billets",
+        "description": "Organisation claire des principales coupures pour un encaissement rapide."
+      },
+      {
+        "title": "3 compartiments pièces",
+        "description": "Rangement séparé pour la monnaie et les petites valeurs."
+      },
+      {
+        "title": "Construction métal",
+        "description": "Boîtier robuste adapté à un usage quotidien en environnement professionnel."
+      },
+      {
+        "title": "Serrure en façade",
+        "description": "Verrouillage mécanique du tiroir pour sécuriser le contenu hors utilisation."
+      },
+      {
+        "title": "Format compact",
+        "description": "Largeur annoncée de 335 mm, pratique pour les comptoirs avec peu d'espace."
+      },
+      {
+        "title": "Compatible POS",
+        "description": "Conçu pour compléter une caisse enregistreuse ou un système de point de vente."
+      }
+    ],
+    "specifications": [
+      {
+        "label": "Type",
+        "value": "Tiroir-caisse POS en métal"
+      },
+      {
+        "label": "Compartiments billets",
+        "value": "4"
+      },
+      {
+        "label": "Compartiments pièces",
+        "value": "3"
+      },
+      {
+        "label": "Largeur",
+        "value": "Environ 335 mm"
+      },
+      {
+        "label": "Matériau",
+        "value": "Métal"
+      },
+      {
+        "label": "Sécurité",
+        "value": "Serrure mécanique en façade"
+      },
+      {
+        "label": "Usage",
+        "value": "Commerce, restaurant, supermarché, système POS"
+      },
+      {
+        "label": "Prix YVEXOR",
+        "value": "79,99 €"
+      }
+    ],
+    "variants": [],
+    "relatedProducts": [
+      "systeme-caisse-pos",
+      "terminal-mobile-commande-paiement",
+      "kds",
+      "borne-tactile"
+    ],
+    "active": true
+  }
+]

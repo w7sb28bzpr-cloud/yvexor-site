@@ -1,0 +1,299 @@
+{
+  "desktop": [
+    {
+      "images": [
+        {
+          "ok": true,
+          "src": "/media/boutique/appel-serveur-sans-fil-01-960.webp"
+        }
+      ],
+      "overflow": false,
+      "route": "/boutique/appel-serveur-sans-fil/",
+      "title": "Système d'appel serveur sans fil avec bracelets vibrants"
+    },
+    {
+      "images": [
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-murale-commande-paiement-01-960.webp"
+        }
+      ],
+      "overflow": false,
+      "route": "/boutique/borne-murale-commande-paiement/",
+      "title": "Borne murale tout-en-un pour commande et paiement"
+    },
+    {
+      "images": [
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-paiement-especes-tout-en-un-01-960.webp"
+        }
+      ],
+      "overflow": false,
+      "route": "/boutique/borne-paiement-especes-tout-en-un/",
+      "title": "Borne de paiement espèces tout-en-un"
+    },
+    {
+      "images": [
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-paiement-especes-rendu-monnaie-01-960.webp"
+        },
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-paiement-especes-rendu-monnaie-01-480.webp"
+        },
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-paiement-especes-rendu-monnaie-02-480.webp"
+        }
+      ],
+      "overflow": false,
+      "route": "/boutique/borne-paiement-especes-rendu-monnaie/",
+      "title": "Borne de paiement espèces avec rendu de monnaie"
+    },
+    {
+      "images": [
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-tactile-01-960.webp"
+        },
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-tactile-01-480.webp"
+        },
+        {
+          "ok": true,
+          "src": "/media/boutique/borne-tactile-02-480.webp"
+        }
+      ],
+      "overflow": false,
+      "route": "/boutique/borne-tactile/",
+      "title": "Commande, accueil et libre-service sur une seule borne"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/borne-tactile-android-sur-pied/",
+      "title": "Borne tactile Android sur pied"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/bracelet-connecte-caisse/",
+      "title": "Bracelet connecté relié à votre caisse YVEXOR"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/brochure-video-lcd-7/",
+      "title": "Brochure vidéo LCD 7 pouces personnalisable"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/ecran-menu-android-10-1/",
+      "title": "Écran Android 10,1\" pour présentation de menu"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/imprimante-thermique-pos/",
+      "title": "Imprimante thermique POS 80 mm / 58 mm"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/imprimante-thermique-wifi/",
+      "title": "Imprimante thermique POS 58/80 mm connectée"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/kds/",
+      "title": "Écran tactile KDS de cuisine"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/lecteur-rfid-nfc-usb/",
+      "title": "Lecteur RFID/NFC USB 13,56 MHz"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/mini-caisse-android/",
+      "title": "Mini caisse Android tout-en-un"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/robot-humanoide/",
+      "title": "Robot humanoïde avec développement personnalisé"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/systeme-caisse-pos/",
+      "title": "Système de caisse POS complet avec écran tactile"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/tablette-android-poe-nfc/",
+      "title": "Tablette Android POE avec NFC"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/terminal-mobile-commande-paiement/",
+      "title": "Terminal mobile Android pour commande et paiement"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/terminal-pos-portable/",
+      "title": "Terminal POS portable avec imprimante intégrée"
+    },
+    {
+      "images": true,
+      "overflow": false,
+      "route": "/boutique/tiroir-caisse-4b3c/",
+      "title": "Tiroir-caisse métal 4 billets / 3 pièces"
+    }
+  ],
+  "mobile": [
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/appel-serveur-sans-fil/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/borne-murale-commande-paiement/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/borne-paiement-especes-tout-en-un/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/borne-paiement-especes-rendu-monnaie/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/borne-tactile/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/borne-tactile-android-sur-pied/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/bracelet-connecte-caisse/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/brochure-video-lcd-7/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/ecran-menu-android-10-1/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/imprimante-thermique-pos/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/imprimante-thermique-wifi/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/kds/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/lecteur-rfid-nfc-usb/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/mini-caisse-android/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/robot-humanoide/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/systeme-caisse-pos/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/tablette-android-poe-nfc/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/terminal-mobile-commande-paiement/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/terminal-pos-portable/"
+    },
+    {
+      "h1": 1,
+      "mainImage": true,
+      "overflow": false,
+      "route": "/boutique/tiroir-caisse-4b3c/"
+    }
+  ],
+  "viewports": [
+    320,
+    390,
+    768,
+    1440,
+    1920
+  ],
+  "gallerySecondViews": 3,
+  "search": true,
+  "categories": 6,
+  "budget": true,
+  "sort": true
+}

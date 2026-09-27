@@ -1,0 +1,169 @@
+{
+  "archiveSha256": "ca273e888915efc14249119b4338cd2fd0f5eca33ba3f7a4cde04f9af6463b01",
+  "productCount": 20,
+  "imageOccurrences": 86,
+  "uniqueSourceImages": 23,
+  "images": [
+    {
+      "sourceSha256": "25a70e36a64b082dba2f6574d62037077d9993d6c78ab60bb753b4264ce36af6",
+      "sourceBytes": 2088294,
+      "product": "appel-serveur-sans-fil",
+      "path": "/media/boutique/appel-serveur-sans-fil-01.webp",
+      "outputBytes": 1367632
+    },
+    {
+      "sourceSha256": "513bf2f5a35b8b234b2652761c0d10860e1923463b9da8a10f7a9a8dc951c1fe",
+      "sourceBytes": 2010070,
+      "product": "borne-murale-commande-paiement",
+      "path": "/media/boutique/borne-murale-commande-paiement-01.webp",
+      "outputBytes": 1415374
+    },
+    {
+      "sourceSha256": "8a7ec1b7f6bcf92beb26764e475457a39c410145a00b6ebdcfca0f3ab495292e",
+      "sourceBytes": 2057839,
+      "product": "borne-paiement-especes-tout-en-un",
+      "path": "/media/boutique/borne-paiement-especes-tout-en-un-01.webp",
+      "outputBytes": 1405870
+    },
+    {
+      "sourceSha256": "2356b9479aa42b828cbde89ee33a7b8767a9c18e0983e985ff80f36388888ff4",
+      "sourceBytes": 1166314,
+      "product": "borne-paiement-especes-rendu-monnaie",
+      "path": "/media/boutique/borne-paiement-especes-rendu-monnaie-01.webp",
+      "outputBytes": 881956
+    },
+    {
+      "sourceSha256": "a16b1e472d279b312595c9303539d65895400e64c2e0078f6f9fade16f07e400",
+      "sourceBytes": 976143,
+      "product": "borne-paiement-especes-rendu-monnaie",
+      "path": "/media/boutique/borne-paiement-especes-rendu-monnaie-02.webp",
+      "outputBytes": 718202
+    },
+    {
+      "sourceSha256": "5b8744d6e79020329dd09fca7caba2b970cb3a11bc8b108b212f1e8617465cd4",
+      "sourceBytes": 2694949,
+      "product": "borne-tactile",
+      "path": "/media/boutique/borne-tactile-01.webp",
+      "outputBytes": 1340684
+    },
+    {
+      "sourceSha256": "9e27686c3ea664fb0acf6a494f7f4e9c6e4ba4ff46d45875a2e464ed39826dc4",
+      "sourceBytes": 2952813,
+      "product": "borne-tactile",
+      "path": "/media/boutique/borne-tactile-02.webp",
+      "outputBytes": 1492234
+    },
+    {
+      "sourceSha256": "2df1941e58fda4f0a9d78660d800b2c578c22809c0751b5a24b095f4d5325373",
+      "sourceBytes": 2119619,
+      "product": "borne-tactile-android-sur-pied",
+      "path": "/media/boutique/borne-tactile-android-sur-pied-01.webp",
+      "outputBytes": 1436098
+    },
+    {
+      "sourceSha256": "dc674f5ce355f1b61c64ea5102dd17c94ad011a19923494ba0b6ec957383f111",
+      "sourceBytes": 1951987,
+      "product": "bracelet-connecte-caisse",
+      "path": "/media/boutique/bracelet-connecte-caisse-01.webp",
+      "outputBytes": 1285952
+    },
+    {
+      "sourceSha256": "3ff8514c2e5bd7cb2a041f2ba85a87c279297d29e2a8d80bc05bcbd96d19e339",
+      "sourceBytes": 2291054,
+      "product": "brochure-video-lcd-7",
+      "path": "/media/boutique/brochure-video-lcd-7-01.webp",
+      "outputBytes": 1510822
+    },
+    {
+      "sourceSha256": "fa23d9fde6ffc2c11fea7eb43909336fa4e66daa28d917b387de4924327c4947",
+      "sourceBytes": 2380099,
+      "product": "ecran-menu-android-10-1",
+      "path": "/media/boutique/ecran-menu-android-10-1-01.webp",
+      "outputBytes": 1721928
+    },
+    {
+      "sourceSha256": "e953e581457c709a2f907f836b3c65c412fbdf905a4becabf2f99ba63b3ea8fc",
+      "sourceBytes": 2188240,
+      "product": "imprimante-thermique-pos",
+      "path": "/media/boutique/imprimante-thermique-pos-01.webp",
+      "outputBytes": 1456230
+    },
+    {
+      "sourceSha256": "d3c1fe7578eb86750dcff25303665f9568a961dd11f8d07fac530e1794d64240",
+      "sourceBytes": 2323080,
+      "product": "imprimante-thermique-wifi",
+      "path": "/media/boutique/imprimante-thermique-wifi-01.webp",
+      "outputBytes": 1545086
+    },
+    {
+      "sourceSha256": "7138323e08a5291bebc8e77754f46e276addd4a11f4502d37c09b1c8e02dc188",
+      "sourceBytes": 1936556,
+      "product": "kds",
+      "path": "/media/boutique/kds-01.webp",
+      "outputBytes": 1241792
+    },
+    {
+      "sourceSha256": "8d91072793e474e2fa80469e45fc78d108a1512aba9e0e9227dcf02644ebac1b",
+      "sourceBytes": 2069451,
+      "product": "lecteur-rfid-nfc-usb",
+      "path": "/media/boutique/lecteur-rfid-nfc-usb-01.webp",
+      "outputBytes": 1377128
+    },
+    {
+      "sourceSha256": "6f4c4219f6bbe4777c85c69b55f7e8d7de63bd8501ab3a9faad397027f063f81",
+      "sourceBytes": 2153078,
+      "product": "mini-caisse-android",
+      "path": "/media/boutique/mini-caisse-android-01.webp",
+      "outputBytes": 1440766
+    },
+    {
+      "sourceSha256": "c28ef6f42edd4c8564c4eb5f26d847d8da72d68ac6aee28f4e979615ed6dac88",
+      "sourceBytes": 317293,
+      "product": "robot-humanoide",
+      "path": "/media/boutique/robot-humanoide-01.webp",
+      "outputBytes": 160332
+    },
+    {
+      "sourceSha256": "2320dff08305c266bad5f67455d670220ad78e75d519fc5bec8216df62119b7c",
+      "sourceBytes": 2074838,
+      "product": "systeme-caisse-pos",
+      "path": "/media/boutique/systeme-caisse-pos-01.webp",
+      "outputBytes": 1428550
+    },
+    {
+      "sourceSha256": "c566150065cf71bf99381683cd8d2d291895c1cb25937bfa56a642ca9b3775b3",
+      "sourceBytes": 2121876,
+      "product": "tablette-android-poe-nfc",
+      "path": "/media/boutique/tablette-android-poe-nfc-01.webp",
+      "outputBytes": 1388470
+    },
+    {
+      "sourceSha256": "5fbd1193b6224427ab85d33f05d63bce35efb5fb4fc76d811548d92e5afd9e0d",
+      "sourceBytes": 1985439,
+      "product": "tablette-android-poe-nfc",
+      "path": "/media/boutique/tablette-android-poe-nfc-02.webp",
+      "outputBytes": 1447474
+    },
+    {
+      "sourceSha256": "b1bda1a7d49eca8132c95a1364d4c7f360a1053df27f44f6a7549a8777b8cd32",
+      "sourceBytes": 1120746,
+      "product": "terminal-mobile-commande-paiement",
+      "path": "/media/boutique/terminal-mobile-commande-paiement-01.webp",
+      "outputBytes": 863918
+    },
+    {
+      "sourceSha256": "6e27eb127eb9e7c7210a3863fb133f8f59f8448fe97e5a4998445be20e8a4c33",
+      "sourceBytes": 1968745,
+      "product": "terminal-pos-portable",
+      "path": "/media/boutique/terminal-pos-portable-01.webp",
+      "outputBytes": 1338906
+    },
+    {
+      "sourceSha256": "81a5bdc1f89371f1065ce0dd8bb488951aaa2144d4a12d183ce9351bef41591c",
+      "sourceBytes": 2214531,
+      "product": "tiroir-caisse-4b3c",
+      "path": "/media/boutique/tiroir-caisse-4b3c-01.webp",
+      "outputBytes": 1499016
+    }
+  ]
+}

@@ -1,17 +1,3 @@
-import { ActionLink, ChevronIcon, SectionHeading } from "./ui";
-
-const activities = [{name:"Commerce",href:"/logiciel-caisse-marseille/"},{name:"Restaurant",href:"/solutions-restaurants/"},{name:"Garage",href:"/logiciel-garage/"},{name:"Hôtel",href:"/solutions-hotels/"},{name:"Immobilier",href:"/domotique-batiments/"},{name:"Entreprise",href:"/automatisation-entreprise/"}];
-const projects = [
-  { title: "Lancer une location en libre-service", text: "Trottinettes, vélos ou matériel : application client, réservation, paiement et gestion du parc peuvent être conçus sur mesure.", detail: "Le déverrouillage et le suivi à distance dépendent des équipements et interfaces compatibles." },
-  { title: "Créer votre plateforme de services", text: "Mise en relation, réservations, comptes clients et espace professionnel : réunissez les outils nécessaires à votre propre activité.", detail: "Les paiements et intégrations sont définis selon les prestataires retenus." },
-  { title: "Construire le logiciel de votre métier", text: "Planning, devis, interventions, stock et notifications : un outil pensé pour votre façon de travailler.", detail: "Nous adaptons une base existante ou développons les fonctions manquantes." },
-];
-
-export function ActivityExamples() {
-  return <section className="section sectors" id="exemples">
-    <SectionHeading eyebrow="Logiciels & applications sur mesure" title="Vous imaginez un service. Nous pouvons en concevoir les outils." intro="Voici des exemples de projets à étudier ensemble, pas des produits déjà disponibles : nous définissons une première version utile, puis ses évolutions."/>
-    <div className="bespoke-projects">{projects.map(project => <article key={project.title}><h3>{project.title}</h3><p>{project.text}</p><details><summary>Selon votre projet</summary><p>{project.detail}</p></details><ActionLink href="/contact/" className="secondary">Parler de mon idée</ActionLink></article>)}</div>
-    <div className="sector-rail">{activities.map((activity, index) => <a href={activity.href} key={activity.name}><span>0{index + 1}</span><h3>{activity.name}</h3><ChevronIcon/></a>)}</div>
-    <div className="other-activity"><div><span>07</span><h3>Autre métier / autre idée</h3><p>Votre activité n’est pas affichée ? Ce n’est pas une limite. Artisan, cabinet, association, transport, salle de sport, indépendant ou startup : expliquez-nous simplement votre besoin.</p></div><ActionLink href="/contact/" className="primary">Décrire mon besoin</ActionLink></div>
-  </section>;
-}
+import s from "./home.module.css";
+const services=[["Applications métier","/applications-metier/"],["Automatisation & IA","/automatisation-entreprise/"],["Systèmes connectés","/systemes-connectes/"],["Domotique & bâtiments","/domotique-batiments/"],["Site & présence web","/site-presence-web/"],["Logiciel garage","/logiciel-garage/"]];
+export function ActivityExamples(){return <section className={s.services} id="exemples"><div className={s.sectionIntro}><p className={s.label}>Au-delà du comptoir</p><h2>Votre besoin ne rentre<br/>pas dans une case ?</h2><p>Un planning à simplifier, des outils à connecter, un service à créer. Nous adaptons une base existante ou développons ce qui manque.</p><a className={s.textLink} href="/contact/">Décrire mon besoin ↗</a></div><div className={s.serviceLinks}>{services.map(([label,href])=><a href={href} key={href}>{label}<span aria-hidden="true">↗</span></a>)}</div></section>}

@@ -9,13 +9,13 @@
 .hero h1 em { color:#67caff; font-style:normal; }
 .heroBottom { display:grid; grid-template-columns:1.4fr 1fr; align-items:center; gap:80px; padding:32px 0; }
 .heroBottom p,.copy p { font-size:1.0625rem; color:#b4c1d0; line-height:1.8; }
-.worlds { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:20px; padding:30px 0; text-transform:uppercase; letter-spacing:.14em; font-size:.875rem; border-block:1px solid #173146; text-align:center; background:radial-gradient(ellipse at center,#08315180,transparent 70%); overflow-wrap:anywhere; min-width:0; }
+.worlds { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:20px; padding:30px 0; text-transform:uppercase; letter-spacing:.14em; font-size:.875rem; border-block:1px solid #173146; text-align:center; background:none; overflow-wrap:anywhere; min-width:0; }
 .worlds b { color:#55caff; font-size:2.2rem; font-weight:400; transform:rotate(90deg); }
 .chapter { padding:44px 0; border-top:1px solid #1a2b3a; }
 .copy { max-width:700px; margin:auto; }
 .copy h2 { font-size:clamp(2rem,3.8vw,3.2rem); letter-spacing:-.04em; line-height:1.12; margin:0 0 24px; text-wrap:balance; }
 .copy .question { color:#eff6ff; font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.4; padding:12px 0 38px 24px; margin:26px 0 32px; border-left:1px solid #26b9ff; }
-.demo { margin:40px 0 0; padding:30px; border:1px solid #234055; border-radius:22px; background:linear-gradient(130deg,#0b1e30,#070e17 65%); }
+.demo { margin:40px 0 0; padding:30px; border:1px solid #234055; border-radius:4px; background:#11161c; }
 .demo figcaption p { margin:0 0 30px; font-size:1.125rem; }
 .signalPath { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:24px; }
 .signalPath li { position:relative; min-width:0; min-height:188px; padding:16px 8px; border-top:1px solid #38516a; transition:border-color .15s,background .15s; }
@@ -45,7 +45,7 @@
 .sharedInformation h3 {font-size:1.9rem;letter-spacing:-.04em;line-height:1.15;margin:0 0 18px}
 .sharedInformation h3 span {color:#65caff}
 .sharedInformation p {font-size:.9375rem;color:#a6b9ce}
-.exchange {position:relative;border:1px solid #306284;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:22px;background:radial-gradient(circle,#102f4e,#070f19 70%)}
+.exchange {position:relative;border:1px solid #306284;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:22px;background:#11161c}
 .exchange>span {color:#ccecff;font-size:1.0625rem}
 .exchange small {font-size:.8125rem;color:#9cbbd4;margin-top:8px}
 .exchange:before,.exchange:after,.consumers li:before {content:"";position:absolute;height:1px;background:#2b6e98;transition:transform .65s ease;transform-origin:left;}

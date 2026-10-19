@@ -1,4 +1,4 @@
-.teaser { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:48px; align-items:center; margin-top:48px; padding:clamp(24px,4vw,48px); border:1px solid #254259; border-radius:24px; background:radial-gradient(ellipse at 90% 50%,#09385b70,transparent 65%),linear-gradient(130deg,#0b1725,#070d15); }
+.teaser { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:48px; align-items:center; margin-top:48px; padding:clamp(24px,4vw,48px); border:1px solid #254259; border-radius:4px; background:none; }
 .copy {min-width:0}
 .teaser h3 { max-width:640px; margin:0 0 22px; font-size:clamp(1.9rem,3.3vw,2.8rem); line-height:1.12; letter-spacing:-.035em; text-wrap:balance; }
 .copy p:not(:global(.eyebrow)) { max-width:650px; margin:0 0 16px; color:#b3c4d6; font-size:1rem; line-height:1.75; }

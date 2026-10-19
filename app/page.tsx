@@ -1,18 +1,17 @@
 import { ActivityExamples } from "../components/activity-examples";
 import { VisualHero } from "../components/visual-hero";
-import { BrandLogo } from "../components/brand-logo";
+
 import { BudgetSection } from "../components/budget-section";
 import { ConnectedEcosystem } from "../components/connected-ecosystem";
-import { FuturisticEffects } from "../components/futuristic-effects";
+
 import { MobileTabBar, SiteHeader } from "../components/navigation";
 import { SectionHeading } from "../components/ui";
 import { SolutionDoors } from "../components/solution-doors";
 import { HistoryTeaser } from "../components/history-link";
-import { MaterialCatalogue } from "../components/material-catalogue";
+import { EquipmentSelection } from "../components/equipment-selection";
 import { PageData } from "../components/structured-data";
 import { SiteFooter } from "../components/site-footer";
 import { homeTitle, homeDescription } from "../lib/seo";
-import { getCatalogue } from "../lib/catalogue";
 
 const reasons = [
   ["01", "Une relation directe", "Vous parlez à des personnes qui comprennent réellement le projet et ses contraintes."],
@@ -24,26 +23,21 @@ const reasons = [
 ];
 
 export default async function Home() {
-  const catalogue=await getCatalogue(true);
-  return <><PageData path="/" title={homeTitle} description={homeDescription}/><FuturisticEffects/><SiteHeader/><main id="contenu">
+
+  return <><PageData path="/" title={homeTitle} description={homeDescription}/><SiteHeader/><main id="contenu">
     <VisualHero/>
 
     <SolutionDoors/>
-
-
-
+    <EquipmentSelection/>
 
     <ConnectedEcosystem/>
 
     <BudgetSection/>
 
-
-
     <ActivityExamples/>
-    <section className="section" id="materiel"><SectionHeading eyebrow="Matériel" title="Le matériel qui complète vos solutions YVEXOR."/><p>Consultez les équipements actuellement au catalogue. Pour une imprimante, un scanner ou un autre matériel, nous vérifions vos besoins et les compatibilités.</p><MaterialCatalogue featured initialData={catalogue}/></section>
 
     <section className="section why" id="yvexor"><SectionHeading eyebrow="Pourquoi YVEXOR" title="Le besoin d’abord. La technologie ensuite."/><div className="reason-list">{reasons.map(reason => <article key={reason[0]}><span>{reason[0]}</span><div><h3>{reason[1]}</h3><p>{reason[2]}</p></div></article>)}</div><HistoryTeaser/></section>
 
-    <section className="final-cta horizon-banner" id="projet"><img className="horizon-photo" src="/yvexor-alpine-horizon-1600-v1.webp" srcSet="/yvexor-alpine-horizon-768-v1.webp 768w, /yvexor-alpine-horizon-1600-v1.webp 1600w" sizes="100vw" width="1600" height="576" alt="" loading="lazy" decoding="async"/><p className="eyebrow">Des idées qui vont plus loin</p><h2>De votre idée<br/>à <span>de nouvelles possibilités.</span></h2><p>Présentez votre idée, demandez un devis et retrouvez nos échanges dans votre espace client. Ensemble, construisons la première étape utile.</p><div className="hero-actions"><a className="action-link primary" href="https://client.yvexor.com/">Rejoignez-nous pour en discuter →</a><a href="/contact/" className="phone">Tous les moyens de contact</a></div></section>
+    <section className="final-cta" id="projet"><p className="eyebrow">Préparons votre installation</p><h2>Parlons de ce qui<br/>se passe chez vous.</h2><p>Votre activité, vos équipements et ce que vous voulez améliorer. C’est le point de départ d’une proposition utile.</p><div className="hero-actions"><a className="action-link primary" href="/contact/">Parler de mon projet →</a><a href="https://client.yvexor.com/" className="phone">Accéder à mon espace client ↗</a></div></section>
   </main><SiteFooter/><MobileTabBar/></>;
 }

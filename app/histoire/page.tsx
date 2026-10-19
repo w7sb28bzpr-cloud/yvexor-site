@@ -1,3 +1,4 @@
+import { SiteFooter } from "../../components/site-footer";
 import type { Metadata } from "next";
 import { SiteHeader, MobileTabBar } from "../../components/navigation";
 import { HistoryDemo } from "../../components/history-demo";
@@ -56,5 +57,5 @@ export default function HistoryPage() {
       <div className={styles.copy}><h2 id="ending-title">Et lorsqu’une idée semble impossible ?</h2><p>Certaines demandes commencent simplement par :</p><p className={styles.idea}>« J’aimerais pouvoir faire ça… mais je ne sais pas si c’est possible. »</p><p>C’est souvent là que commence un projet YVEXOR.</p><p className={styles.lastWord}>Voyons comment on peut le construire.</p><p className={styles.signature}>Yannick Marascia<span>Fondateur de YVEXOR</span></p><div className={styles.signoff}><BrandLogo/><p>Des idées qui avancent.</p></div></div>
       <div className={styles.finalLink}><p>Vous avez une idée, un besoin ou un fonctionnement que vous aimeriez améliorer ?</p><ActionLink href="https://client.yvexor.com/" className="secondary">Parler de mon projet</ActionLink></div>
     </section>
-  </main><footer className={`footer ${styles.footer}`}><BrandLogo/><p>Des idées qui avancent.</p><div><a href="/#yvexor">Découvrir YVEXOR</a><a href="/mentions-legales/">Mentions légales</a><a href="/politique-confidentialite/">Confidentialité</a></div><small>© 2026 YVEXOR</small></footer><MobileTabBar root/></>;
+  </main><SiteFooter/><MobileTabBar root/></>;
 }

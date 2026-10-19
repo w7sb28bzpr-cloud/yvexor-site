@@ -25,6 +25,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test:seo
+      - run: npm run test:theme
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

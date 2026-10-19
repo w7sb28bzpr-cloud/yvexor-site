@@ -94,6 +94,25 @@ export const seoPages:SeoPage[]=baseSeoPages.map(page=>{
   ];
  }
  if(page.slug==="mentions-legales")result.intro="Informations de contact et de diffusion du site officiel YVEXOR.";
+ if(page.slug==="logiciel-sur-mesure"){
+  result.title="Une solution construite autour de votre besoin.";
+  result.metaTitle="Solutions sur mesure : logiciels, IA et systèmes connectés | YVEXOR";
+  result.description="Expliquez votre besoin à YVEXOR : logiciel métier, application, IA, automatisation ou équipement connecté. Une solution et un budget définis ensemble.";
+  result.intro="Un outil qui manque, des tâches répétitives, une idée à concrétiser : vous connaissez votre activité. Nous cherchons comment vous aider, puis nous construisons la solution.";
+  result.cta="Parler de mon projet";
+  result.sections=[
+   {title:"Qu’aimeriez-vous améliorer ?",text:"Éviter les doubles saisies, suivre votre activité, créer un service pour vos clients ou relier vos outils : même une idée encore vague suffit pour commencer."},
+   {title:"La technologie suit votre besoin",text:"Logiciel métier, application, automatisation, IA ou matériel connecté : nous choisissons les outils utiles. Une solution existante peut suffire ; un développement spécifique peut aussi être nécessaire."},
+   {title:"Commencer utile, puis évoluer",text:"Une première version peut résoudre un problème précis. Nous définissons ensemble les fonctions, les connexions et les étapes suivantes, sans imposer un projet démesuré."},
+   {title:"Un périmètre et un prix clairs",text:"Achat complet, réalisation par étapes ou abonnement lorsque le projet s’y prête : la proposition précise le développement, la mise en service, les coûts tiers et les services récurrents. L’abonnement n’est pas obligatoire."}
+  ];result.faq=undefined;
+ }
+ if(page.slug==="contact"){
+  result.title="Parlons de votre projet.";result.metaTitle="Parler de votre projet technologique | YVEXOR";
+  result.description="Une idée, un besoin ou un outil à améliorer ? Contactez YVEXOR pour étudier une solution adaptée à votre activité et à vos moyens.";
+  result.intro="Petit ou grand projet, idée précise ou première intuition : expliquez-nous simplement ce que vous souhaitez créer ou améliorer.";result.sections=[];
+ }
+ if(page.slug==="politique-confidentialite")result.sections.push({title:"Préférences et préparation d’un message",text:"Votre préférence de thème est mémorisée sur votre appareil. Le formulaire public prépare un message dans votre navigateur, sans enregistrer ses champs localement ni les transmettre à YVEXOR. L’envoi se fait uniquement dans votre messagerie, à votre initiative."});
  return result;
 });
 export const seoPageBySlug=Object.fromEntries(seoPages.map(page=>[page.slug,page])) as Record<string,SeoPage>;

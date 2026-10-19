@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "node scripts/caisse-sync.cjs --check && next build",
     "start": "next start",
-    "test:seo": "node scripts/seo-check.cjs"
+    "test:seo": "node scripts/seo-check.cjs",
+    "test:theme": "node scripts/theme-check.cjs"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",

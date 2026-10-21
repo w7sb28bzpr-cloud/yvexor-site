@@ -35,7 +35,7 @@ export default function Home() {
           </div>
           <figure className={styles.heroMedia} data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
             <img src="/images/v2/hero-code-v1.webp" width="1600" height="940" alt="Extrait du code source du site YVEXOR : la liste de ses domaines d’intervention, du sur-mesure aux systèmes connectés" fetchPriority="high" />
-            <figcaption>Du vrai code, pas une image générée · <code>data/v2-solutions.ts</code>, les briques de ce site.</figcaption>
+            <figcaption><code>data/v2-solutions.ts</code> · les briques de ce site, telles quelles.</figcaption>
           </figure>
         </div>
       </section>

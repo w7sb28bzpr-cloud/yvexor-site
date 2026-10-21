@@ -12,10 +12,10 @@ Branche `codex/yvexor-v2`, en continuité du commit `a47d05b "chore: checkpoint 
 - Nettoyage : suppression des dépendances mortes (`three`, `gsap`, `framer-motion`, `@studio-freight/lenis`, jamais importées), du composant `MobileTabBar` (toujours `null`, 7 appels) et du composant orphelin `futuristic-effects.tsx`.
 - Finalisation de la refonte V2 que tu avais commencée : accueil (hero + section "parcours" scroll-driven + grille solutions), nouvelles pages `/solutions/` et `/projets/`, `/a-propos/` reconstruite en vraie page (n'est plus une redirection vers `/histoire/`), footer/sitemap/metadata mis à jour en conséquence.
 - Ajout d'un `ScrollReveal` (IntersectionObserver vanilla, respecte `prefers-reduced-motion`) + micro-interactions hover (bouton, tuiles solutions, liens) dans `v2-shell.css` / `home-v2.module.css`.
-- 2 commits : `chore: remove unused deps and dead MobileTabBar code` puis `feat: finish V2 redesign (home, solutions, projets, à-propos) and add motion polish`.
+- Hero de l'accueil : l'utilisateur a proposé 2 photos (maquette Figma trop basse résolution, puis une image IA trop "démo IA" de son propre aveu) — on a tranché pour autre chose : `public/images/v2/hero-code-v1.webp`, un screenshot (rendu via Edge headless, lossless) de `data/v2-solutions.ts` mis en forme façon éditeur de code. 100% authentique, zéro image générée. `neutral-placeholder.svg` supprimé.
+- 3 commits : `chore: remove unused deps and dead MobileTabBar code`, `feat: finish V2 redesign (home, solutions, projets, à-propos) and add motion polish`, `feat: replace hero placeholder with real source-code visual`.
 
 **En attente / pas fait :**
-- Le hero de l'accueil utilise toujours `public/images/v2/neutral-placeholder.svg` (placeholder gris vide, volontaire — pas de fausse photo). L'utilisateur doit fournir une vraie photo (haute résolution) pour remplacer ça avant mise en ligne.
 - Pas encore mergé sur `main` / pas déployé. Les pages hors V2 (`histoire`, `caisse`, `boutique`, `materiel`, les pages génériques via `seo-page.tsx`) gardent encore l'ancien design (`globals.css`/`themes.css`) — pas touchées dans cette passe.
 - `npm audit` signale 11 vulnérabilités dans les dépendances transitives, pas traité (hors périmètre demandé).
 

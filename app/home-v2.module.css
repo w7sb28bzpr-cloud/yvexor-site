@@ -3,7 +3,7 @@
 .kicker { margin: 0 0 var(--v2-space-3); color: var(--v2-link); font-size: 12px; font-weight: 720; line-height: 1.4; letter-spacing: .12em; text-transform: uppercase; }
 
 .hero { position: relative; display: flex; align-items: center; min-height: clamp(520px, 72vh, 760px); overflow: hidden; background: #05070a; color: #f5f7f9; }
-.heroBg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: 115% center; opacity: .5; filter: saturate(.7) brightness(.85); }
+.heroBg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: 100% center; opacity: .5; filter: saturate(.7) brightness(.85); }
 .hero::after { position: absolute; inset: 0; z-index: 1; background: linear-gradient(100deg, rgba(5,8,12,1) 0%, rgba(5,8,12,1) 48%, rgba(5,8,12,.92) 64%, rgba(5,8,12,.55) 82%, rgba(5,8,12,.25) 100%); content: ""; pointer-events: none; }
 .heroInner { position: relative; z-index: 2; width: min(100%, calc(var(--v2-content) + 2 * var(--v2-gutter))); margin: 0 auto; padding: clamp(44px, 4.5vw, 72px) var(--v2-gutter); }
 .hero .kicker { color: #a9c9ed; }

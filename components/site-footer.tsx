@@ -1,3 +1,32 @@
-import {BrandLogo} from "./brand-logo";
+import { BrandLogo } from "./brand-logo";
 
-export function SiteFooter(){return <footer className="footer"><div className="footer-brand"><BrandLogo/><p>Votre besoin.<br/>Notre solution.</p><span>Marseille · France · Suisse<br/>Interventions selon votre projet.</span></div><nav aria-label="Produits et services"><strong>Vos solutions</strong><a href="/logiciel-sur-mesure/">Sur mesure</a><a href="/caisse/">Caisses & logiciels</a><a href="/boutique/">Équipements professionnels</a><a href="/materiel/">Articles de l’espace client</a><a href="/automatisation-entreprise/">Automatisation & IA métier</a><a href="/logiciel-sur-mesure/">Développement sur mesure</a></nav><nav aria-label="Entreprise et assistance"><strong>YVEXOR</strong><a href="/histoire/">Notre approche</a><a href="/tarifs-partenariat/">Tarifs</a><a href="/faq/">Questions fréquentes</a><a href="/contact/">Contact</a><a href="https://client.yvexor.com/">Espace client ↗</a></nav><div className="footer-bottom"><small>© 2026 YVEXOR</small><a href="/mentions-legales/">Mentions légales</a><a href="/politique-confidentialite/">Confidentialité</a></div></footer>;}
+export function SiteFooter() {
+  return <footer className="footer v2-footer">
+    <div className="footer-brand">
+      <a href="/" aria-label="YVEXOR — Accueil"><BrandLogo /></a>
+      <p>Du logiciel au terrain.<br />La solution part de ton besoin.</p>
+      <span>Marseille · France · Suisse<br />À distance ou sur place selon le projet.</span>
+    </div>
+    <nav aria-label="Explorer YVEXOR">
+      <strong>Explorer</strong>
+      <a href="/solutions/">Solutions</a>
+      <a href="/projets/">Projets</a>
+      <a href="/a-propos/">À propos</a>
+      <a href="/tarifs-partenariat/">Budget & tarifs</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <nav aria-label="Accès directs">
+      <strong>Accès directs</strong>
+      <a href="/caisse/">Caisses</a>
+      <a href="/boutique/">Boutique</a>
+      <a href="/materiel/">Catalogue connecté</a>
+      <a href="/faq/">Questions fréquentes</a>
+      <a href="https://client.yvexor.com/">Espace client ↗</a>
+    </nav>
+    <div className="footer-bottom">
+      <small>© 2026 YVEXOR</small>
+      <a href="/mentions-legales/">Mentions légales</a>
+      <a href="/politique-confidentialite/">Confidentialité</a>
+    </div>
+  </footer>;
+}

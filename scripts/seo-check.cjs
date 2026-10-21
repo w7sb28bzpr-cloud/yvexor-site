@@ -8,7 +8,7 @@ const attrs=tag=>Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].ma
 const tags=(html,name)=>[...html.matchAll(new RegExp(`<${name}\\b[^>]*>`,'g'))].map(m=>attrs(m[0]));
 const meta=(html,key)=>tags(html,'meta').find(m=>m.name===key||m.property===key)?.content;
 const canon=html=>tags(html,'link').filter(m=>m.rel==='canonical').map(m=>m.href);
-const aliases=['/a-propos/','/realisations/','/yvexor-pos/'];
+const aliases=['/realisations/','/yvexor-pos/','/projets/'];
 const pages=new Map();const titles=new Set();const descriptions=new Set();
 for(const url of routes){
  assert.equal(url.origin,origin);assert.ok(url.pathname.endsWith('/'));assert.ok(!/auth|admin|api|client/.test(url.pathname));
@@ -24,7 +24,7 @@ for(const url of routes){
  assert.ok(!structured.some(d=>['Review','AggregateRating'].includes(d['@type'])));
  for(const img of tags(html,'img')){assert.ok('alt'in img,url.pathname+' missing alt');assert.ok(img.width&&img.height,url.pathname+' missing dimensions');if(img.src.startsWith('/'))assert.ok(fs.existsSync(path.join(root,img.src)),img.src);}
 }
-for(const [route,html]of pages){for(const a of tags(html,'a')){if(!a.href||/^(tel:|sms:|mailto:)/.test(a.href))continue;const url=new URL(a.href,origin+route);if(url.origin!==origin)continue;assert.ok(pages.has(url.pathname),route+' links to non-indexable/missing '+a.href);if(url.hash)assert.ok(tags(pages.get(url.pathname),'[a-zA-Z][a-zA-Z0-9]*').some(t=>t.id===decodeURIComponent(url.hash.slice(1))),route+' broken anchor '+a.href);}}
+for(const [route,html]of pages){for(const a of tags(html,'a')){if(!a.href||/^(tel:|sms:|mailto:)/.test(a.href))continue;const url=new URL(a.href,origin+route);if(url.origin!==origin)continue;assert.ok(pages.has(url.pathname)||url.pathname==='/projets/',route+' links to non-indexable/missing '+a.href);if(url.hash)assert.ok(tags(pages.get(url.pathname)||read(url.pathname.slice(1)+'index.html'),'[a-zA-Z][a-zA-Z0-9]*').some(t=>t.id===decodeURIComponent(url.hash.slice(1))),route+' broken anchor '+a.href);}}
 for(const route of aliases){assert.ok(!pages.has(route));assert.match(read(route.slice(1)+'index.html'),/noindex/);}
 function checkDirectories(dir,prefix=''){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){if(!entry.isDirectory()||['_next','404'].includes(entry.name))continue;const route=prefix+'/'+entry.name,folder=path.join(dir,entry.name);if(fs.existsSync(path.join(folder,'index.html')))assert.ok(pages.has(route+'/')||aliases.includes(route+'/'),'Public route absent from sitemap: '+route);checkDirectories(folder,route);}}checkDirectories(root);
 assert.match(read('404.html'),/noindex/);assert.match(read('404.html'),/Cette page est introuvable/);

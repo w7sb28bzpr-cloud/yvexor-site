@@ -11,12 +11,14 @@ import "./audit-refinements.css";
 import "./category-journeys.css";
 
 import { PwaRegister } from "../components/pwa-register";
+import { ScrollReveal } from "../components/scroll-reveal";
 import { OrganizationData } from "../components/structured-data";
 import { homeTitle, homeDescription, pageMetadata } from "../lib/seo";
 import "./seo-refinements.css";
 import "./brand.css";
 import "./themes.css";
 import "./reading-rhythm.css";
+import "./v2-shell.css";
 import {themeBootstrap} from "../lib/theme";
 
 export const metadata: Metadata = {
@@ -31,4 +33,4 @@ export const metadata: Metadata = {
   twitter: pageMetadata("/",homeTitle,homeDescription).twitter
 };
 export const viewport: Viewport = { themeColor: "#05070a", width: "device-width", initialScale: 1, viewportFit: "cover" };
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="fr" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:themeBootstrap}}/></head><body><a className="skip-link" href="#contenu">Aller au contenu</a><OrganizationData/><PwaRegister/>{children}</body></html>; }
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="fr" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:themeBootstrap}}/></head><body><a className="skip-link" href="#contenu">Aller au contenu</a><OrganizationData/><PwaRegister/><ScrollReveal/>{children}</body></html>; }

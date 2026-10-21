@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 
 export const siteUrl = "https://yvexor.com";
 
-export const homeTitle = "Solutions technologiques sur mesure pour professionnels | YVEXOR";
+export const homeTitle = "Du logiciel au terrain, YVEXOR construit la solution";
 
-export const homeDescription = "Logiciels, applications, IA, automatisation et équipements connectés : YVEXOR construit la solution adaptée à votre activité, à Marseille et à distance.";
+export const homeDescription = "Une idée, un problème, quelque chose à améliorer ? YVEXOR conçoit, développe et connecte des solutions adaptées à ton besoin, du logiciel au terrain.";
 
 export const areas = ["Marseille", "Bouches-du-Rhône", "Provence-Alpes-Côte d’Azur", "France"];
 

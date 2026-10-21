@@ -9,6 +9,8 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: "https://yvexor.com/" },
+    { url: "https://yvexor.com/solutions/" },
+    { url: "https://yvexor.com/a-propos/" },
     { url: "https://yvexor.com/histoire/" },
     { url: "https://yvexor.com/materiel/" },
     { url: "https://yvexor.com/boutique/" },

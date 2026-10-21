@@ -35,9 +35,9 @@ export function SeoPage({page}:{page:SeoPageData}){
     {custom&&<ProjectMethod/>}
     {page.kind==="contact"&&<ProjectContact/>}
     {custom&&<div id="tarifs"><BudgetSection/></div>}
-    {web?<WebContent/>:<section className={`seo-content ${page.kind?`seo-content--${page.kind}`:""}`} id="solutions">{page.sections.map((section,index)=><article className="seo-section" id={automation?`automatisation-${index+1}`:undefined} key={section.title}><span>{String(index+1).padStart(2,"0")}</span><div><h2>{section.title}</h2><p>{section.text}</p>{section.items&&(detail?<details className="detail-expand"><summary>Explorer les possibilités</summary><ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul></details>:<ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul>)}</div></article>)}</section>}
+    {web?<WebContent/>:<section className={`seo-content ${page.kind?`seo-content--${page.kind}`:""}`} id="solutions">{page.sections.map((section,index)=>page.kind==="faq"?<details className="reading-question" key={section.title}><summary><h2>{section.title}</h2></summary><p>{section.text}</p>{section.items&&<ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul>}</details>:<article className={`seo-section${detail&&index===0?" seo-section--lead":""}${detail&&section.items?.length?" seo-section--examples":""}`} id={automation?`automatisation-${index+1}`:undefined} key={section.title}><span>{String(index+1).padStart(2,"0")}</span><div><h2>{section.title}</h2><SectionText text={section.text} collapsible={detail&&!/devis|prix|budget|abonnement|licence|périmètre/i.test(section.title)}/>{section.items&&(detail?<details className="detail-expand"><summary>Explorer les possibilités</summary><ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul></details>:<ul>{section.items.map(item=><li key={item}>{item}</li>)}</ul>)}</div></article>)}</section>}
     {page.slug==="logiciel-caisse-marseille"&&<CommerceBenefits/>}
-    {page.faq?.length&&<section className="seo-faq" id="questions"><h2>Questions sur {page.eyebrow.toLowerCase()}</h2>{page.faq.map(q=><article key={q.title}><h3>{q.title}</h3><p>{q.text}</p></article>)}</section>}
+    {page.faq?.length&&<section className="seo-faq" id="questions"><h2>Questions sur {page.eyebrow.toLowerCase()}</h2>{page.faq.map(q=><details key={q.title}><summary>{q.title}</summary><p>{q.text}</p></details>)}</section>}
     {automation&&<div className="seo-related"><a href="/#solutions">← Toutes les solutions</a></div>}
 
 
@@ -45,4 +45,10 @@ export function SeoPage({page}:{page:SeoPageData}){
     <aside className="seo-related" id="exemples"><p className="eyebrow">Continuer votre recherche</p><div>{page.related.map(slug=><a href={`/${slug}/`} key={slug}>{seoPageBySlug[slug]?.title??slug.replaceAll("-"," ")}<b aria-hidden="true">→</b></a>)}</div></aside>
     {!information&&<section className="seo-final" id="projet"><BrandLogo compact/><h2>Votre besoin d’abord. La technologie ensuite.</h2><p>Nous cherchons la base, le périmètre et la première étape les plus cohérents.</p><a className="action-link primary" href="/contact/">Préparer mon projet →</a></section>}
   </main><SiteFooter/><MobileTabBar root/></>;
+}
+
+function SectionText({text,collapsible}:{text:string;collapsible:boolean}){
+ const end=text.search(/[.!?](?:\s|$)/)+1;
+ if(!collapsible||text.length<240||end<50||end>240)return <p>{text}</p>;
+ return <><p>{text.slice(0,end)}</p><details className="reading-detail"><summary>Lire les précisions</summary><p>{text.slice(end).trim()}</p></details></>;
 }

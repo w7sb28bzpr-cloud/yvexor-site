@@ -16,6 +16,7 @@ import { homeTitle, homeDescription, pageMetadata } from "../lib/seo";
 import "./seo-refinements.css";
 import "./brand.css";
 import "./themes.css";
+import "./reading-rhythm.css";
 import {themeBootstrap} from "../lib/theme";
 
 export const metadata: Metadata = {

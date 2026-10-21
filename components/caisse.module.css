@@ -6,3 +6,6 @@
 @media(max-width:600px){.page :global(.cx-families){grid-template-columns:1fr}.page :global(.cx-focus .cx-focus-grid article){gap:16px}.page :global(.cx-hero img){height:auto}}
 
 .page :global(.action-link.secondary){color:var(--text)}
+
+.page :global(.cx-website){background:var(--surface);padding-inline:24px;border:0;margin-block:20px}.page :global(.cx-flow li){background:none;border-left:2px solid var(--border);border-radius:0;padding:8px 16px}.page :global(.cx-hardware article){background:none;border:0;border-left:2px solid var(--accent);border-radius:0}.page :global(.cx-final){background:var(--surface);padding-inline:20px}
+@media(max-width:600px){.page :global(.cx-section h2){font-size:27px}.page :global(.cx-section){padding-block:30px}.page :global(.cx-family){padding:18px 0}.page :global(.cx-family p){font-size:14px;margin-block:8px}.page :global(.cx-family strong){margin-top:12px}.page :global(.cx-plan){padding:20px}.page :global(.cx-price){margin:12px 0}.page :global(.cx-focus .cx-focus-grid article){display:block;padding-left:16px;border-top:0;border-left:2px solid var(--border);margin-bottom:16px}.page :global(.cx-focus-grid p){font-size:15px}.page :global(.cx-website){padding-inline:18px}.page :global(.cx-flow){gap:12px}.page :global(.cx-hardware){gap:24px}}

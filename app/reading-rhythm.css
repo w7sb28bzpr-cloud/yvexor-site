@@ -1,0 +1,33 @@
+/* Editorial hierarchy, shared by commercial pages; legal content keeps its layout. */
+.detail-page .seo-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 48px}
+.detail-page .seo-section{grid-template-columns:24px minmax(0,1fr);gap:14px;padding:28px 0;border-top:1px solid var(--border)}
+.detail-page .seo-section h2{font-size:clamp(22px,2.3vw,30px);line-height:1.25;margin:0 0 14px;max-width:30ch}
+.detail-page .seo-section p{font-size:16px;line-height:1.65;max-width:62ch;margin:0 0 14px;color:var(--text-secondary)}
+.detail-page .seo-section--lead{grid-column:1/-1;padding:32px;background:var(--surface);border:0;border-left:3px solid var(--accent);margin-bottom:16px}
+.detail-page .seo-section--lead>div{display:grid;grid-template-columns:.8fr 1.2fr;gap:0 40px}
+.detail-page .seo-section--lead h2{grid-row:1/4;font-size:clamp(25px,3vw,36px)}
+.detail-page .seo-section--lead details{grid-column:2}
+.detail-page .seo-section--examples li{display:list-item;margin-left:18px;font-size:14px;line-height:1.6}
+.reading-detail summary,.seo-faq summary{cursor:pointer;min-height:44px;line-height:1.5;padding:12px 0;color:var(--text)}
+.reading-detail summary{font-size:14px;text-decoration:underline;text-underline-offset:5px}
+.seo-faq details{border-bottom:1px solid var(--border);padding-block:8px}.seo-faq summary{font-weight:550;font-size:17px}.seo-faq details p{font-size:15px;line-height:1.7;margin:4px 0 20px;max-width:65ch}.seo-faq h2{font-size:clamp(25px,3vw,34px)}
+.seo-lead{max-width:64ch}.seo-final .brand-logo{display:none}.seo-final,.detail-page .seo-final{padding-block:40px}.seo-final h2{font-size:clamp(27px,3vw,37px)}
+.category-price-card{border-left:3px solid var(--accent)}
+.final-cta{padding-block:48px}.final-cta h2{font-size:clamp(30px,3.3vw,42px)}
+summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+@media(max-width:760px){
+ .detail-page .seo-content{grid-template-columns:minmax(0,1fr);gap:0;padding-inline:20px}
+ .detail-page .seo-section{padding:24px 0;gap:10px;grid-template-columns:20px minmax(0,1fr)}
+ .detail-page .seo-section h2{font-size:24px}.detail-page .seo-section p{font-size:15px;line-height:1.7}
+ .detail-page .seo-section--lead{padding:24px 18px;margin:8px 0 20px;grid-template-columns:1fr}
+ .detail-page .seo-section--lead>span{display:none}.detail-page .seo-section--lead>div{display:block}.detail-page .seo-section--lead h2{font-size:27px}
+ .detail-page .seo-section--examples{background:var(--surface);padding:22px 16px;border:0;margin:8px 0 18px}
+ .seo-hero h1,.detail-page .seo-hero h1{font-size:clamp(32px,7vw,42px)}.seo-lead{font-size:16px;line-height:1.65}
+ .detail-visual{margin-bottom:24px}.detail-visual img{height:240px}.detail-visual figcaption{font-size:11px;line-height:1.6}
+ .seo-related>div{display:block}.seo-related a{font-size:14px;min-height:52px}.seo-related{margin-block:28px}
+ .seo-final,.detail-page .seo-final,.final-cta{padding:36px 20px}.seo-final p,.final-cta>p{font-size:15px;line-height:1.65}
+ .footer,.page+.footer{padding-top:36px;gap:20px}.footer-brand p{font-size:17px;margin-block:10px}
+}
+
+.reading-question{border-bottom:1px solid var(--border);padding-block:10px}.reading-question summary{cursor:pointer;padding:14px 0;color:var(--text)}.reading-question h2{display:inline;font-size:19px;line-height:1.5;font-weight:550}.reading-question p{font-size:16px;line-height:1.7;color:var(--text-secondary);max-width:65ch;margin:10px 0 24px}.reading-question li{line-height:1.7}
+@media(max-width:760px){.reading-question h2{font-size:17px}.reading-question p{font-size:15px}.seo-content--faq{display:block;padding-inline:20px}}

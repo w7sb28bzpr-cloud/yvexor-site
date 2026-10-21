@@ -2,7 +2,7 @@ import {ProjectContact} from "./project-contact";
 import {ProjectMethod} from "./project-method";
 import {BudgetSection} from "./budget-section";
 import { BrandLogo } from "./brand-logo";
-import { MobileTabBar, SiteHeader } from "./navigation";
+import { SiteHeader } from "./navigation";
 import { SmsLink } from "./sms-link";
 
 
@@ -44,7 +44,7 @@ export function SeoPage({page}:{page:SeoPageData}){
     {page.kind==="contact"&&<section className="seo-contact"><p className="eyebrow">Contact professionnel</p><h2>Vous préférez nous parler directement ?</h2><div className="hero-actions"><a className="action-link primary" href="tel:+33756913013">Appeler le 07 56 91 30 13</a><SmsLink className="action-link secondary">Envoyer un SMS</SmsLink></div></section>}
     <aside className="seo-related" id="exemples"><p className="eyebrow">Continuer votre recherche</p><div>{page.related.map(slug=><a href={`/${slug}/`} key={slug}>{seoPageBySlug[slug]?.title??slug.replaceAll("-"," ")}<b aria-hidden="true">→</b></a>)}</div></aside>
     {!information&&<section className="seo-final" id="projet"><BrandLogo compact/><h2>Votre besoin d’abord. La technologie ensuite.</h2><p>Nous cherchons la base, le périmètre et la première étape les plus cohérents.</p><a className="action-link primary" href="/contact/">Préparer mon projet →</a></section>}
-  </main><SiteFooter/><MobileTabBar root/></>;
+  </main><SiteFooter/></>;
 }
 
 function SectionText({text,collapsible}:{text:string;collapsible:boolean}){

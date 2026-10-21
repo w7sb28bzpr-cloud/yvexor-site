@@ -1,6 +1,6 @@
 import catalogue from "../data/caisses.json";
 import {professions,caisseFaq,type Profession} from "../data/caisse-professions";
-import {SiteHeader,MobileTabBar} from "./navigation";
+import {SiteHeader} from "./navigation";
 import {SiteFooter} from "./site-footer";
 import {PageData} from "./structured-data";
 import {CaisseConfigurator,CaisseSelectLink} from "./caisse-configurator";
@@ -23,5 +23,5 @@ export function CaissePage({profession,local=false}:{profession?:Profession;loca
  <CaisseConfigurator profession={profession?.slug??"commerce"}/>
  <section id="questions" className="cx-section"><h2>Vos questions, avant de choisir.</h2>{caisseFaq.map(q=><details className="cx-faq" key={q.title}><summary>{q.title}</summary><p>{q.text}</p></details>)}</section>
  <section className="cx-section cx-final" id="projet"><h2>Testons votre façon de travailler.</h2><p>Une démonstration, vos produits, vos équipements. Nous confirmons ensemble ce qui est disponible et ce qui nécessite une adaptation.</p><a className="action-link primary" href="#configurateur">Préparer ma demande →</a></section>
- </main><SiteFooter/><MobileTabBar root/></>
+ </main><SiteFooter/></>
 }

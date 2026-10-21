@@ -34,8 +34,8 @@ export default function Home() {
             <div className={styles.heroActions}><a className="v2-button" href="/contact/">On en parle ?</a><a className={styles.heroLink} href="/a-propos/">Découvrir YVEXOR ↗</a></div>
           </div>
           <figure className={styles.heroMedia} data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-            <img src="/images/v2/neutral-placeholder.svg" width="1600" height="1000" alt="Emplacement réservé à une photographie montrant YVEXOR sur le terrain" fetchPriority="high" />
-            <figcaption>Photographie YVEXOR à venir · Le réel, sans décor technologique ajouté.</figcaption>
+            <img src="/images/v2/hero-code-v1.webp" width="1600" height="940" alt="Extrait du code source du site YVEXOR : la liste de ses domaines d’intervention, du sur-mesure aux systèmes connectés" fetchPriority="high" />
+            <figcaption>Du vrai code, pas une image générée · <code>data/v2-solutions.ts</code>, les briques de ce site.</figcaption>
           </figure>
         </div>
       </section>

@@ -36,6 +36,18 @@ export function getPublicSolutionById(id: string): PublicSolution | undefined {
   return solution ? { ...solution, pricing: getPublishablePricing(solution.pricing) } : undefined;
 }
 
+export function getPublicSolutionBySlug(slug: string): PublicSolution | undefined {
+  const solution = solutions.find((item) => item.slug === slug);
+  return solution ? { ...solution, pricing: getPublishablePricing(solution.pricing) } : undefined;
+}
+
+/** Only solutions whose own canonical URL is in the new namespace get generated detail pages. */
+export function getGeneratedSolutionPages(): { slug: string }[] {
+  return solutions
+    .filter((solution) => solution.canonicalPath === `/solutions/${solution.slug}/`)
+    .map(({ slug }) => ({ slug }));
+}
+
 export function validateContentGraph(): string[] {
   const errors: string[] = [];
   const checkUnique = (label: string, values: readonly { id: string; slug: string }[]) => {
@@ -56,9 +68,28 @@ export function validateContentGraph(): string[] {
 
   const clusters = new Set(["logiciel-ia", "commerce-paiement", "connecte-terrain", "digital-infrastructure"]);
   const legacyPagePaths = new Set(seoPages.map((page) => `/${page.slug}/`));
+  const knownSolutionDestinations = new Set([...legacyPagePaths, "/boutique/"]);
+  const solutionPaths = new Set<string>();
   const industryPaths = new Set<string>();
   for (const solution of solutions) {
     if (!clusters.has(solution.cluster)) errors.push(`Unknown cluster on solution ${solution.id}: ${solution.cluster}`);
+    if (!solution.canonicalPath.startsWith("/") || !solution.canonicalPath.endsWith("/")) {
+      errors.push(`Solution ${solution.id} canonicalPath must be a local absolute path ending with /`);
+    }
+    const generatedPath = `/solutions/${solution.slug}/`;
+    if (solution.canonicalPath !== generatedPath && !knownSolutionDestinations.has(solution.canonicalPath)) {
+      errors.push(`Solution ${solution.id} canonicalPath must be its generated page or an existing solution destination`);
+    }
+    if (solutionPaths.has(solution.canonicalPath)) errors.push(`Duplicate solution canonicalPath: ${solution.canonicalPath}`);
+    solutionPaths.add(solution.canonicalPath);
+    const canonicalSlug = solution.canonicalPath.replace(/^\//, "").replace(/\/$/, "");
+    const canonicalPage = seoPages.find((page) => page.slug === canonicalSlug);
+    if (canonicalPage && (solution.page.title !== canonicalPage.title || solution.page.description !== canonicalPage.description)) {
+      errors.push(`Solution ${solution.id} content must reuse its canonical SEO page at ${solution.canonicalPath}`);
+    }
+    if (!solution.primaryAction.label.trim() || !solution.primaryAction.href.startsWith("/") || !solution.primaryAction.href.endsWith("/")) {
+      errors.push(`Solution ${solution.id} primaryAction must have a label and local path`);
+    }
     for (const field of ["industryIds", "projectIds"] as const) {
       if (new Set(solution[field]).size !== solution[field].length) errors.push(`Duplicate ${field} on solution ${solution.id}`);
     }

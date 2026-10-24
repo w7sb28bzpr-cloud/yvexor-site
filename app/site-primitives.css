@@ -2,6 +2,19 @@
 .site-foundation {
   min-width: 0;
   color-scheme: dark;
+  --v2-page: var(--site-background);
+  --v2-surface: var(--site-surface);
+  --v2-ink: var(--site-text-primary);
+  --v2-muted: var(--site-text-secondary);
+  --v2-line: var(--site-border);
+  --v2-accent: var(--site-accent);
+  --v2-accent-hover: var(--site-accent);
+  --v2-link: var(--site-text-primary);
+  --v2-on-accent: var(--site-accent-contrast);
+  --v2-quiet: var(--site-surface-elevated);
+  --v2-content: var(--site-content-width);
+  --v2-gutter: var(--site-gutter);
+  --v2-radius: var(--site-radius-sm);
   background: var(--site-background);
   color: var(--site-text-primary);
   font-family: var(--site-font-body);
@@ -18,6 +31,12 @@
   outline: 3px solid var(--site-focus);
   outline-offset: 4px;
 }
+.site-foundation .v2-header a:focus-visible,
+.site-foundation .v2-header summary:focus-visible,
+.site-foundation .v2-footer a:focus-visible { outline-color: var(--site-focus); }
+.site-foundation .v2-header .header-cta { color: var(--site-accent-contrast); }
+.site-foundation .v2-header__brand .brand-logo,
+.site-foundation .v2-footer .brand-logo { background: transparent; }
 
 .site-foundation .site-container {
   width: min(100%, var(--site-content-width));
@@ -74,3 +93,10 @@
   }
   .site-foundation .site-button:hover { transform: none; }
 }
+
+.site-foundation .site-pricing { margin-top: 1.1rem; padding: 1rem; }
+.site-foundation .site-pricing__title { display: block; margin-bottom: 0.4rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.site-foundation .site-pricing__offers { display: grid; gap: 0.3rem; margin: 0; padding: 0; list-style: none; font-size: 0.95rem; font-weight: 650; }
+.site-foundation .site-pricing__note { margin: 0.5rem 0 0; color: var(--site-text-secondary); font-size: 0.85rem; }
+.site-foundation .site-pricing--compact { margin-top: 1rem; padding: 0.8rem 1rem; }
+.site-foundation .site-pricing--compact .site-pricing__title { margin-bottom: 0.2rem; }

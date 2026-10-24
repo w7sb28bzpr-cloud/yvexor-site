@@ -1,0 +1,8 @@
+.card { display: flex; min-width: 0; flex-direction: column; padding: clamp(1.25rem, 2.4vw, 2rem); }
+.eyebrow { margin: 0 0 0.75rem; color: var(--site-text-muted); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.card h3 { margin: 0; font-size: clamp(1.5rem, 2.2vw, 2.1rem); }
+.summary { max-width: 55ch; margin: 1rem 0 0; color: var(--site-text-secondary); }
+.industries { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.8rem; margin-top: 1.1rem; color: var(--site-text-muted); font-size: 0.875rem; }
+.industries > span { font-weight: 650; }
+.industries a { display: inline-flex; min-height: 44px; align-items: center; }
+.action { width: fit-content; min-height: 44px; margin-top: auto; transform: none; }

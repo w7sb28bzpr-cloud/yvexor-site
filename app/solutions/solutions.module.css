@@ -1,0 +1,25 @@
+.page { min-height: 60vh; padding-block: clamp(3rem, 8vw, 7rem); }
+.intro { max-width: 72rem; padding-block: 2rem 5rem; }
+.eyebrow { margin: 0 0 0.8rem; color: var(--site-text-muted); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.intro h1 { max-width: 13ch; margin: 0; }
+.lead { max-width: 62ch; margin: 1.5rem 0 0; font-size: clamp(1.05rem, 1.7vw, 1.3rem); }
+.clusterNav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 2rem; }
+.clusterNav a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 650; }
+.navigationNote { max-width: 68ch; margin: 1rem 0 0; color: var(--site-text-muted); font-size: 0.9rem; }
+.clusters { display: grid; gap: clamp(4rem, 9vw, 8rem); }
+.cluster { scroll-margin-top: 2rem; }
+.anchorAlias { display: block; scroll-margin-top: 2rem; }
+.clusterHeading { max-width: 52rem; margin-bottom: 1.5rem; }
+.clusterHeading h2 { margin: 0; }
+.clusterHeading > p:last-child { margin: 1rem 0 0; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.contact { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-block: clamp(4rem, 9vw, 8rem) 2rem; padding: clamp(1.5rem, 4vw, 3rem); }
+.contact h2 { max-width: 15ch; margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); }
+.contact .eyebrow { margin-bottom: 0.75rem; }
+.contact :global(.site-copy) { margin-bottom: 0; }
+.contact :global(.site-button) { flex: none; }
+
+@media (max-width: 760px) {
+  .grid { grid-template-columns: 1fr; }
+  .contact { align-items: flex-start; flex-direction: column; }
+}

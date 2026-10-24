@@ -14,13 +14,14 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
-const { filterPublishedProjects, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
+const { filterPublishedProjects, getGeneratedSolutionPages, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
 const { projects } = require("../data/projects.ts");
 const { getPublicSolutions } = require("../lib/content.ts");
 const { solutions } = require("../data/solutions.ts");
 const { v2Solutions } = require("../data/v2-solutions.ts");
 const errors = validateContentGraph();
 assert.deepEqual(errors, [], errors.join("\n"));
+assert.deepEqual(getGeneratedSolutionPages().map((page) => page.slug).sort(), ["hebergement-infrastructure", "retrofit-equipement-non-connecte"], "Only solutions without an existing canonical destination may generate new detail routes");
 assert.equal(new Set(v2Solutions.map((solution) => solution.id)).size, v2Solutions.length, "V2 solution source IDs must be unique");
 for (const solution of solutions.filter((item) => item.id !== "equipment-retrofit")) {
   const source = v2Solutions.find((item) => item.id === solution.id);

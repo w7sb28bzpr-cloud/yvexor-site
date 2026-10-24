@@ -1,19 +1,59 @@
-import { SiteHeader } from "../../components/navigation";
-import { SiteFooter } from "../../components/site-footer";
+import type { Metadata } from "next";
 import { PageData } from "../../components/structured-data";
+import { SiteFooter } from "../../components/site-footer";
+import { SiteHeader } from "../../components/navigation";
+import { SolutionCard } from "./solution-card";
+import { getPublicSolutions } from "../../lib/content";
+import { solutionClusters } from "../../data/solution-clusters";
 import { pageMetadata } from "../../lib/seo";
-import { v2Solutions } from "../../data/v2-solutions";
+import styles from "./solutions.module.css";
 
-const title = "Solutions YVEXOR | Du logiciel au terrain";
-const description = "Explorez les domaines dans lesquels YVEXOR conçoit, développe, connecte et déploie des solutions adaptées à des besoins concrets.";
-export const metadata = pageMetadata("/solutions/", title, description);
+const title = "Solutions YVEXOR — Du logiciel au terrain";
+const description = "Découvrez les solutions que YVEXOR conçoit, développe, connecte et automatise autour de besoins réels, du logiciel aux équipements physiques.";
+export const metadata: Metadata = pageMetadata("/solutions/", title, description);
 
 export default function SolutionsPage() {
-  return <><PageData path="/solutions/" title={title} description={description} /><SiteHeader />
-    <main id="contenu" className="v2-directory">
-      <div className="v2-directory__intro" data-reveal><p className="v2-directory__eyebrow">Solutions YVEXOR</p><h1>Partons de ce que tu veux faire.</h1><p>Un logiciel, un lieu, un équipement ou plusieurs systèmes à relier : voici quelques portes d’entrée. Si ton idée ne rentre dans aucune, parle-nous quand même.</p></div>
-      <div className="v2-directory__list">{v2Solutions.map((solution, index) => <a id={index === 2 ? "commerce" : index === 5 ? "infrastructure" : undefined} key={solution.title} href={index === 2 ? "/caisse/" : index === 5 ? "/contact/" : solution.href} data-reveal style={{ "--reveal-delay": `${Math.min(index, 5) * 55}ms` } as React.CSSProperties}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{solution.title}</h2><p>{solution.cue}</p></div><span aria-hidden="true">↗</span></a>)}</div>
-      <p className="v2-directory__note">Une billetterie, des bornes et un contrôle d’accès peuvent former un même projet à étudier. <a href="/caisse/">La gamme Caisses</a> est une base distincte déjà présentée sur le site.</p>
-      <p className="v2-directory__note">L’hébergement et l’infrastructure se définissent avec le projet : <a href="/contact/">explique-nous ce qu’il faut faire fonctionner</a>.</p>
-    </main><SiteFooter /></>;
+  const solutions = getPublicSolutions();
+
+  return <div className="site-foundation">
+    <PageData path="/solutions/" title={title} description={description} type="CollectionPage" />
+    <SiteHeader />
+    <main id="contenu" className={styles.page}>
+      <div className="site-container">
+        <header className={styles.intro}>
+          <p className={styles.eyebrow}>Explorer par solution</p>
+          <h1 className="site-display site-heading-xl">Du logiciel au terrain, une solution autour de votre besoin.</h1>
+          <p className={`site-copy ${styles.lead}`}>YVEXOR conçoit, développe, connecte et automatise. Un logiciel, un équipement physique ou plusieurs outils peuvent se combiner selon ce que votre activité cherche à faire évoluer.</p>
+          <nav className={styles.clusterNav} aria-label="Parcourir les familles de solutions">
+            {solutionClusters.map((cluster) => <a className="site-link" key={cluster.id} href={`#${cluster.id}`}>{cluster.label}<span aria-hidden="true"> ↓</span></a>)}
+          </nav>
+          <p className={styles.navigationNote}>Ces familles sont des repères pour explorer le catalogue. Une solution peut en traverser plusieurs et se combiner avec d’autres.</p>
+        </header>
+
+        <div className={styles.clusters}>
+          {solutionClusters.map((cluster, index) => {
+            const items = solutions.filter((solution) => solution.cluster === cluster.id);
+            return <section className={styles.cluster} id={cluster.id} key={cluster.id} aria-labelledby={`${cluster.id}-title`}>
+              {cluster.id === "commerce-paiement" && <span id="commerce" className={styles.anchorAlias} aria-hidden="true" />}
+              {cluster.id === "digital-infrastructure" && <span id="infrastructure" className={styles.anchorAlias} aria-hidden="true" />}
+              <header className={styles.clusterHeading}>
+                <p className={styles.eyebrow}>Famille {String(index + 1).padStart(2, "0")}</p>
+                <h2 id={`${cluster.id}-title`} className="site-display site-heading-lg">{cluster.label}</h2>
+                <p className="site-copy">{cluster.description}</p>
+              </header>
+              <div className={styles.grid}>
+                {items.map((solution) => <SolutionCard key={solution.id} solution={solution} />)}
+              </div>
+            </section>;
+          })}
+        </div>
+
+        <aside className={`site-surface site-surface--elevated ${styles.contact}`}>
+          <div><p className={styles.eyebrow}>Votre besoin n’entre dans aucune case ?</p><h2 className="site-display">Partons de ce que vous voulez faire.</h2><p className="site-copy">Les solutions peuvent être adaptées ou assemblées au fil du projet. La première étape consiste à comprendre votre besoin.</p></div>
+          <a className="site-button" href="/contact/">Étudier mon projet</a>
+        </aside>
+      </div>
+    </main>
+    <SiteFooter />
+  </div>;
 }

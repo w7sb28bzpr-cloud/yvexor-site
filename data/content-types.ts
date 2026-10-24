@@ -39,8 +39,11 @@ export type Pricing = {
 export type Solution = {
   id: string;
   slug: string;
+  /** Public URL that owns this solution; existing editorial pages stay canonical owners. */
+  canonicalPath: string;
   cluster: SolutionClusterId;
   eyebrow: string;
+  primaryAction: { label: string; href: string };
   industryIds: string[];
   projectIds: string[];
   page: EditorialPage;

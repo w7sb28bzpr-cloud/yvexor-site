@@ -10,7 +10,7 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 
 # SOURCE DE VÉRITÉ — Direction & Architecture YVEXOR
 
-*Dernière mise à jour : 2026-10-24 par Claude, suite au brief de redirection de l'utilisateur. Ce brief remplace les décisions de design précédentes (voir journal du 21/10 pour l'historique) sur les points où il les contredit — notamment la palette bleue et le hero en code.*
+*Dernière mise à jour : 2026-10-24 par Claude, après réconciliation avec `CODEX_AUDIT.md` (audit technique indépendant de Codex, lecture seule, même date). Les deux analyses convergent sur l'essentiel — voir §9 pour le détail des points d'accord/désaccord. Ce brief remplace les décisions de design précédentes (voir journal du 21/10 pour l'historique) sur les points où il les contredit — notamment la palette bleue et le hero en code.*
 
 ## 1. Positionnement — ce que YVEXOR N'EST PAS et CE QU'IL EST
 
@@ -126,6 +126,145 @@ Nav principale proposée : **Accueil · Solutions · Métiers · Projets · À p
 - Hero pas encore changé (toujours le code screenshot).
 - Fusion `/a-propos/` + `/histoire/` pas faite.
 - Odoo/open source : rien entamé, nécessite une vérification de licences avant tout développement.
+- **Aucune des décisions ci-dessous (§9-10) n'est encore implémentée.** Cette mise à jour du 24/10 est le résultat de la réconciliation Claude ↔ `CODEX_AUDIT.md`, pas un changement de code.
+
+## 9. ARCHITECTURE TECHNIQUE VALIDÉE
+
+*Réconciliation entre la proposition initiale de Claude (§1-7 ci-dessus), l'audit indépendant de Codex (`CODEX_AUDIT.md`, lecture seule) et le principe éditorial validé par l'utilisateur : **Solution ↕ Métier ↕ Projet réel**, une solution pouvant apparaître dans plusieurs métiers.*
+
+### 9.1 Structure Solutions / Métiers / Projets
+
+Trois entités de contenu, reliées par ID, jamais par duplication de page :
+
+- **Solution** — une capacité YVEXOR (ex. Réservation, Caisse & commerce, Domotique, IA documentaire...). Appartient à un cluster de navigation (§9.2) mais le cluster n'est qu'une facette de rangement, pas une limite de catalogue.
+- **Métier** (type `Industry` en code, cohérent avec le reste du code en anglais) — un secteur d'activité (restaurant, hôtel, padel, coiffure, parc de loisirs...). Référence les solutions pertinentes pour lui, dans l'ordre de pertinence.
+- **Projet réel** — un cas concret, relie une ou plusieurs solutions **et** un ou plusieurs métiers, avec statut de publication explicite (voir §9.2 type `Project`). Aucun projet fictif, jamais (principe déjà en vigueur sur `/projets/`).
+
+Une solution (ex. "Réservation") peut donc apparaître sous Restaurant, Hôtel, Padel, Coiffure, Parc de loisirs sans que son contenu soit recopié cinq fois — seule la relation `industryIds` change, et chaque page Métier peut adapter le contexte/bénéfices d'une solution partagée sans dupliquer sa prose.
+
+### 9.2 Modèle de données
+
+Fichiers retenus (proposition de Codex, reprise telle quelle — elle est propre et correspond exactement au principe validé) :
+
+```
+data/solution-clusters.ts   // 4 portes de navigation, métadonnées seulement (id, label, description)
+data/solutions.ts           // catalogue des solutions
+data/industries.ts          // catalogue des métiers
+data/projects.ts            // cas réels, statut de publication
+```
+
+Types communs (évolution du type `SeoPage` déjà existant dans `data/seo-pages.ts`, pas une invention parallèle — `SeoPage` devient `EditorialPage` + métadonnées de relation portées par l'entité) :
+
+```ts
+type EditorialSection = { title: string; text: string; items?: string[] };
+type EditorialPage = {
+  title: string; metaTitle?: string; description: string; intro: string;
+  sections: EditorialSection[]; faq?: EditorialSection[]; cta?: string;
+};
+
+type Cluster = "logiciel-ia" | "commerce-paiement" | "connecte-terrain" | "digital-infrastructure";
+
+type Solution = {
+  id: string;            // stable, ex. "commerce-caisse" — ne change jamais même si le slug/titre évolue
+  slug: string;
+  cluster: Cluster;
+  eyebrow: string;
+  industryIds: string[];
+  projectIds: string[];
+  page: EditorialPage;
+};
+
+type Industry = {
+  id: string;
+  slug: string;
+  name: string;           // "métier" dans le contenu FR, "Industry" dans le code (cohérence avec le reste du repo)
+  solutionIds: string[];  // ordonné par pertinence
+  projectIds: string[];
+  page: EditorialPage;
+};
+
+type Project = {
+  id: string;
+  slug: string;
+  title: string;
+  need: string;
+  intervention: string;         // ou string[] pour un déroulé avant/pendant/après
+  outcome: string;
+  solutionIds: string[];
+  industryIds: string[];
+  media: { src: string; alt: string }[];
+  publicationStatus: "draft" | "approved";   // seuls les "approved" sont rendus publiquement — règle "zéro contenu fictif" appliquée en code, pas juste par convention
+};
+```
+
+**Pourquoi reprendre la proposition de Codex plutôt qu'en inventer une autre :** elle est strictement alignée avec le principe Solution↕Métier↕Projet validé par l'utilisateur, elle réutilise la forme de `SeoPage` déjà écrite (pas de réécriture de contenu), et elle permet à une solution d'apparaître dans plusieurs métiers sans duplication — exactement ce qui est demandé.
+
+### 9.3 Stratégie de migration (séquencement, pas de big-bang)
+
+Reprend explicitement la recommandation de Codex : pas de nettoyage aveugle avant migration, suppression seulement après preuve de non-usage.
+
+1. **Créer la couche data** (`solutions.ts`, `industries.ts`, `projects.ts`, `solution-clusters.ts`) en **réutilisant** le contenu existant : les 8 entrées de `v2-solutions.ts` et les pages pertinentes de `seo-pages.ts` (`logiciel-caisse-marseille`, `automatisation-entreprise`, `domotique-batiments`, etc.) deviennent des `Solution`. `solutions-restaurants`, `solutions-hotels` deviennent les deux premiers `Industry` (ce sont déjà, de fait, des pages métier multi-solutions — le bon gabarit à répliquer). Rien n'est réécrit à ce stade, seulement retagué/déplacé dans le nouveau schéma.
+2. **Construire `/metiers/` et `/solutions/` par-dessus cette donnée**, sans toucher aux pages existantes qui restent à leur URL actuelle (voir §9.5).
+3. **Combler les trous de catalogue** (ERP/CRM, hébergement dédié, capteurs/Raspberry/ESP, bornes/billetterie/contrôle d'accès/réservation/affichage, équipements industriels) comme nouvelles `Solution`, et les métiers manquants (padel/tennis, immobilier, industrie, automobile, loisirs, parc/zoo, événementiel, construction, services) comme nouveaux `Industry`, en priorisant selon §10.
+4. **Seulement après** que les nouvelles routes sont en place et stables : passe de style/tokens (§9.4), puis suppression des composants/styles prouvés orphelins (§9.11).
+
+### 9.4 Stratégie CSS
+
+- **Pas de grand nettoyage préalable.** Les familles de pages existantes (ancien design : `histoire`, `caisse`, `boutique`, `materiel`, pages `seo-pages.ts` ; V2 : accueil, `/solutions/`, `/projets/`, `/a-propos/`) gardent leurs styles actuels tant qu'elles n'ont pas été migrées individuellement.
+- Isoler les styles par famille de page (déjà globalement le cas via CSS Modules + classes préfixées `v2-`/`seo-`/`cx-`) ; ne retirer une règle de l'ancien `globals.css`/`themes.css` qu'après avoir vérifié qu'aucune page ne l'utilise plus.
+- La palette (bleu partout aujourd'hui, dans les deux systèmes) est traitée comme un chantier **séparé et explicite**, pas comme un sous-produit de la migration de contenu — voir §10, couleur d'accent encore ouverte.
+- Tailwind est présent en dépendance/config mais sans usage visible significatif (relevé Codex) — candidat à suppression, à confirmer par recherche d'usage avant de le retirer (pas fait maintenant).
+
+### 9.5 Stratégie SEO / routes
+
+- **Aucune URL indexée existante ne bouge sans redirection.** Le mécanisme existe déjà et est éprouvé : `components/migration-redirect.tsx` (meta-refresh + page `noindex`), déjà utilisé pour `/realisations/` et `/yvexor-pos/`. On réutilise ce même pattern pour toute future dépréciation d'URL, on n'en invente pas un autre.
+- **Décision de routing retenue :** les pages existantes (les 17 `/caisse/[metier]/`, les 17 pages `/[slug]/` de `seo-pages.ts`) **restent à leur URL actuelle** — elles sont retaguées dans le graphe de données (`solutionIds`/`industryIds`) et deviennent des cibles de lien croisé depuis les nouvelles pages, mais ne sont pas déplacées. Les **nouvelles** solutions/métiers créés à partir de maintenant vivent sous les espaces propres `/solutions/[slug]/` et `/metiers/[slug]/`. Raison : déplacer 17+17 URLs déjà indexées imposerait un inventaire de redirections lourd pour un bénéfice cosmétique ; mieux vaut un namespace propre pour le nouveau contenu et des liens croisés généreux vers l'existant.
+- `/projets/` reste `noindex` tant qu'aucun projet réel n'est `publicationStatus:"approved"` ; repasser en indexable et l'ajouter au sitemap seulement à ce moment-là.
+- Revalider `scripts/seo-check.cjs` (titres/descriptions uniques, H1, canonical, JSON-LD, alt/dimensions, liens internes, sitemap/robots) à chaque étape de migration — c'est déjà l'outil de garde-fou, on le garde comme critère de non-régression.
+- Écart "17 vs 18" relevé par Codex (comptage lexical de `slug:`) : vérifié — 17 métiers caisse réels + 1 occurrence du mot "slug" dans la définition du type `Profession`. Pas un vrai écart, juste un artefact de comptage. Classé.
+
+### 9.6 Stratégie animations
+
+Approche légère validée par l'utilisateur, confirmée par l'audit Codex : **CSS d'abord, `IntersectionObserver` pour les reveals, SVG pour les schémas/flux, `requestAnimationFrame` seulement si une progression liée au scroll est réellement nécessaire.** Pas de librairie d'animation tant qu'un besoin de séquencement complexe n'est pas concret (et ce besoin n'existe pas aujourd'hui).
+
+Les animations doivent **raconter une connexion**, jamais décorer : ordinateur → logiciel → capteur → machine → paiement → tableau de bord ; objet non connecté → YVEXOR → objet connecté ; ticket → QR → contrôle d'accès ; capteur → condition → action ; borne → paiement → gestion ; AVANT → YVEXOR → APRÈS (utile pour les futures pages projets réels).
+
+Base technique déjà en place à faire évoluer, pas à jeter : `ScrollReveal` (reveal au scroll, respecte `prefers-reduced-motion`), `HomeJourney` (progression liée au scroll). Composants à regarder comme inspiration pour les futurs schémas explicatifs (pas de refonte technique imposée) : `history-demo`, `history-connections`, `automation-showcase`, `connected-ecosystem`, `project-method`.
+
+### 9.7 Stratégie responsive / accessibilité
+
+- Conserver les paliers responsive déjà codés (1050/900/820/760/600/520/430/375px) comme base ; les nouvelles pages (solutions/métiers/projets) s'alignent dessus plutôt que d'en inventer de nouveaux.
+- `prefers-reduced-motion` obligatoire sur **toute** nouvelle interaction, comme c'est déjà le cas sur `ScrollReveal`/`v2-shell.css`/`home-v2.module.css`/`home-journey.tsx`.
+- Checklist a11y à vérifier avant publication de chaque nouvelle famille de page (relevé Codex, pas encore mesuré) : contrastes réels clair/sombre une fois la palette tranchée, ordre de tabulation et focus visible sur les contrôles natifs (configurateur inclus), annonce des changements dynamiques, comportement focus après fermeture du menu mobile, lecture SVG/diagrammes par lecteur d'écran, alt des visuels décoratifs vs informatifs, zoom texte 200 %, taille des cibles tactiles.
+- Navigation sans JS : vérifier que les pages restent lisibles/navigables si un script échoue (cohérent avec le choix CSS/observer plutôt que JS lourd en §9.6).
+
+### 9.8 Stratégie médias
+
+- `public/` pèse actuellement ~34,3 Mo (quasi uniquement des images). Avant d'ajouter la photo/vidéo hero réelle : faire l'inventaire des assets utilisés vs orphelins, et définir un budget de poids par page plutôt que d'empiler.
+- Hero futur : prévoir dès le départ les variantes responsive (mobile/desktop, `srcSet`/`sizes` ou `<picture>`) — l'asset mobile existe déjà dans `public/` pour l'ancien hero mais n'était pas branché ; ne pas reproduire cet oubli.
+- Pas de vidéo dans le repo actuellement : si le hero devient une vidéo, prévoir compression, poster statique de repli, et désactivation sur `prefers-reduced-motion`/connexion lente.
+- Le service worker (`public/sw.js`) met en cache les assets à chemin fixe — règle déjà établie le 21/10 et confirmée pertinente par l'audit : **toute modification d'un asset à chemin fixe doit s'accompagner d'un bump de `CACHE`** dans ce fichier.
+
+### 9.9 Éléments existants conservés (confirmé par les deux analyses)
+
+Next.js/React/TypeScript + export statique · le configurateur caisse et `data/caisses.json` · le catalogue boutique (`lib/boutique.ts`, `data/boutique-products.json`, `/boutique/`, `/materiel/`) · tout le contenu éditorial de `seo-pages.ts` et `caisse-professions.ts` (remappé, pas réécrit) · `scripts/seo-check.cjs` / `theme-check.cjs` / `caisse-sync.cjs` · `ScrollReveal`, `HomeJourney`, les primitives `v2-shell.css` · le pattern `MigrationRedirect` pour les dépréciations d'URL · la structure de nav proposée (Accueil · Solutions · Métiers · Projets · À propos · Contact).
+
+### 9.10 Éléments progressivement remplacés
+
+La grille plate de `v2-solutions.ts` (remplacée par `data/solutions.ts`, voir §9.3) · la déclinaison caisse-only des 17 métiers (reste en place à son URL, mais n'est plus le seul point d'entrée "par métier" une fois `/metiers/` construit) · la double page entreprise `/a-propos/` + `/histoire/` (fusion vers une seule, l'autre devient un `MigrationRedirect`) · les tokens couleur bleus des deux systèmes (remplacés progressivement par la palette tranchée en §10, chantier séparé de la migration de contenu).
+
+### 9.11 Éléments à NE PAS supprimer immédiatement (vérifier l'usage d'abord)
+
+Liste de candidats orphelins relevée par l'audit Codex — **à vérifier (imports, pages générées, usages indirects), pas à supprimer maintenant** : `components/star-sky` + `star-sky.css`, `components/assistant-yvexor` (état "bientôt disponible"), `components/visual-hero`, Tailwind (dépendance + config, usage non confirmé). Ne pas étendre cette liste sans vérification équivalente.
+
+## 10. DÉCISIONS ENCORE OUVERTES
+
+Limité à ce qui bloque réellement le début de l'implémentation :
+
+1. **Couleur d'accent définitive** — base noir/blanc/neutres validée, mais l'accent (actuellement bleu dans les deux systèmes) n'est **pas** tranché. Ne pas réutiliser le bleu par défaut.
+2. **Média hero réel** (photo ou vidéo d'un vrai travail technique, logiciel + physique) — en attente de l'utilisateur, remplace le hero code-screenshot actuel.
+3. **Priorisation des métiers à écrire en premier** — la liste demandée est longue (restaurant, fast-food, commerce, hôtel, coiffure/beauté, padel/tennis/sport, immobilier, industrie, automobile, loisirs, parc/zoo, événementiel, construction, services) ; par quoi commencer au-delà de restaurant/hôtel/garage qui existent déjà en embryon ?
+4. **Contenu de la page "Découvrir YVEXOR" fusionnée** — reprendre `/histoire/` intégralement, ou le condenser pour coller au ton "peu de texte" de la nouvelle direction ?
 
 ---
 

@@ -4,7 +4,7 @@ Audit en lecture seule du site existant. Aucune refonte, suppression ni modifica
 
 ## Périmètre et contexte lu
 
-Le mémo `CODEX_CLAUDE_NOTES.md` du dépôt contient une source de vérité mise à jour par Claude le 24/10/2026 et un journal antérieur. Aucun mémo texte/Markdown YVEXOR n’a été trouvé directement sur le Bureau; le mémo du dépôt est donc le contexte partagé utilisé. Les fichiers de travail préexistants `output/` et `tmp/` apparaissent non suivis dans Git; ils n’ont pas été touchés.
+Le mémo `CODEX_CLAUDE_NOTES.md` du dépôt contient la source de vérité principale mise à jour par Claude le 24/10/2026, la section `ARCHITECTURE TECHNIQUE VALIDÉE` (§9), les décisions ouvertes (§10) et le journal antérieur. Aucun mémo texte/Markdown YVEXOR n’avait été trouvé directement sur le Bureau; le mémo du dépôt est le contexte partagé utilisé. Les fichiers de travail préexistants `output/` et `tmp/` apparaissent non suivis dans Git; ils n’ont pas été touchés.
 
 L’audit repose sur une inspection statique des sources, de la configuration, des assets, des routes et des scripts existants. Aucun build ni test n’a été exécuté, aucune navigation navigateur ni mesure Lighthouse n’a été faite. Les constats de responsive/performance sont donc des risques déduits du code, à confirmer par mesures avant publication.
 
@@ -15,7 +15,7 @@ L’audit repose sur une inspection statique des sources, de la configuration, d
 - Les pages sont organisées dans `app/`; les composants partagés dans `components/`; données éditoriales et catalogues dans `data/`; adaptations/accès aux données dans `lib/`; assets statiques dans `public/`.
 - Routes de pages sources : `/`, `/a-propos/`, `/boutique/`, `/boutique/[slug]/`, `/caisse/`, `/caisse/[metier]/`, `/histoire/`, `/materiel/`, `/projets/`, `/realisations/`, `/solutions/`, `/yvexor-pos/`, et `/[slug]/` pour les pages SEO centralisées. Les deux routes dynamiques génèrent leurs pages à partir de données à la compilation.
 - Le sitemap assemble les hubs, produits, pages métiers caisse et pages SEO. `/projets/` existe avec `noindex` et n’est pas listé au sitemap; `robots.ts` autorise l’exploration et déclare le sitemap.
-- Le catalogue boutique contient 20 produits. Les sources contiennent 18 entrées de pages SEO et 18 entrées de professions caisse (comptages lexicaux; à recouper avec les structures exportées). La note source de vérité décrit 17 pages métiers caisse; ce léger écart mérite une vérification lors de la préparation de migration.
+- Le catalogue boutique contient 20 produits. Les sources contiennent 17 pages métiers caisse; le précédent comptage lexical à 18 était un faux positif, causé par le champ `slug` de la définition du type `Profession`.
 - Il n’y a pas de services/API applicatifs visibles dans le site public. Des destinations externes existent, notamment l’espace client.
 
 ## 2. Pages : utilité, état et réutilisation
@@ -110,3 +110,139 @@ Le site possède déjà une base crédible et assez de contenus pour construire 
 Je conserverais Next/React et l’export statique, les données/contrôles SEO, le configurateur, les catalogues, les composants de flux explicatifs et les petits mécanismes CSS/IntersectionObserver. Je refactoriserais progressivement les tokens/styles et l’accès au contenu autour de données relationnelles et de gabarits communs. Je supprimerais uniquement après preuve d’inutilité les composants/styles historiques orphelins. Les risques les plus importants pour la suite sont les régressions de cascade, les routes entrantes lors de la restructuration, le poids cumulatif des médias et la cohérence mobile/clavier des nouvelles animations.
 
 Avant tout code structurant, comparer cet audit à la version actualisée du mémo partagé et résoudre les écarts de direction, de routes et de palette.
+
+## Contrôle de cohérence de l’architecture validée
+
+La section §9 du mémo est cohérente avec l’audit sur les points structurants : entités `Solution` / `Industry` / `Project` liées par IDs, réemploi de contenu, maintien de l’export statique Next, migration sans big bang, animations CSS/SVG/observer, et suppression seulement après vérification. Je prends ces décisions comme validées et le mémo prévaut sur les recommandations provisoires de cet audit. Aucun conflit de framework ou de modèle de données ne bloque la préparation.
+
+Un conflit de routage/contenu doit toutefois être résolu dans l’implémentation : le mémo classe `solutions-restaurants` et `solutions-hotels` parmi les premiers métiers tout en imposant de garder leur URL racine indexée et de placer les nouveaux métiers sous `/metiers/[slug]/`. Générer en parallèle une page identique à `/metiers/restaurant/` ou `/metiers/hotel/` créerait deux URLs canoniques pour le même contenu. La table de migration devra donner à chaque Industry un unique `canonicalPath` : les deux pages déjà indexées restent la page canonique et le hub `/metiers/` les lie à ces URLs; les nouveaux métiers prennent `/metiers/[slug]/`. Une redirection vers le nouveau namespace ne sera envisagée que comme décision explicite de migration SEO, avec mise à jour du sitemap et contrôle des liens entrants.
+
+Les décisions ouvertes du mémo (§10) ne bloquent pas le modèle de données ni les gabarits : l’accent peut rester neutre/noir-blanc jusque décision, et les contenus existants restaurant/hôtel/garage peuvent amorcer le hub. En revanche, le hero photo final dépend d’un média réel fourni/validé; la fusion éditoriale À propos/Histoire dépend du choix entre reprise longue et condensation. Ces points peuvent être différés sans inventer de contenu ni imposer une direction concurrente.
+
+## BASELINE AVANT V2
+
+Vérifications demandées, exécutées le 24 octobre 2026 sans correction des sources :
+
+| Vérification | Résultat initial |
+|---|---|
+| Synchronisation locale | `main` et `origin/main` sont au même commit `c853c033f6ee3f956030cb65c6db84ce5456817a`; le HEAD actuel de GitHub a été vérifié par le connecteur et correspond au même commit. `git fetch --prune origin` n’a pas pu écrire `.git/FETCH_HEAD` (accès refusé), mais aucune mise à jour distante n’est en attente. Aucun changement suivi local. `output/` et `tmp/` sont non suivis préexistants. |
+| `npm run build` | ÉCHEC avant le build Next : le garde-fou `node scripts/caisse-sync.cjs --check` constate que `portal/core/caisse_catalogue.json` diffère du contenu dérivé de `data/caisses.json` et `data/caisse-professions.ts` (`Run node scripts/caisse-sync.cjs before deployment`). Fichier laissé inchangé. |
+| `npx next build` (contrôle diagnostique direct, sans précheck) | RÉUSSI : compilation, validation lint/types Next, génération de 69 pages statiques et export terminés. JS partagé initial annoncé : 103 kB; la route d’accueil affiche 106 kB First Load JS. Cette commande a rafraîchi les artefacts ignorés `.next/` et `out/`, pas les sources suivies. |
+| `npm run test:seo` | RÉUSSI après l’export : 61 pages indexables, métadonnées uniques, canonicals, contenu HTML, JSON-LD, images, liens internes, sitemap, robots et 404. |
+| `npm run test:theme` | RÉUSSI : bascules automatiques jour/nuit, choix manuel, préférences invalides, stockage bloqué et script de pré-peinture. |
+| `node scripts/caisse-sync.cjs --check` | ÉCHEC, même divergence que le précontrôle de build. Aucun `caisse-sync` sans `--check` n’a été lancé. |
+| `npx tsc --noEmit` | RÉUSSI, aucune sortie/diagnostic. |
+| Lint dédié | Aucun script `lint` configuré dans `package.json`. La build Next directe a terminé son étape intégrée lint/types. |
+
+Ce baseline est le point de comparaison, pas une correction : avant la première phase d’implémentation livrable, il faudra décider si le JSON du portail est un artefact généré à resynchroniser depuis ses sources, puis retrouver un `npm run build` vert. Aucun autre problème de build n’a été observé dans l’exécution directe de Next.
+
+## Plan d’implémentation proposé
+
+Ordre guidé par la dépendance entre contenu et rendu : sécuriser d’abord les routes et le baseline; créer ensuite le graphe de données et ses validations; établir les fondations neutres sans retoucher globalement l’ancien site; migrer les hubs, puis l’accueil et les détails en utilisant les mêmes entités. Les pages existantes restent publiées pendant les migrations.
+
+### Phase 0 — Sécurisation, baseline, sauvegarde et routes
+
+- **Objectif :** conserver un état de référence reproductible, inventorier les URLs publiées/indexables, les alias et les règles de canonical; comprendre le décalage de `caisse_catalogue.json`.
+- **Fichiers concernés :** `package.json`, `scripts/caisse-sync.cjs`, `portal/core/caisse_catalogue.json`, `data/caisses.json`, `data/caisse-professions.ts`, `app/sitemap.ts`, `app/robots.ts`, `app/[slug]/page.tsx`, `app/caisse/[metier]/page.tsx`, `app/realisations/page.tsx`, `app/yvexor-pos/page.tsx`, `components/migration-redirect.tsx`, `CODEX_AUDIT.md`.
+- **Réutiliser :** scripts SEO/thème/caisse, `MigrationRedirect`, canonicals et sitemap déjà en place.
+- **Nouveau :** manifeste de routes/canonical path utilisé comme checklist; sauvegarde/commit de référence selon le flux Git du projet.
+- **Risques :** le JSON généré pourrait avoir des consommateurs ou être modifié par une autre source; un rafraîchissement du remote reste nécessaire si l’accès Git redevient disponible; pas de suppression/déplacement d’URL.
+- **Vérifications :** identifier l’écart exact du catalogue, décider/régénérer depuis les sources seulement avec l’accord de phase, `npm run build`, `npm run test:seo`, `npm run test:theme`, `node scripts/caisse-sync.cjs --check`, `npx tsc --noEmit`; comparer les URLs du sitemap aux routes.
+- **Terminé quand :** l’état distant/local est documenté, l’écart caisse est expliqué et reproductible, les URLs indexées ont un propriétaire canonique, le build standard et les scripts de garde-fou passent.
+
+### Phase 1 — Modèle Solutions / Métiers / Projets
+
+- **Objectif :** créer des entités typées et des références par IDs sans changer le rendu ni les URLs existantes.
+- **Fichiers concernés :** nouveaux `data/content-types.ts`, `data/solution-clusters.ts`, `data/solutions.ts`, `data/industries.ts`, `data/projects.ts`; sources de migration `data/seo-pages.ts`, `data/v2-solutions.ts`, `data/caisse-professions.ts`; potentiellement `lib/content.ts` pour indexer par ID/slug.
+- **Réutiliser :** `SeoPage` comme source des `EditorialPage`, 8 catégories V2 comme matière des clusters/solutions, pages restaurants/hôtels/garage comme matières des Industry, métiers caisse comme spécialisations, sans déplacer leur URL.
+- **Nouveau :** types communs, index de lookup et validation sans dépendance d’exécution lourde. Valider IDs uniques, slugs uniques dans chaque namespace, références existantes, relation réciproque solution/métier/projet, et interdiction d’exposer un projet `draft`.
+- **Risques :** migration avec perte de champs SEO existants, liens cycliques/incohérents, confusion de chemins canoniques; ne pas transformer toutes les pages caisse en pages métiers génériques.
+- **Vérifications :** validation données, TypeScript, `caisse-sync --check`, tests SEO inchangés; comparer nombre de textes/sections et chemins avant/après migration.
+- **Terminé quand :** toute donnée retenue est représentée une fois, les relations sont validées, aucune page/routes publiques ne change, aucun contenu éditorial n’est supprimé.
+
+### Phase 2 — Fondations visuelles neutres et composants communs
+
+- **Objectif :** fournir une base noir/blanc/neutre pour les nouvelles pages sans recolorer globalement les pages historiques.
+- **Fichiers concernés :** nouveau `app/site-tokens.css` ou tokens communs isolés, `app/layout.tsx` pour son import si nécessaire, `app/v2-shell.css`, `app/home-v2.module.css` seulement si une migration V2 ciblée le requiert, `components/navigation.tsx`, `components/site-footer.tsx`.
+- **Réutiliser :** header, footer, logo, contrôles, primitives de focus et transitions courtes. Préfixer/isoler les styles et garder `.seo-`, `.cx-` et les familles historiques intactes.
+- **Nouveau :** tokens sémantiques neutres (fond, surface, texte, bordure, espace, typo, focus); état de focus à contraste mesuré. Ne pas présumer l’accent non choisi; le garder neutre et remplaçable.
+- **Risques :** cascade héritée de `globals.css`/`brand.css`, thème jour/nuit actuel, différence d’apparence entre nouvelles pages et existantes; aucune suppression de token à cette phase.
+- **Vérifications :** revue visuelle sur routes représentatives V2 et anciennes, contraste WCAG des couples retenus, focus clavier, 320/375/768/1024/large, `prefers-reduced-motion`, tests de régression SEO/build.
+- **Terminé quand :** les nouveaux gabarits utilisent les tokens isolés, les pages non migrées n’ont pas changé, la palette neutre est lisible dans les états utiles et le choix d’accent est documenté quand il sera tranché.
+
+### Phase 3 — Hub Solutions et pages Solution
+
+- **Objectif :** livrer `/solutions/` par clusters et gabarit `/solutions/[slug]/` à partir du modèle de données; cette fondation est posée avant l’accueil pour que ses CTA aient des destinations stables.
+- **Fichiers concernés :** `app/solutions/page.tsx`, nouvelle `app/solutions/[slug]/page.tsx`, `data/solution-clusters.ts`, `data/solutions.ts`, `lib/content.ts`, nouveaux composants de cards/sections de solutions au besoin, CSS module dédié.
+- **Réutiliser :** contenu `seo-pages.ts`, icônes `solution-icon.tsx`, `ScrollReveal`, diagrammes existants lorsque pertinents; les pages racine existantes restent accessibles/canoniques.
+- **Nouveau :** pages statiques générées par `generateStaticParams`, cross-links métiers/projets filtrés depuis IDs.
+- **Risques :** liens vers anchors provisoires, deux pages sur la même solution si le slug historique est déjà occupé, contenu SEO copié plutôt qu’adapté.
+- **Vérifications :** validation graphe, `next build`, SEO (metadata/canonical/JSON-LD/sitemap/links), responsive, clavier, reduced motion.
+- **Terminé quand :** chaque route solution annoncée se construit, les clusters montrent les bonnes relations, les contenus racine historiques ne sont pas dupliqués et les liens inverses sont justes.
+
+### Phase 4 — Hub Métiers et pages Industry
+
+- **Objectif :** offrir la navigation par secteur et des pages qui regroupent les solutions réellement pertinentes.
+- **Fichiers concernés :** nouveaux `app/metiers/page.tsx`, `app/metiers/[slug]/page.tsx`, `data/industries.ts`, lookups du contenu, `app/sitemap.ts`, navigation/footer.
+- **Réutiliser :** contenu de `solutions-restaurants`, `solutions-hotels`, `logiciel-garage`, `caisse-professions.ts`; présenter les pages caisse comme liens spécialisés. Les industries restaurant/hôtel gardent leur URL indexée existante comme `canonicalPath`; le hub les lie à ces routes jusqu’à décision de redirection, sans produire des copies `/metiers/restaurant/` et `/metiers/hotel/`.
+- **Nouveau :** hub `/metiers/` et pages pour les métiers nouveaux, génération statique à partir des IDs, liens croisés vers solution et projets approuvés.
+- **Risques :** duplication sémantique entre ancienne page racine et nouvelle page métier, surpromesse métier, priorité des secteurs non arrêtée; commencer restaurant/hôtel/garage et n’ajouter les autres que sur contenu distinct validé.
+- **Vérifications :** liens canoniques, sitemap, contenu unique, aucune régression des 17 routes caisse, responsive/a11y sur grilles et cartes.
+- **Terminé quand :** chaque secteur a exactement une page canonique, les relations ordonnées sont cohérentes, et le hub permet d’explorer sans faire croire que tous les métiers offrent toutes les solutions.
+
+### Phase 5 — Projets / réalisations
+
+- **Objectif :** transformer les projets réels approuvés en preuve transversale reliant secteurs et solutions, sans exemples fictifs.
+- **Fichiers concernés :** `data/projects.ts`, `app/projets/page.tsx`, éventuel `app/projets/[slug]/page.tsx`, `app/sitemap.ts`, metadata, composants de récit avant/intervention/après.
+- **Réutiliser :** `ProjectMethod`, `HomeJourney` ou diagrammes existants comme inspiration, `FeaturedProjectSection` actuellement masquée, `PageData` et composants média accessibles.
+- **Nouveau :** affichage filtré `publicationStatus === "approved"`, détail de projet uniquement si les preuves et médias sont autorisés.
+- **Risques :** publication d’un projet non autorisé, affirmation invérifiable, page vide indexée, médias lourds/non responsive.
+- **Vérifications :** drafts absents du HTML/sitemap; pages approved complètes, alt/captions, droits, performance, schema adapté seulement si correct.
+- **Terminé quand :** aucun brouillon n’est rendu; les projets publiés relient au moins une solution et un métier; `/projets/` reste `noindex`/absent du sitemap s’il n’y a aucun projet approuvé, puis les métadonnées changent ensemble lorsqu’il y en a.
+
+### Phase 6 — Homepage définitive
+
+- **Objectif :** réorganiser la page d’accueil en portail court : Hero → processus animé → entrées Solutions/Métiers → projet phare approuvé → CTA.
+- **Fichiers concernés :** `app/page.tsx`, `app/home-journey.tsx`, `app/home-v2.module.css`, `data/solutions.ts`, `data/industries.ts`, `data/projects.ts`, `public/` pour médias validés, `public/sw.js` pour version de cache d’assets fixes.
+- **Réutiliser :** `HomeJourney` et `ScrollReveal` en les rendant diagrammatiques, `SolutionIcon`, CTA, projet vedette uniquement à partir de projets approuvés.
+- **Nouveau :** composant de processus/flux SVG-CSS, deux cartes d’entrée, `picture/srcSet/sizes` pour photo réelle desktop/mobile; vidéo uniquement avec poster/repli et respect réduction de mouvement si retenue.
+- **Risques :** absence actuelle de photo réelle, poids LCP, crop mobile, animation qui masque l’information, réintroduction du contact comme CTA principal.
+- **Vérifications :** poids et dimensions d’image, performance/LCP, mise en page 320–large, clavier, reduced motion, JS désactivé, SEO et PWA cache bump.
+- **Terminé quand :** photo réelle validée ou média explicitement différé, séquence est lisible sans animation, deux entrées principales mènent à leur hub, projet vedette absent tant qu’aucun projet approuvé, portail reste court.
+
+### Phase 7 — À propos / Histoire
+
+- **Objectif :** consolider l’approche et l’histoire sur `/a-propos/`, conserver les idées et schémas validés, puis faire de `/histoire/` une migration compatible avec l’export statique.
+- **Fichiers concernés :** `app/a-propos/page.tsx`, `app/histoire/page.tsx`, `app/histoire/history.module.css`, `components/history-demo.tsx`, `components/history-connections.tsx`, `components/migration-redirect.tsx`, `app/sitemap.ts`.
+- **Réutiliser :** récit et schémas historiques, avec composition plus concise si décision éditoriale le demande.
+- **Nouveau :** aucun composant requis; une page about structurée peut réutiliser les diagrammes de connexion.
+- **Risques :** choix ouvert entre reprise complète et condensation, canonical/sitemap et redirection meta-refresh, liens internes anciens.
+- **Vérifications :** une page indexable, redirects lisibles avec JavaScript désactivé, sitemap/canonical, navigation interne sans liens cassés, reduced motion et a11y diagrammes.
+- **Terminé quand :** `/a-propos/` devient l’unique page entreprise, `/histoire/` a un chemin de migration clair, tout contenu utile est conservé et les anciennes URLs sont traitées.
+
+### Phase 8 — Responsive, accessibilité, performance et SEO
+
+- **Objectif :** audit de finition de toutes les familles nouvelles et migrées avant publication.
+- **Fichiers concernés :** CSS/modules des phases précédentes, `app/sitemap.ts`, `app/robots.ts`, `lib/seo.ts`, `components/structured-data.tsx`, `public/` et `public/sw.js`, scripts existants.
+- **Réutiliser :** `seo-check.cjs`, `theme-check.cjs`, `caisse-sync.cjs`, les règles reduced motion et le skip link; ajouter une vérification seulement si un manque de non-régression concret est identifié.
+- **Nouveau :** matrice manuelle de test viewport/lecteur d’écran/clavier et budget image; mesures Lighthouse/Core Web Vitals avant/après si disponible.
+- **Risques :** test d’une seule page au lieu de chaque gabarit, oubli des pages caisse/boutique historiques, scripts qui relisent un `out/` stale.
+- **Vérifications :** build standard, SEO, thème, sync caisse, TypeScript, liens/canonicals, contraste, zoom 200 %, tailles tactiles, focus et retour de menu, JS en échec, plusieurs viewports, poids images/JS.
+- **Terminé quand :** scripts passent sur l’export fraîchement produit, gabarits représentatifs passent les contrôles clavier/mobile, aucune motion obligatoire, pas de route cassée ou canonique dupliqué.
+
+### Phase 9 — Nettoyage après migration
+
+- **Objectif :** retirer uniquement ce qui n’est plus référencé après que toutes les nouvelles pages sont stables.
+- **Fichiers concernés :** imports/styles candidats `components/star-sky.tsx`, `app/star-sky.css`, `components/assistant-yvexor.tsx`, `components/visual-hero.tsx`, `tailwind.config.ts`, dépendances/config correspondantes; règles ciblées de `globals.css`/`themes.css`.
+- **Réutiliser :** recherche globale des imports, comparaison des routes/pages avant-après, baseline Phase 0.
+- **Nouveau :** aucun nettoyage préventif; liste de suppression annotée par preuves d’absence d’usage.
+- **Risques :** usage dynamique/indirect, styles partagés invisibles dans JSX, configuration utile au portail.
+- **Vérifications :** recherche références et chemins statiques, `npm run build`, trois scripts, TypeScript, revue visuelle des pages historiques.
+- **Terminé quand :** chaque élément supprimé a une preuve d’inutilité, la taille/complexité baisse sans diff visuel ou route cassée, les contrôles restent verts.
+
+### Dépendances ouvertes et risques bloquants
+
+- **Aucun désaccord d’architecture n’empêche de démarrer Phase 0 ou Phase 1.** Le seul conflit structurel important identifié est la canonicalisation restaurants/hôtels; la règle `canonicalPath` du plan le résout sans changer les URLs indexées.
+- **Build standard non vert au baseline** à cause du JSON caisse dérivé. À traiter dans la sécurisation avant d’utiliser le build comme garde-fou régulier; ne pas lancer le générateur avant d’avoir confirmé son contrat et son consommateur.
+- **Avant finition du visuel :** choisir l’accent ou conserver une palette strictement neutre, fournir/valider une photo réelle du hero, et trancher le niveau de condensation À propos/Histoire. Ces éléments ne bloquent ni schéma de données ni gabarits des hubs.
+- **Priorisation éditoriale :** les pages restaurant/hôtel/garage fournissent une première matière; les métiers supplémentaires ne doivent entrer qu’avec des solutions pertinentes et du contenu factuel distinct.

@@ -10,7 +10,7 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 
 # SOURCE DE VÉRITÉ — Direction & Architecture YVEXOR
 
-*Dernière mise à jour : 2026-10-24 par Claude, après réconciliation avec `CODEX_AUDIT.md` (audit technique indépendant de Codex, lecture seule, même date). Les deux analyses convergent sur l'essentiel — voir §9 pour le détail des points d'accord/désaccord. Ce brief remplace les décisions de design précédentes (voir journal du 21/10 pour l'historique) sur les points où il les contredit — notamment la palette bleue et le hero en code.*
+*Dernière mise à jour : 2026-10-24 (2ᵉ passe, consolidation finale) par Claude. 1ʳᵉ passe : réconciliation avec `CODEX_AUDIT.md` (audit technique indépendant de Codex, voir §9/§9bis). 2ᵉ passe : intégration du brief produit complet de l'utilisateur — positionnement, étendue du catalogue, retrofit, open source, modèle commercial/pricing (§10), vision "site piloté par assistant" (§11), modèle de données pricing (§12). Ce document est désormais la définition complète de YVEXOR pour Claude et Codex — toute décision antérieure qu'il contredit est remplacée ici, l'historique reste dans le journal plus bas.*
 
 ## 1. Positionnement — ce que YVEXOR N'EST PAS et CE QU'IL EST
 
@@ -19,6 +19,10 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 **Message central :** YVEXOR part d'un besoin réel et construit la solution autour — même si ce besoin n'existe pas encore sous forme de produit standard. Conçoit, développe, connecte et automatise des solutions complètes, **du logiciel jusqu'au terrain physique**.
 
 **Risque concret identifié dans l'existant (voir §3) :** le site a aujourd'hui 17 pages "caisse par métier" quasi identiques (une par type de commerce) contre 1 seule page logiciel sur mesure — en volume de pages, le site *donne l'impression* d'être une société de caisse, même si le texte dit autre chose. C'est probablement la source du malaise de l'utilisateur. La priorité n'est pas d'ajouter du contenu, c'est de **rééquilibrer le poids visuel/structurel** entre caisse et le reste.
+
+**Retrofit d'équipements non connectés — partie fondamentale du positionnement, à ne pas sous-représenter :** YVEXOR doit pouvoir prendre un équipement qui n'était pas connecté à l'origine et lui ajouter capteurs, télémétrie, automatisation, supervision, contrôle à distance, paiement, alertes, statistiques, intégration logicielle. Exemple de référence (brief 24/10) : *une ancienne machine fonctionne seule → capteur → microcontrôleur → connexion → logiciel → automatisation → tableau de bord → paiement éventuel → alertes.* Aujourd'hui ce positionnement n'existe qu'en creux dans `domotique-batiments`/`systemes-connectes` — aucune page ne le porte explicitement comme sa propre promesse. À traiter comme une `Solution` à part entière (cluster "Connecté & terrain"), pas juste une ligne dans une autre page.
+
+**Open source / Odoo — cadrage précis :** des briques open source (Odoo Community, autres ERP/outils métier, bibliothèques) pourront être intégrées quand pertinent, **toujours après vérification des licences**. Mais YVEXOR ne doit **jamais** être présenté comme "revendeur Odoo" ou intégrateur Odoo classique — l'open source est une **brique parmi d'autres** d'une solution YVEXOR (ex. Odoo/ERP + interface YVEXOR + automatisation + IA + matériel + IoT + déploiement terrain), jamais le produit fini lui-même.
 
 ## 2. Les deux axes de navigation voulus
 
@@ -37,7 +41,8 @@ Le contenu écrit est **beaucoup plus riche que ce qu'on pourrait croire** — n
 **Système "par solution" (déjà bien entamé) :**
 - `data/v2-solutions.ts` — 8 catégories larges utilisées sur l'accueil/`/solutions/` (V2, créées le 21/10) : Sur mesure, IA & automatisation, Commerce/caisse/billetterie, Gestion & réservation, Sites & applications, Hébergement & infrastructure, Systèmes connectés & bâtiments, Équipements & terrain.
 - `data/seo-pages.ts` — 17 pages `[slug]` détaillées et bien écrites (ancien design) : `domotique-batiments`, `applications-metier`, `systemes-connectes`, `site-presence-web`, `agence-ia-marseille`, `automatisation-entreprise`, `intelligence-artificielle-entreprise`, `logiciel-caisse-marseille`, `logiciel-garage`, `logiciel-sur-mesure`, `solutions-hotels`, `solutions-restaurants`, `tarifs-partenariat`, + `contact`, `faq`, `mentions-legales`, `politique-confidentialite`.
-- **Trous confirmés dans "par solution" :** rien de dédié pour gestion/ERP/CRM, hébergement/infrastructure (juste une case du grid), IoT générique (seule la domotique résidentielle/bâtiment existe), capteurs/Raspberry/ESP/microcontrôleurs (absent), bornes/paiement/billetterie/contrôle d'accès/réservation/affichage (mentionnés en passant dans solutions-hotels/restaurants, jamais en page dédiée), équipements industriels (absent), Odoo/open source (absent, nouveau).
+- **Trous confirmés dans "par solution" :** rien de dédié pour gestion/ERP/CRM, hébergement/infrastructure (juste une case du grid), IoT générique (seule la domotique résidentielle/bâtiment existe), capteurs/Raspberry/ESP/microcontrôleurs (absent), bornes/paiement/billetterie/contrôle d'accès/réservation/affichage (mentionnés en passant dans solutions-hotels/restaurants, jamais en page dédiée), équipements industriels (absent), retrofit d'objets non connectés comme promesse autonome (absent, voir §1), Odoo/open source (absent, nouveau).
+- **Catalogue élargi confirmé le 24/10** (brief business), à traiter comme extension future du même système, pas comme un chantier séparé : marketing, communication, VoIP, gestion documentaire, analyse de données, automatisation de processus, RH, planning, production, maintenance. Rien n'est stubé pour l'instant — à prioriser après les trous ci-dessus.
 
 **Système "par métier" (faible, à renforcer) :**
 - `data/caisse-professions.ts` — 17 pages `/caisse/[metier]/` (commerce, alimentation, epicerie, superette, boulangerie, patisserie, boucherie, primeur, fleuriste, vetements, bijoux, tabac-presse, snack, coiffure, barber, esthetique, autre). **Problème : ces pages ne parlent QUE de caisse/encaissement**, pas de la solution YVEXOR complète pour ce métier (pas d'IA, pas d'IoT, pas de site web, etc.) — c'est exactement le biais "société de caisse" à corriger.
@@ -172,12 +177,14 @@ type Solution = {
   industryIds: string[];
   projectIds: string[];
   page: EditorialPage;
+  pricing: Pricing;       // voir §12 — absorbe les champs déjà présents dans data/public-offer.ts
 };
 
 type Industry = {
   id: string;
   slug: string;
   name: string;           // "métier" dans le contenu FR, "Industry" dans le code (cohérence avec le reste du repo)
+  canonicalPath: string;  // l'URL qui fait autorité pour ce métier — voir §9.5 (ex. restaurant/hôtel gardent leur page racine existante)
   solutionIds: string[];  // ordonné par pertinence
   projectIds: string[];
   page: EditorialPage;
@@ -219,6 +226,7 @@ Reprend explicitement la recommandation de Codex : pas de nettoyage aveugle avan
 
 - **Aucune URL indexée existante ne bouge sans redirection.** Le mécanisme existe déjà et est éprouvé : `components/migration-redirect.tsx` (meta-refresh + page `noindex`), déjà utilisé pour `/realisations/` et `/yvexor-pos/`. On réutilise ce même pattern pour toute future dépréciation d'URL, on n'en invente pas un autre.
 - **Décision de routing retenue :** les pages existantes (les 17 `/caisse/[metier]/`, les 17 pages `/[slug]/` de `seo-pages.ts`) **restent à leur URL actuelle** — elles sont retaguées dans le graphe de données (`solutionIds`/`industryIds`) et deviennent des cibles de lien croisé depuis les nouvelles pages, mais ne sont pas déplacées. Les **nouvelles** solutions/métiers créés à partir de maintenant vivent sous les espaces propres `/solutions/[slug]/` et `/metiers/[slug]/`. Raison : déplacer 17+17 URLs déjà indexées imposerait un inventaire de redirections lourd pour un bénéfice cosmétique ; mieux vaut un namespace propre pour le nouveau contenu et des liens croisés généreux vers l'existant.
+- **Précision de Codex, retenue telle quelle :** chaque `Industry` porte un `canonicalPath` unique (champ ajouté au type en §9.2). Pour restaurant et hôtel, `canonicalPath` pointe vers leur page racine déjà indexée (`/solutions-restaurants/`, `/solutions-hotels/`) — le hub `/metiers/` **lie** vers ces URLs, il ne génère **jamais** de page concurrente `/metiers/restaurant/` ou `/metiers/hotel/` avec le même contenu. Seuls les métiers réellement nouveaux (sans page existante) reçoivent un `canonicalPath` sous `/metiers/[slug]/`.
 - `/projets/` reste `noindex` tant qu'aucun projet réel n'est `publicationStatus:"approved"` ; repasser en indexable et l'ajouter au sitemap seulement à ce moment-là.
 - Revalider `scripts/seo-check.cjs` (titres/descriptions uniques, H1, canonical, JSON-LD, alt/dimensions, liens internes, sitemap/robots) à chaque étape de migration — c'est déjà l'outil de garde-fou, on le garde comme critère de non-régression.
 - Écart "17 vs 18" relevé par Codex (comptage lexical de `slug:`) : vérifié — 17 métiers caisse réels + 1 occurrence du mot "slug" dans la définition du type `Profession`. Pas un vrai écart, juste un artefact de comptage. Classé.
@@ -255,16 +263,146 @@ La grille plate de `v2-solutions.ts` (remplacée par `data/solutions.ts`, voir �
 
 ### 9.11 Éléments à NE PAS supprimer immédiatement (vérifier l'usage d'abord)
 
-Liste de candidats orphelins relevée par l'audit Codex — **à vérifier (imports, pages générées, usages indirects), pas à supprimer maintenant** : `components/star-sky` + `star-sky.css`, `components/assistant-yvexor` (état "bientôt disponible"), `components/visual-hero`, Tailwind (dépendance + config, usage non confirmé). Ne pas étendre cette liste sans vérification équivalente.
+Liste de candidats orphelins relevée par l'audit Codex — **à vérifier (imports, pages générées, usages indirects), pas à supprimer maintenant** : `components/star-sky` + `star-sky.css`, `components/assistant-yvexor` (état "bientôt disponible", confirmé non importé nulle part — mais à garder comme matière de départ, voir §12), `components/visual-hero`, Tailwind (dépendance + config, usage non confirmé). Ne pas étendre cette liste sans vérification équivalente.
 
-## 10. DÉCISIONS ENCORE OUVERTES
+## 9bis. Baseline technique (Codex, 24/10) — statut et clarification
 
-Limité à ce qui bloque réellement le début de l'implémentation :
+Codex a exécuté un baseline complet (détail dans `CODEX_AUDIT.md`, section "BASELINE AVANT V2") et un plan d'implémentation en 10 phases (Phase 0 à 9) qui **opérationnalise §9.3 ci-dessus** — on ne duplique pas ce plan ici, `CODEX_AUDIT.md` en est la version de référence détaillée (fichiers concernés, risques, critères "terminé" par phase).
 
-1. **Couleur d'accent définitive** — base noir/blanc/neutres validée, mais l'accent (actuellement bleu dans les deux systèmes) n'est **pas** tranché. Ne pas réutiliser le bleu par défaut.
+Résultat du baseline : build/TS/tests SEO/thème OK, `npx next build` direct réussit (69 pages), mais `npm run build` échoue sur le garde-fou `node scripts/caisse-sync.cjs --check` (`portal/core/caisse_catalogue.json` ne correspondrait pas au contenu dérivé).
+
+**Clarification à verser au dossier avant Phase 0 :** ce même échec a déjà été rencontré par Claude le 21/10 sur cette machine, et diagnostiqué comme un **faux positif lié à `core.autocrlf=true`** (fins de ligne CRLF réécrites localement par Git sous Windows, alors que le script compare le contenu en LF strict). Vérifié à l'époque : le contenu correspond exactement une fois les fins de ligne normalisées, et `npm run build` passe sans modification sur GitHub Actions (Linux, pas de conversion). Comme Codex tourne vraisemblablement sur la même machine/repo (même chemin, même config Git locale), il est probable que ce soit exactement le même faux positif plutôt qu'une vraie régression. **Ne pas "corriger" `caisse_catalogue.json` ou le script sur la base de ce seul symptôme** — vérifier d'abord avec `npx next build` (sans le precheck) et/ou en environnement Linux avant de conclure à un vrai problème. Si Phase 0 confirme malgré tout un écart réel (pas qu'une différence de fin de ligne), le traiter normalement.
+
+## 10. MODÈLE COMMERCIAL & PRICING
+
+*Domaine entièrement nouveau dans ce mémo — absent des versions précédentes. Vision business détaillée par l'utilisateur le 24/10.*
+
+### 10.1 Stade de l'entreprise et philosophie commerciale
+
+YVEXOR démarre, peu/pas de références clients majeures à ce jour. Priorité actuelle : **acquérir des clients et des projets réels**, pas maximiser la marge. Grâce à l'IA/aux outils modernes, YVEXOR peut produire plus vite qu'une structure classique — donc accepter au départ prix agressifs/marge faible/plus de travail pour moins cher, en échange de références, MRR, réalisations, témoignages.
+
+**Mais jamais positionné comme marque discount.** Pas *"nous sommes les moins chers"* — plutôt *"nous essayons de mettre le maximum de technologie utile dans votre budget"* / *"plus de technologie pour votre budget"*.
+
+**Clients fondateurs** (stratégie interne, pas forcément publique) : premiers clients à prix particulièrement avantageux, en échange (avec leur accord) de pouvoir présenter le projet, utiliser des images, récupérer un témoignage, construire un vrai cas client pour `/projets/`.
+
+### 10.2 Les trois modes de prix
+
+- **Standard** — prix affiché, produit très clairement défini (ex. "49 €/mois").
+- **À partir de** — solution adaptable (ex. "À partir de 49 €/mois").
+- **Sur devis / budget** — projets complexes ("Sur devis" / "Parlez-nous de votre budget"). Ne jamais inventer un prix fixe pour un projet à périmètre trop variable.
+
+### 10.3 Abonnement + achat définitif
+
+Pour de nombreuses solutions (site, application, PWA, logiciel, système métier, certaines automatisations) : proposer **à la fois** abonnement **et** achat/licence perpétuelle sur devis. Après achat définitif, des services récurrents peuvent rester séparés (hébergement, maintenance, sauvegarde, IA, API, assistance, mises à jour, supervision).
+
+**Déjà présent dans le code, à faire évoluer plutôt qu'à recréer** : `components/budget-section.tsx` a déjà un volet "Achat ou abonnement ?" qui dit exactement ça ("L'abonnement n'est pas obligatoire..."). Pas un nouveau concept à inventer, une base à reprendre.
+
+### 10.4 Hypothèses tarifaires — PAS DES PRIX OFFICIELS
+
+⚠️ **Les chiffres suivants, donnés par l'utilisateur le 24/10 comme pistes de structure, sont des HYPOTHÈSES COMMERCIALES À ÉTUDIER — pas des tarifs validés.** Ils ne doivent apparaître nulle part sur le site tant qu'ils n'ont pas été confirmés (coûts réels, temps humain, API, hébergement, matériel, maintenance, marge, concurrence) :
+
+| Famille | Idées à l'étude |
+|---|---|
+| Site web | Vitrine ~29 €/mois · Pro administrable ~49 €/mois · Avec réservation ~69 €/mois · E-commerce ~69–79 €/mois · Achat définitif sur devis |
+| Application / PWA | Petite app ~39–49 €/mois · App métier connectée ~69–89 €/mois · Projet complexe/achat définitif sur devis |
+| IA | Assistant simple ~19–29 €/mois · Assistant métier ~49–89 €/mois · IA avancée sur devis (coûts API séparés) |
+| Automatisation | Simple ~29–39 €/mois · Multi-outils ~59–99 €/mois · Complexe sur devis |
+| IoT | Équipement simple ~39–49 €/mois + matériel · Supervision/capteurs ~69–99 €/mois + matériel · Installation complexe sur devis |
+| Gestion/CRM/ERP | Entrée ~39–49 €/mois · Avancé ~79–129 €/mois · Sur mesure sur devis |
+
+### 10.5 Tarifs déjà existants dans le code — vérifiés, à ne pas écraser
+
+**Important : les chiffres ci-dessus (§10.4) et ceux cités par l'utilisateur comme "déjà existants" ne correspondent pas exactement à ce qui est réellement dans le code aujourd'hui — vérifié en lisant les fichiers, pas supposé.** Ce qui est **réellement live** dans `data/caisses.json` et `data/public-offer.ts` :
+
+- Caisse Commerce/Snack : Essentiel 49 €/mois, Stock 79 €/mois, Pilotage 119 €/mois.
+- Caisse Coiffure & Beauté (Salon) : 60 €/mois, formule unique.
+- `solutionOffers` (`data/public-offer.ts`) a déjà des "à partir de" pour Site web (29 €), IA & automatisation (49 €), Application métier (69 €), Systèmes connectés (99 €), Plateforme & SaaS (149 €) — avec `pricingDisclaimer`, `hardwarePossible`, `setupRequired`, `customDevelopmentPossible` déjà modélisés par offre.
+- Restaurant (`restaurant-os`) et Tennis/padel n'ont **pas** de prix chiffré dans le code actuel (juste un statut "Base évolutive"/à définir) — les montants "49/99/179/389/699" et "plusieurs modèles club/terrain" cités par l'utilisateur ne sont pas (encore) dans `data/caisses.json` ; probablement issus du catalogue B2B PDF (§10.7). **À réconcilier avec l'utilisateur avant de les publier**, pas à recopier aveuglément depuis le brief.
+
+Consigne de l'utilisateur confirmée : **ne pas écraser ces modèles déjà spécifiques avec une grille tarifaire universelle** — chaque produit garde sa propre structure.
+
+### 10.6 Budget client
+
+Le client n'a pas besoin de connaître ERP/API/ESP/IoT/agent IA. Il donne : activité, problème, objectif, budget initial, budget mensuel. YVEXOR propose ensuite ce qui apporte le plus de valeur — **si le client annonce 10 000 € et que la bonne solution coûte 4 000 €, ne pas chercher à consommer artificiellement le budget annoncé.** Le budget délimite le champ des possibles, ce n'est pas un objectif de facturation.
+
+Tranches indicatives données par l'utilisateur (budget initial : 0–300 / 300–1 000 / 1 000–3 000 / 3 000–10 000 / 10 000+ ; budget mensuel : <50 / 50–100 / 100–300 / 300–1 000 / 1 000+) — même statut que §10.4, hypothèses de structure, pas validées.
+
+**Déjà présent dans le code, à faire évoluer** : `budgetGuidance` dans `data/public-offer.ts` est déjà une échelle de 4 paliers ("Solution existante" → "Premier besoin digital" → "Première solution métier" → "Projet ambitieux") avec prix indicatif, note et CTA par palier — c'est quasiment déjà la mécanique demandée en §10.8, pas un nouveau concept.
+
+### 10.7 Rôle du catalogue B2B (PDF)
+
+Le catalogue PDF YVEXOR existant = base commerciale, preuve de profondeur d'offre, document de vente, source pour les pages métier — **pas à reproduire intégralement sur le site**, qui doit rester plus simple. Utilisé en conversation commerciale pour aller plus loin. Utile comme source de contenu/chiffres à vérifier quand on écrit une nouvelle page `Industry` (ex. les prix restaurant/tennis mentionnés en §10.5 y figurent probablement).
+
+### 10.8 Page Budget / Projet
+
+Pas forcément une page "Tarifs" classique. Ton proposé par l'utilisateur : *"Votre budget. Votre évolution."* / *"Jusqu'où voulez-vous faire évoluer votre activité ?"*. Contenu : repères tarifaires, "à partir de", produits standardisés, achat définitif possible, formulaire problème/objectif/budget initial/budget mensuel. Option : *"Vous avez déjà un devis ? Montrez-le-nous"* → *"Nous regarderons si nous pouvons proposer davantage pour le même budget..."* — **ne jamais promettre automatiquement d'être moins cher.**
+
+Pas une nouvelle entité de contenu dans le graphe Solution/Industry/Project — c'est une **page de conversion** qui lit `budgetGuidance` + les `pricing` des solutions pertinentes. Le site n'a aujourd'hui aucun backend de formulaire (tout passe par mailto/SMS préparés dans le navigateur ou vers `client.yvexor.com`, cf. `/politique-confidentialite/`) — cette page suit la même logique, pas besoin d'un nouveau service.
+
+### 10.9 CTA des pages Solution
+
+Une page solution montre : comprendre → fonctionnalités → usages → prix de départ éventuel → métiers compatibles → CTA. CTA possibles selon le cas : *Configurer cette solution* (quand un configurateur existe, ex. caisse) · *Obtenir cette solution* · *Parler à YVEXOR* · *Étudier mon projet*. Le site ne doit pas laisser croire que tout est un logiciel téléchargeable immédiatement — certaines solutions s'obtiennent après contact.
+
+### 10.10 Philosophie de communication
+
+YVEXOR reste humain, accessible, proche, compréhensible, passionné, généreux. Éviter le jargon excessif — expliquer simplement une techno complexe. Le visiteur doit se reconnaître même sans rien connaître à la technique. (Déjà globalement respecté dans le ton actuel du contenu `seo-pages.ts` — à maintenir, pas à réinventer.)
+
+## 11. VISION — LE SITE COMME SYSTÈME VIVANT (pilotage assistant/GPT)
+
+*Domaine entièrement nouveau — absent des versions précédentes du mémo. Changement de positionnement stratégique important.*
+
+**Rupture voulue :** un site YVEXOR n'est plus *"une agence crée un site, puis le livre"* mais un **système vivant**. À terme, le client dispose d'un espace YVEXOR pour le gérer, et peut y rattacher un assistant/GPT à qui parler directement : *"Change mes horaires"*, *"Ajoute mon nouveau menu"*, *"Remplace cette photo"*, *"Modifie mes tarifs"*...
+
+Boucle cible pour les changements importants : **DEMANDE → MODIFICATION PRÉPARÉE → APERÇU → VALIDATION → PUBLICATION**, avec historique et rollback quand pertinent. Argument commercial qui en découle : *"Votre site continue d'évoluer avec votre entreprise"*, pas seulement *"nous fabriquons votre site"*. Logique extensible aux autres logiciels YVEXOR plus tard.
+
+**Composant existant à noter, pas à confondre :** `components/assistant-yvexor.tsx` existe déjà (état "bientôt disponible", non branché à aucune page aujourd'hui) mais répond à un besoin différent — c'est un **assistant de cadrage pré-vente** ("décrivez votre projet/métier/idée" avant devis), pas l'assistant de **gestion post-vente** d'un site déjà livré décrit ci-dessus. Les deux concepts sont complémentaires mais distincts ; garder `assistant-yvexor.tsx` comme matière de départ pour le premier, pas comme brouillon du second.
+
+**Représentation dans l'architecture (réponse au point F de la mission) : les deux à la fois, comme demandé.**
+- **Capacité transversale** : un champ sur `Solution` (ex. `assistantManaged?: boolean` ou tag) indiquant que cette solution peut être pilotée/éditée via l'assistant une fois livrée — affichable comme bénéfice sur n'importe quelle page site/application/gestion/caisse concernée, sans dupliquer le discours.
+- **Solution à part entière** : une entrée propre dans `data/solutions.ts` (ex. "Site & système pilotés par assistant") pour les visiteurs qui cherchent spécifiquement cette capacité, avec sa propre page expliquant la boucle demande→aperçu→validation→publication.
+
+**Séquencement retenu :** ne pas construire la plomberie technique (webhook, API, modèle de conversation) maintenant — c'est un chantier Phase 6+ (homepage/solutions avancées), pas Phase 0/1. Mais le modèle de données (Phase 1) doit rester **extensible** pour porter ce champ plus tard sans migration lourde : prévoir la place, ne pas l'implémenter.
+
+## 12. Modèle de données pricing recommandé
+
+La proposition de l'utilisateur (`mode: "fixed"|"startingAt"|"quote"|"budget"` + champs optionnels) fonctionne mais ne représente pas bien le cas très demandé en §10.3 : **une solution avec abonnement ET achat définitif en même temps** — un seul champ `mode` ne peut pas porter deux offres simultanées sans empiler des optionnels ambigus.
+
+**Proposition retenue — un tableau d'offres plutôt qu'un mode unique**, construite pour absorber l'existant (`solutionOffers`/`caisses.json`) sans renommer ce qui marche déjà :
+
+```ts
+type PricingOffer =
+  | { kind: "subscription"; monthlyFrom?: number; monthlyFixed?: number }
+  | { kind: "oneTime"; amountFrom?: number; quoteRequired?: boolean }   // achat / licence perpétuelle
+  | { kind: "quote" };                                                   // sur devis pur / "parlez-nous de votre budget"
+
+type Pricing = {
+  offers: PricingOffer[];           // 1 à N offres ; ex. [subscription, oneTime] quand les deux existent
+  label?: string;                   // label prêt à afficher, ex. "À partir de 49 € HT/mois" (reprend startingPriceLabel)
+  hardwareSeparate?: boolean;       // reprend hardwarePossible
+  setupSeparate?: boolean;          // reprend setupRequired
+  recurringServicesNote?: string;   // reprend pricingDisclaimer
+  validated: boolean;               // false = hypothèse commerciale (§10.4/§10.6), true = tarif confirmé (ex. caisses.json)
+};
+
+// Solution (voir §9.2) gagne un champ :
+// pricing: Pricing
+```
+
+**Pourquoi celle-ci plutôt que reprendre le sketch tel quel :**
+1. **Gère le cas abonnement+achat simultané** demandé en §10.3, que l'enum `mode` unique ne peut pas exprimer proprement.
+2. **`validated: boolean` rend la règle "ne jamais afficher un prix non confirmé" vérifiable en code** (un composant/script peut refuser de rendre `monthlyFrom` sans disclaimer si `validated` est `false`), pas seulement une consigne éditoriale à retenir.
+3. **Continuité avec l'existant** : les noms de champs reprennent `startingPriceLabel`/`hardwarePossible`/`setupRequired`/`pricingDisclaimer` déjà présents dans `data/public-offer.ts`, donc la migration des 6 `solutionOffers` actuels vers `Solution.pricing` est un renommage, pas une réécriture.
+
+## 13. DÉCISIONS ENCORE OUVERTES
+
+*Mise à jour du 24/10 — remplace la liste précédente (4 points), élargie suite au brief business. Limité à ce qui bloque réellement le début de l'implémentation :*
+
+1. **Couleur d'accent définitive** — base noir/blanc/neutres validée, mais l'accent (bleu dans les deux systèmes actuels) n'est **pas** tranché. Ne pas réutiliser le bleu par défaut.
 2. **Média hero réel** (photo ou vidéo d'un vrai travail technique, logiciel + physique) — en attente de l'utilisateur, remplace le hero code-screenshot actuel.
-3. **Priorisation des métiers à écrire en premier** — la liste demandée est longue (restaurant, fast-food, commerce, hôtel, coiffure/beauté, padel/tennis/sport, immobilier, industrie, automobile, loisirs, parc/zoo, événementiel, construction, services) ; par quoi commencer au-delà de restaurant/hôtel/garage qui existent déjà en embryon ?
-4. **Contenu de la page "Découvrir YVEXOR" fusionnée** — reprendre `/histoire/` intégralement, ou le condenser pour coller au ton "peu de texte" de la nouvelle direction ?
+3. **Priorisation des métiers à écrire en premier** — liste demandée longue ; par quoi commencer au-delà de restaurant/hôtel/garage qui existent déjà en embryon ?
+4. **Contenu de la page "Découvrir YVEXOR" fusionnée** — reprendre `/histoire/` intégralement, ou le condenser pour coller au ton "peu de texte" ?
+5. **Validation réelle des hypothèses tarifaires (§10.4)** — nécessite une étude coûts/marge/concurrence avant toute publication ; tant que non fait, ces chiffres restent `validated:false` et hors site.
+6. **Prix restaurant/tennis-padel cités par l'utilisateur (§10.5)** — à réconcilier avec le catalogue B2B PDF avant de les saisir dans `data/caisses.json`, ils ne sont pas dans le code aujourd'hui.
 
 ---
 

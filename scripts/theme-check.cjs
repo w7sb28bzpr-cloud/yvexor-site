@@ -51,6 +51,8 @@ for (const [label, background, surface, primary, secondary, muted, border, focus
   assert.ok(contrast(accentText, accent) >= 4.5, `${label} accent button contrast`);
 }
 assert.match(primitiveCss, /\.site-foundation \.site-button\s*\{[\s\S]*?min-height:\s*44px/);
+assert.match(primitiveCss, /\.site-foundation \.site-container\s*\{/);
+assert.doesNotMatch(primitiveCss, /^\.site-container\s*\{/m, 'Site containers must opt into the foundation wrapper');
 assert.match(primitiveCss, /:focus-visible/);
 assert.match(primitiveCss, /prefers-reduced-motion:\s*reduce/);
 assert.match(primitiveCss, /--site-gutter/);

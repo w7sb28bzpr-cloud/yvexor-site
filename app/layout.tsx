@@ -19,6 +19,8 @@ import "./brand.css";
 import "./themes.css";
 import "./reading-rhythm.css";
 import "./v2-shell.css";
+import "./site-tokens.css";
+import "./site-primitives.css";
 import {themeBootstrap} from "../lib/theme";
 
 export const metadata: Metadata = {

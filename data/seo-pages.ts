@@ -1,8 +1,9 @@
 import { solutionOffers } from "./public-offer";
 import { editorial } from "./seo-improvements";
+import type { EditorialPage, EditorialSection } from "./content-types";
 
-export type SeoSection={title:string;text:string;items?:string[]};
-export type SeoPage={slug:string;eyebrow:string;title:string;metaTitle?:string;description:string;intro:string;sections:SeoSection[];related:string[];cta?:string;service?:boolean;faq?:SeoSection[];kind?:"faq"|"contact"|"pricing"};
+export type SeoSection = EditorialSection;
+export type SeoPage = EditorialPage & {slug:string;eyebrow:string;related:string[];service?:boolean;kind?:"faq"|"contact"|"pricing"};
 
 const offer=(id:string)=>solutionOffers.find(item=>item.id===id)!;
 const caisse=offer("CAISSE_COMMERCE"),web=offer("SITE_WEB"),ia=offer("IA_AUTOMATISATION");

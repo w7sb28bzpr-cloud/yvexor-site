@@ -273,4 +273,9 @@ Ordre guidé par la dépendance entre contenu et rendu : sécuriser d’abord le
 - `portal/core/caisse_catalogue.json` et `scripts/caisse-sync.cjs` n’ont pas été modifiés et le générateur sans `--check` n’a pas été exécuté.
 - Matrice des routes/canoniques confirmée. Les pages Restaurant, Hôtel et Garage gardent leurs URLs racine; `/metiers/restaurant/` et `/metiers/hotel/` ne sont pas créées. Les alias `/realisations/` et `/yvexor-pos/` conservent meta-refresh, lien de repli, `noindex` et canonical adéquat.
 
-La Phase 1 (modèle de contenu) sera livrée dans un commit distinct.
+La Phase 1 (modèle de contenu) est livrée dans le commit distinct suivant.
+## Phase 1 — modèle de contenu exécuté (24 octobre 2026)
+
+- Ajout du modèle typé Solutions–Métiers–Projets et des quatre clusters. Les Solutions réutilisent les huit catégories existantes, avec le retrofit comme entrée autonome; les trois Métiers initiaux (Restaurant, Hôtel, Garage) pointent vers leurs URLs canoniques existantes. La liste projets reste vide jusqu’à validation d’un cas réel.
+- Les offres existantes sont réutilisées. Le pricing `validated: false` est occulté par l’API publique; les projets doivent être approuvés pour être publiés. Les extensions assistant/open source sont optionnelles et inactives. Aucun rendu, route, tarif source, caisse, assistant ou intégration n’a été modifié.
+- Vérifications : `npx next build` réussi (69 pages statiques), `npm run test:seo` réussi (61 pages indexables), `npm run test:theme`, `npm run test:content` (9 solutions, 3 industries, 0 projet), `npx tsc --noEmit` et `git diff --check` réussis. `npm run build` et `caisse-sync --check` échouent au comparateur strict LF/CRLF; l’égalité caisse est confirmée après normalisation. Le JSON et le script caisse sont restés intacts.

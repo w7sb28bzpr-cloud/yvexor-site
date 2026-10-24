@@ -4,6 +4,7 @@ import { v2Solutions } from "./v2-solutions";
 import { solutionOffers } from "./public-offer";
 
 const offerById = Object.fromEntries(solutionOffers.map((offer) => [offer.id, offer]));
+const v2SolutionById = Object.fromEntries(v2Solutions.map((solution) => [solution.id, solution]));
 
 function pricingFromExistingOffer(offerId: string): Pricing {
   const offer = offerById[offerId];
@@ -40,24 +41,26 @@ function editorialPage(sourceSlug: string | undefined, fallbackTitle: string, fa
 
 const solutionSeeds: {
   id: string;
+  v2SourceId: (typeof v2Solutions)[number]["id"];
   slug: string;
   cluster: SolutionClusterId;
   sourceSlug?: string;
   offerId?: string;
   industries: string[];
 }[] = [
-  { id: "custom-software", slug: "sur-mesure", cluster: "logiciel-ia", sourceSlug: "logiciel-sur-mesure", offerId: "PLATEFORME_SAAS", industries: ["restaurant", "hotel", "garage"] },
-  { id: "ai-automation", slug: "ia-automatisation", cluster: "logiciel-ia", sourceSlug: "automatisation-entreprise", offerId: "IA_AUTOMATISATION", industries: ["restaurant", "hotel", "garage"] },
-  { id: "commerce-caisse-ticketing", slug: "commerce-caisse-billetterie", cluster: "commerce-paiement", sourceSlug: "logiciel-caisse-marseille", offerId: "CAISSE_COMMERCE", industries: ["restaurant"] },
-  { id: "management-reservation", slug: "gestion-reservation", cluster: "commerce-paiement", sourceSlug: "applications-metier", offerId: "APPLICATION_METIER", industries: ["restaurant", "hotel"] },
-  { id: "sites-applications", slug: "sites-applications", cluster: "digital-infrastructure", sourceSlug: "site-presence-web", offerId: "SITE_WEB", industries: ["restaurant", "hotel"] },
-  { id: "hosting-infrastructure", slug: "hebergement-infrastructure", cluster: "digital-infrastructure", industries: [] },
-  { id: "connected-systems", slug: "systemes-connectes", cluster: "connecte-terrain", sourceSlug: "systemes-connectes", offerId: "SYSTEMES_CONNECTES", industries: ["hotel", "garage"] },
-  { id: "field-equipment", slug: "equipements-terrain", cluster: "connecte-terrain", industries: [] },
+  { id: "custom-software", v2SourceId: "custom-software", slug: "sur-mesure", cluster: "logiciel-ia", sourceSlug: "logiciel-sur-mesure", offerId: "PLATEFORME_SAAS", industries: ["restaurant", "hotel", "garage"] },
+  { id: "ai-automation", v2SourceId: "ai-automation", slug: "ia-automatisation", cluster: "logiciel-ia", sourceSlug: "automatisation-entreprise", offerId: "IA_AUTOMATISATION", industries: ["restaurant", "hotel", "garage"] },
+  { id: "commerce-caisse-ticketing", v2SourceId: "commerce-caisse-ticketing", slug: "commerce-caisse-billetterie", cluster: "commerce-paiement", sourceSlug: "logiciel-caisse-marseille", offerId: "CAISSE_COMMERCE", industries: ["restaurant"] },
+  { id: "management-reservation", v2SourceId: "management-reservation", slug: "gestion-reservation", cluster: "commerce-paiement", sourceSlug: "applications-metier", offerId: "APPLICATION_METIER", industries: ["restaurant", "hotel"] },
+  { id: "sites-applications", v2SourceId: "sites-applications", slug: "sites-applications", cluster: "digital-infrastructure", sourceSlug: "site-presence-web", offerId: "SITE_WEB", industries: ["restaurant", "hotel"] },
+  { id: "hosting-infrastructure", v2SourceId: "hosting-infrastructure", slug: "hebergement-infrastructure", cluster: "digital-infrastructure", industries: [] },
+  { id: "connected-systems", v2SourceId: "connected-systems", slug: "systemes-connectes", cluster: "connecte-terrain", sourceSlug: "systemes-connectes", offerId: "SYSTEMES_CONNECTES", industries: ["hotel", "garage"] },
+  { id: "field-equipment", v2SourceId: "field-equipment", slug: "equipements-terrain", cluster: "connecte-terrain", industries: [] },
 ];
 
-const catalogueSolutions: Solution[] = solutionSeeds.map((seed, index) => {
-  const item = v2Solutions[index];
+const catalogueSolutions: Solution[] = solutionSeeds.map((seed) => {
+  const item = v2SolutionById[seed.v2SourceId];
+  if (!item) throw new Error(`Missing V2 solution source: ${seed.v2SourceId}`);
   return {
     id: seed.id,
     slug: seed.slug,

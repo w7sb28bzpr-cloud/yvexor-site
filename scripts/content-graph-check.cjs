@@ -18,8 +18,15 @@ const { filterPublishedProjects, getPublishablePricing, getPublishedProjects, va
 const { projects } = require("../data/projects.ts");
 const { getPublicSolutions } = require("../lib/content.ts");
 const { solutions } = require("../data/solutions.ts");
+const { v2Solutions } = require("../data/v2-solutions.ts");
 const errors = validateContentGraph();
 assert.deepEqual(errors, [], errors.join("\n"));
+assert.equal(new Set(v2Solutions.map((solution) => solution.id)).size, v2Solutions.length, "V2 solution source IDs must be unique");
+for (const solution of solutions.filter((item) => item.id !== "equipment-retrofit")) {
+  const source = v2Solutions.find((item) => item.id === solution.id);
+  assert.ok(source, `Solution ${solution.id} must have an explicit V2 source`);
+  assert.equal(solution.eyebrow, source.title, `Solution ${solution.id} must use its matching V2 source`);
+}
 assert.deepEqual(getPublishedProjects(), [], "No fictional or draft project should be public");
 assert.deepEqual(filterPublishedProjects([{ publicationStatus: "draft" }]), [], "Draft projects must be filtered out");
 

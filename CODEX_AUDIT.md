@@ -125,16 +125,35 @@ Vérifications demandées, exécutées le 24 octobre 2026 sans correction des so
 
 | Vérification | Résultat initial |
 |---|---|
-| Synchronisation locale | `main` et `origin/main` sont au même commit `c853c033f6ee3f956030cb65c6db84ce5456817a`; le HEAD actuel de GitHub a été vérifié par le connecteur et correspond au même commit. `git fetch --prune origin` n’a pas pu écrire `.git/FETCH_HEAD` (accès refusé), mais aucune mise à jour distante n’est en attente. Aucun changement suivi local. `output/` et `tmp/` sont non suivis préexistants. |
-| `npm run build` | ÉCHEC avant le build Next : le garde-fou `node scripts/caisse-sync.cjs --check` constate que `portal/core/caisse_catalogue.json` diffère du contenu dérivé de `data/caisses.json` et `data/caisse-professions.ts` (`Run node scripts/caisse-sync.cjs before deployment`). Fichier laissé inchangé. |
+| Synchronisation locale | `main` et `origin/main` sont au même commit `9ddd82647303ff0cc4bf1936e9eaf882acbc3be5`, confirmé par le HEAD GitHub. Aucun changement suivi local au début de la phase. `output/` et `tmp/` sont non suivis préexistants. |
+| `npm run build` | ÉCHEC avant le build Next : `caisse-sync --check` compare strictement LF et détecte les CRLF Windows dans `portal/core/caisse_catalogue.json`. Vérification Phase 0 ci-dessous : après normalisation, le contenu généré et le fichier sont exactement identiques; aucun écart de données. Le JSON et le script sont laissés inchangés. |
 | `npx next build` (contrôle diagnostique direct, sans précheck) | RÉUSSI : compilation, validation lint/types Next, génération de 69 pages statiques et export terminés. JS partagé initial annoncé : 103 kB; la route d’accueil affiche 106 kB First Load JS. Cette commande a rafraîchi les artefacts ignorés `.next/` et `out/`, pas les sources suivies. |
 | `npm run test:seo` | RÉUSSI après l’export : 61 pages indexables, métadonnées uniques, canonicals, contenu HTML, JSON-LD, images, liens internes, sitemap, robots et 404. |
 | `npm run test:theme` | RÉUSSI : bascules automatiques jour/nuit, choix manuel, préférences invalides, stockage bloqué et script de pré-peinture. |
-| `node scripts/caisse-sync.cjs --check` | ÉCHEC, même divergence que le précontrôle de build. Aucun `caisse-sync` sans `--check` n’a été lancé. |
+| `node scripts/caisse-sync.cjs --check` | ÉCHEC local sur les fins de ligne CRLF malgré égalité exacte après normalisation. Aucun `caisse-sync` sans `--check` n’a été lancé. |
 | `npx tsc --noEmit` | RÉUSSI, aucune sortie/diagnostic. |
 | Lint dédié | Aucun script `lint` configuré dans `package.json`. La build Next directe a terminé son étape intégrée lint/types. |
 
-Ce baseline est le point de comparaison, pas une correction : avant la première phase d’implémentation livrable, il faudra décider si le JSON du portail est un artefact généré à resynchroniser depuis ses sources, puis retrouver un `npm run build` vert. Aucun autre problème de build n’a été observé dans l’exécution directe de Next.
+Le faux positif CRLF est confirmé, pas une divergence de contenu. La commande `npm run build` continuera à échouer sur cette machine tant que le script comparera strictement les fins de ligne; le code de déploiement Linux utilise LF et le build Next direct passe. Ne pas modifier le script ni le JSON pour contourner cet état. Aucun autre problème de build n’a été observé dans l’exécution directe de Next.
+
+### Routes publiques, indexation et propriétaire canonique — Phase 0
+
+Le sitemap statique et `out/` fraîchement exporté identifient 61 URLs indexables. Les familles dynamiques sont produites statiquement : 20 produits boutique, 17 professions caisse et les pages éditoriales de `seo-pages.ts`. Chaque URL du sitemap a un canonical propre et unique; le script SEO vérifie aussi métadonnées, liens et routes exportées.
+
+| Famille publique | Propriétaire canonique / état |
+|---|---|
+| `/` et `/solutions/` | Pages dédiées, canoniques propres. |
+| `/a-propos/` et `/histoire/` | Deux pages distinctes, actuellement indexables, chacune canonique sur elle-même. Fusion future seulement en phase dédiée avec redirection de `/histoire/`. |
+| `/solutions-restaurants/`, `/solutions-hotels/`, `/logiciel-garage/` | Pages éditoriales racine déjà indexées; chacune reste l’unique canonique de son contenu métier. Les Industry correspondantes réutilisent ces `canonicalPath`; aucun doublon `/metiers/restaurant/` ou `/metiers/hotel/` ne doit être généré. |
+| Autres pages éditoriales `/{slug}/` | `data/seo-pages.ts` et `app/[slug]/page.tsx`; canonical de chaque slug sur sa propre URL. Cela inclut les pages solution existantes qui ne seront pas déplacées vers `/solutions/[slug]/`. |
+| `/caisse/` et `/caisse/{metier}/` | Pages offre/configurateur et déclinaisons spécialisées; canoniques propres, distinctes des pages métier éditoriales. |
+| `/boutique/`, `/boutique/{slug}/`, `/materiel/` | Catalogue et produits générés; canoniques propres. |
+| `/projets/` | Route présente, `noindex`, canonical propre, absente du sitemap tant qu’aucun projet réel approuvé n’existe. |
+| `/realisations/` | Alias `noindex`, canonical `/`, meta-refresh 0 vers `/#exemples` et lien de repli. Aucun redirect HTTP 301 n’est disponible dans l’export statique. |
+| `/yvexor-pos/` | Alias `noindex`, canonical `/logiciel-caisse-marseille/`, meta-refresh 0 vers cette page et lien de repli. |
+| `404.html` | Page introuvable `noindex`, non canonique. `robots.txt` autorise le site et référence le sitemap. |
+
+Les deux alias reposent sur `components/migration-redirect.tsx` : balise meta refresh immédiate et lien HTML utilisable si le navigateur ignore le refresh. Les métadonnées `noindex` et canoniques sont cohérentes avec leur rôle. Le comportement a été confirmé dans les sources et l’export; la plateforme GitHub Pages ne fournit pas de redirection serveur via ce composant.
 
 ## Plan d’implémentation proposé
 
@@ -146,18 +165,18 @@ Ordre guidé par la dépendance entre contenu et rendu : sécuriser d’abord le
 - **Fichiers concernés :** `package.json`, `scripts/caisse-sync.cjs`, `portal/core/caisse_catalogue.json`, `data/caisses.json`, `data/caisse-professions.ts`, `app/sitemap.ts`, `app/robots.ts`, `app/[slug]/page.tsx`, `app/caisse/[metier]/page.tsx`, `app/realisations/page.tsx`, `app/yvexor-pos/page.tsx`, `components/migration-redirect.tsx`, `CODEX_AUDIT.md`.
 - **Réutiliser :** scripts SEO/thème/caisse, `MigrationRedirect`, canonicals et sitemap déjà en place.
 - **Nouveau :** manifeste de routes/canonical path utilisé comme checklist; sauvegarde/commit de référence selon le flux Git du projet.
-- **Risques :** le JSON généré pourrait avoir des consommateurs ou être modifié par une autre source; un rafraîchissement du remote reste nécessaire si l’accès Git redevient disponible; pas de suppression/déplacement d’URL.
-- **Vérifications :** identifier l’écart exact du catalogue, décider/régénérer depuis les sources seulement avec l’accord de phase, `npm run build`, `npm run test:seo`, `npm run test:theme`, `node scripts/caisse-sync.cjs --check`, `npx tsc --noEmit`; comparer les URLs du sitemap aux routes.
-- **Terminé quand :** l’état distant/local est documenté, l’écart caisse est expliqué et reproductible, les URLs indexées ont un propriétaire canonique, le build standard et les scripts de garde-fou passent.
+- **Risques :** la vérification stricte de LF échoue sur le checkout Windows même si le contenu correspond; pas de suppression/déplacement d’URL.
+- **Vérifications :** comparer le JSON généré en mémoire avec le fichier après normalisation CRLF/LF; ne pas exécuter le générateur s’il s’agit seulement des fins de ligne; `npx next build`, `npm run test:seo`, `npm run test:theme`, `node scripts/caisse-sync.cjs --check`, `npx tsc --noEmit`; comparer URLs du sitemap et routes.
+- **Terminé quand :** l’état distant/local est documenté, le faux positif CRLF est confirmé, les URLs indexées ont un propriétaire canonique, Next direct et les scripts applicatifs passent. Le précontrôle `npm run build` reste connu en échec uniquement sous autocrlf Windows; le build CI/Linux reste la référence pour ce contrôle.
 
 ### Phase 1 — Modèle Solutions / Métiers / Projets
 
 - **Objectif :** créer des entités typées et des références par IDs sans changer le rendu ni les URLs existantes.
 - **Fichiers concernés :** nouveaux `data/content-types.ts`, `data/solution-clusters.ts`, `data/solutions.ts`, `data/industries.ts`, `data/projects.ts`; sources de migration `data/seo-pages.ts`, `data/v2-solutions.ts`, `data/caisse-professions.ts`; potentiellement `lib/content.ts` pour indexer par ID/slug.
 - **Réutiliser :** `SeoPage` comme source des `EditorialPage`, 8 catégories V2 comme matière des clusters/solutions, pages restaurants/hôtels/garage comme matières des Industry, métiers caisse comme spécialisations, sans déplacer leur URL.
-- **Nouveau :** types communs, index de lookup et validation sans dépendance d’exécution lourde. Valider IDs uniques, slugs uniques dans chaque namespace, références existantes, relation réciproque solution/métier/projet, et interdiction d’exposer un projet `draft`.
+- **Nouveau :** types communs, index de lookup et validation sans dépendance d’exécution lourde. Pricing dérivé des offres `public-offer` avec drapeau `validated`; pas de nouvel objet Budget. Extensibilité optionnelle pour capacités transversales assistant/open source, sans plomberie ni activation. Ajouter le retrofit comme Solution autonome. Valider IDs/slugs, références réciproques, canonical paths, brouillons, et filtrage du pricing non validé.
 - **Risques :** migration avec perte de champs SEO existants, liens cycliques/incohérents, confusion de chemins canoniques; ne pas transformer toutes les pages caisse en pages métiers génériques.
-- **Vérifications :** validation données, TypeScript, `caisse-sync --check`, tests SEO inchangés; comparer nombre de textes/sections et chemins avant/après migration.
+- **Vérifications :** `npm run test:content`, TypeScript, `caisse-sync --check` (écart LF connu), Next direct, tests SEO/thème; comparer textes/sections et routes/canonicals avant/après migration.
 - **Terminé quand :** toute donnée retenue est représentée une fois, les relations sont validées, aucune page/routes publiques ne change, aucun contenu éditorial n’est supprimé.
 
 ### Phase 2 — Fondations visuelles neutres et composants communs
@@ -246,3 +265,12 @@ Ordre guidé par la dépendance entre contenu et rendu : sécuriser d’abord le
 - **Build standard non vert au baseline** à cause du JSON caisse dérivé. À traiter dans la sécurisation avant d’utiliser le build comme garde-fou régulier; ne pas lancer le générateur avant d’avoir confirmé son contrat et son consommateur.
 - **Avant finition du visuel :** choisir l’accent ou conserver une palette strictement neutre, fournir/valider une photo réelle du hero, et trancher le niveau de condensation À propos/Histoire. Ces éléments ne bloquent ni schéma de données ni gabarits des hubs.
 - **Priorisation éditoriale :** les pages restaurant/hôtel/garage fournissent une première matière; les métiers supplémentaires ne doivent entrer qu’avec des solutions pertinentes et du contenu factuel distinct.
+
+## Phase 0 — sécurisation et baseline exécutées (24 octobre 2026)
+
+- Dépôt vérifié sur `main`, au commit source de vérité `9ddd82647303ff0cc4bf1936e9eaf882acbc3be5`, identique à `origin/main`. Les dossiers non suivis `output/` et `tmp/` ont été conservés.
+- `core.autocrlf=true`; `git ls-files --eol` indique le JSON caisse en index LF et checkout CRLF. Le fichier sur disque fait 8 187 octets avec 277 fins CRLF; le contenu généré en mémoire fait 7 910 octets en LF. Après normalisation LF/CRLF, les chaînes et le JSON parsé sont identiques. Diagnostic : faux positif de fins de ligne seulement.
+- `portal/core/caisse_catalogue.json` et `scripts/caisse-sync.cjs` n’ont pas été modifiés et le générateur sans `--check` n’a pas été exécuté.
+- Matrice des routes/canoniques confirmée. Les pages Restaurant, Hôtel et Garage gardent leurs URLs racine; `/metiers/restaurant/` et `/metiers/hotel/` ne sont pas créées. Les alias `/realisations/` et `/yvexor-pos/` conservent meta-refresh, lien de repli, `noindex` et canonical adéquat.
+
+La Phase 1 (modèle de contenu) sera livrée dans un commit distinct.

@@ -3,10 +3,12 @@ const fs=require('node:fs');const path=require('node:path');const assert=require
 const root=path.resolve('out');const origin='https://yvexor.com';
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const sitemap=read('sitemap.xml');const routes=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>new URL(m[1]));
+assert.ok(!routes.some(url=>url.pathname==='/projets/'||url.pathname.startsWith('/projets/')), 'With zero approved projects, the project hub and details must be absent from sitemap');
 const decode=s=>s.replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#x27;|&#39;/g,"'");
 const attrs=tag=>Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(m=>[m[1],decode(m[2])]));
 const tags=(html,name)=>[...html.matchAll(new RegExp(`<${name}\\b[^>]*>`,'g'))].map(m=>attrs(m[0]));
 const meta=(html,key)=>tags(html,'meta').find(m=>m.name===key||m.property===key)?.content;
+const projectsHtml=read('projets/index.html');assert.match(meta(projectsHtml,'robots')||'',/noindex/,'With zero approved projects, /projets/ must remain noindex');
 const canon=html=>tags(html,'link').filter(m=>m.rel==='canonical').map(m=>m.href);
 const aliases=['/realisations/','/yvexor-pos/','/projets/'];
 const pages=new Map();const titles=new Set();const descriptions=new Set();

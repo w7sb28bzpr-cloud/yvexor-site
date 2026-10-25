@@ -70,10 +70,12 @@ export type Project = {
   slug: string;
   title: string;
   need: string;
+  /** Optional factual context that can be shared with the approved case study. */
+  context?: string;
   intervention: string;
   outcome: string;
   solutionIds: string[];
   industryIds: string[];
-  media: { src: string; alt: string }[];
+  media: { src: string; alt: string; publicationApproved: boolean; decorative?: boolean }[];
   publicationStatus: "draft" | "approved";
 };

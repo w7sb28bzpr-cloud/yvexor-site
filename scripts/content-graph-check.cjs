@@ -14,7 +14,7 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
-const { filterPublishedProjects, getGeneratedIndustryPages, getGeneratedSolutionPages, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
+const { filterPublishedProjects, getGeneratedIndustryPages, getGeneratedProjectPages, getGeneratedSolutionPages, getProjectSitemapPaths, getPublicProjectBySlug, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
 const { projects } = require("../data/projects.ts");
 const { getPublicSolutions } = require("../lib/content.ts");
 const { solutions } = require("../data/solutions.ts");
@@ -36,6 +36,39 @@ for (const solution of solutions.filter((item) => item.id !== "equipment-retrofi
 }
 assert.deepEqual(getPublishedProjects(), [], "No fictional or draft project should be public");
 assert.deepEqual(filterPublishedProjects([{ publicationStatus: "draft" }]), [], "Draft projects must be filtered out");
+
+const fixtureProject = {
+  id: "fixture-project", slug: "fixture-project", title: "Fixture en mémoire",
+  need: "Besoin vérifiable", context: "Contexte vérifiable", intervention: "Intervention vérifiable", outcome: "Résultat vérifiable",
+  solutionIds: [solutions[0].id], industryIds: [require("../data/industries.ts").industries[0].id],
+  media: [
+    { src: "/fixture-approved.jpg", alt: "Image autorisée", publicationApproved: true },
+    { src: "/fixture-unapproved.jpg", alt: "Image sans autorisation", publicationApproved: false },
+  ],
+  publicationStatus: "approved",
+};
+const draftFixture = { ...fixtureProject, id: "fixture-draft", slug: "fixture-draft", publicationStatus: "draft" };
+assert.deepEqual(getPublishedProjects([draftFixture, fixtureProject]).map((project) => project.id), ["fixture-project"], "Only explicitly approved projects are public");
+assert.equal(getPublicProjectBySlug("fixture-draft", [draftFixture, fixtureProject]), undefined, "Draft detail lookup must not be public");
+assert.equal(getPublicProjectBySlug("fixture-project", [draftFixture, fixtureProject]).media.length, 1, "Media without publication approval must be removed from the public project");
+assert.deepEqual(getGeneratedProjectPages([draftFixture, fixtureProject]), [{ slug: "fixture-project" }], "Only approved projects generate detail routes");
+assert.deepEqual(getProjectSitemapPaths([]), [], "No approved projects means no project sitemap entries");
+assert.deepEqual(getProjectSitemapPaths([draftFixture]), [], "Draft projects never enter the sitemap");
+assert.deepEqual(getProjectSitemapPaths([fixtureProject]), ["/projets/"], "An approved in-memory project enables the hub; detail sitemap entries wait until a detail route is buildable");
+
+const industry = require("../data/industries.ts").industries[0];
+const relatedSolutions = solutions.map((solution) => solution.id === fixtureProject.solutionIds[0]
+  ? { ...solution, projectIds: [fixtureProject.id] }
+  : solution);
+const relatedIndustries = require("../data/industries.ts").industries.map((item) => item.id === industry.id
+  ? { ...item, projectIds: [fixtureProject.id] }
+  : item);
+assert.deepEqual(validateContentGraph({ solutions: relatedSolutions, industries: relatedIndustries, projects: [fixtureProject] }), [], "Valid approved in-memory graph passes validation");
+assert.ok(validateContentGraph({ projects: [{ ...fixtureProject, solutionIds: ["missing-solution"] }] }).some((error) => error.includes("Unknown solution missing-solution")), "Unknown Solution relation must fail validation");
+assert.ok(validateContentGraph({ projects: [{ ...fixtureProject, industryIds: ["missing-industry"] }] }).some((error) => error.includes("Unknown industry missing-industry")), "Unknown Industry relation must fail validation");
+const duplicateFixture = { ...fixtureProject };
+assert.ok(validateContentGraph({ projects: [fixtureProject, duplicateFixture] }).some((error) => error.includes("Duplicate project id")), "Duplicate project IDs must fail validation");
+assert.ok(validateContentGraph({ projects: [fixtureProject, { ...duplicateFixture, id: "another-project" }] }).some((error) => error.includes("Duplicate project slug")), "Duplicate project slugs must fail validation");
 
 const hypothesis = { offers: [{ kind: "subscription", monthlyFrom: 1 }], validated: false };
 assert.equal(getPublishablePricing(hypothesis), null, "Unvalidated pricing must not be exposed to public UI");

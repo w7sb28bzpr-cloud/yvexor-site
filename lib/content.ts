@@ -16,11 +16,30 @@ export function getPublishablePricing(pricing: Pricing): PublishablePricing | nu
 
 /** Only approved real projects enter public views or static route lists. */
 export function filterPublishedProjects(source: readonly Project[]): Project[] {
-  return source.filter((project) => project.publicationStatus === "approved");
+  return source
+    .filter((project) => project.publicationStatus === "approved")
+    .map((project) => ({
+      ...project,
+      media: project.media.filter((media) => media.publicationApproved),
+    }));
 }
 
-export function getPublishedProjects(): Project[] {
-  return filterPublishedProjects(projects);
+export function getPublishedProjects(source: readonly Project[] = projects): Project[] {
+  return filterPublishedProjects(source);
+}
+
+export function getPublicProjectBySlug(slug: string, source: readonly Project[] = projects): Project | undefined {
+  return getPublishedProjects(source).find((project) => project.slug === slug);
+}
+
+export function getGeneratedProjectPages(source: readonly Project[] = projects): { slug: string }[] {
+  return getPublishedProjects(source).map(({ slug }) => ({ slug }));
+}
+
+export function getProjectSitemapPaths(source: readonly Project[] = projects): string[] {
+  const pages = getGeneratedProjectPages(source);
+  // Detail routes are deferred until there is an approved project to build and verify.
+  return pages.length ? ["/projets/"] : [];
 }
 
 /** Public pages receive pricing only through the validation gate. */
@@ -55,7 +74,16 @@ export function getGeneratedIndustryPages(source: readonly Industry[] = industri
     .map(({ slug }) => ({ slug }));
 }
 
-export function validateContentGraph(): string[] {
+export function validateContentGraph(source: {
+  solutions?: typeof solutions;
+  industries?: readonly Industry[];
+  projects?: readonly Project[];
+} = {}): string[] {
+  const checkedSolutions = source.solutions ?? solutions;
+  const checkedIndustries = source.industries ?? industries;
+  const checkedProjects = source.projects ?? projects;
+  const checkedSolutionById = Object.fromEntries(checkedSolutions.map((item) => [item.id, item]));
+  const checkedIndustryById = Object.fromEntries(checkedIndustries.map((item) => [item.id, item]));
   const errors: string[] = [];
   const checkUnique = (label: string, values: readonly { id: string; slug: string }[]) => {
     const ids = new Set<string>();
@@ -69,16 +97,16 @@ export function validateContentGraph(): string[] {
     }
   };
 
-  checkUnique("solution", solutions);
-  checkUnique("industry", industries);
-  checkUnique("project", projects);
+  checkUnique("solution", checkedSolutions);
+  checkUnique("industry", checkedIndustries);
+  checkUnique("project", checkedProjects);
 
   const clusters = new Set(["logiciel-ia", "commerce-paiement", "connecte-terrain", "digital-infrastructure"]);
   const legacyPagePaths = new Set(seoPages.map((page) => `/${page.slug}/`));
   const knownSolutionDestinations = new Set([...legacyPagePaths, "/boutique/"]);
   const solutionPaths = new Set<string>();
   const industryPaths = new Set<string>();
-  for (const solution of solutions) {
+  for (const solution of checkedSolutions) {
     if (!clusters.has(solution.cluster)) errors.push(`Unknown cluster on solution ${solution.id}: ${solution.cluster}`);
     if (!solution.canonicalPath.startsWith("/") || !solution.canonicalPath.endsWith("/")) {
       errors.push(`Solution ${solution.id} canonicalPath must be a local absolute path ending with /`);
@@ -101,12 +129,12 @@ export function validateContentGraph(): string[] {
       if (new Set(solution[field]).size !== solution[field].length) errors.push(`Duplicate ${field} on solution ${solution.id}`);
     }
     for (const industryId of solution.industryIds) {
-      const industry = industryById[industryId];
+      const industry = checkedIndustryById[industryId];
       if (!industry) errors.push(`Unknown industry ${industryId} on solution ${solution.id}`);
       else if (!industry.solutionIds.includes(solution.id)) errors.push(`Missing reciprocal solution ${solution.id} on industry ${industryId}`);
     }
     for (const projectId of solution.projectIds) {
-      const project = projects.find((item) => item.id === projectId);
+      const project = checkedProjects.find((item) => item.id === projectId);
       if (!project) errors.push(`Unknown project ${projectId} on solution ${solution.id}`);
       else if (!project.solutionIds.includes(solution.id)) errors.push(`Missing reciprocal solution ${solution.id} on project ${projectId}`);
     }
@@ -127,7 +155,7 @@ export function validateContentGraph(): string[] {
     }
   }
 
-  for (const industry of industries) {
+  for (const industry of checkedIndustries) {
     for (const field of ["solutionIds", "projectIds"] as const) {
       if (new Set(industry[field]).size !== industry[field].length) errors.push(`Duplicate ${field} on industry ${industry.id}`);
     }
@@ -145,28 +173,28 @@ export function validateContentGraph(): string[] {
     if (industryPaths.has(industry.canonicalPath)) errors.push(`Duplicate industry canonicalPath: ${industry.canonicalPath}`);
     industryPaths.add(industry.canonicalPath);
     for (const solutionId of industry.solutionIds) {
-      const solution = solutionById[solutionId];
+      const solution = checkedSolutionById[solutionId];
       if (!solution) errors.push(`Unknown solution ${solutionId} on industry ${industry.id}`);
       else if (!solution.industryIds.includes(industry.id)) errors.push(`Missing reciprocal industry ${industry.id} on solution ${solutionId}`);
     }
     for (const projectId of industry.projectIds) {
-      const project = projects.find((item) => item.id === projectId);
+      const project = checkedProjects.find((item) => item.id === projectId);
       if (!project) errors.push(`Unknown project ${projectId} on industry ${industry.id}`);
       else if (!project.industryIds.includes(industry.id)) errors.push(`Missing reciprocal industry ${industry.id} on project ${projectId}`);
     }
   }
 
-  for (const project of projects) {
+  for (const project of checkedProjects) {
     for (const field of ["solutionIds", "industryIds"] as const) {
       if (new Set(project[field]).size !== project[field].length) errors.push(`Duplicate ${field} on project ${project.id}`);
     }
     for (const solutionId of project.solutionIds) {
-      const solution = solutionById[solutionId];
+      const solution = checkedSolutionById[solutionId];
       if (!solution) errors.push(`Unknown solution ${solutionId} on project ${project.id}`);
       else if (!solution.projectIds.includes(project.id)) errors.push(`Missing reciprocal project ${project.id} on solution ${solutionId}`);
     }
     for (const industryId of project.industryIds) {
-      const industry = industryById[industryId];
+      const industry = checkedIndustryById[industryId];
       if (!industry) errors.push(`Unknown industry ${industryId} on project ${project.id}`);
       else if (!industry.projectIds.includes(project.id)) errors.push(`Missing reciprocal project ${project.id} on industry ${industryId}`);
     }

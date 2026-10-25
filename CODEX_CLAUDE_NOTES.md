@@ -10,7 +10,7 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 
 # SOURCE DE VÉRITÉ — Direction & Architecture YVEXOR
 
-*Direction produit consolidée le 2026-10-24 par Claude; état d’implémentation mis à jour le 2026-10-25 par Codex après la Phase 6. Ce document reste la source de vérité produit. La Phase 6 livre la homepage portail décrite ci-dessous avec une animation de code temporaire; elle ne change ni les hubs ni les données Solutions/Métiers/Projets. La revue visuelle constate deux erreurs de cache du service worker préexistant (`public/sw.js:11`, `Response.clone()` sur un corps déjà consommé); elles sont consignées dans `CODEX_AUDIT.md` et restent à examiner séparément.*
+*Direction produit consolidée le 2026-10-24 par Claude; état d’implémentation mis à jour le 2026-10-25 par Codex après la Phase 6 et son itération immersive. Ce document reste la source de vérité produit. La Phase 6 a initialement livré la homepage portail décrite ci-dessous; l’itération du 25-10 la simplifie selon §1bis sans changer les hubs ni les données Solutions/Métiers/Projets. La revue visuelle constate deux erreurs de cache du service worker préexistant (`public/sw.js:11`, `Response.clone()` sur un corps déjà consommé); elles sont consignées dans `CODEX_AUDIT.md` et restent à examiner séparément.*
 
 ### État livré — Phase 6 (2026-10-25)
 
@@ -19,6 +19,32 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 - La séquence du processus est lisible sans animation ni JavaScript. L’ancienne ancre `/#solutions` est conservée sur la section des deux entrées pour les liens historiques.
 - La homepage consomme les destinations canoniques des hubs existants. Aucun projet, métier, prix, route ou contenu public n’a été ajouté. Les sections détaillées plus bas qui décrivent l’accueil précédent sont un constat historique, et non la spécification actuelle.
 - Intégration de marque après Phase 6 : le `BrandLogo` partagé utilise le lockup officiel transparent bleu/cyan + YVEXOR dans le header et le footer; un mot-symbole sombre est utilisé sur les surfaces claires et le mot-symbole blanc sur les surfaces sombres. Le bleu/cyan reste une signature ponctuelle, pas une nouvelle palette globale. Le visuel vertical sur fond noir est conservé dans `public/brand/` pour un usage ultérieur et n’est pas imposé au hero ni aux métadonnées sociales.
+
+### Itération homepage immersive — 2026-10-25
+
+- La homepage actuelle est une porte d’entrée immersive : hero de `100svh` incluant visuellement le header superposé, code animé pleine zone en fond, titre et phrase validés, exactement deux CTA vers `/solutions/` et `/metiers/`, puis le footer commun.
+- Le header transparent et lisible au chargement devient une capsule sombre translucide après défilement. Cette variante est limitée à l’accueil; les autres routes conservent le header commun.
+- Le parcours détaillé en six étapes, la ligne de capacités, les cartes explicatives, le projet conditionnel et le CTA répété ne sont plus rendus sur l’accueil. Le parcours est condensé en trois repères visuels sous le hero; le catalogue reste dans les hubs et pages dédiés. L’ancre historique `/#solutions` pointe maintenant le hero.
+- Le code reste décoratif pour les technologies d’assistance et respecte `prefers-reduced-motion`. Le logo courant reste provisoire. Aucune route, donnée, caisse, pricing, service worker ou phase 7 n’a été modifié.
+
+## 1bis. PRINCIPE STRUCTURANT — Reconstruction visuelle complète (ajouté 2026-10-25 par Claude, décision de l'utilisateur)
+
+*Clarification de philosophie après la Phase 6. S'applique à **toutes les prochaines phases** ; remplace toute lecture de §3/§5/§7 ci-dessous comme consigne de préserver l'apparence ou la structure des anciennes pages — ces sections restent utiles pour le contenu/SEO/architecture de données, pas pour la direction visuelle.*
+
+**Principe :** nous conservons ce qui est utile **derrière** l'expérience (données, contenus pertinents, SEO, URLs historiques nécessaires, configurateurs, fonctionnalités, relations Solutions/Métiers/Projets) — voir §9.3/§9.5, toujours valides pour la couche donnée/routing. Mais **l'expérience publique (visuel, structure de page, mise en page) est reconstruite de A à Z** avec la nouvelle direction YVEXOR. Les anciennes pages et leur structure ne doivent plus dicter la nouvelle expérience simplement parce qu'elles existent déjà.
+
+**Homepage — porte d'entrée immersive :** première vue = header transparent intégré au hero, hero quasiment plein écran, code animé en fond, "YVEXOR", "Technologie sur mesure.", une phrase très courte, puis **exactement deux portes** : *Explorer les solutions* / *Explorer par métier*. Le visiteur choisit immédiatement son chemin. La homepage **ne doit plus** essayer de présenter tout le catalogue ni enchaîner de grandes sections explicatives (parcours détaillé, offres, applications, métiers) — ce contenu vit dans ses espaces dédiés (`/solutions/`, `/metiers/`, etc.), pas sur l'accueil. **Statut :** mise en œuvre le 25-10 selon le brief utilisateur : header superposé, hero `100svh`, code en fond, les deux portes convenues, puis un parcours condensé en trois repères sous le hero et le footer commun. Les capacités et sections longues ont été retirées de l’accueil.
+
+**Principe de répartition des rôles par page :**
+- **Accueil** = entrer dans l'univers.
+- **Solutions** = ce que YVEXOR peut construire.
+- **Métiers** = ce que YVEXOR peut faire pour votre activité.
+- **Projets** = partir d'un problème/besoin spécifique (cas réels).
+- **À propos** = comprendre YVEXOR et son histoire.
+
+**Métiers — ne pas enfermer des capacités générales dans des niches artificielles :** exemple donné par l'utilisateur — le produit historiquement pensé autour du padel doit pouvoir servir plus largement au **sport** ; le futur `Industry` est donc plutôt "Sport & loisirs" ou "Clubs & installations sportives" (cas couverts : padel, tennis, football, futsal, fitness, clubs multisports, complexes sportifs, etc.) plutôt qu'un métier "Padel" isolé. Une page spécialisée Padel ne doit exister plus tard que si elle a un contenu réellement spécifique en quantité suffisante — sinon elle reste un cas au sein du métier plus large. Même logique à appliquer aux autres métiers listés en §3 (coiffure/beauté, immobilier, industrie, automobile, loisirs, parc/zoo, événementiel, construction, services) : regrouper par univers cohérent plutôt que multiplier les niches, avant de fragmenter plus tard si le contenu le justifie.
+
+**Conséquence pour Codex et Claude à partir de maintenant :** ne pas chercher à préserver l'apparence/structure des anciennes pages lors des prochaines phases. Préserver leur valeur technique/SEO/contenu quand c'est nécessaire (voir §9.5 — aucune URL indexée ne bouge sans redirection), mais reconstruire leur expérience visuelle avec la nouvelle direction YVEXOR plutôt que de les prendre comme gabarit.
 
 ## 1. Positionnement — ce que YVEXOR N'EST PAS et CE QU'IL EST
 
@@ -101,6 +127,8 @@ Ton visé : sobre, fluide, premium — **pas cyberpunk, pas "site IA"**. C'est c
 Le `ScrollReveal` (fade/translate au scroll) et le `HomeJourney` (barre de progression liée au scroll) actuels sont une bonne base technique mais restent abstraits/textuels — pas encore de vrais diagrammes de flux. Nouveau pattern à concevoir, pas encore commencé.
 
 ## 7. Architecture définitive proposée (à valider avant tout code)
+
+*Le détail de la ligne `/` ci-dessous est dépassé par §1bis (2026-10-25) : homepage = hero immersif + exactement deux portes, pas de process strip ni de succession de sections sur l'accueil. Le reste de l'arborescence ci-dessous reste valide.*
 
 ```
 /                    Accueil — portail court : hero (vraie photo/vidéo) → process strip animé
@@ -407,7 +435,7 @@ type Pricing = {
 
 1. **Couleur d'accent définitive** — base noir/blanc/neutres validée, mais l'accent (bleu dans les deux systèmes actuels) n'est **pas** tranché. Ne pas réutiliser le bleu par défaut.
 2. **Média hero réel** (photo ou vidéo d'un vrai travail technique, logiciel + physique) — en attente de l'utilisateur, remplace le hero code-screenshot actuel.
-3. **Priorisation des métiers à écrire en premier** — liste demandée longue ; par quoi commencer au-delà de restaurant/hôtel/garage qui existent déjà en embryon ?
+3. **Priorisation des métiers à écrire en premier** — liste demandée longue ; par quoi commencer au-delà de restaurant/hôtel/garage qui existent déjà en embryon ? Voir §1bis : regrouper par univers cohérent (ex. "Sport & loisirs" plutôt que "Padel" isolé), fragmenter en page dédiée seulement si le contenu spécifique le justifie.
 4. **Contenu de la page "Découvrir YVEXOR" fusionnée** — reprendre `/histoire/` intégralement, ou le condenser pour coller au ton "peu de texte" ?
 5. **Validation réelle des hypothèses tarifaires (§10.4)** — nécessite une étude coûts/marge/concurrence avant toute publication ; tant que non fait, ces chiffres restent `validated:false` et hors site.
 6. **Prix restaurant/tennis-padel cités par l'utilisateur (§10.5)** — à réconcilier avec le catalogue B2B PDF avant de les saisir dans `data/caisses.json`, ils ne sont pas dans le code aujourd'hui.

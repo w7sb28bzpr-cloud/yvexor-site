@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BrandLogo } from "./brand-logo";
 import { ThemeControl } from "./theme-control";
@@ -19,12 +20,22 @@ const secondaryLinks = [
   { label: "Espace client", href: "https://client.yvexor.com/" },
 ];
 
-export function SiteHeader({ root: _root = false }: { root?: boolean }) {
+export function SiteHeader({ root: _root = false, immersiveHero = false }: { root?: boolean; immersiveHero?: boolean }) {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!immersiveHero) return;
+    const update = () => setIsScrolled(window.scrollY > 24);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [immersiveHero]);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href);
 
-  return <header className="site-header v2-header">
+  return <header className={`site-header v2-header${immersiveHero ? " v2-header--immersive" : ""}${isScrolled ? " is-scrolled" : ""}`}>
     <div className="v2-header__inner">
       <a className="v2-header__brand" href="/" aria-label="YVEXOR — Accueil"><BrandLogo /></a>
       <nav className="v2-header__nav" aria-label="Navigation principale">

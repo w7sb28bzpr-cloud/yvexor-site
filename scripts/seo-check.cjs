@@ -12,10 +12,13 @@ const projectsHtml=read('projets/index.html');assert.match(meta(projectsHtml,'ro
 const homeHtml=read('index.html');
 assert.ok(homeHtml.includes('Du logiciel au terrain, nous construisons la solution autour de votre besoin.'),'Homepage needs the approved YVEXOR positioning');
 assert.ok(homeHtml.includes('aria-label="YVEXOR — Technologie sur mesure"'),'Homepage needs the approved static YVEXOR H1');
-assert.ok(['Applications','IA','Automatisation','Systèmes connectés','Infrastructure','Équipements &amp; terrain'].every(capability=>homeHtml.includes(capability)),'Homepage needs the full YVEXOR capabilities in static HTML');
-assert.ok(homeHtml.includes('Découvrir les solutions')&&homeHtml.includes('/solutions/'),'Homepage must link to the Solutions hub');
-assert.ok(homeHtml.includes('Explorer par métier')&&homeHtml.includes('/metiers/'),'Homepage must link to the Métiers hub');
-assert.ok(homeHtml.includes('Votre besoin')&&homeHtml.includes('Suivi &amp; évolution'),'The process must be present in static HTML');
+const homeDoors=homeHtml.match(/<nav class="[^"]*" aria-label="Choisir un parcours">([\s\S]*?)<\/nav>/)?.[1]||'';
+const homeDoorLinks=[...homeDoors.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)].map(match=>({attributes:attrs(`<a ${match[1]}>`),text:decode(match[2].replace(/<[^>]*>/g,''))}));
+assert.deepEqual(homeDoorLinks.map(link=>[link.text,link.attributes.href]),[['Explorer les solutions','/solutions/'],['Explorer par métier','/metiers/']],'Homepage must provide exactly the two approved entry points');
+assert.ok(!homeHtml.includes('home-process-title'),'Homepage must stay an immersive entry point without the long process section');
+const compactJourney=homeHtml.match(/<section class="[^"]*" aria-label="Le parcours YVEXOR en bref">([\s\S]*?)<\/section>/)?.[1]||'';
+const journeyLabels=[...compactJourney.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map(match=>decode(match[1].replace(/<[^>]*>/g,'')));
+assert.deepEqual(journeyLabels,['Votre besoin','Solution sur mesure','Du logiciel au terrain'],'Homepage may show only the compact three-part YVEXOR journey');
 assert.ok(homeHtml.includes('aria-hidden="true"'),'Decorative code animation must stay hidden from assistive technology');
 assert.ok(!homeHtml.includes('home-project-title'),'No featured project placeholder is rendered while there are zero approved projects');
 const canon=html=>tags(html,'link').filter(m=>m.rel==='canonical').map(m=>m.href);

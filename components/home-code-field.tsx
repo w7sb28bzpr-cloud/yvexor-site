@@ -60,19 +60,32 @@ const LINE_BUFFER = 6;
 const TEXT_RENDER_INTERVAL = 48;
 const GLIDE_MS = 260;
 
-const seedFor = (startProgram: number) => padToLines(programs[(startProgram + 1) % programs.length].join("\n\n"), MIN_MAX_LINES)
-  .split("\n").slice(-MIN_MAX_LINES).join("\n");
+/** Filler history ending on an empty line, so typing starts on its own line. */
+const seedLines = (startProgram: number, lines: number) => padToLines(programs[(startProgram + 1) % programs.length].join("\n\n"), lines) + "\n";
+const seedFor = (startProgram: number) => seedLines(startProgram, MIN_MAX_LINES).split("\n").slice(-MIN_MAX_LINES).join("\n");
 const lastLineIndex = (value: string) => value.split("\n").length - 1;
+
+/** Starts the block `shift` px lower and eases it back. Additive, so a glide started before
+ * the previous one ends stacks on it without a jump. */
+function glide(code: HTMLElement, shift: number) {
+  if (shift <= 0) return;
+  code.animate(
+    [{ transform: `translateY(${shift}px)` }, { transform: "translateY(0)" }],
+    { duration: GLIDE_MS, easing: "cubic-bezier(.22,1,.36,1)", composite: "add" },
+  );
+}
 
 function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram: number; initialDelay: number; speedOffset: number }) {
   const [text, setText] = useState(() => seedFor(startProgram));
-  const [activeLine, setActiveLine] = useState(() => lastLineIndex(seedFor(startProgram)));
   /** Running id of the first rendered line, so each line keeps its own element (and key)
    * while it moves up instead of every element swapping its text on each new line. */
   const [firstLine, setFirstLine] = useState(0);
+  /** Running id (not index) of the typed line, so it changes once per new line even after
+   * the history is trimmed; -1 when no line is active. */
+  const [activeLine, setActiveLine] = useState(() => lastLineIndex(seedFor(startProgram)));
   const viewportRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLPreElement>(null);
-  const anchorRef = useRef<{ text: string; y: number } | null>(null);
+  const anchorRef = useRef<{ id: number; y: number } | null>(null);
   const maxLinesRef = useRef(MIN_MAX_LINES);
 
   useEffect(() => {
@@ -108,7 +121,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     const show = (value: string, active: number) => {
       output = value;
       setText(value);
-      setActiveLine(active);
+      setActiveLine(active < 0 ? -1 : first + active);
       setFirstLine(first);
       lastPaintAt = performance.now();
     };
@@ -162,17 +175,24 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       clear();
       if (!document.hidden && visible && !motion.matches) schedule(80);
     };
+    /** Reduced motion: the complete static source, padded to fill the viewport, without a cursor. */
+    const showFullSource = () => {
+      output = padToLines(fullSource, maxLinesRef.current);
+      setText(output);
+      setActiveLine(-1);
+      lastPaintAt = performance.now();
+    };
     const onMotion = () => {
       clear();
       if (motion.matches) {
         measure();
-        show(padToLines(fullSource, maxLinesRef.current), -1);
+        showFullSource();
       } else {
         measure();
         programIndex = startProgram;
         snippetIndex = 0;
         charIndex = 0;
-        output = padToLines(seedProgram, maxLinesRef.current);
+        output = trim(seedLines(startProgram, maxLinesRef.current));
         publish();
         if (visible && !document.hidden) schedule(initialDelay);
       }
@@ -182,7 +202,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       measure();
       if (motion.matches) {
         if (maxLinesRef.current === previousMax) return;
-        show(padToLines(fullSource, maxLinesRef.current), -1);
+        showFullSource();
         return;
       }
       const lineCount = output.split("\n").length;
@@ -200,7 +220,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     if (viewport) observer.observe(viewport);
 
     if (motion.matches) {
-      show(padToLines(fullSource, maxLinesRef.current), -1);
+      showFullSource();
     } else {
       // Keep the server-rendered tail: only lines hidden above the field change.
       output = growToBudget(trim(seedFor(startProgram)));
@@ -222,33 +242,25 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     };
   }, [initialDelay, speedOffset, startProgram]);
 
-  /** The stream is bottom-anchored, so every new line pushes the text up in layout.
+  /** Lines stack from the bottom, so every new line pushes the others up in layout.
    * FLIP: offset the block back to where the previous line was, then glide it to 0
    * with a compositor-only transform instead of letting the text jump. */
   useLayoutEffect(() => {
     const code = codeRef.current;
     const lines = code?.children;
-    const last = lines?.[lines.length - 1] as HTMLElement | undefined;
-    if (!code || !lines || !last) return;
-    const lastText = text.slice(text.lastIndexOf("\n") + 1);
+    const current = code && lines && activeLine >= 0 ? lines[activeLine - firstLine] as HTMLElement | undefined : undefined;
     const previous = anchorRef.current;
-    anchorRef.current = { text: lastText, y: code.offsetTop + last.offsetTop };
-    if (!previous || activeLine < 0 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    anchorRef.current = current ? { id: activeLine, y: current.offsetTop } : null;
+    if (!code || !lines || !current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // The line typed before this render is either still the last one or the one just above it.
-    const anchor = (lastText.startsWith(previous.text) ? last : lines[lines.length - 2]) as HTMLElement | undefined;
-    if (!anchor) return;
-    const shift = previous.y - (code.offsetTop + anchor.offsetTop);
-    if (shift <= 0) return;
-    // Additive, so a glide started before the previous one ends stacks on it without a jump.
-    code.animate(
-      [{ transform: `translateY(${shift}px)` }, { transform: "translateY(0)" }],
-      { duration: GLIDE_MS, easing: "cubic-bezier(.22,1,.36,1)", composite: "add" },
-    );
-  }, [text, activeLine]);
+    // Where the previously typed line sits now: pushed up by the new line, and by its own
+    // wrap rows on narrow columns, since the active line only wraps once it is done.
+    const anchor = previous && lines[previous.id - firstLine] as HTMLElement | undefined;
+    if (anchor) glide(code, previous.y - anchor.offsetTop);
+  }, [activeLine]);
 
   return <div ref={viewportRef} className={styles.stream} aria-hidden="true">
-    <pre ref={codeRef} className={styles.code}>{text.split("\n").map((line, index, all) => <span className={index === activeLine ? styles.activeLine : styles.oldLine} key={firstLine + index}>{line || " "}{index === activeLine && <span className={styles.caret} />}{index < all.length - 1 ? "\n" : ""}</span>)}</pre>
+    <pre ref={codeRef} className={styles.code}>{text.split("\n").map((line, index, all) => <span className={firstLine + index === activeLine ? styles.activeLine : styles.oldLine} key={firstLine + index}>{line || " "}{firstLine + index === activeLine && <span className={styles.caret} />}{index < all.length - 1 ? "\n" : ""}</span>)}</pre>
   </div>;
 }
 

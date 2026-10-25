@@ -459,6 +459,15 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-25] — Fluidité du champ de code de l’accueil
+
+Branche `fix/home-code-field-glide` (worktree `../yvexor-site-glide`), seul fichier de code touché : `components/home-code-field.tsx`.
+
+- **Bug 1 — le code sautait au lieu de glisser.** Le `.stream` est ancré en bas (`justify-content: flex-end`), donc le texte déborde vers le haut, là où le défilement est impossible : `scrollTop` restait à 0 et le `scrollTo({ behavior: "smooth" })` ne faisait rien. Chaque nouvelle ligne faisait remonter tout le bloc d’un coup. Le scroll est remplacé par un FLIP : après chaque rendu, le `<pre>` est replacé à la position de la ligne précédente puis glisse jusqu’à 0 avec une animation `transform` additive (`composite: "add"`, 260 ms), sans saccade quand deux lignes arrivent coup sur coup. Les lignes ont des clés stables (`firstLine + index`) au lieu de `${index}-${length}`.
+- **Bug 2 — décalage au chargement (CLS 0,85 sur ordi, 0,92 sur mobile).** Le HTML statique rendait un `<pre>` vide, rempli seulement à l’hydratation. Le state initial contient désormais exactement 64 lignes (`MIN_MAX_LINES`, qui sert aussi de plancher au budget de lignes), donc rien ne change de taille à l’hydratation.
+- Mesuré sur l’export statique dans Chromium : CLS **0,012** sur ordi (977 px) et **0,028** sur mobile (375 px), 60 fps stables pendant la frappe, pas de scroll horizontal. `npx tsc --noEmit` et `npx next build` (72 routes) passent. Rendu `prefers-reduced-motion` : la logique est inchangée, mais il n’a pas été retesté en émulation.
+- `npm run build` échoue sur `caisse-sync --check` dans un checkout neuf, sans rapport avec ce changement.
+
 ## [Codex — 2026-10-25] — Refonte de l’expérience Métiers
 
 - Ajout des associations métier → outils via `Industry.businessToolIds` : Restaurant (`cash-register`, `business-management-app`, `business-website`), Hôtel (`business-management-app`, `business-website`), Garage (`business-management-app`). Le validateur vérifie unicité, existence et disponibilité; aucun contenu d’outil n’est copié dans Industry.

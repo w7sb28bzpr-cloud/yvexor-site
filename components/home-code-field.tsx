@@ -53,17 +53,27 @@ function padToLines(block: string, minLines: number): string {
   return padded;
 }
 
-const FALLBACK_MAX_LINES = 36;
-const MIN_MAX_LINES = 24;
+/** Also the line count of the static HTML: enough to overflow common hero heights, so the
+ * field is full before hydration and the line budget does not change once it hydrates. */
+const MIN_MAX_LINES = 64;
 const LINE_BUFFER = 6;
 const TEXT_RENDER_INTERVAL = 48;
+const GLIDE_MS = 260;
+
+const seedFor = (startProgram: number) => padToLines(programs[(startProgram + 1) % programs.length].join("\n\n"), MIN_MAX_LINES)
+  .split("\n").slice(-MIN_MAX_LINES).join("\n");
+const lastLineIndex = (value: string) => value.split("\n").length - 1;
 
 function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram: number; initialDelay: number; speedOffset: number }) {
-  const [text, setText] = useState("");
-  const [activeLine, setActiveLine] = useState(-1);
+  const [text, setText] = useState(() => seedFor(startProgram));
+  const [activeLine, setActiveLine] = useState(() => lastLineIndex(seedFor(startProgram)));
+  /** Running id of the first rendered line, so each line keeps its own element (and key)
+   * while it moves up instead of every element swapping its text on each new line. */
+  const [firstLine, setFirstLine] = useState(0);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const hasScrolledRef = useRef(false);
-  const maxLinesRef = useRef(FALLBACK_MAX_LINES);
+  const codeRef = useRef<HTMLPreElement>(null);
+  const anchorRef = useRef<{ text: string; y: number } | null>(null);
+  const maxLinesRef = useRef(MIN_MAX_LINES);
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -75,6 +85,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     let snippetIndex = 0;
     let charIndex = 0;
     let output = "";
+    let first = 0;
     let charCounter = 0;
     let lastPaintAt = 0;
 
@@ -87,21 +98,26 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     measure();
 
     const seedProgram = programs[(startProgram + 1) % programs.length].join("\n\n");
-    const seed = padToLines(seedProgram, maxLinesRef.current);
 
     const trim = (value: string) => {
       const lines = value.split("\n");
-      return lines.length > maxLinesRef.current ? lines.slice(-maxLinesRef.current).join("\n") : value;
+      if (lines.length <= maxLinesRef.current) return value;
+      first += lines.length - maxLinesRef.current;
+      return lines.slice(-maxLinesRef.current).join("\n");
     };
-    const publish = () => {
-      setText(output);
-      setActiveLine(output.split("\n").length - 1);
+    const show = (value: string, active: number) => {
+      output = value;
+      setText(value);
+      setActiveLine(active);
+      setFirstLine(first);
       lastPaintAt = performance.now();
     };
+    const publish = () => show(output, lastLineIndex(output));
     /** Prepends filler above the existing (unchanged) tail until the new line budget is met. */
     const growToBudget = (value: string) => {
       let result = value;
       while (result.split("\n").length < maxLinesRef.current) result = seedProgram + "\n\n" + result;
+      first -= lastLineIndex(result) - lastLineIndex(value);
       return result;
     };
 
@@ -149,23 +165,15 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     const onMotion = () => {
       clear();
       if (motion.matches) {
-        if (viewport) viewport.scrollTo({ top: viewport.scrollTop, behavior: "auto" });
         measure();
-        const full = padToLines(fullSource, maxLinesRef.current);
-        output = full;
-        setText(full);
-        setActiveLine(-1);
-        lastPaintAt = performance.now();
-        if (viewport) viewport.scrollTop = 0;
+        show(padToLines(fullSource, maxLinesRef.current), -1);
       } else {
         measure();
-        output = padToLines(seedProgram, maxLinesRef.current);
         programIndex = startProgram;
         snippetIndex = 0;
         charIndex = 0;
-        setText(output);
-        setActiveLine(output.split("\n").length - 1);
-        lastPaintAt = performance.now();
+        output = padToLines(seedProgram, maxLinesRef.current);
+        publish();
         if (visible && !document.hidden) schedule(initialDelay);
       }
     };
@@ -174,20 +182,14 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       measure();
       if (motion.matches) {
         if (maxLinesRef.current === previousMax) return;
-        const full = padToLines(fullSource, maxLinesRef.current);
-        output = full;
-        setText(full);
-        setActiveLine(-1);
-        lastPaintAt = performance.now();
+        show(padToLines(fullSource, maxLinesRef.current), -1);
         return;
       }
       const lineCount = output.split("\n").length;
       if (lineCount < maxLinesRef.current) output = growToBudget(output);
       else if (lineCount > maxLinesRef.current) output = trim(output);
       else return;
-      setText(output);
-      setActiveLine(output.split("\n").length - 1);
-      lastPaintAt = performance.now();
+      publish();
     };
 
     const observer = new IntersectionObserver(([entry]) => {
@@ -198,16 +200,11 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     if (viewport) observer.observe(viewport);
 
     if (motion.matches) {
-      const full = padToLines(fullSource, maxLinesRef.current);
-      output = full;
-      setText(full);
-      setActiveLine(-1);
-      lastPaintAt = performance.now();
+      show(padToLines(fullSource, maxLinesRef.current), -1);
     } else {
-      output = seed;
-      setText(seed);
-      setActiveLine(seed.split("\n").length - 1);
-      lastPaintAt = performance.now();
+      // Keep the server-rendered tail: only lines hidden above the field change.
+      output = growToBudget(trim(seedFor(startProgram)));
+      publish();
       if (viewport) visible = viewport.getBoundingClientRect().bottom > 0 && viewport.getBoundingClientRect().top < window.innerHeight;
       if (visible && !document.hidden) schedule(initialDelay);
     }
@@ -225,20 +222,33 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     };
   }, [initialDelay, speedOffset, startProgram]);
 
+  /** The stream is bottom-anchored, so every new line pushes the text up in layout.
+   * FLIP: offset the block back to where the previous line was, then glide it to 0
+   * with a compositor-only transform instead of letting the text jump. */
   useLayoutEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport || activeLine < 0) return;
-    const top = viewport.scrollHeight;
-    if (!hasScrolledRef.current) {
-      viewport.scrollTop = top;
-      hasScrolledRef.current = true;
-      return;
-    }
-    viewport.scrollTo({ top, behavior: "smooth" });
-  }, [activeLine]);
+    const code = codeRef.current;
+    const lines = code?.children;
+    const last = lines?.[lines.length - 1] as HTMLElement | undefined;
+    if (!code || !lines || !last) return;
+    const lastText = text.slice(text.lastIndexOf("\n") + 1);
+    const previous = anchorRef.current;
+    anchorRef.current = { text: lastText, y: code.offsetTop + last.offsetTop };
+    if (!previous || activeLine < 0 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // The line typed before this render is either still the last one or the one just above it.
+    const anchor = (lastText.startsWith(previous.text) ? last : lines[lines.length - 2]) as HTMLElement | undefined;
+    if (!anchor) return;
+    const shift = previous.y - (code.offsetTop + anchor.offsetTop);
+    if (shift <= 0) return;
+    // Additive, so a glide started before the previous one ends stacks on it without a jump.
+    code.animate(
+      [{ transform: `translateY(${shift}px)` }, { transform: "translateY(0)" }],
+      { duration: GLIDE_MS, easing: "cubic-bezier(.22,1,.36,1)", composite: "add" },
+    );
+  }, [text, activeLine]);
 
   return <div ref={viewportRef} className={styles.stream} aria-hidden="true">
-    <pre className={styles.code}>{text.split("\n").map((line, index, all) => <span className={index === activeLine ? styles.activeLine : styles.oldLine} key={`${index}-${all.length}`}>{line || " "}{index === activeLine && <span className={styles.caret} />}{index < all.length - 1 ? "\n" : ""}</span>)}</pre>
+    <pre ref={codeRef} className={styles.code}>{text.split("\n").map((line, index, all) => <span className={index === activeLine ? styles.activeLine : styles.oldLine} key={firstLine + index}>{line || " "}{index === activeLine && <span className={styles.caret} />}{index < all.length - 1 ? "\n" : ""}</span>)}</pre>
   </div>;
 }
 

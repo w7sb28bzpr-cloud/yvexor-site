@@ -1,22 +1,29 @@
-.field { position: relative; display: flex; width: 100%; min-width: 100%; max-width: none; height: 100%; align-items: center; justify-content: center; overflow: hidden; padding: 0; color: rgba(255,255,255,.9); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(.7rem, 1vw, .9rem); line-height: 1.85; opacity: .8; }
-.ambient { position: absolute; inset: 0; width: 100%; max-width: none; height: 100%; overflow: hidden; margin: 0; color: rgba(255,255,255,.8); font: inherit; line-height: inherit; white-space: pre-wrap; overflow-wrap: anywhere; columns: 2; column-gap: clamp(1rem, 5vw, 5rem); column-fill: auto; opacity: .62; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.08) 0%, rgba(0,0,0,.12) 45%, #000 86%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.08) 0%, rgba(0,0,0,.12) 45%, #000 86%); }
-.viewport { position: relative; z-index: 1; display: flex; width: 100%; max-width: none; height: 100%; align-items: center; justify-content: center; overflow: hidden; scrollbar-width: none; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.1) 0%, rgba(0,0,0,.18) 45%, #000 86%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.1) 0%, rgba(0,0,0,.18) 45%, #000 86%); }
-.code { margin: 0; white-space: pre; color: rgba(255,255,255,.95); }
-.keyword { color: #c4b5fd; }
-.function { color: #93c5fd; }
-.string { color: #fdba74; }
-.comment { color: #a7adb5; }
-.success { color: #86efac; }
-.caret { display: inline-block; width: .48rem; height: 1.05em; margin-left: .12rem; background: #68c9de; vertical-align: -.18em; animation: blink 1s steps(2, start) infinite; }
+.field { position: absolute; inset: 0; display: grid; width: 100%; height: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: hidden; color: rgba(255,255,255,.9); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(.7rem, 1vw, .9rem); line-height: 1.85; opacity: .8; }
+.stream { position: relative; display: flex; min-width: 0; width: 100%; height: 100%; flex-direction: column; justify-content: flex-end; overflow: hidden; padding: clamp(1rem, 3vw, 3rem); scrollbar-width: none; mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); }
+.stream:first-child { border-right: 1px solid rgba(255,255,255,.035); }
+.code { position: relative; width: 100%; margin: auto 0 0; padding: 0 clamp(.5rem, 2vw, 2rem); white-space: pre-wrap; overflow-wrap: anywhere; color: rgba(255,255,255,.48); }
+.oldLine, .activeLine { transition: color 1s ease, opacity 1s ease; }
+.oldLine { color: rgba(255,255,255,.34); opacity: .62; }
+.activeLine { color: rgba(235,247,250,.96); opacity: 1; }
+.caret { display: inline-block; width: .44rem; height: 1em; margin-left: .12rem; background: #68c9de; vertical-align: -.16em; animation: blink .85s steps(2, start) infinite; }
 @keyframes blink { to { visibility: hidden; } }
+
 @media (max-width: 800px) {
-  .field { width: 100%; min-width: 100%; max-width: none; height: 100%; align-items: center; padding: 0; font-size: clamp(.62rem, 1.4vw, .78rem); opacity: .82; }
-  .viewport { width: 100%; max-width: none; height: 100%; }
-  .ambient { columns: 2; column-gap: clamp(.65rem, 3vw, 1.5rem); opacity: .6; }
+  .field { grid-template-columns: repeat(2, minmax(0, 1fr)); font-size: clamp(.6rem, 1.4vw, .74rem); opacity: .84; }
+  .stream { padding: .8rem .45rem; }
+  .code { padding-inline: .35rem; }
 }
+
 @media (max-width: 540px) {
-  .field { width: 100%; min-width: 100%; max-width: none; height: 100%; padding: 0; font-size: .61rem; opacity: .82; }
-  .viewport { width: 100%; max-width: none; }
-  .ambient { columns: 2; column-gap: .5rem; }
+  .field { grid-template-columns: repeat(2, minmax(0, 1fr)); font-size: .61rem; line-height: 1.75; }
+  .stream { padding: .8rem .35rem; }
+  .code { padding-inline: .2rem; }
 }
-@media (prefers-reduced-motion: reduce) { .caret { animation: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .field { font-size: clamp(.52rem, .75vw, .64rem); line-height: 1.35; opacity: .62; }
+  .stream { padding: .5rem; mask-image: none; -webkit-mask-image: none; }
+  .code { padding-inline: .15rem; }
+  .oldLine, .activeLine { transition: none; }
+  .caret { display: none; animation: none; }
+}

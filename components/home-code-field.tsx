@@ -8,7 +8,8 @@ const lines: Token[][] = [
   [{ text: "// Une réponse construite autour du besoin", kind: "comment" }],
   [{ text: "const projet = yvexor.concevoir({\n", kind: "keyword" }, { text: "  besoin: ", kind: "function" }, { text: "\"simplifier l’activité\"", kind: "string" }, { text: ",\n  application: ", kind: "function" }, { text: "\"métier\"", kind: "string" }, { text: ",\n});" }],
   [{ text: "projet.augmenter({\n", kind: "function" }, { text: "  intelligence: ", kind: "function" }, { text: "\"IA utile\"", kind: "string" }, { text: ",\n  automatisation: ", kind: "function" }, { text: "true", kind: "keyword" }, { text: ",\n});" }],
-  [{ text: "connecter(projet, {\n", kind: "function" }, { text: "  capteur: ", kind: "function" }, { text: "\"température\"", kind: "string" }, { text: ",\n  contrôleur: ", kind: "function" }, { text: "\"microcontrôleur\"", kind: "string" }, { text: ",\n  paiement: ", kind: "function" }, { text: "true", kind: "keyword" }, { text: ",\n});" }],
+  [{ text: "connecter(projet, {\n", kind: "function" }, { text: "  caisse: ", kind: "function" }, { text: "true", kind: "keyword" }, { text: ",\n  paiement: ", kind: "function" }, { text: "true", kind: "keyword" }, { text: ",\n  api: ", kind: "function" }, { text: "\"services métier\"", kind: "string" }, { text: ",\n});" }],
+  [{ text: "relierAuTerrain(projet, {\n", kind: "function" }, { text: "  capteur: ", kind: "function" }, { text: "\"température\"", kind: "string" }, { text: ",\n  contrôleur: ", kind: "function" }, { text: "\"Raspberry Pi / microcontrôleur\"", kind: "string" }, { text: ",\n});" }],
   [{ text: "superviser(projet, [", kind: "function" }, { text: "\"alertes\", \"équipement\", \"activité\"", kind: "string" }, { text: "]);\n" }],
   [{ text: "déployer(projet);\n\n" }],
   [{ text: "> deploy OK ✔", kind: "success" }],
@@ -17,6 +18,46 @@ const lines: Token[][] = [
 const tokens = lines.flatMap((line, index) => [...line, ...(index < lines.length - 1 ? [{ text: "\n" }] : [])]);
 const source = tokens.map((token) => token.text).join("");
 const delayFor = (index: number) => 36 + ((index * 17) % 47);
+const capabilities = ["Applications", "IA", "Automatisation", "Systèmes connectés", "Infrastructure", "Équipements & terrain"];
+
+export function HomeCapabilities({ className, activeClassName, separatorClassName }: { className?: string; activeClassName?: string; separatorClassName?: string }) {
+  const [active, setActive] = useState<number | null>(null);
+
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: number | undefined;
+    const clear = () => { if (timer !== undefined) window.clearTimeout(timer); timer = undefined; };
+    const advance = () => {
+      clear();
+      if (motion.matches || document.hidden) return;
+      timer = window.setTimeout(() => {
+        setActive((current) => current === null ? 0 : (current + 1) % capabilities.length);
+        advance();
+      }, 2600);
+    };
+    const sync = () => {
+      clear();
+      if (motion.matches) setActive(null);
+      else { setActive(0); advance(); }
+    };
+    const visibility = () => document.hidden ? clear() : advance();
+    sync();
+    motion.addEventListener("change", sync);
+    document.addEventListener("visibilitychange", visibility);
+    return () => {
+      clear();
+      motion.removeEventListener("change", sync);
+      document.removeEventListener("visibilitychange", visibility);
+    };
+  }, []);
+
+  return <p className={className} aria-label={capabilities.join(", ")}>
+    {capabilities.map((capability, index) => <span key={capability}>
+      {index > 0 && <span className={separatorClassName} aria-hidden="true"> · </span>}
+      <span className={active === index ? activeClassName : undefined} aria-hidden="true">{capability}</span>
+    </span>)}
+  </p>;
+}
 
 export function HomeCodeField() {
   const [position, setPosition] = useState(0);
@@ -83,7 +124,6 @@ export function HomeCodeField() {
 
   let remaining = position;
   return <div className={styles.field} aria-hidden="true">
-    <div className={styles.toolbar}><span className={styles.dots}><i /><i /><i /></span><span>yvexor / solution.ts</span><span className={styles.language}>TypeScript</span></div>
     <div ref={scrollRef} className={styles.viewport}>
       <pre className={styles.code}><code>{tokens.map((token, tokenIndex) => {
         const visible = token.text.slice(0, Math.max(0, Math.min(token.text.length, remaining)));
@@ -91,6 +131,5 @@ export function HomeCodeField() {
         return visible ? <span className={token.kind ? styles[token.kind] : undefined} key={tokenIndex}>{visible}</span> : null;
       })}<span className={styles.caret} /></code></pre>
     </div>
-    <span className={styles.caption}>Logiciel · connexion · terrain</span>
   </div>;
 }

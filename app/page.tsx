@@ -1,7 +1,7 @@
 import { SiteHeader } from "../components/navigation";
 import { SiteFooter } from "../components/site-footer";
 import { PageData } from "../components/structured-data";
-import { HomeCodeField } from "../components/home-code-field";
+import { HomeCapabilities, HomeCodeField } from "../components/home-code-field";
 import { homeTitle, homeDescription } from "../lib/seo";
 import { getPublishedProjects } from "../lib/content";
 import { HomeJourney } from "./home-journey";
@@ -32,15 +32,15 @@ export default function Home() {
       <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>YVEXOR — Technologie sur mesure</p>
-            <h1 id="home-title" className="site-display">Du logiciel au terrain, construisons la solution autour de votre besoin.</h1>
-            <p className={styles.heroLead}>Applications, IA, automatisation, systèmes connectés, commerce et infrastructure : YVEXOR conçoit et relie les technologies utiles à votre activité.</p>
+            <h1 id="home-title" aria-label="YVEXOR — Technologie sur mesure" className={`site-display ${styles.heroTitle}`}><span>YVEXOR</span><span>Technologie sur mesure.</span></h1>
+            <HomeCapabilities className={styles.heroCapabilities} activeClassName={styles.heroCapabilityActive} separatorClassName={styles.heroCapabilitySeparator} />
+            <p className={styles.heroLead}>Du logiciel au terrain, nous construisons la solution autour de votre besoin.</p>
             <div className={styles.heroActions}>
               <a className="site-button" href="/solutions/">Découvrir les solutions</a>
               <a className={styles.secondaryAction} href="/metiers/">Explorer par métier</a>
             </div>
           </div>
-          <div className={styles.heroVisual}>
+          <div className={styles.heroVisual} aria-hidden="true">
             <HomeCodeField />
           </div>
         </div>

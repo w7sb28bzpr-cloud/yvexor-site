@@ -10,7 +10,9 @@ const tags=(html,name)=>[...html.matchAll(new RegExp(`<${name}\\b[^>]*>`,'g'))].
 const meta=(html,key)=>tags(html,'meta').find(m=>m.name===key||m.property===key)?.content;
 const projectsHtml=read('projets/index.html');assert.match(meta(projectsHtml,'robots')||'',/noindex/,'With zero approved projects, /projets/ must remain noindex');
 const homeHtml=read('index.html');
-assert.ok(homeHtml.includes('Du logiciel au terrain, construisons la solution autour de votre besoin.'),'Homepage needs the approved YVEXOR positioning');
+assert.ok(homeHtml.includes('Du logiciel au terrain, nous construisons la solution autour de votre besoin.'),'Homepage needs the approved YVEXOR positioning');
+assert.ok(homeHtml.includes('aria-label="YVEXOR — Technologie sur mesure"'),'Homepage needs the approved static YVEXOR H1');
+assert.ok(['Applications','IA','Automatisation','Systèmes connectés','Infrastructure','Équipements &amp; terrain'].every(capability=>homeHtml.includes(capability)),'Homepage needs the full YVEXOR capabilities in static HTML');
 assert.ok(homeHtml.includes('Découvrir les solutions')&&homeHtml.includes('/solutions/'),'Homepage must link to the Solutions hub');
 assert.ok(homeHtml.includes('Explorer par métier')&&homeHtml.includes('/metiers/'),'Homepage must link to the Métiers hub');
 assert.ok(homeHtml.includes('Votre besoin')&&homeHtml.includes('Suivi &amp; évolution'),'The process must be present in static HTML');

@@ -98,6 +98,17 @@ assert.match(heroWordSource, /document\.hidden/, 'The rotating word must pause w
 assert.match(heroWordSource, /prefers-reduced-motion:\s*reduce/, 'The rotating word must check prefers-reduced-motion');
 assert.match(heroWordSource, /el\.textContent = ROTATING_WORDS\[0\]/, 'Reduced motion must reset to the default "sur mesure." word');
 assert.match(heroWordSource, /aria-hidden="true"/, 'The animated word must stay hidden from assistive tech so it is never re-announced');
+assert.match(heroWordSource, /let exitAnimation: Animation \| undefined/);
+assert.match(heroWordSource, /let enterAnimation: Animation \| undefined/);
+assert.match(heroWordSource, /animation\.onfinish = null;\s*animation\.cancel\(\)/, 'Paused or unmounted WAAPI animations must have callbacks detached before cancellation');
+assert.match(heroWordSource, /const pause = \(\) => \{\s*clear\(\);\s*cancelAnimations\(\);\s*\}/, 'Pausing must clear the timer and cancel both active animations');
+assert.match(heroWordSource, /if \(!visible\) pause\(\)/, 'Leaving the viewport must pause and cancel the current transition');
+assert.match(heroWordSource, /if \(document\.hidden\) pause\(\)/, 'Hiding the tab must pause and cancel the current transition');
+assert.match(heroWordSource, /currentCycle !== cycle \|\| !visible \|\| document\.hidden \|\| motion\.matches/, 'A stale exit callback must not advance the word after a pause');
+assert.match(heroWordSource, /stopped = true;\s*pause\(\);\s*observer\.disconnect\(\)/, 'Unmount must stop callbacks, cancel animations and disconnect the observer');
+assert.match(heroWordSource, /exit\.cancel\(\)/);
+assert.match(heroWordSource, /enter\.cancel\(\)/);
+assert.doesNotMatch(heroWordSource, /fill:\s*"forwards"/, 'Finished animations must not leave persistent fill effects');
 assert.match(homePageCss, /\.heroRotatingWrap\s*\{[^}]*height:\s*1\.08em[^}]*overflow:\s*hidden/, 'The rotating word container height must stay fixed to avoid vertical jumps');
 assert.match(homePageCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.heroRotatingWord\s*\{/, 'Reduced motion must also disable the rotating word transform/opacity transition hints');
 const footerSource = fs.readFileSync('components/site-footer.tsx', 'utf8');

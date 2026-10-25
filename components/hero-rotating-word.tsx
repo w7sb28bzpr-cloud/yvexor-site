@@ -22,10 +22,27 @@ export function HeroRotatingWord({ wrapClassName, wordClassName }: { wrapClassNa
     let timer: number | undefined;
     let stopped = false;
     let visible = false;
+    let cycle = 0;
+    let exitAnimation: Animation | undefined;
+    let enterAnimation: Animation | undefined;
 
     const clear = () => {
       if (timer !== undefined) window.clearTimeout(timer);
       timer = undefined;
+    };
+    const cancelAnimations = () => {
+      cycle++;
+      for (const animation of [exitAnimation, enterAnimation]) {
+        if (!animation) continue;
+        animation.onfinish = null;
+        animation.cancel();
+      }
+      exitAnimation = undefined;
+      enterAnimation = undefined;
+    };
+    const pause = () => {
+      clear();
+      cancelAnimations();
     };
     const schedule = () => {
       clear();
@@ -35,39 +52,57 @@ export function HeroRotatingWord({ wrapClassName, wordClassName }: { wrapClassNa
     };
     const swap = () => {
       if (stopped || !visible || document.hidden || motion.matches) return;
+      cancelAnimations();
+      const currentCycle = cycle;
       const exit = el.animate(
         [{ transform: "translateY(0)", opacity: 1 }, { transform: "translateY(-100%)", opacity: 0 }],
-        { duration: EXIT_MS, easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" },
+        { duration: EXIT_MS, easing: "cubic-bezier(.4,0,1,1)" },
       );
+      exitAnimation = exit;
       exit.onfinish = () => {
-        if (stopped) return;
+        if (stopped || currentCycle !== cycle || !visible || document.hidden || motion.matches) {
+          exit.onfinish = null;
+          if (exitAnimation === exit) exitAnimation = undefined;
+          exit.cancel();
+          return;
+        }
+        exit.onfinish = null;
+        exit.cancel();
+        exitAnimation = undefined;
         index = (index + 1) % ROTATING_WORDS.length;
         el.textContent = ROTATING_WORDS[index];
-        el.animate(
+        const enter = el.animate(
           [{ transform: "translateY(100%)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }],
-          { duration: ENTER_MS, easing: "cubic-bezier(0,0,.2,1)", fill: "forwards" },
+          { duration: ENTER_MS, easing: "cubic-bezier(0,0,.2,1)" },
         );
+        enterAnimation = enter;
+        enter.onfinish = () => {
+          if (enterAnimation !== enter) return;
+          enter.onfinish = null;
+          enter.cancel();
+          enterAnimation = undefined;
+        };
         schedule();
       };
     };
     const reset = () => {
-      el.getAnimations().forEach((animation) => animation.cancel());
+      cancelAnimations();
       index = 0;
       el.textContent = ROTATING_WORDS[0];
     };
     const onVisibility = () => {
-      clear();
-      if (!document.hidden && visible && !motion.matches) schedule();
+      if (document.hidden) pause();
+      else if (visible && !motion.matches) schedule();
     };
     const onMotion = () => {
-      clear();
+      pause();
       reset();
       if (!motion.matches && visible && !document.hidden) schedule();
     };
 
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
-      if (!visible) clear();
+      if (!visible) pause();
       else if (!motion.matches && !document.hidden) schedule();
     }, { threshold: 0.01 });
     observer.observe(el);
@@ -82,7 +117,7 @@ export function HeroRotatingWord({ wrapClassName, wordClassName }: { wrapClassNa
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       stopped = true;
-      clear();
+      pause();
       observer.disconnect();
       motion.removeEventListener("change", onMotion);
       document.removeEventListener("visibilitychange", onVisibility);

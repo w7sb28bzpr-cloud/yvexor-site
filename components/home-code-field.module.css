@@ -1,4 +1,6 @@
-.field { position: absolute; inset: 0; display: grid; width: 100%; height: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: hidden; color: rgba(255,255,255,.9); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(.7rem, 1vw, .9rem); line-height: 1.85; opacity: .8; }
+/* overflow-anchor: none keeps the moving code lines from being picked as the page's scroll
+ * anchor, which made the browser scroll the page back up a line at a time. */
+.field { position: absolute; inset: 0; display: grid; overflow-anchor: none; width: 100%; height: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: hidden; color: rgba(255,255,255,.9); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(.7rem, 1vw, .9rem); line-height: 1.85; opacity: .8; }
 .stream { position: relative; display: flex; min-width: 0; width: 100%; height: 100%; flex-direction: column; justify-content: flex-end; overflow: hidden; contain: layout paint; padding: clamp(1rem, 3vw, 3rem); scrollbar-width: none; mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); }
 .stream:first-child { border-right: 1px solid rgba(255,255,255,.035); }
 /* Fixed to the stream height with lines stacked from the bottom: new or wrapping lines move

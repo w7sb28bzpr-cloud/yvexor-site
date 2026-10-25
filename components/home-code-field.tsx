@@ -90,6 +90,12 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       const lines = value.split("\n");
       return lines.length > maxLinesRef.current ? lines.slice(-maxLinesRef.current).join("\n") : value;
     };
+    /** Prepends filler above the existing (unchanged) tail until the new line budget is met. */
+    const growToBudget = (value: string) => {
+      let result = value;
+      while (result.split("\n").length < maxLinesRef.current) result = seedProgram + "\n\n" + result;
+      return result;
+    };
 
     const clear = () => {
       if (timer !== undefined) window.clearTimeout(timer);
@@ -155,13 +161,22 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       }
     };
     const onResize = () => {
+      const previousMax = maxLinesRef.current;
       measure();
       if (motion.matches) {
+        if (maxLinesRef.current === previousMax) return;
         const full = padToLines(fullSource, maxLinesRef.current);
         output = full;
         setText(full);
         setActiveLine(-1);
+        return;
       }
+      const lineCount = output.split("\n").length;
+      if (lineCount < maxLinesRef.current) output = growToBudget(output);
+      else if (lineCount > maxLinesRef.current) output = trim(output);
+      else return;
+      setText(output);
+      setActiveLine(output.split("\n").length - 1);
     };
 
     const observer = new IntersectionObserver(([entry]) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import type { BusinessTool, ToolIconId } from "../../data/content-types";
+import type { PublicBusinessTool, ToolIconId } from "../../data/content-types";
 import styles from "./tool-library.module.css";
 
 const iconPaths: Record<ToolIconId, ReactNode> = {
@@ -14,9 +14,9 @@ function ToolIcon({ icon }: { icon: ToolIconId }) {
   return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round">{iconPaths[icon]}</svg>;
 }
 
-export function ToolLibrary({ tools }: { tools: BusinessTool[] }) {
+export function ToolLibrary({ tools }: { tools: PublicBusinessTool[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [selected, setSelected] = useState<BusinessTool | null>(null);
+  const [selected, setSelected] = useState<PublicBusinessTool | null>(null);
 
   useEffect(() => {
     if (selected && dialogRef.current && !dialogRef.current.open) dialogRef.current.showModal();

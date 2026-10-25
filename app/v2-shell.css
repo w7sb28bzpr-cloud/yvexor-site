@@ -199,6 +199,10 @@ body { padding-bottom: 0; }
   .v2-directory__list p { font-size: 14px; }
 }
 
+@media (max-width: 430px) {
+  .site-header.v2-header .header-cta { display: none; }
+}
+
 @media (max-width: 350px) {
   .site-header.v2-header,
   .site-header.v2-header.is-scrolled { padding-inline: 10px; }

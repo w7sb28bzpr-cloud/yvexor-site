@@ -37,6 +37,10 @@ for (const solution of solutions.filter((item) => item.id !== "equipment-retrofi
 }
 assert.deepEqual(getPublishedProjects(), [], "No fictional or draft project should be public");
 assert.deepEqual(getPublicTools().map((tool) => tool.id), ["business-website", "business-management-app", "cash-register"], "Only confirmed application offers appear in the initial public library, with general business tools before the historic POS offer");
+const internalPlatformTool = { ...businessTools[0], implementationPlatformId: "odoo" };
+const projectedPlatformTool = getPublicTools([internalPlatformTool])[0];
+assert.equal("implementationPlatformId" in projectedPlatformTool, false, "Internal implementation platform metadata must not enter public tool payloads");
+assert.equal(JSON.stringify(projectedPlatformTool).includes("odoo"), false, "Internal implementation platform IDs must not be serialized to public clients");
 const draftTool = { ...businessTools[0], id: "tool-draft", slug: "crm-a-confirmer", availabilityStatus: "draft", solutionIds: [] };
 assert.deepEqual(getPublicTools([draftTool]), [], "Draft business tools never enter public views");
 assert.ok(validateContentGraph({ tools: [{ ...businessTools[0], solutionIds: ["missing-solution"] }] }).some((error) => error.includes("Unknown solution missing-solution on tool")), "Unknown Solution relations on tools must fail validation");

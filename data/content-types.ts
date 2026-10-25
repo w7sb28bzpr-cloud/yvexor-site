@@ -46,6 +46,23 @@ export type BusinessTool = {
   availabilityStatus: "draft" | "available";
 };
 
+/** Explicit public projection; internal implementation metadata never reaches client views. */
+export type PublicBusinessTool = Pick<BusinessTool,
+  | "id"
+  | "slug"
+  | "name"
+  | "shortDescription"
+  | "category"
+  | "icon"
+  | "solutionIds"
+  | "audience"
+  | "capabilities"
+  | "connections"
+  | "evolution"
+  | "canonicalPath"
+  | "availabilityStatus"
+>;
+
 export type PricingOffer =
   | { kind: "subscription"; monthlyFrom?: number; monthlyFixed?: number }
   | { kind: "oneTime"; amountFrom?: number; quoteRequired?: boolean }

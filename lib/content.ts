@@ -1,4 +1,4 @@
-import type { BusinessTool, Industry, Pricing, Project } from "../data/content-types";
+import type { BusinessTool, Industry, Pricing, Project, PublicBusinessTool } from "../data/content-types";
 import { industries, industryById } from "../data/industries";
 import { projects } from "../data/projects";
 import { seoPages } from "../data/seo-pages";
@@ -52,8 +52,22 @@ export function getPublicSolutions(): PublicSolution[] {
 }
 
 /** A tool is public only when its availability was explicitly confirmed. */
-export function getPublicTools(source: readonly BusinessTool[] = businessTools): BusinessTool[] {
-  return source.filter((tool) => tool.availabilityStatus === "available");
+export function getPublicTools(source: readonly BusinessTool[] = businessTools): PublicBusinessTool[] {
+  return source.filter((tool) => tool.availabilityStatus === "available").map((tool) => ({
+    id: tool.id,
+    slug: tool.slug,
+    name: tool.name,
+    shortDescription: tool.shortDescription,
+    category: tool.category,
+    icon: tool.icon,
+    solutionIds: tool.solutionIds,
+    audience: tool.audience,
+    capabilities: tool.capabilities,
+    connections: tool.connections,
+    evolution: tool.evolution,
+    canonicalPath: tool.canonicalPath,
+    availabilityStatus: tool.availabilityStatus,
+  }));
 }
 
 /** The bespoke doorway uses explicit data metadata; clusters remain navigation groupings. */

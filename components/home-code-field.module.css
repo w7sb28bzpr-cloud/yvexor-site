@@ -1,5 +1,6 @@
-.field { display: flex; width: min(78%, 76rem); height: 100%; align-items: center; justify-content: flex-end; overflow: hidden; padding: 2rem clamp(2rem, 7vw, 8rem) 2rem 0; color: rgba(255,255,255,.9); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(.7rem, 1vw, .9rem); line-height: 1.85; opacity: .7; mask-image: linear-gradient(90deg, transparent 0%, #000 28%, #000 80%, transparent 100%); }
-.viewport { width: max-content; max-width: 100%; max-height: 82%; overflow: hidden; scrollbar-width: none; }
+.field { position: relative; display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; overflow: hidden; padding: 2rem clamp(1rem, 6vw, 6rem); color: rgba(255,255,255,.9); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(.7rem, 1vw, .9rem); line-height: 1.85; opacity: .8; }
+.ambient { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; margin: 0; color: rgba(255,255,255,.8); font: inherit; line-height: inherit; white-space: pre-wrap; overflow-wrap: anywhere; columns: 2; column-gap: clamp(2rem, 8vw, 8rem); column-fill: balance; opacity: .62; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.08) 0%, rgba(0,0,0,.12) 45%, #000 86%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.08) 0%, rgba(0,0,0,.12) 45%, #000 86%); }
+.viewport { position: relative; z-index: 1; display: flex; width: min(100%, 86ch); max-width: 100%; height: 100%; align-items: center; justify-content: center; overflow: hidden; scrollbar-width: none; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.1) 0%, rgba(0,0,0,.18) 45%, #000 86%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.1) 0%, rgba(0,0,0,.18) 45%, #000 86%); }
 .code { margin: 0; white-space: pre; color: rgba(255,255,255,.95); }
 .keyword { color: #c4b5fd; }
 .function { color: #93c5fd; }
@@ -9,11 +10,12 @@
 .caret { display: inline-block; width: .48rem; height: 1.05em; margin-left: .12rem; background: #68c9de; vertical-align: -.18em; animation: blink 1s steps(2, start) infinite; }
 @keyframes blink { to { visibility: hidden; } }
 @media (max-width: 800px) {
-  .field { width: 100%; height: min(46%, 24rem); align-items: flex-end; padding: 0 0 1.5rem; font-size: clamp(.62rem, 1.4vw, .78rem); opacity: .28; mask-image: linear-gradient(0deg, #000 0%, #000 45%, transparent 100%); }
-  .viewport { width: 100%; max-width: 100%; max-height: 100%; }
+  .field { width: 100%; height: 100%; align-items: center; padding: 1.5rem .5rem; font-size: clamp(.62rem, 1.4vw, .78rem); opacity: .82; }
+  .viewport { width: 100%; max-width: 100%; height: 100%; }
+  .ambient { columns: 1; column-gap: 0; opacity: .55; }
 }
 @media (max-width: 540px) {
-  .field { height: 37%; padding-bottom: 1rem; font-size: .61rem; opacity: .23; }
+  .field { height: 100%; padding: 1rem .35rem; font-size: .61rem; opacity: .82; }
   .viewport { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .caret { animation: none; } }

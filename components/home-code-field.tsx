@@ -124,6 +124,7 @@ export function HomeCodeField() {
 
   let remaining = position;
   return <div className={styles.field} aria-hidden="true">
+    <pre className={styles.ambient}>{source.repeat(4)}</pre>
     <div ref={scrollRef} className={styles.viewport}>
       <pre className={styles.code}><code>{tokens.map((token, tokenIndex) => {
         const visible = token.text.slice(0, Math.max(0, Math.min(token.text.length, remaining)));

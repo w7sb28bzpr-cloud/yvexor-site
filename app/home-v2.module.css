@@ -32,7 +32,7 @@
 .journey li:not(:last-child)::after { position: absolute; top: 50%; right: -.55rem; z-index: 1; padding-inline: .15rem; transform: translate(50%, -50%); background: #090909; color: #68c9de; content: "→"; font-size: .9rem; }
 
 /* The homepage header sits over the hero. Every other page keeps the shared header layout. */
-.shell :global(.site-header.v2-header--immersive) { position: absolute; z-index: 50; inset: 0 0 auto; width: 100%; min-height: 0; padding-inline: var(--site-gutter); border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; color: #fff; transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, top 220ms ease; }
+.shell :global(.site-header.v2-header--immersive) { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; min-height: 0; padding-inline: var(--site-gutter); transform: none; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; color: #fff; transition: top 360ms cubic-bezier(.22,1,.36,1), left 360ms cubic-bezier(.22,1,.36,1), width 360ms cubic-bezier(.22,1,.36,1), padding 360ms cubic-bezier(.22,1,.36,1), transform 360ms cubic-bezier(.22,1,.36,1), background-color 260ms ease, border-color 260ms ease, border-radius 360ms cubic-bezier(.22,1,.36,1), box-shadow 260ms ease, backdrop-filter 260ms ease; }
 .shell :global(.site-header.v2-header--immersive .v2-header__inner) { min-height: 80px; }
 .shell :global(.site-header.v2-header--immersive .brand-logo__image) { background-image: url("/brand/yvexor-logo.webp"); }
 .shell :global(.site-header.v2-header--immersive .v2-header__nav a),
@@ -48,7 +48,7 @@
 .shell :global(.site-header.v2-header--immersive .header-menu summary .v2-menu-icon::after) { background: currentColor; }
 .shell :global(.site-header.v2-header--immersive .header-menu nav) { border-color: #343434; background: #141414; color: #f7f7f7; }
 .shell :global(.site-header.v2-header--immersive .header-menu nav a) { border-color: #343434; color: #f7f7f7; }
-.shell :global(.site-header.v2-header--immersive.is-scrolled) { position: fixed; top: 10px; left: 50%; width: min(calc(100% - 2rem), 88rem); min-height: 0; padding-inline: clamp(1rem, 3vw, 2.5rem); transform: translateX(-50%); border: 1px solid rgba(255,255,255,.18); border-radius: var(--site-radius-pill); background: rgba(12,12,12,.88); box-shadow: 0 12px 36px rgba(0,0,0,.28); backdrop-filter: blur(16px); }
+.shell :global(.site-header.v2-header--immersive.is-scrolled) { top: 10px; left: 50%; width: min(calc(100% - 2rem), 88rem); min-height: 0; padding-inline: clamp(1rem, 3vw, 2.5rem); transform: translateX(-50%); border: 1px solid rgba(255,255,255,.18); border-radius: var(--site-radius-pill); background: rgba(12,12,12,.88); box-shadow: 0 12px 36px rgba(0,0,0,.28); backdrop-filter: blur(16px); }
 
 @media (max-width: 900px) {
   .shell :global(.site-header.v2-header--immersive .v2-header__inner) { min-height: 66px; }

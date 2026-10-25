@@ -84,8 +84,8 @@ assert.match(homeCodeSource, /<CodeStream startProgram=\{1\} initialDelay=\{720\
 assert.match(homePageCss, /\.heroActions > :global\(\.site-button\)\.solutionsAction\s*\{[^}]*animation:\s*solutionsSheen 9s cubic-bezier\(\.22,1,\.36,1\) infinite/);
 assert.match(homePageCss, /\.secondaryAction::before\s*\{[^}]*bottom:\s*-1px[^}]*animation:\s*industryTrace 9s cubic-bezier\(\.22,1,\.36,1\) infinite/);
 assert.match(homePageCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?:global\(\.site-button\)\.solutionsAction\s*\{[^}]*animation:\s*none[^}]*transition:\s*none[\s\S]*?\.secondaryAction::before\s*\{[^}]*display:\s*none;\s*animation:\s*none/);
-assert.match(homePageSource, /href="\/applications\/">Applications</);
-assert.match(homePageSource, /href="\/solutions\/">Sur mesure</);
+assert.match(homePageSource, /href="\/applications\/">Nos applications</);
+assert.match(homePageSource, /href="\/solutions\/">Nos solutions</);
 assert.match(homePageSource, /aria-label="YVEXOR — Technologie sur mesure"/, 'The H1 accessible name must stay the stable approved text');
 assert.match(homePageSource, />Technologie</, 'The static first line of the title must remain its own element');
 assert.match(homePageSource, /<HeroRotatingWord /, 'The homepage must render the animated second title line');

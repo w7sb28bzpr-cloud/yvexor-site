@@ -8,6 +8,7 @@ import { ThemeControl } from "./theme-control";
 const primaryLinks = [
   { label: "Accueil", href: "/" },
   { label: "Solutions", href: "/solutions/" },
+  { label: "Applications", href: "/applications/" },
   { label: "Métiers", href: "/metiers/" },
   { label: "Projets", href: "/projets/" },
   { label: "À propos", href: "/a-propos/" },

@@ -14,7 +14,7 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
-const { filterPublishedProjects, getGeneratedIndustryPages, getGeneratedProjectPages, getGeneratedSolutionPages, getProjectSitemapPaths, getPublicProjectBySlug, getPublicTools, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
+const { filterPublishedProjects, getGeneratedIndustryPages, getGeneratedProjectPages, getGeneratedSolutionPages, getProjectSitemapPaths, getPublicProjectBySlug, getPublicTools, getPublicToolsForIndustry, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
 const { projects } = require("../data/projects.ts");
 const { getPublicSolutions } = require("../lib/content.ts");
 const { solutions } = require("../data/solutions.ts");
@@ -68,6 +68,17 @@ assert.deepEqual(getProjectSitemapPaths([draftFixture]), [], "Draft projects nev
 assert.deepEqual(getProjectSitemapPaths([fixtureProject]), ["/projets/"], "An approved in-memory project enables the hub; detail sitemap entries wait until a detail route is buildable");
 
 const industry = require("../data/industries.ts").industries[0];
+const { industries } = require("../data/industries.ts");
+assert.deepEqual(industries.map((item) => [item.id, item.businessToolIds]), [
+  ["restaurant", ["cash-register", "business-management-app", "business-website"]],
+  ["hotel", ["business-management-app", "business-website"]],
+  ["garage", ["business-management-app"]],
+], "Industries must use the approved explicit application relationships");
+assert.deepEqual(getPublicToolsForIndustry(industries[0]).map((tool) => tool.id), industries[0].businessToolIds, "Industry tools must preserve relationship order and only expose public tools");
+assert.deepEqual(getPublicToolsForIndustry(industries[0], [{ ...businessTools[0], availabilityStatus: "draft" }]), [], "Draft tools cannot render through an Industry relationship");
+assert.ok(validateContentGraph({ industries: [{ ...industries[0], businessToolIds: ["unknown-tool"] }] }).some((error) => error.includes("Unknown tool unknown-tool on industry restaurant")), "Unknown industry tool IDs must fail validation");
+assert.ok(validateContentGraph({ industries: [{ ...industries[0], businessToolIds: [businessTools[0].id] }], tools: [{ ...businessTools[0], availabilityStatus: "draft" }] }).some((error) => error.includes("cannot link to unpublished tool")), "Draft tools cannot be linked by a public Industry");
+assert.ok(validateContentGraph({ industries: [{ ...industries[0], businessToolIds: [businessTools[0].id, businessTools[0].id] }] }).some((error) => error.includes("Duplicate businessToolIds on industry restaurant")), "Industry tool relationships must not duplicate IDs");
 const relatedSolutions = solutions.map((solution) => solution.id === fixtureProject.solutionIds[0]
   ? { ...solution, projectIds: [fixtureProject.id] }
   : solution);

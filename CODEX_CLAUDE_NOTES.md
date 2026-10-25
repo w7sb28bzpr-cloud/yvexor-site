@@ -10,6 +10,14 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 
 # SOURCE DE VÉRITÉ — Direction & Architecture YVEXOR
 
+### État actuel — expérience Métiers (2026-10-25)
+
+- Le portail `/metiers/` et les trois activités publiées restent pilotés par `data/industries.ts`. Le modèle Industry porte désormais `businessToolIds` explicites, avec les outils et leur contenu conservés uniquement dans `data/business-tools.ts`; la validation refuse IDs inconnus, doublons et outils non publiés. Les futures industries peuvent employer le visuel générique sans élargir l’union des secteurs à chaque ajout.
+- Le portail affiche Restaurant, Hôtel et Garage comme premiers univers structurés et conserve une porte Contact pour les activités non listées. Les visuels sont des pictogrammes cohérents, sans dépendance à des photos manquantes.
+- Les trois expériences détaillées sont reconstruites aux canoniques existantes `/solutions-restaurants/`, `/solutions-hotels/`, `/logiciel-garage/`. Les métadonnées, FAQ, contenu éditorial, liens liés et schémas restent issus des pages SEO existantes; aucun `/metiers/{restaurant,hotel,garage}/` n’est généré.
+- Les outils visibles sont filtrés par disponibilité et ordonnés selon `businessToolIds`. Les Solutions présentées viennent de `solutionIds`; les clusters ne structurent pas les pages Métiers. La section du logiciel au terrain s’affiche à partir des Solutions liées de connexion/retrofit.
+- Revue navigateur effectuée sur le hub et les trois destinations, aux largeurs 320, 375, 390, 430, 768, 1024 et 1440 px : pas de scroll horizontal, H1, outils et CTA contenus. Les détails FAQ utilisent les éléments natifs `details/summary`; les nouvelles pages n’ajoutent pas d’animation.
+
 *Direction produit consolidée le 2026-10-24 par Claude; état d’implémentation mis à jour le 2026-10-25 par Codex après la Phase 6 et son itération immersive. Ce document reste la source de vérité produit. La Phase 6 a initialement livré la homepage portail décrite ci-dessous; l’itération du 25-10 la simplifie selon §1bis sans changer les hubs ni les données Solutions/Métiers/Projets. La revue visuelle constate deux erreurs de cache du service worker préexistant (`public/sw.js:11`, `Response.clone()` sur un corps déjà consommé); elles sont consignées dans `CODEX_AUDIT.md` et restent à examiner séparément.*
 
 ### État livré — Phase 6 (2026-10-25)
@@ -441,6 +449,14 @@ type Pricing = {
 6. **Prix restaurant/tennis-padel cités par l'utilisateur (§10.5)** — à réconcilier avec le catalogue B2B PDF avant de les saisir dans `data/caisses.json`, ils ne sont pas dans le code aujourd'hui.
 
 ---
+
+## [Codex — 2026-10-25] — Refonte de l’expérience Métiers
+
+- Ajout des associations métier → outils via `Industry.businessToolIds` : Restaurant (`cash-register`, `business-management-app`, `business-website`), Hôtel (`business-management-app`, `business-website`), Garage (`business-management-app`). Le validateur vérifie unicité, existence et disponibilité; aucun contenu d’outil n’est copié dans Industry.
+- `/metiers/` présente ces trois univers avec des pictogrammes cohérents et une voie de contact pour toute autre activité. Les canoniques détaillées sont reconstruites à `/solutions-restaurants/`, `/solutions-hotels/` et `/logiciel-garage/`; les métadonnées, contenu éditorial, FAQ et liens viennent des pages SEO existantes. Aucun nouveau métier ou chemin `/metiers/{slug}/` n’est publié.
+- Le modèle de page consomme les outils via le filtre public, les Solutions liées par ID, et les solutions de connexion/retrofit pour le contenu logiciel ↔ terrain. Les icônes BusinessTool sont partagées avec la bibliothèque existante.
+- Contrôles : `npm run test:content`, `npm run test:seo` (64 pages indexables), `npm run test:theme`, `npx tsc --noEmit`, `npx next build` (72 routes) et `git diff --check` réussissent. Le premier build sandboxé a été bloqué par le fetch existant de `/materiel/`; le build autorisé avec accès réseau passe.
+- Revue Edge : `/metiers/` et les trois pages détaillées contrôlées à 320, 375, 390, 430, 768, 1024 et 1440 px. Aucun scroll horizontal; H1, cartes/outils et CTA dans le viewport. Aucun changement homepage, Solution hub en contenu, caisse, projet, À propos ou service worker.
 
 ## [Claude — 2026-10-21, suite]
 

@@ -70,6 +70,12 @@ export function getPublicTools(source: readonly BusinessTool[] = businessTools):
   }));
 }
 
+/** Industry tool relationships are explicit and preserve the order chosen in data. */
+export function getPublicToolsForIndustry(industry: Industry, source: readonly BusinessTool[] = businessTools): PublicBusinessTool[] {
+  const publicById = new Map(getPublicTools(source).map((tool) => [tool.id, tool]));
+  return industry.businessToolIds.map((id) => publicById.get(id)).filter((tool): tool is PublicBusinessTool => Boolean(tool));
+}
+
 /** The bespoke doorway uses explicit data metadata; clusters remain navigation groupings. */
 export function getCustomBuildSolutions(): PublicSolution[] {
   return getPublicSolutions().filter((solution) => solution.entryPoints?.includes("custom-build"));
@@ -184,7 +190,7 @@ export function validateContentGraph(source: {
   }
 
   for (const industry of checkedIndustries) {
-    for (const field of ["solutionIds", "projectIds"] as const) {
+    for (const field of ["solutionIds", "businessToolIds", "projectIds"] as const) {
       if (new Set(industry[field]).size !== industry[field].length) errors.push(`Duplicate ${field} on industry ${industry.id}`);
     }
     if (!industry.canonicalPath.startsWith("/") || !industry.canonicalPath.endsWith("/")) {
@@ -209,6 +215,11 @@ export function validateContentGraph(source: {
       const project = checkedProjects.find((item) => item.id === projectId);
       if (!project) errors.push(`Unknown project ${projectId} on industry ${industry.id}`);
       else if (!project.industryIds.includes(industry.id)) errors.push(`Missing reciprocal industry ${industry.id} on project ${projectId}`);
+    }
+    for (const toolId of industry.businessToolIds) {
+      const tool = checkedTools.find((item) => item.id === toolId);
+      if (!tool) errors.push(`Unknown tool ${toolId} on industry ${industry.id}`);
+      else if (tool.availabilityStatus !== "available") errors.push(`Industry ${industry.id} cannot link to unpublished tool ${toolId}`);
     }
   }
 

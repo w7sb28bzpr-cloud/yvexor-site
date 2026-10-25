@@ -1,18 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import type { PublicBusinessTool, ToolIconId } from "../../data/content-types";
+import { useEffect, useRef, useState } from "react";
+import type { PublicBusinessTool } from "../../data/content-types";
+import { BusinessToolIcon } from "../../components/business-tool-icon";
 import styles from "./tool-library.module.css";
-
-const iconPaths: Record<ToolIconId, ReactNode> = {
-  "cash-register": <><path d="M4 10h16v10H4z"/><path d="M7 10V6h10v4M8 14h3m2 0h3M8 17h2m3 0h3M7 20v2m10-2v2"/><path d="M6 6h2"/></>,
-  globe: <><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a15 15 0 0 1 0 18m0-18a15 15 0 0 0 0 18"/></>,
-  workflow: <><rect x="3.5" y="4" width="7" height="6" rx="1.5"/><rect x="13.5" y="14" width="7" height="6" rx="1.5"/><path d="M10.5 7h3a2 2 0 0 1 2 2v5m-5 3H7a2 2 0 0 1-2-2v-5"/></>,
-};
-
-function ToolIcon({ icon }: { icon: ToolIconId }) {
-  return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round">{iconPaths[icon]}</svg>;
-}
 
 export function ToolLibrary({ tools }: { tools: PublicBusinessTool[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -35,7 +26,7 @@ export function ToolLibrary({ tools }: { tools: PublicBusinessTool[] }) {
         aria-haspopup="dialog"
         aria-label={`${tool.name} : ${tool.shortDescription}`}
       >
-        <span className={styles.icon}><ToolIcon icon={tool.icon} /></span>
+        <span className={styles.icon}><BusinessToolIcon icon={tool.icon} /></span>
         <span className={styles.name}>{tool.name}</span>
         <span className={styles.shortDescription}>{tool.shortDescription}</span>
         <span className={styles.openHint}>Explorer <span aria-hidden="true">↗</span></span>
@@ -53,7 +44,7 @@ export function ToolLibrary({ tools }: { tools: PublicBusinessTool[] }) {
     >
       {selected && <article className={styles.detail}>
         <div className={styles.detailTop}>
-          <span className={styles.icon}><ToolIcon icon={selected.icon} /></span>
+          <span className={styles.icon}><BusinessToolIcon icon={selected.icon} /></span>
           <button type="button" className={styles.close} onClick={close} aria-label="Fermer la présentation">×</button>
         </div>
         <p className={styles.detailCategory}>{selected.category === "commerce" ? "Commerce" : selected.category === "digital" ? "Présence en ligne" : "Gestion"}</p>

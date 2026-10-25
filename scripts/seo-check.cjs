@@ -8,6 +8,7 @@ const decode=s=>s.replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#x27;|&
 const attrs=tag=>Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(m=>[m[1],decode(m[2])]));
 const tags=(html,name)=>[...html.matchAll(new RegExp(`<${name}\\b[^>]*>`,'g'))].map(m=>attrs(m[0]));
 const meta=(html,key)=>tags(html,'meta').find(m=>m.name===key||m.property===key)?.content;
+const canon=html=>tags(html,'link').filter(m=>m.rel==='canonical').map(m=>m.href);
 const projectsHtml=read('projets/index.html');assert.match(meta(projectsHtml,'robots')||'',/noindex/,'With zero approved projects, /projets/ must remain noindex');
 const homeHtml=read('index.html');
 assert.ok(homeHtml.includes('Du logiciel au terrain, nous construisons la solution autour de votre besoin.'),'Homepage needs the approved YVEXOR positioning');
@@ -30,7 +31,18 @@ for(const canonicalPath of ['/logiciel-sur-mesure/','/automatisation-entreprise/
  assert.ok(routes.some(url=>url.pathname===canonicalPath),'Historical canonical route must remain in sitemap: '+canonicalPath);
 }
 assert.ok(!routes.some(url=>/^\/solutions\/(?:caisse|site-web|application-metier)\/$/.test(url.pathname)),'Business tools must not create duplicate canonical detail routes');
-const canon=html=>tags(html,'link').filter(m=>m.rel==='canonical').map(m=>m.href);
+assert.ok(routes.some(url=>url.pathname==='/metiers/'),'The industry portal must be indexable');
+for(const [route,name,tools] of [
+ ['/solutions-restaurants/','Restaurant & restauration',['Caisse','Gestion métier','Site web']],
+ ['/solutions-hotels/','Hôtel & hôtellerie',['Gestion métier','Site web']],
+ ['/logiciel-garage/','Garage automobile',['Gestion métier']],
+]){
+ const html=read(route.slice(1)+'index.html');
+ assert.ok(html.includes(`<h1 class="site-display site-heading-xl">${name.replaceAll('&','&amp;')}</h1>`),route+' must render the reconstructed Industry experience');
+ assert.ok(tools.every(tool=>html.includes(tool)),route+' must render its explicitly related tools');
+ assert.deepEqual(canon(html),[origin+route],route+' must retain its unique historical canonical');
+ assert.ok(!routes.some(url=>url.pathname===`/metiers/${route.includes('restaurants')?'restaurant':route.includes('hotels')?'hotel':'garage'}/`),'Industry must not gain a competing /metiers detail route');
+}
 const aliases=['/realisations/','/yvexor-pos/','/projets/'];
 const pages=new Map();const titles=new Set();const descriptions=new Set();
 for(const url of routes){

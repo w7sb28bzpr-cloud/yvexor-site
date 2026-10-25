@@ -25,6 +25,7 @@ export type SolutionEntryPoint = "custom-build";
 
 export type ToolCategoryId = "commerce" | "digital" | "gestion";
 export type ToolIconId = "cash-register" | "globe" | "workflow";
+export type IndustryVisualId = "restaurant" | "hotel" | "garage" | "generic";
 
 /** A client-facing application entry backed by one or more YVEXOR capabilities. */
 export type BusinessTool = {
@@ -105,6 +106,12 @@ export type Industry = {
   name: string;
   canonicalPath: string;
   solutionIds: string[];
+  /** Explicit links to public application tools; tool content remains in BusinessTool. */
+  businessToolIds: string[];
+  /** Short presentation copy for the industry portal and reconstructed canonical page. */
+  cardDescription: string;
+  heroPromise: string;
+  visualId: IndustryVisualId;
   projectIds: string[];
   page: EditorialPage;
 };

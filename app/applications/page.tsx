@@ -41,18 +41,16 @@ export default function ApplicationsPage() {
             <p className={styles.kicker}><span className={styles.kickerMark} aria-hidden="true" /> L’écosystème YVEXOR</p>
             <h1 id="applications-title" className={styles.heroTitle}>Applications<span> YVEXOR.</span></h1>
             <p className={styles.heroLead}>Les outils pour gérer, vendre, automatiser et faire évoluer votre activité.</p>
+            <a className={styles.heroJump} href="#bibliotheque">Parcourir les {tools.length} applications <span aria-hidden="true">↓</span></a>
           </div>
           <ApplicationFlow tools={flowTools} />
         </div>
       </section>
 
-      <section className={styles.library} aria-labelledby="library-title">
-        <div className={styles.libraryIntro}>
-          <div>
-            <p className={styles.sectionIndex}>01 / La bibliothèque</p>
-            <h2 id="library-title" className={styles.libraryTitle}>Trouvez votre outil.</h2>
-          </div>
-          <p>Choisissez une application. YVEXOR l’adapte et la relie aux autres selon votre activité.</p>
+      <section id="bibliotheque" className={styles.library} aria-labelledby="library-title">
+        <div className={styles.libraryHead}>
+          <h2 id="library-title" className={styles.libraryTitle}>La bibliothèque</h2>
+          <p>Chaque application s’adapte à votre activité et se relie aux autres.</p>
         </div>
         <ApplicationCatalogue
           tools={tools}
@@ -62,9 +60,9 @@ export default function ApplicationsPage() {
       </section>
 
       <section className={styles.closing} aria-labelledby="closing-title">
-        <p className={styles.sectionIndex}>02 / Et après</p>
         <h2 id="closing-title">Vous ne trouvez pas l’outil qu’il vous faut&nbsp;?</h2>
-        <a href="/solutions/">Construire une solution adaptée <span aria-hidden="true">↗</span></a>
+        <p>YVEXOR peut l’adapter ou le construire avec vous.</p>
+        <a className={styles.closingLink} href="/solutions/">Construire une solution adaptée <span aria-hidden="true">→</span></a>
       </section>
     </main>
     <SiteFooter />

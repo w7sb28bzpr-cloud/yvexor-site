@@ -1,234 +1,492 @@
+/* Applications library. Neutral black/white like the homepage; cyan only marks activity. */
 .shell {
-  --site-background: #080b0d;
-  --site-surface: #101619;
-  --site-surface-elevated: #182024;
-  --site-text-primary: #f4f8f9;
-  --site-text-secondary: #b4c0c4;
-  --site-text-muted: #89979d;
-  --site-border: #526167;
-  --site-focus: #68c9de;
+  --app-bg: #090909;
+  --app-surface: #111;
+  --app-surface-hover: #161616;
+  --app-line: rgba(255, 255, 255, 0.09);
+  --app-line-strong: rgba(255, 255, 255, 0.2);
+  --app-text: #f7f7f7;
+  --app-text-2: #b5b5b5;
+  --app-text-3: #8c8c8c;
   --app-cyan: #68c9de;
-  --app-hairline: rgba(197, 225, 231, 0.16);
-  --app-tile: #11191d;
+  --app-cyan-text: #68c9de;
+  --app-cyan-soft: rgba(104, 201, 222, 0.12);
+  --site-focus: #68c9de;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
   overflow: clip;
-  background: var(--site-background);
-  color: var(--site-text-primary);
+  background: var(--app-bg);
+  color: var(--app-text);
 }
 
 :global(:root[data-theme="light"]) .shell {
-  --site-background: #f1f5f6;
-  --site-surface: #e7edef;
-  --site-surface-elevated: #fff;
-  --site-text-primary: #102025;
-  --site-text-secondary: #3d555d;
-  --site-text-muted: #536b73;
-  --site-border: #637e86;
+  --app-bg: #f6f6f5;
+  --app-surface: #fff;
+  --app-surface-hover: #fff;
+  --app-line: rgba(0, 0, 0, 0.09);
+  --app-line-strong: rgba(0, 0, 0, 0.22);
+  --app-text: #111;
+  --app-text-2: #474747;
+  --app-text-3: #5f5f5f;
+  --app-cyan-text: #006b80;
+  --app-cyan-soft: rgba(0, 107, 128, 0.09);
   --site-focus: #006b80;
-  --app-cyan: #006d83;
-  --app-hairline: rgba(25, 69, 82, 0.18);
-  --app-tile: #fff;
 }
-:global(:root[data-theme="light"]) .flow,
-:global(:root[data-theme="light"]) .familyTile,
-:global(:root[data-theme="light"]) .dialog { --app-cyan: #68c9de; }
-:global(:root[data-theme="light"]) .flow { color: #f4f8f9; }
-:global(:root[data-theme="light"]) .flowHeading,
-:global(:root[data-theme="light"]) .flowStep { color: #b4c0c4; }
-:global(:root[data-theme="light"]) .familyTile { color: #f4f8f9; }
-:global(:root[data-theme="light"]) .familyTile .appDescription { color: #b4c0c4; }
+
+/* The demo scene and the dialog stay dark in both themes, like product screenshots. */
+.flow,
+.dialog {
+  --app-surface: #111;
+  --app-line: rgba(255, 255, 255, 0.09);
+  --app-line-strong: rgba(255, 255, 255, 0.2);
+  --app-text: #f7f7f7;
+  --app-text-2: #b5b5b5;
+  --app-text-3: #8c8c8c;
+  --app-cyan-text: #68c9de;
+  --app-cyan-soft: rgba(104, 201, 222, 0.12);
+  --site-focus: #68c9de;
+  color: var(--app-text);
+}
 
 .main { min-width: 0; }
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--app-hairline);
-  background:
-    radial-gradient(ellipse 55% 80% at 90% 20%, rgba(104, 201, 222, 0.095), transparent 65%),
-    var(--site-background);
-}
-
-.hero::before {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--app-hairline) 1px, transparent 1px), linear-gradient(90deg, var(--app-hairline) 1px, transparent 1px);
-  background-size: 5rem 5rem;
-  mask-image: linear-gradient(90deg, transparent 32%, #000 100%);
-  opacity: 0.25;
-  content: "";
-  pointer-events: none;
-}
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .heroInner,
 .library,
 .closing {
   position: relative;
-  width: min(100%, 88rem);
+  width: min(100%, 86rem);
   margin-inline: auto;
-  padding-inline: clamp(1rem, 4vw, 4rem);
+  padding-inline: var(--site-gutter, clamp(1rem, 4vw, 4rem));
 }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 60% 75% at 72% 45%, #000 10%, transparent 70%);
+  content: "";
+  pointer-events: none;
+}
+:global(:root[data-theme="light"]) .hero::before { background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1.2px); }
 
 .heroInner {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(23rem, 0.95fr);
-  align-items: end;
-  gap: clamp(2rem, 5vw, 6rem);
-  min-height: 25rem;
-  padding-block: clamp(3rem, 6vw, 6.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 32rem);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 5vw, 4.5rem);
 }
-
-.heroCopy { min-width: 0; align-self: center; }
-.kicker,
-.sectionIndex {
-  margin: 0;
-  color: var(--site-text-muted);
-  font-size: 0.75rem;
-  font-weight: 750;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.kicker { display: flex; align-items: center; gap: 0.7rem; }
-.kickerMark { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--app-cyan); box-shadow: 0 0 0 4px rgba(104, 201, 222, 0.14); }
+.heroCopy { min-width: 0; }
+.kicker { display: flex; align-items: center; gap: 0.65rem; margin: 0; color: var(--app-text-3); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.kickerMark { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--app-cyan); }
 .heroTitle {
-  max-width: 9ch;
-  margin: 1.25rem 0 1.15rem;
-  font-size: clamp(3.4rem, 6.7vw, 7rem);
-  font-weight: 650;
-  letter-spacing: -0.082em;
-  line-height: 0.94;
+  margin: 1.1rem 0 1.2rem;
+  font-size: clamp(3.3rem, 7vw, 6.6rem);
+  font-weight: 620;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
 }
-.heroTitle span { color: var(--app-cyan); }
-.heroLead { max-width: 34ch; margin: 0; color: var(--site-text-secondary); font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.45; }
+.heroTitle span { display: block; color: var(--app-cyan-text); }
+.heroLead { max-width: 30ch; margin: 0; color: var(--app-text-2); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.5; text-wrap: pretty; }
+.heroJump {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+  color: var(--app-text);
+  font-size: 0.92rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.heroJump span { display: inline-grid; width: 1.75rem; height: 1.75rem; place-items: center; border: 1px solid var(--app-line-strong); border-radius: 50%; transition: transform 220ms var(--ease-out), border-color 220ms ease; }
+.heroJump:hover span { transform: translateY(2px); border-color: var(--app-cyan); }
 
+/* ---------- Flow scene: CRM → Devis → Facturation → Analyse ---------- */
 .flow {
   position: relative;
   min-width: 0;
-  overflow: hidden;
-  padding: 1.35rem 1.4rem 1.5rem;
-  border: 1px solid var(--app-hairline);
-  border-radius: 1rem;
-  background: linear-gradient(145deg, rgba(28, 41, 47, 0.83), rgba(10, 16, 19, 0.9));
+  margin: 0;
+  padding: 1.1rem 1.1rem 1.15rem;
+  border: 1px solid var(--app-line);
+  border-radius: 1.25rem;
+  background: linear-gradient(180deg, #141414, #0d0d0d);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35);
 }
-.flowHeading { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; color: var(--site-text-secondary); font-size: 0.75rem; font-weight: 650; }
-.flowStatus { display: flex; align-items: center; gap: 0.4rem; color: var(--app-cyan); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
-.flowStatus i { width: 0.35rem; height: 0.35rem; border-radius: 50%; background: currentColor; }
-.flowSteps { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.25rem; margin: 1.6rem 0 0; padding: 0; list-style: none; }
-.flowStep { display: flex; min-width: 0; align-items: center; flex-direction: column; gap: 0.65rem; color: var(--site-text-secondary); font-size: 0.72rem; font-weight: 650; line-height: 1.2; text-align: center; }
-.flowIcon { display: grid; width: 2.9rem; height: 2.9rem; place-items: center; border: 1px solid rgba(151, 179, 188, 0.26); border-radius: 0.8rem; background: #182226; color: #d9e7e9; }
-.flowIcon svg { width: 1.4rem; height: 1.4rem; }
-.flowLine { position: absolute; right: 13%; bottom: 4.15rem; left: 13%; height: 1px; container-type: inline-size; background: rgba(161, 195, 202, 0.25); }
-.flowSignal { position: absolute; top: -0.22rem; left: 0; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--app-cyan); box-shadow: 0 0 0 3px rgba(104, 201, 222, 0.15); }
-.flowRunning .flowSignal { animation: application-signal 7.2s linear infinite; }
-.flowRunning .flowStep .flowIcon { animation: application-step 7.2s ease-in-out infinite; animation-delay: calc(var(--flow-index) * 1.8s); }
-@keyframes application-signal { 0% { transform: translateX(0); opacity: 0; } 4% { opacity: 1; } 95% { opacity: 1; } 100% { transform: translateX(calc(100cqw - 0.45rem)); opacity: 0; } }
-@keyframes application-step { 0%, 10%, 100% { border-color: rgba(151, 179, 188, 0.26); color: #d9e7e9; } 3%, 8% { border-color: var(--app-cyan); color: var(--app-cyan); } }
+.flowCaption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--app-text-2); font-size: 0.74rem; font-weight: 650; }
+.flowDemo { color: var(--app-text-3); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 
-.library { padding-block: clamp(3.25rem, 6vw, 6rem) 4rem; }
-.libraryIntro { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2.3rem; }
-.libraryIntro > div { min-width: 0; }
-.libraryTitle { margin: 0.8rem 0 0; font-size: clamp(2.5rem, 4.7vw, 4.75rem); font-weight: 650; letter-spacing: -0.07em; line-height: 1; }
-.libraryIntro > p { max-width: 30ch; margin: 0 0 0.15rem; color: var(--site-text-secondary); font-size: 0.95rem; line-height: 1.45; }
-.filters { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.2rem 0.2rem 0.75rem; margin-inline: -0.2rem; scrollbar-width: thin; scrollbar-color: #57676d transparent; }
-.filters button { display: inline-flex; min-height: 2.75rem; flex: none; align-items: center; gap: 0.55rem; padding: 0.55rem 0.85rem; border: 1px solid rgba(155, 183, 190, 0.27); border-radius: 999px; background: transparent; color: var(--site-text-secondary); font: inherit; font-size: 0.82rem; font-weight: 650; white-space: nowrap; cursor: pointer; transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease; }
-.filters button:hover { border-color: var(--app-cyan); color: var(--site-text-primary); }
-.filters button[aria-pressed="true"] { border-color: var(--app-cyan); background: rgba(104, 201, 222, 0.12); color: var(--site-text-primary); }
-.filters button span { color: var(--site-text-muted); font-size: 0.7rem; }
-.resultCount { margin: 0.65rem 0 1.1rem; color: var(--site-text-muted); font-size: 0.78rem; }
-.grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.8rem; min-width: 0; }
+.flowRail {
+  --flow-progress: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 1.15rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+/* Track between the first and last node centres, filled up to the active app. */
+.flowRail::before,
+.flowRail::after { position: absolute; top: 1.3rem; left: 12.5%; width: 75%; height: 1px; content: ""; }
+.flowRail::before { background: var(--app-line-strong); }
+.flowRail::after { background: var(--app-cyan); transform: scaleX(var(--flow-progress)); transform-origin: left; transition: transform 700ms var(--ease-out); }
+.flowRail li { position: relative; z-index: 1; display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 0.5rem; }
+.flowNode {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid var(--app-line-strong);
+  border-radius: 0.8rem;
+  background: #161616;
+  color: var(--app-text-3);
+  transition: color 400ms ease, border-color 400ms ease, background-color 400ms ease, box-shadow 400ms ease;
+}
+.flowNode svg { width: 1.3rem; height: 1.3rem; }
+.flowLabel { color: var(--app-text-3); font-size: 0.7rem; font-weight: 650; transition: color 400ms ease; }
+.flowDone .flowNode { border-color: rgba(104, 201, 222, 0.35); color: var(--app-cyan); }
+.flowActive .flowNode { border-color: var(--app-cyan); background: #0f1d21; color: var(--app-cyan); box-shadow: 0 0 0 4px rgba(104, 201, 222, 0.1); }
+.flowActive .flowLabel { color: var(--app-text); }
+
+/* Fixed height so steps never move the page; the result bubble has its own band below the card. */
+.flowStage { position: relative; height: 14.2rem; margin-top: 1rem; }
+.flowScene { position: absolute; inset: 0 0 3.1rem; display: grid; place-items: center; }
+.flowCard {
+  width: min(100%, 19rem);
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--app-line);
+  border-radius: 0.9rem;
+  background: #181818;
+  font-size: 0.78rem;
+  animation: flow-card-in 520ms var(--ease-out) both;
+}
+.flowCard b { display: block; color: var(--app-text); font-weight: 650; }
+.flowCard small { display: block; margin-top: 0.15rem; color: var(--app-text-3); font-size: 0.7rem; }
+.flowRow { display: flex; align-items: center; gap: 0.7rem; }
+.flowRow > span:nth-child(2) { flex: 1; min-width: 0; }
+.flowAvatar { display: grid; width: 2.1rem; height: 2.1rem; flex: none; place-items: center; border-radius: 50%; background: #262626; color: var(--app-text); font-size: 0.68rem; font-weight: 700; }
+.flowPill { padding: 0.2rem 0.5rem; border-radius: 999px; background: var(--app-cyan-soft); color: var(--app-cyan); font-size: 0.66rem; font-weight: 700; animation: flow-pop 420ms var(--ease-out) 700ms both; }
+.flowMeter { height: 3px; margin-top: 0.9rem; overflow: hidden; border-radius: 3px; background: #262626; }
+.flowMeter i { display: block; width: 72%; height: 100%; border-radius: inherit; background: var(--app-cyan); transform-origin: left; animation: flow-grow 900ms var(--ease-out) 300ms both; }
+.flowDocHead { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.6rem; }
+.flowDocHead small { margin: 0; }
+.flowLine,
+.flowTotal { display: flex; justify-content: space-between; gap: 0.6rem; padding-block: 0.22rem; color: var(--app-text-2); font-variant-numeric: tabular-nums; }
+.flowLine span:last-child,
+.flowTotal span:last-child { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.72rem; }
+.flowLine { border-bottom: 1px solid var(--app-line); animation: flow-line-in 380ms var(--ease-out) both; }
+.flowLine:nth-of-type(2) { animation-delay: 200ms; }
+.flowLine:nth-of-type(3) { animation-delay: 400ms; }
+.flowLine:nth-of-type(4) { animation-delay: 600ms; }
+.flowTotal { margin-top: 0.2rem; color: var(--app-text); font-weight: 700; animation: flow-line-in 380ms var(--ease-out) 850ms both; }
+.flowAmount { margin: 0.2rem 0 0.8rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; }
+.flowStatus { position: relative; display: grid; height: 1.6rem; overflow: hidden; }
+.flowStatus span { grid-area: 1 / 1; align-self: center; justify-self: start; padding: 0.22rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; }
+.flowStatus span:first-child { background: #262626; color: var(--app-text-2); animation: flow-status-out 360ms ease 1200ms both; }
+.flowStatus span:last-child { background: var(--app-cyan); color: #06181c; animation: flow-status-in 420ms var(--ease-out) 1300ms both; }
+.flowBars { display: flex; height: 4.2rem; align-items: flex-end; gap: 0.4rem; }
+.flowBars i { flex: 1; height: var(--bar); border-radius: 3px 3px 0 0; background: #2a2a2a; }
+.flowBars .flowBarNew { height: 86%; background: var(--app-cyan); transform-origin: bottom; animation: flow-grow-y 900ms var(--ease-out) 350ms both; }
+.flowGain { margin-top: 0.6rem; color: var(--app-cyan); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95rem; font-weight: 600; animation: flow-pop 420ms var(--ease-out) 1000ms both; }
+.flowResult {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: #f7f7f7;
+  color: #111;
+  font-size: 0.74rem;
+  font-weight: 650;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  animation: flow-result-in 480ms var(--ease-out) 1100ms both;
+}
+.flowResult span { display: grid; width: 1.1rem; height: 1.1rem; place-items: center; border-radius: 50%; background: var(--app-cyan); color: #06181c; font-size: 0.62rem; }
+
+/* Text version of the scenario: screen readers only, unless motion is reduced. */
+.flowSummary { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; padding: 0; list-style: none; }
+
+@keyframes flow-card-in { from { opacity: 0; transform: translateY(14px) scale(.98); } }
+@keyframes flow-line-in { from { opacity: 0; transform: translateY(6px); } }
+@keyframes flow-pop { from { opacity: 0; transform: scale(.85); } }
+@keyframes flow-grow { from { transform: scaleX(0); } }
+@keyframes flow-grow-y { from { transform: scaleY(0); } }
+@keyframes flow-status-out { to { opacity: 0; transform: translateY(-100%); } }
+@keyframes flow-status-in { from { opacity: 0; transform: translateY(100%); } }
+@keyframes flow-result-in { from { opacity: 0; transform: translate(-50%, 10px); } }
+
+/* ---------- Library ---------- */
+.library { padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--app-line); scroll-margin-top: 5rem; }
+.libraryHead { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem 2rem; margin-bottom: 1.4rem; }
+.libraryTitle { margin: 0; font-size: clamp(1.9rem, 3.4vw, 3rem); font-weight: 620; letter-spacing: -0.055em; line-height: 1; }
+.libraryHead p { max-width: 36ch; margin: 0; color: var(--app-text-2); font-size: 0.95rem; line-height: 1.45; }
+
+.filterBar { position: relative; margin-inline: calc(-1 * var(--site-gutter, 1rem)); }
+.filters {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding: 0.2rem var(--site-gutter, 1rem) 0.4rem;
+  scroll-padding-inline: var(--site-gutter, 1rem);
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.filters::-webkit-scrollbar { display: none; }
+.filters button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  flex: none;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--app-line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--app-text-2);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 620;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.filters button span { min-width: 1.2rem; color: var(--app-text-3); font-size: 0.72rem; font-variant-numeric: tabular-nums; transition: color 220ms ease; }
+.filters button:hover { border-color: var(--app-text-3); color: var(--app-text); }
+.filters button[aria-pressed="true"] { border-color: var(--app-text); background: var(--app-text); color: var(--app-bg); }
+.filters button[aria-pressed="true"] span { color: var(--app-bg); opacity: 0.6; }
+.resultCount { margin: 0.9rem 0 1.1rem; color: var(--app-text-3); font-size: 0.8rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14.5rem), 1fr));
+  grid-auto-flow: dense;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.grid > li { display: flex; min-width: 0; }
+.familyItem { grid-column: span 2; }
+
 .appTile {
   position: relative;
-  display: flex;
+  display: grid;
+  width: 100%;
   min-width: 0;
-  min-height: 11.7rem;
-  flex-direction: column;
-  align-items: stretch;
-  overflow: hidden;
-  padding: 1.15rem;
-  border: 1px solid var(--app-hairline);
-  border-radius: 0.9rem;
-  background: var(--app-tile);
-  color: var(--site-text-primary);
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  align-items: start;
+  gap: 0.85rem;
+  padding: 1.05rem 1.05rem 1.15rem;
+  border: 1px solid var(--app-line);
+  border-radius: 1rem;
+  background: var(--app-surface);
+  color: var(--app-text);
   font: inherit;
   text-align: left;
   cursor: pointer;
-  transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease;
+  transition: border-color 240ms ease, background-color 240ms ease, transform 240ms var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
 }
-.appTile:hover { transform: translateY(-3px); border-color: rgba(104, 201, 222, 0.72); background: var(--site-surface-elevated); }
-.appTile:active { transform: translateY(0); }
-.tileTop { display: flex; align-items: start; justify-content: space-between; gap: 0.4rem; margin-bottom: auto; }
-.appIcon, .dialogIcon { display: grid; width: 3rem; height: 3rem; flex: none; place-items: center; border: 1px solid rgba(104, 201, 222, 0.24); border-radius: 0.78rem; background: rgba(104, 201, 222, 0.085); color: var(--app-cyan); }
-.appIcon svg, .dialogIcon svg { width: 1.65rem; height: 1.65rem; }
-.tileArrow { color: var(--site-text-muted); font-size: 1.05rem; line-height: 1; }
-.appName { display: block; margin-top: 1.05rem; font-size: 1.05rem; font-weight: 700; line-height: 1.18; letter-spacing: -0.03em; overflow-wrap: anywhere; }
-.appDescription { display: -webkit-box; overflow: hidden; margin-top: 0.38rem; color: var(--site-text-secondary); font-size: 0.77rem; line-height: 1.36; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
-.familyTile { grid-column: span 2; border-color: rgba(104, 201, 222, 0.31); background: linear-gradient(125deg, #172329, #10191d 65%); }
-.familyTile::after { position: absolute; top: -3rem; right: -2rem; width: 10rem; height: 10rem; border: 1px solid rgba(104, 201, 222, 0.1); border-radius: 50%; content: ""; pointer-events: none; }
-.familyTile .appDescription { max-width: 30ch; }
-.familyModules { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.8rem; }
-.familyModules span { padding: 0.18rem 0.4rem; border: 1px solid rgba(104, 201, 222, 0.2); border-radius: 0.3rem; color: #c5d6d9; font-size: 0.65rem; line-height: 1.2; }
-.capabilityTag { margin-top: 0.7rem; color: var(--app-cyan); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-
-.dialog { width: min(38rem, calc(100vw - 2rem)); max-height: min(90dvh, 48rem); overflow: auto; padding: 0; border: 1px solid rgba(104, 201, 222, 0.32); border-radius: 1.1rem; background: #121a1e; color: #f4f8f9; box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.6); }
-.dialog::backdrop { background: rgba(0, 5, 8, 0.78); backdrop-filter: blur(5px); }
-.dialogContent { padding: clamp(1.3rem, 4vw, 2.4rem); }
-.dialogTop { display: flex; align-items: start; justify-content: space-between; }
-.dialogClose { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid rgba(182, 206, 212, 0.3); border-radius: 50%; background: transparent; color: #f4f8f9; font: inherit; font-size: 1.4rem; cursor: pointer; }
-.dialogKicker { margin: 1.5rem 0 0.45rem; color: var(--app-cyan); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; }
-.dialog h2 { margin: 0; font-size: clamp(2.1rem, 6vw, 3.4rem); font-weight: 650; letter-spacing: -0.065em; line-height: 1; }
-.dialogSummary { max-width: 45ch; margin: 0.9rem 0 1.8rem; color: #c2ced1; font-size: 1.02rem; line-height: 1.45; }
-.dialogFacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.35rem 1.5rem; padding-top: 1.45rem; border-top: 1px solid rgba(174, 199, 205, 0.2); }
-.dialogFacts h3, .dialogModules h3 { margin: 0 0 0.42rem; color: #f4f8f9; font-size: 0.73rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
-.dialogFacts p { margin: 0; color: #b8c7ca; font-size: 0.83rem; line-height: 1.5; }
-.dialogModules { margin-bottom: 1.5rem; }
-.dialogModules ul { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
-.dialogModules li { padding: 0.3rem 0.5rem; border: 1px solid rgba(104, 201, 222, 0.25); border-radius: 0.35rem; color: #cde4e8; font-size: 0.75rem; }
-.dialogLink { display: inline-flex; min-height: 2.75rem; align-items: center; gap: 1rem; margin-top: 2rem; padding: 0.65rem 1rem; border-radius: 999px; background: var(--app-cyan); color: #092027; font-size: 0.85rem; font-weight: 750; text-decoration: none; }
-.dialogLink:hover { background: #8bd9e8; }
-
-.closing { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.9rem 2rem; padding-block: 2.5rem 4rem; border-top: 1px solid var(--app-hairline); }
-.closing .sectionIndex { flex-basis: 100%; }
-.closing h2 { max-width: 24ch; margin: 0; font-size: clamp(1.7rem, 3vw, 2.7rem); font-weight: 650; letter-spacing: -0.055em; line-height: 1.08; }
-.closing a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: 1.5rem; color: var(--app-cyan); font-size: 0.9rem; font-weight: 700; text-decoration: none; }
-.closing a:hover { text-decoration: underline; text-underline-offset: 0.3em; }
-
-@media (max-width: 70rem) {
-  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .heroInner { grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr); }
+.appIcon,
+.dialogIcon {
+  display: grid;
+  width: 2.9rem;
+  height: 2.9rem;
+  place-items: center;
+  border: 1px solid var(--app-line-strong);
+  border-radius: 0.85rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  color: var(--app-text);
+  transition: color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
-@media (max-width: 52rem) {
-  .heroInner { grid-template-columns: 1fr; gap: 2rem; min-height: 0; padding-block: 3.3rem 2.4rem; }
-  .heroTitle { max-width: none; font-size: clamp(3.1rem, 11vw, 5rem); }
-  .flow { max-width: 38rem; }
-  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+:global(:root[data-theme="light"]) .appIcon { background: #f3f3f2; }
+.appIcon svg { width: 1.45rem; height: 1.45rem; }
+.appText { display: flex; min-width: 0; flex-direction: column; gap: 0.3rem; padding-top: 0.1rem; }
+.appName { font-size: 1rem; font-weight: 680; letter-spacing: -0.02em; line-height: 1.2; }
+.appDescription { display: -webkit-box; overflow: hidden; color: var(--app-text-2); font-size: 0.8rem; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+/* A small "+" that turns into "→" on interaction: the tile opens a fiche, it does not leave the page. */
+.tileOpen { position: absolute; top: 1rem; right: 1rem; width: 1.15rem; height: 1.15rem; color: var(--app-text-3); transition: color 240ms ease, transform 300ms var(--ease-out); }
+.tileOpen::before,
+.tileOpen::after { position: absolute; top: 50%; left: 50%; width: 0.7rem; height: 1.5px; border-radius: 1px; background: currentColor; content: ""; transform: translate(-50%, -50%); }
+.tileOpen::after { transform: translate(-50%, -50%) rotate(90deg); }
+.capabilityTag { grid-column: 1 / -1; margin-top: -0.35rem; color: var(--app-cyan-text); font-size: 0.7rem; font-weight: 650; }
+
+@media (hover: hover) {
+  .appTile:hover { border-color: var(--app-line-strong); background: var(--app-surface-hover); }
+  .appTile:hover .appIcon { border-color: rgba(104, 201, 222, 0.55); color: var(--app-cyan-text); box-shadow: 0 0 0 4px var(--app-cyan-soft); }
+  .appTile:hover .tileOpen { color: var(--app-text); transform: rotate(90deg); }
 }
-@media (max-width: 38rem) {
-  .heroInner { gap: 1.8rem; padding-block: 2.7rem 2.1rem; }
-  .heroTitle { max-width: 9ch; margin-block: 1rem 0.9rem; font-size: clamp(3.2rem, 15vw, 4.4rem); }
-  .heroLead { max-width: 30ch; }
-  .flow { padding: 1rem 0.8rem 1.15rem; }
-  .flowHeading { font-size: 0.67rem; }
-  .flowSteps { margin-top: 1.15rem; }
-  .flowStep { font-size: 0.61rem; gap: 0.42rem; }
-  .flowIcon { width: 2.35rem; height: 2.35rem; border-radius: 0.6rem; }
-  .flowIcon svg { width: 1.2rem; height: 1.2rem; }
-  .flowLine { bottom: 4.2rem; }
-  .library { padding-block: 2.7rem 3rem; }
-  .libraryIntro { display: block; margin-bottom: 1.4rem; }
-  .libraryIntro > p { margin-top: 0.7rem; }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
-  .appTile { min-height: 10.5rem; padding: 0.85rem; border-radius: 0.72rem; }
-  .appIcon { width: 2.7rem; height: 2.7rem; }
-  .appIcon svg { width: 1.45rem; height: 1.45rem; }
-  .appName { margin-top: 0.9rem; font-size: 0.92rem; }
-  .appDescription { font-size: 0.7rem; }
-  .familyTile { min-height: 12rem; }
-  .dialogFacts { grid-template-columns: 1fr; gap: 1rem; }
-  .closing { padding-block: 2.2rem 3.2rem; }
+.appTile:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
+.appTile:focus-visible .appIcon { border-color: rgba(104, 201, 222, 0.55); color: var(--app-cyan-text); }
+.appTile:active { transform: scale(0.985); }
+
+/* Families: a hub icon with the apps it brings together. */
+.familyTile { grid-template-columns: auto minmax(0, 1fr); padding-right: 2.6rem; background: linear-gradient(120deg, var(--app-surface-hover), var(--app-surface) 70%); }
+.familyTile .appIcon { border-color: rgba(104, 201, 222, 0.45); color: var(--app-cyan-text); }
+.familyModules { grid-column: 1 / -1; display: flex; min-width: 0; flex-direction: column; gap: 0.55rem; padding-top: 0.85rem; border-top: 1px dashed var(--app-line-strong); }
+.moduleNodes { position: relative; display: flex; gap: 0.5rem; }
+.moduleNodes::before { position: absolute; top: 50%; right: 0.5rem; left: 0.5rem; height: 1px; background: var(--app-line-strong); content: ""; }
+.moduleNode { position: relative; display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--app-line-strong); border-radius: 0.6rem; background: var(--app-surface); color: var(--app-text-2); transition: color 240ms ease, border-color 240ms ease, transform 300ms var(--ease-out); }
+.moduleNode svg { width: 1.05rem; height: 1.05rem; }
+.moduleNames { overflow: hidden; color: var(--app-text-3); font-size: 0.72rem; text-overflow: ellipsis; white-space: nowrap; }
+@media (hover: hover) {
+  .familyTile:hover .moduleNode { border-color: rgba(104, 201, 222, 0.45); color: var(--app-cyan-text); }
+  .familyTile:hover .moduleNode:nth-child(odd) { transform: translateY(-2px); }
 }
 
+/* Filter change: tiles settle in with a short cascade (no animation on first load). */
+.gridChanged > li { animation: tile-in 420ms var(--ease-out) both; animation-delay: calc(var(--tile-index) * 28ms); }
+@keyframes tile-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- Dialog ---------- */
+.dialog {
+  width: min(40rem, calc(100vw - 2rem));
+  max-height: min(88dvh, 50rem);
+  overflow: auto;
+  padding: 0;
+  border: 1px solid var(--app-line-strong);
+  border-radius: 1.4rem;
+  background: #121212;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.55);
+  overscroll-behavior: contain;
+}
+.dialog[open] { animation: dialog-in 360ms var(--ease-out); }
+.dialog::backdrop { background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(6px); }
+.dialog[open]::backdrop { animation: backdrop-in 300ms ease; }
+:global(html):has(.dialog[open]) { overflow: hidden; }
+.dialogContent { padding: clamp(1.25rem, 4vw, 2.2rem); }
+.dialogGrabber { display: none; }
+.dialogTop { display: flex; align-items: center; gap: 1rem; }
+.dialogIcon { width: 3.5rem; height: 3.5rem; flex: none; border-color: rgba(104, 201, 222, 0.45); border-radius: 1rem; color: var(--app-cyan); }
+.dialogIcon svg { width: 1.75rem; height: 1.75rem; }
+.dialogHeading { min-width: 0; flex: 1; }
+.dialogKicker { margin: 0 0 0.3rem; color: var(--app-cyan); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.dialog h2 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 620; letter-spacing: -0.055em; line-height: 1; overflow-wrap: anywhere; }
+.dialogClose { position: relative; display: grid; width: 2.75rem; height: 2.75rem; flex: none; align-self: flex-start; place-items: center; border: 1px solid var(--app-line-strong); border-radius: 50%; background: transparent; color: var(--app-text); cursor: pointer; transition: border-color 200ms ease, background-color 200ms ease; }
+.dialogClose span::before,
+.dialogClose span::after { position: absolute; top: 50%; left: 50%; width: 1rem; height: 1.5px; border-radius: 1px; background: currentColor; content: ""; }
+.dialogClose span::before { transform: translate(-50%, -50%) rotate(45deg); }
+.dialogClose span::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.dialogClose:hover { border-color: var(--app-text-2); background: rgba(255, 255, 255, 0.06); }
+.dialogSummary { margin: 1.2rem 0 1.5rem; color: var(--app-text-2); font-size: 1.05rem; line-height: 1.5; }
+
+.dialogModules { margin-bottom: 1.5rem; padding: 1rem; border: 1px solid rgba(104, 201, 222, 0.22); border-radius: 1rem; background: rgba(104, 201, 222, 0.04); }
+.dialogModules h3,
+.dialogFacts dt { margin: 0 0 0.55rem; color: var(--app-text-3); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.dialogModules ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+.dialogModules li { display: flex; align-items: center; gap: 0.55rem; color: var(--app-text); font-size: 0.82rem; font-weight: 600; }
+.dialogModules li span { display: grid; width: 1.9rem; height: 1.9rem; flex: none; place-items: center; border: 1px solid var(--app-line-strong); border-radius: 0.55rem; color: var(--app-cyan); }
+.dialogModules li svg { width: 1rem; height: 1rem; }
+
+.dialogFacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.3rem 1.6rem; margin: 0; padding-top: 1.4rem; border-top: 1px solid var(--app-line); }
+.dialogFacts dd { margin: 0; color: var(--app-text-2); font-size: 0.86rem; line-height: 1.5; }
+.factList { display: grid; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+.factList li { position: relative; padding-left: 1rem; color: var(--app-text); }
+.factList li::before { position: absolute; top: 0.6em; left: 0; width: 0.35rem; height: 0.35rem; border-radius: 50%; background: var(--app-cyan); content: ""; }
+.chipList { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+.chipList li { padding: 0.22rem 0.55rem; border: 1px solid var(--app-line-strong); border-radius: 999px; color: var(--app-text); font-size: 0.76rem; }
+
+.dialogActions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.2rem; margin-top: 1.8rem; }
+.dialogLink { display: inline-flex; min-height: 2.9rem; align-items: center; gap: 0.7rem; padding: 0.7rem 1.25rem; border-radius: 999px; background: #f7f7f7; color: #111; font-size: 0.9rem; font-weight: 680; text-decoration: none; transition: background-color 200ms ease; }
+.dialogLink span { transition: transform 220ms var(--ease-out); }
+.dialogLink:hover { background: #fff; }
+.dialogLink:hover span { transform: translateX(3px); }
+.dialogSecondary { display: inline-flex; min-height: 2.9rem; align-items: center; color: var(--app-text); font-size: 0.88rem; font-weight: 620; text-decoration: underline; text-decoration-color: var(--app-line-strong); text-underline-offset: 0.3em; }
+.dialogSecondary:hover { text-decoration-color: var(--app-cyan); }
+
+@keyframes dialog-in { from { opacity: 0; transform: translateY(14px) scale(.985); } }
+@keyframes backdrop-in { from { opacity: 0; } }
+
+/* ---------- Closing ---------- */
+.closing { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--app-line); }
+.closing h2 { max-width: 22ch; margin: 0; font-size: clamp(1.7rem, 3.2vw, 2.8rem); font-weight: 620; letter-spacing: -0.055em; line-height: 1.05; }
+.closing p { margin: 0.8rem 0 0; color: var(--app-text-2); font-size: 1rem; }
+.closingLink { display: inline-flex; min-height: 3.1rem; align-items: center; gap: 0.8rem; margin-top: 1.5rem; padding: 0.75rem 1.4rem; border: 1px solid var(--app-text); border-radius: 999px; color: var(--app-text); font-size: 0.95rem; font-weight: 650; text-decoration: none; transition: background-color 220ms ease, color 220ms ease; }
+.closingLink span { transition: transform 220ms var(--ease-out); }
+.closingLink:hover { background: var(--app-text); color: var(--app-bg); }
+.closingLink:hover span { transform: translateX(3px); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 72rem) {
+  .heroInner { grid-template-columns: minmax(0, 1fr) minmax(0, 27rem); }
+  .heroTitle { font-size: clamp(3.3rem, 7.4vw, 6.6rem); }
+}
+@media (max-width: 56rem) {
+  .heroInner { grid-template-columns: 1fr; gap: 2rem; }
+  .flow { width: 100%; max-width: 34rem; }
+}
+
+@media (max-width: 40rem) {
+  .heroInner { gap: 1.6rem; padding-block: 2.4rem 2rem; }
+  .heroTitle { margin-block: 0.9rem 1rem; font-size: clamp(2.9rem, 15vw, 4.2rem); }
+  .heroJump { margin-top: 1.1rem; }
+  .flow { padding: 0.95rem 0.8rem 1rem; border-radius: 1.1rem; }
+  .flowNode { width: 2.35rem; height: 2.35rem; border-radius: 0.7rem; }
+  .flowNode svg { width: 1.15rem; height: 1.15rem; }
+  .flowRail::before, .flowRail::after { top: 1.175rem; }
+  .flowLabel { font-size: 0.66rem; }
+  .flowStage { height: 13.8rem; }
+  .flowResult { font-size: 0.7rem; }
+
+  .library { padding-block: 2.2rem 2.8rem; }
+  .libraryHead { margin-bottom: 1rem; }
+  .filterBar::after { position: absolute; top: 0; right: 0; bottom: 0.4rem; width: 2.5rem; background: linear-gradient(90deg, transparent, var(--app-bg)); content: ""; pointer-events: none; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+  .appTile { gap: 0.75rem; padding: 0.9rem 0.85rem 1rem; border-radius: 0.95rem; }
+  .appIcon { width: 2.75rem; height: 2.75rem; border-radius: 0.8rem; }
+  .appIcon svg { width: 1.4rem; height: 1.4rem; }
+  .appName { font-size: 0.95rem; }
+  .appDescription { font-size: 0.76rem; }
+  .tileOpen { top: 0.9rem; right: 0.85rem; }
+  .capabilityTag { margin-top: -0.2rem; }
+  .familyModules { padding-top: 0.75rem; }
+
+  /* Bottom sheet on phones. */
+  .dialog { width: 100%; max-width: none; max-height: 90dvh; margin: auto 0 0; border-width: 1px 0 0; border-radius: 1.4rem 1.4rem 0 0; }
+  .dialog[open] { animation-name: sheet-in; }
+  .dialogContent { padding: 0.6rem 1.15rem calc(1.4rem + env(safe-area-inset-bottom)); }
+  .dialogGrabber { display: block; width: 2.4rem; height: 4px; margin: 0 auto 1rem; border-radius: 4px; background: var(--app-line-strong); }
+  .dialogIcon { width: 3rem; height: 3rem; }
+  .dialogFacts { grid-template-columns: 1fr; gap: 1.1rem; }
+  .dialogActions { flex-direction: column; align-items: stretch; }
+  .dialogLink { justify-content: center; }
+  .dialogSecondary { justify-content: center; }
+  .closingLink { width: 100%; justify-content: center; }
+}
+@keyframes sheet-in { from { transform: translateY(100%); } }
+
+@media (max-width: 22rem) {
+  .grid { gap: 0.45rem; }
+  .appTile { padding-inline: 0.75rem; }
+  .flowLabel { font-size: 0.6rem; }
+  .closingLink { padding-inline: 1rem; font-size: 0.88rem; }
+}
+
+/* ---------- Reduced motion: static, complete, nothing lost ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .flowSignal { display: none; }
-  .flowRunning .flowStep .flowIcon { animation: none; }
-  .appTile { transition: none; }
-  .appTile:hover, .appTile:active { transform: none; }
+  .flowStage { display: none; }
+  .flowRail::after { transform: scaleX(1); transition: none; }
+  .flowRail li .flowNode { border-color: rgba(104, 201, 222, 0.35); color: var(--app-cyan); box-shadow: none; }
+  .flowRail li .flowLabel { color: var(--app-text); }
+  .flowSummary { position: static; display: grid; width: auto; height: auto; overflow: visible; clip: auto; gap: 0.55rem; margin-top: 1.1rem; }
+  .flowSummary li { display: flex; align-items: center; gap: 0.7rem; padding: 0.6rem 0.7rem; border: 1px solid var(--app-line); border-radius: 0.75rem; background: #181818; color: var(--app-text-2); font-size: 0.8rem; }
+  .flowSummary b { color: var(--app-text); }
+  .flowSummaryIcon { display: grid; width: 1.8rem; height: 1.8rem; flex: none; place-items: center; color: var(--app-cyan); }
+  .flowSummaryIcon svg { width: 1.1rem; height: 1.1rem; }
+  .appTile, .appIcon, .tileOpen, .moduleNode, .filters button, .heroJump span, .dialogLink span, .closingLink span { transition: none; }
+  .appTile:active { transform: none; }
+  .familyTile:hover .moduleNode:nth-child(odd) { transform: none; }
+  .gridChanged > li, .dialog[open], .dialog[open]::backdrop { animation: none; }
 }

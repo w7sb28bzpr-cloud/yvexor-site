@@ -10,6 +10,7 @@ export function SiteFooter() {
     <nav aria-label="Explorer YVEXOR">
       <strong>Explorer</strong>
       <a href="/solutions/">Solutions</a>
+      <a href="/metiers/">Métiers</a>
       <a href="/projets/">Projets</a>
       <a href="/a-propos/">À propos</a>
       <a href="/tarifs-partenariat/">Budget & tarifs</a>

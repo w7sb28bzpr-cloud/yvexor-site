@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://yvexor.com/" },
     { url: "https://yvexor.com/solutions/" },
     ...getGeneratedSolutionPages().map(({ slug }) => ({ url: `https://yvexor.com/solutions/${slug}/` })),
+    { url: "https://yvexor.com/metiers/" },
     { url: "https://yvexor.com/a-propos/" },
     { url: "https://yvexor.com/histoire/" },
     { url: "https://yvexor.com/materiel/" },

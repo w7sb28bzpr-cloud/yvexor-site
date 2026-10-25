@@ -1,4 +1,4 @@
-import type { Pricing, Project } from "../data/content-types";
+import type { Industry, Pricing, Project } from "../data/content-types";
 import { industries, industryById } from "../data/industries";
 import { projects } from "../data/projects";
 import { seoPages } from "../data/seo-pages";
@@ -45,6 +45,13 @@ export function getPublicSolutionBySlug(slug: string): PublicSolution | undefine
 export function getGeneratedSolutionPages(): { slug: string }[] {
   return solutions
     .filter((solution) => solution.canonicalPath === `/solutions/${solution.slug}/`)
+    .map(({ slug }) => ({ slug }));
+}
+
+/** Only industries that own a URL in the new namespace get a generated detail page. */
+export function getGeneratedIndustryPages(source: readonly Industry[] = industries): { slug: string }[] {
+  return source
+    .filter((industry) => industry.canonicalPath === `/metiers/${industry.slug}/`)
     .map(({ slug }) => ({ slug }));
 }
 
@@ -129,6 +136,11 @@ export function validateContentGraph(): string[] {
     }
     if (!legacyPagePaths.has(industry.canonicalPath) && industry.canonicalPath !== `/metiers/${industry.slug}/`) {
       errors.push(`Industry ${industry.id} canonicalPath must point to its legacy page or /metiers/${industry.slug}/`);
+    }
+    const industryCanonicalSlug = industry.canonicalPath.replace(/^\//, "").replace(/\/$/, "");
+    const industryCanonicalPage = seoPages.find((page) => page.slug === industryCanonicalSlug);
+    if (industryCanonicalPage && (industry.page.title !== industryCanonicalPage.title || industry.page.description !== industryCanonicalPage.description)) {
+      errors.push(`Industry ${industry.id} content must reuse its canonical SEO page at ${industry.canonicalPath}`);
     }
     if (industryPaths.has(industry.canonicalPath)) errors.push(`Duplicate industry canonicalPath: ${industry.canonicalPath}`);
     industryPaths.add(industry.canonicalPath);

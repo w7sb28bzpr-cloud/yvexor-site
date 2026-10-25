@@ -15,7 +15,7 @@ assert.ok(homeHtml.includes('Du logiciel au terrain, nous construisons la soluti
 assert.ok(homeHtml.includes('aria-label="YVEXOR — Technologie sur mesure"'),'Homepage needs the approved static YVEXOR H1');
 const homeDoors=homeHtml.match(/<nav class="[^"]*" aria-label="Choisir un parcours">([\s\S]*?)<\/nav>/)?.[1]||'';
 const homeDoorLinks=[...homeDoors.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)].map(match=>({attributes:attrs(`<a ${match[1]}>`),text:decode(match[2].replace(/<[^>]*>/g,''))}));
-assert.deepEqual(homeDoorLinks.map(link=>[link.text,link.attributes.href]),[['Explorer les solutions','/solutions/'],['Explorer par métier','/metiers/']],'Homepage must provide exactly the two approved entry points');
+assert.deepEqual(homeDoorLinks.map(link=>[link.text,link.attributes.href]),[['Applications','/applications/'],['Sur mesure','/solutions/']],'Homepage must provide exactly the two approved entry points');
 assert.ok(!homeHtml.includes('home-process-title'),'Homepage must stay an immersive entry point without the long process section');
 const compactJourney=homeHtml.match(/<section class="[^"]*" aria-label="Le parcours YVEXOR en bref">([\s\S]*?)<\/section>/)?.[1]||'';
 const journeyLabels=[...compactJourney.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map(match=>decode(match[1].replace(/<[^>]*>/g,'')));

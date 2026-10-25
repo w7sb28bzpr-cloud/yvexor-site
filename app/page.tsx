@@ -24,8 +24,8 @@ export default function Home() {
             </h1>
             <p className={styles.heroLead}>Du logiciel au terrain, nous construisons la solution autour de votre besoin.</p>
             <nav className={styles.heroActions} aria-label="Choisir un parcours">
-              <a className={`site-button ${styles.solutionsAction}`} href="/solutions/">Explorer les solutions</a>
-              <a className={styles.secondaryAction} href="/metiers/">Explorer par métier</a>
+              <a className={`site-button ${styles.solutionsAction}`} href="/applications/">Applications</a>
+              <a className={styles.secondaryAction} href="/solutions/">Sur mesure</a>
             </nav>
           </div>
         </div>

@@ -18,6 +18,7 @@ const secondaryLinks = [
   { label: "On en parle ?", href: "/contact/" },
   { label: "Budget", href: "/tarifs-partenariat/" },
   { label: "Boutique", href: "/boutique/" },
+  { label: "Questions fréquentes", href: "/faq/" },
   { label: "Espace client", href: "https://client.yvexor.com/" },
 ];
 

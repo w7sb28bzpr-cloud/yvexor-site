@@ -1,4 +1,4 @@
-.page { min-height: 60vh; padding-block: clamp(3.5rem, 8vw, 7rem) clamp(4rem, 9vw, 8rem); }
+.page { --industry-accent: #68c9de; min-height: 60vh; padding-block: clamp(3.5rem, 8vw, 7rem) clamp(4rem, 9vw, 8rem); }
 .intro { max-width: 64rem; padding-block: 1.25rem clamp(3.5rem, 7vw, 6rem); }
 .eyebrow, .cardEyebrow { margin: 0 0 0.8rem; color: var(--site-text-muted); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .visuallyHidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -13,9 +13,9 @@
 .mark { display: block; width: 100%; height: auto; padding: clamp(0.7rem, 2vw, 1.4rem); }
 .markFrame { fill: var(--site-surface-elevated); stroke: var(--site-border); stroke-width: 1.5; }
 .markRing { fill: none; stroke: var(--site-text-primary); stroke-width: 4; }
-.markAccent { fill: var(--site-accent); }
+.markAccent { fill: var(--industry-accent); }
 .markLine, .markAccentLine { fill: none; stroke: var(--site-text-primary); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.markAccentLine { stroke: var(--site-accent); stroke-width: 5; }
+.markAccentLine { stroke: var(--industry-accent); stroke-width: 5; }
 .cardContent { min-width: 0; padding: 1.25rem clamp(1rem, 2vw, 1.7rem) 1.25rem 0; }
 .cardEyebrow { margin-bottom: 0.5rem; font-size: 0.65rem; }
 .card h3 { margin: 0; font-size: clamp(1.6rem, 2.4vw, 2.3rem); }
@@ -23,7 +23,7 @@
 .toolNames { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
 .toolNames span { padding: 0.3rem 0.55rem; border: 1px solid var(--site-border); border-radius: 999px; color: var(--site-text-secondary); font-size: 0.72rem; line-height: 1.25; }
 .explore { display: inline-flex; min-height: 44px; align-items: center; gap: 0.5rem; margin-top: 0.7rem; color: var(--site-text-primary); font-weight: 700; }
-.cardLink:hover .explore { color: var(--site-accent); }
+.cardLink:hover .explore { color: var(--industry-accent); }
 .contact { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: clamp(3.5rem, 8vw, 7rem); padding: clamp(1.5rem, 4vw, 3rem); }
 .contact h2 { max-width: 16ch; margin: 0; font-size: clamp(1.9rem, 4vw, 3.25rem); }
 .contact .eyebrow { margin-bottom: 0.65rem; }

@@ -3,7 +3,7 @@
 
 .hero { background: #090909; color: #f7f7f7; }
 .heroInner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); width: min(100%, 88rem); min-height: min(740px, calc(100svh - 78px)); margin-inline: auto; padding: clamp(3rem, 7vw, 7rem) var(--site-gutter); }
-.heroCopy { max-width: 47rem; }
+.heroCopy { min-width: 0; max-width: 47rem; }
 .heroCopy .eyebrow { color: #b7b7b7; }
 .heroCopy h1 { margin: 0; font-size: clamp(2.8rem, 5.3vw, 5.35rem); font-weight: 620; line-height: 1.01; letter-spacing: -.06em; text-wrap: balance; }
 .heroLead { max-width: 43ch; margin: var(--site-space-5) 0 0; color: #c7c7c7; font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.6; }
@@ -50,8 +50,8 @@
 }
 
 @media (max-width: 800px) {
-  .heroInner { grid-template-columns: 1fr; min-height: 0; padding-block: clamp(3rem, 10vw, 5rem); }
-  .heroCopy { max-width: 52rem; }
+  .heroInner { grid-template-columns: minmax(0, 1fr); width: calc(100% - var(--site-gutter) - var(--site-gutter)); min-height: 0; margin-inline: auto; padding-inline: 0; padding-block: clamp(3rem, 10vw, 5rem); }
+  .heroCopy { width: 100%; max-width: min(52rem, calc(100% - var(--site-gutter))); }
   .heroVisual { max-width: 42rem; margin-top: .25rem; }
   .processSteps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .processSteps li:nth-child(2n)::after { content: "↓"; }
@@ -60,9 +60,9 @@
 }
 
 @media (max-width: 540px) {
-  .heroCopy h1 { font-size: clamp(2.5rem, 11.2vw, 3.75rem); }
-  .heroLead { font-size: 1rem; }
-  .heroActions { align-items: stretch; flex-direction: column; gap: .65rem; }
+  .heroCopy h1 { width: 100%; max-width: 100%; font-size: clamp(2.5rem, 11.2vw, 3.75rem); text-wrap: wrap; }
+  .heroLead { width: 100%; max-width: 100%; font-size: 1rem; }
+  .heroActions { width: 100%; align-items: stretch; flex-direction: column; gap: .65rem; }
   .heroActions > * { width: 100%; }
   .secondaryAction { justify-content: center; }
   .processSteps { grid-template-columns: 1fr; gap: 0; }

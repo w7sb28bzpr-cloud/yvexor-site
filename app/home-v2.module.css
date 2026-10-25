@@ -48,7 +48,7 @@
 .shell :global(.site-header.v2-header--immersive .header-menu summary .v2-menu-icon::after) { background: currentColor; }
 .shell :global(.site-header.v2-header--immersive .header-menu nav) { border-color: #343434; background: #141414; color: #f7f7f7; }
 .shell :global(.site-header.v2-header--immersive .header-menu nav a) { border-color: #343434; color: #f7f7f7; }
-.shell :global(.site-header.v2-header--immersive.is-scrolled) { top: 0; left: 0; width: 100%; min-height: 0; padding-inline: var(--site-gutter); transform: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.12); border-radius: 0; background: rgba(9,9,9,.9); box-shadow: none; backdrop-filter: blur(12px); }
+.shell :global(.site-header.v2-header--immersive.is-scrolled) { top: 0; left: 0; width: 100%; min-height: 0; padding-inline: var(--site-gutter); transform: none; border: 0; border-radius: 0; background: rgba(9,9,9,.9); box-shadow: none; backdrop-filter: blur(12px); }
 
 @media (max-width: 900px) {
   .shell :global(.site-header.v2-header--immersive .v2-header__inner) { min-height: 66px; }

@@ -27,6 +27,12 @@ assert.ok(solutionHub.includes('Construire une solution sur mesure')&&solutionHu
 assert.ok(solutionHub.includes('Vous avez un besoin particulier, une idée ou un équipement à connecter ? Nous construisons la solution autour.'),'Solutions hub must retain the approved custom-build message');
 assert.ok(['Caisse','Site web','Gestion métier'].every(name=>solutionHub.includes(name)),'Only the three confirmed initial business tools should appear publicly');
 assert.ok(!['Comptabilité','CRM','Facturation','Ressources humaines','Odoo'].some(name=>solutionHub.includes(name)),'Unconfirmed tools and platforms must not be advertised publicly');
+const applicationsHub=read('applications/index.html');
+assert.ok(routes.some(url=>url.pathname==='/applications/'),'Applications library must be in the sitemap');
+assert.ok(applicationsHub.includes('Applications<span> YVEXOR.'),'Applications library must have its own visible H1');
+assert.ok(['CRM','Caisse','Facturation','Planning','Restaurant','Club &amp; Sport'].every(name=>applicationsHub.includes(name)),'Applications library must render available entries from BusinessTool');
+assert.ok(!applicationsHub.includes('Odoo'),'Internal implementation platforms must stay out of the public library');
+assert.ok(!routes.some(url=>url.pathname.startsWith('/applications/')&&url.pathname!=='/applications/'),'Unbuilt application details must not enter the sitemap');
 for(const canonicalPath of ['/logiciel-sur-mesure/','/automatisation-entreprise/','/logiciel-caisse-marseille/','/applications-metier/','/site-presence-web/','/systemes-connectes/','/solutions/hebergement-infrastructure/','/solutions/retrofit-equipement-non-connecte/','/solutions-restaurants/','/solutions-hotels/','/logiciel-garage/','/caisse/','/boutique/','/materiel/']){
  assert.ok(routes.some(url=>url.pathname===canonicalPath),'Historical canonical route must remain in sitemap: '+canonicalPath);
 }

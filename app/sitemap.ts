@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: "https://yvexor.com/" },
     { url: "https://yvexor.com/solutions/" },
+    { url: "https://yvexor.com/applications/" },
     ...getGeneratedSolutionPages().map(({ slug }) => ({ url: `https://yvexor.com/solutions/${slug}/` })),
     { url: "https://yvexor.com/metiers/" },
     ...getProjectSitemapPaths().map((path) => ({ url: `https://yvexor.com${path}` })),

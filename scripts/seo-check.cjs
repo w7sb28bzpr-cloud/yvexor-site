@@ -9,6 +9,13 @@ const attrs=tag=>Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].ma
 const tags=(html,name)=>[...html.matchAll(new RegExp(`<${name}\\b[^>]*>`,'g'))].map(m=>attrs(m[0]));
 const meta=(html,key)=>tags(html,'meta').find(m=>m.name===key||m.property===key)?.content;
 const projectsHtml=read('projets/index.html');assert.match(meta(projectsHtml,'robots')||'',/noindex/,'With zero approved projects, /projets/ must remain noindex');
+const homeHtml=read('index.html');
+assert.ok(homeHtml.includes('Du logiciel au terrain, construisons la solution autour de votre besoin.'),'Homepage needs the approved YVEXOR positioning');
+assert.ok(homeHtml.includes('Découvrir les solutions')&&homeHtml.includes('/solutions/'),'Homepage must link to the Solutions hub');
+assert.ok(homeHtml.includes('Explorer par métier')&&homeHtml.includes('/metiers/'),'Homepage must link to the Métiers hub');
+assert.ok(homeHtml.includes('Votre besoin')&&homeHtml.includes('Suivi &amp; évolution'),'The process must be present in static HTML');
+assert.ok(homeHtml.includes('aria-hidden="true"'),'Decorative code animation must stay hidden from assistive technology');
+assert.ok(!homeHtml.includes('home-project-title'),'No featured project placeholder is rendered while there are zero approved projects');
 const canon=html=>tags(html,'link').filter(m=>m.rel==='canonical').map(m=>m.href);
 const aliases=['/realisations/','/yvexor-pos/','/projets/'];
 const pages=new Map();const titles=new Set();const descriptions=new Set();

@@ -10,7 +10,14 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 
 # SOURCE DE VÉRITÉ — Direction & Architecture YVEXOR
 
-*Dernière mise à jour : 2026-10-24 (2ᵉ passe, consolidation finale) par Claude. 1ʳᵉ passe : réconciliation avec `CODEX_AUDIT.md` (audit technique indépendant de Codex, voir §9/§9bis). 2ᵉ passe : intégration du brief produit complet de l'utilisateur — positionnement, étendue du catalogue, retrofit, open source, modèle commercial/pricing (§10), vision "site piloté par assistant" (§11), modèle de données pricing (§12). Ce document est désormais la définition complète de YVEXOR pour Claude et Codex — toute décision antérieure qu'il contredit est remplacée ici, l'historique reste dans le journal plus bas.*
+*Direction produit consolidée le 2026-10-24 par Claude; état d’implémentation mis à jour le 2026-10-25 par Codex après la Phase 6. Ce document reste la source de vérité produit. La Phase 6 livre la homepage portail décrite ci-dessous avec une animation de code temporaire; elle ne change ni les hubs ni les données Solutions/Métiers/Projets. La revue visuelle constate deux erreurs de cache du service worker préexistant (`public/sw.js:11`, `Response.clone()` sur un corps déjà consommé); elles sont consignées dans `CODEX_AUDIT.md` et restent à examiner séparément.*
+
+### État livré — Phase 6 (2026-10-25)
+
+- La homepage est désormais un portail court : hero, processus statique en six étapes, deux entrées Solutions/Métiers, projet uniquement si approuvé, puis CTA contact.
+- Le hero utilise une animation illustrative de code autonome, sans dépendance externe. Elle est masquée aux lecteurs d’écran, s’arrête avec `prefers-reduced-motion` et lorsque l’onglet est masqué. Le brief Phase 6 a autorisé cette visualisation temporaire; une photographie réelle reste une évolution de direction artistique, pas une condition de publication de cette phase.
+- La séquence du processus est lisible sans animation ni JavaScript. L’ancienne ancre `/#solutions` est conservée sur la section des deux entrées pour les liens historiques.
+- La homepage consomme les destinations canoniques des hubs existants. Aucun projet, métier, prix, route ou contenu public n’a été ajouté. Les sections détaillées plus bas qui décrivent l’accueil précédent sont un constat historique, et non la spécification actuelle.
 
 ## 1. Positionnement — ce que YVEXOR N'EST PAS et CE QU'IL EST
 

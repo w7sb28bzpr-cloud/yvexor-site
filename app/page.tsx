@@ -1,57 +1,87 @@
 import { SiteHeader } from "../components/navigation";
 import { SiteFooter } from "../components/site-footer";
 import { PageData } from "../components/structured-data";
-import { v2Solutions } from "../data/v2-solutions";
+import { HomeCodeField } from "../components/home-code-field";
 import { homeTitle, homeDescription } from "../lib/seo";
+import { getPublishedProjects } from "../lib/content";
 import { HomeJourney } from "./home-journey";
-import { SolutionIcon } from "../components/solution-icon";
 import styles from "./home-v2.module.css";
 
-type FeaturedProject = {
-  title: string;
-  need: string;
-  image: string;
-  imageAlt: string;
-  href: string;
-};
+function FeaturedProjectSection() {
+  const project = getPublishedProjects()[0];
+  if (!project) return null;
+  const media = project.media[0];
 
-function FeaturedProjectSection({ project }: { project: FeaturedProject | null }) {
-  if (!project) return null; // Publish only a real, approved project.
-  return <section className={styles.project} aria-labelledby="v2-project-title">
-    <div className={styles.projectCopy}><p className={styles.kicker}>Un projet YVEXOR</p><h2 id="v2-project-title">{project.title}</h2><p>{project.need}</p><a className="v2-text-link" href={project.href}>Voir le projet ↗</a></div>
-    <img src={project.image} alt={project.imageAlt} width="1200" height="800" loading="lazy" />
+  return <section className={styles.project} aria-labelledby="home-project-title">
+    <div className={styles.projectCopy}>
+      <p className={styles.eyebrow}>Projet YVEXOR</p>
+      <h2 id="home-project-title" className="site-display site-heading-lg">{project.title}</h2>
+      <p>{project.need}</p>
+      <p>{project.outcome}</p>
+      <a className="site-link" href="/projets/">Voir les projets documentés <span aria-hidden="true">↗</span></a>
+    </div>
+    {media && <img className={styles.projectImage} src={media.src} alt={media.decorative ? "" : media.alt} width="1200" height="800" loading="lazy" />}
   </section>;
 }
 
 export default function Home() {
-  return <><PageData path="/" title={homeTitle} description={homeDescription} /><SiteHeader />
+  return <div className="site-foundation">
+    <PageData path="/" title={homeTitle} description={homeDescription} />
+    <SiteHeader />
     <main id="contenu" className={styles.home}>
-      <section className={styles.hero} aria-labelledby="v2-home-title">
-        <img className={styles.heroBg} src="/images/v2/hero-code-v1.webp" width="1600" height="940" alt="Extrait du code source du site YVEXOR : la liste de ses domaines d’intervention, du sur-mesure aux systèmes connectés" fetchPriority="high" />
+      <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.heroInner}>
-          <div className={styles.heroCopy} data-reveal>
-            <p className={styles.kicker}>YVEXOR · Des solutions pour le monde réel</p>
-            <h1 id="v2-home-title">Du logiciel au terrain.<br /><span>YVEXOR construit la solution.</span></h1>
-            <p className={styles.heroLead}>Tu as une idée, un problème ou quelque chose que tu veux améliorer ? Parle-nous. Même si c’est encore flou.</p>
-            <div className={styles.heroActions}><a className="v2-button" href="/contact/">On en parle ?</a><a className={styles.heroLink} href="/a-propos/">Découvrir YVEXOR ↗</a></div>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>YVEXOR — Technologie sur mesure</p>
+            <h1 id="home-title" className="site-display">Du logiciel au terrain, construisons la solution autour de votre besoin.</h1>
+            <p className={styles.heroLead}>Applications, IA, automatisation, systèmes connectés, commerce et infrastructure : YVEXOR conçoit et relie les technologies utiles à votre activité.</p>
+            <div className={styles.heroActions}>
+              <a className="site-button" href="/solutions/">Découvrir les solutions</a>
+              <a className={styles.secondaryAction} href="/metiers/">Explorer par métier</a>
+            </div>
+          </div>
+          <div className={styles.heroVisual}>
+            <HomeCodeField />
           </div>
         </div>
       </section>
 
       <HomeJourney />
 
-      <section className={styles.solutions} id="solutions" aria-labelledby="v2-solutions-title">
-        <span id="exemples" className={styles.anchor} />
-        <div className={styles.sectionInner}>
-          <div className={styles.solutionsHead} data-reveal><div><p className={styles.kicker}>Par où commencer ?</p><h2 id="v2-solutions-title">Ce qu’on peut faire.</h2></div><a className="v2-text-link" href="/solutions/">Toutes les solutions ↗</a></div>
-          <div className={styles.solutionGrid}>{v2Solutions.map((solution, index) => <a className={styles.solutionItem} href={solution.href} key={solution.title} data-reveal style={{ "--reveal-delay": `${(index % 4) * 70}ms` } as React.CSSProperties}><span className={styles.solutionIcon}><SolutionIcon index={index} /></span><h3>{solution.title}</h3><p>{solution.cue}</p><span className={styles.solutionArrow} aria-hidden="true">→</span></a>)}</div>
+      <section id="solutions" className={styles.doors} aria-labelledby="home-doors-title">
+        <div className="site-container">
+          <header className={styles.doorsHeader}>
+            <p className={styles.eyebrow}>Deux façons de commencer</p>
+            <h2 id="home-doors-title" className="site-display site-heading-lg">Votre besoin donne le point de départ.</h2>
+          </header>
+          <div className={styles.doorGrid}>
+            <a className={`${styles.door} ${styles.doorSolution}`} href="/solutions/">
+              <span className={styles.doorIndex}>01 / SOLUTIONS</span>
+              <h3>Je sais ce que je cherche.</h3>
+              <p>Logiciel, IA, automatisation, commerce, systèmes connectés ou infrastructure.</p>
+              <span className={styles.doorLink}>Explorer les solutions <span aria-hidden="true">↗</span></span>
+            </a>
+            <a className={`${styles.door} ${styles.doorIndustry}`} href="/metiers/">
+              <span className={styles.doorIndex}>02 / MÉTIERS</span>
+              <h3>Je pars de mon activité.</h3>
+              <p>Décrivez votre métier et ce que vous souhaitez faire évoluer.</p>
+              <span className={styles.doorLink}>Explorer les métiers <span aria-hidden="true">↗</span></span>
+            </a>
+          </div>
         </div>
       </section>
 
-      <FeaturedProjectSection project={null} />
+      <FeaturedProjectSection />
 
-      <section className={styles.contact} id="projet" aria-labelledby="v2-contact-title">
-        <div className={styles.sectionInner} data-reveal><p className={styles.kicker}>On commence simplement</p><h2 id="v2-contact-title">T’as quelque chose en tête ?</h2><p>Même si c’est encore juste une idée, le plus simple, c’est d’en parler.</p><a className="v2-button" href="/contact/">On en parle ?</a></div>
+      <section className={styles.contact} aria-labelledby="home-contact-title">
+        <div className="site-container">
+          <p className={styles.eyebrow}>On commence par vous écouter</p>
+          <h2 id="home-contact-title" className="site-display site-heading-lg">Vous avez un problème, une idée ou un équipement particulier&nbsp;?</h2>
+          <p>YVEXOR construit la solution autour.</p>
+          <a className="site-button" href="/contact/">Parler de mon projet</a>
+        </div>
       </section>
-    </main><SiteFooter /></>;
+    </main>
+    <SiteFooter />
+  </div>;
 }

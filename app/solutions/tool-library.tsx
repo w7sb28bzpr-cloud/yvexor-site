@@ -47,7 +47,7 @@ export function ToolLibrary({ tools }: { tools: PublicBusinessTool[] }) {
           <span className={styles.icon}><BusinessToolIcon icon={selected.icon} /></span>
           <button type="button" className={styles.close} onClick={close} aria-label="Fermer la présentation">×</button>
         </div>
-        <p className={styles.detailCategory}>{selected.category === "commerce" ? "Commerce" : selected.category === "digital" ? "Présence en ligne" : "Gestion"}</p>
+        <p className={styles.detailCategory}>{selected.categoryId === "digital" ? "Présence en ligne" : selected.categoryId === "sell" ? "Commerce" : "Gestion"}</p>
         <h2 id="tool-dialog-title" className="site-display">{selected.name}</h2>
         <section><h3>À quoi ça sert ?</h3><p>{selected.shortDescription}</p></section>
         <section><h3>Pour qui ?</h3><ul>{selected.audience.map((item) => <li key={item}>{item}</li>)}</ul></section>

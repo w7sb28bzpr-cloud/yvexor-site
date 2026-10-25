@@ -23,8 +23,13 @@ export type SolutionClusterId =
 
 export type SolutionEntryPoint = "custom-build";
 
-export type ToolCategoryId = "commerce" | "digital" | "gestion";
-export type ToolIconId = "cash-register" | "globe" | "workflow";
+export type BusinessToolKind = "application" | "business-suite" | "capability";
+export type BusinessToolCategoryId = "manage" | "sell" | "business" | "digital" | "automate";
+export type BusinessToolCatalogSurfaceId = "legacy-solutions" | "applications";
+export type ToolIconId =
+  | "cash-register" | "globe" | "workflow" | "users" | "calendar" | "clipboard"
+  | "wrench" | "life-buoy" | "receipt" | "calculator" | "boxes" | "truck"
+  | "repeat" | "restaurant" | "trophy" | "shopping-cart" | "sparkles" | "chart";
 export type IndustryVisualId = "restaurant" | "hotel" | "garage" | "generic";
 
 /** A client-facing application entry backed by one or more YVEXOR capabilities. */
@@ -33,9 +38,14 @@ export type BusinessTool = {
   slug: string;
   name: string;
   shortDescription: string;
-  category: ToolCategoryId;
+  kind: BusinessToolKind;
+  categoryId: BusinessToolCategoryId;
   icon: ToolIconId;
   solutionIds: string[];
+  /** Public catalog locations. Empty means this entry is internal only. */
+  catalogSurfaces: BusinessToolCatalogSurfaceId[];
+  /** Composed applications reference their component tools without copying their content. */
+  includesBusinessToolIds?: string[];
   audience: string[];
   capabilities: string[];
   connections: string[];
@@ -53,9 +63,12 @@ export type PublicBusinessTool = Pick<BusinessTool,
   | "slug"
   | "name"
   | "shortDescription"
-  | "category"
+  | "kind"
+  | "categoryId"
   | "icon"
   | "solutionIds"
+  | "catalogSurfaces"
+  | "includesBusinessToolIds"
   | "audience"
   | "capabilities"
   | "connections"

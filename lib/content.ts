@@ -1,9 +1,10 @@
-import type { BusinessTool, Industry, Pricing, Project, PublicBusinessTool } from "../data/content-types";
+import type { BusinessTool, BusinessToolCatalogSurfaceId, Industry, Pricing, Project, PublicBusinessTool } from "../data/content-types";
 import { industries, industryById } from "../data/industries";
 import { projects } from "../data/projects";
 import { seoPages } from "../data/seo-pages";
 import { solutions, solutionById } from "../data/solutions";
 import { businessTools } from "../data/business-tools";
+import { businessToolCategories } from "../data/business-tool-categories";
 
 export { industries, industryById };
 
@@ -51,16 +52,19 @@ export function getPublicSolutions(): PublicSolution[] {
   }));
 }
 
-/** A tool is public only when its availability was explicitly confirmed. */
-export function getPublicTools(source: readonly BusinessTool[] = businessTools): PublicBusinessTool[] {
-  return source.filter((tool) => tool.availabilityStatus === "available").map((tool) => ({
+/** Public tools are explicitly available and assigned to the requested catalog surface. */
+export function getPublicTools(source: readonly BusinessTool[] = businessTools, surface: BusinessToolCatalogSurfaceId = "legacy-solutions"): PublicBusinessTool[] {
+  return source.filter((tool) => tool.availabilityStatus === "available" && tool.catalogSurfaces.includes(surface)).map((tool) => ({
     id: tool.id,
     slug: tool.slug,
     name: tool.name,
     shortDescription: tool.shortDescription,
-    category: tool.category,
+    kind: tool.kind,
+    categoryId: tool.categoryId,
     icon: tool.icon,
     solutionIds: tool.solutionIds,
+    catalogSurfaces: tool.catalogSurfaces,
+    includesBusinessToolIds: tool.includesBusinessToolIds,
     audience: tool.audience,
     capabilities: tool.capabilities,
     connections: tool.connections,
@@ -70,9 +74,14 @@ export function getPublicTools(source: readonly BusinessTool[] = businessTools):
   }));
 }
 
+/** Prepared application catalog data; no public route is created by this selector. */
+export function getApplicationCatalogTools(source: readonly BusinessTool[] = businessTools): PublicBusinessTool[] {
+  return getPublicTools(source, "applications");
+}
+
 /** Industry tool relationships are explicit and preserve the order chosen in data. */
 export function getPublicToolsForIndustry(industry: Industry, source: readonly BusinessTool[] = businessTools): PublicBusinessTool[] {
-  const publicById = new Map(getPublicTools(source).map((tool) => [tool.id, tool]));
+  const publicById = new Map(getApplicationCatalogTools(source).map((tool) => [tool.id, tool]));
   return industry.businessToolIds.map((id) => publicById.get(id)).filter((tool): tool is PublicBusinessTool => Boolean(tool));
 }
 
@@ -136,10 +145,14 @@ export function validateContentGraph(source: {
   checkUnique("tool", checkedTools);
 
   const clusters = new Set(["logiciel-ia", "commerce-paiement", "connecte-terrain", "digital-infrastructure"]);
+  const toolKinds = new Set(["application", "business-suite", "capability"]);
+  const toolCategoryIds = new Set(businessToolCategories.map(({ id }) => id));
+  const toolCatalogSurfaces = new Set(["legacy-solutions", "applications"]);
   const legacyPagePaths = new Set(seoPages.map((page) => `/${page.slug}/`));
   const knownSolutionDestinations = new Set([...legacyPagePaths, "/boutique/"]);
   const solutionPaths = new Set<string>();
   const industryPaths = new Set<string>();
+  const toolPaths = new Set<string>();
   for (const solution of checkedSolutions) {
     if (!clusters.has(solution.cluster)) errors.push(`Unknown cluster on solution ${solution.id}: ${solution.cluster}`);
     if (!solution.canonicalPath.startsWith("/") || !solution.canonicalPath.endsWith("/")) {
@@ -249,6 +262,14 @@ export function validateContentGraph(source: {
     if (tool.availabilityStatus !== "available" && tool.availabilityStatus !== "draft") {
       errors.push(`Invalid availabilityStatus on tool ${tool.id}`);
     }
+    if (!toolKinds.has(tool.kind)) errors.push(`Invalid kind on tool ${tool.id}: ${tool.kind}`);
+    if (!toolCategoryIds.has(tool.categoryId)) errors.push(`Invalid categoryId on tool ${tool.id}: ${tool.categoryId}`);
+    if (new Set(tool.catalogSurfaces).size !== tool.catalogSurfaces.length) errors.push(`Duplicate catalogSurfaces on tool ${tool.id}`);
+    for (const surface of tool.catalogSurfaces) {
+      if (!toolCatalogSurfaces.has(surface)) errors.push(`Invalid catalog surface ${surface} on tool ${tool.id}`);
+    }
+    if (toolPaths.has(tool.canonicalPath)) errors.push(`Duplicate tool canonicalPath: ${tool.canonicalPath}`);
+    toolPaths.add(tool.canonicalPath);
     if (new Set(tool.solutionIds).size !== tool.solutionIds.length) errors.push(`Duplicate solutionIds on tool ${tool.id}`);
     if (tool.availabilityStatus === "available" && tool.solutionIds.length === 0) {
       errors.push(`Available tool ${tool.id} must link to at least one solution`);
@@ -257,12 +278,47 @@ export function validateContentGraph(source: {
     for (const solutionId of tool.solutionIds) {
       if (!checkedSolutionById[solutionId]) errors.push(`Unknown solution ${solutionId} on tool ${tool.id}`);
     }
-    if (tool.availabilityStatus === "available" && !relatedSolutions.some((solution) => solution.canonicalPath === tool.canonicalPath)) {
-      errors.push(`Available tool ${tool.id} must use a linked Solution canonicalPath`);
+    const ownsFutureApplicationPath = tool.canonicalPath === `/applications/${tool.slug}/`;
+    const ownsIndustryPath = tool.kind === "business-suite" && checkedIndustries.some((industry) =>
+      industry.slug === tool.slug && industry.canonicalPath === tool.canonicalPath);
+    if (!ownsFutureApplicationPath && !ownsIndustryPath && !relatedSolutions.some((solution) => solution.canonicalPath === tool.canonicalPath)) {
+      errors.push(`Tool ${tool.id} must use a linked Solution canonicalPath, its matching Industry canonicalPath, or /applications/${tool.slug}/`);
+    }
+    const includedIds = tool.includesBusinessToolIds ?? [];
+    if (tool.kind === "business-suite" && includedIds.length === 0) errors.push(`Business suite ${tool.id} must include at least one tool`);
+    if (tool.kind !== "business-suite" && includedIds.length > 0) errors.push(`Only business suites may include tools: ${tool.id}`);
+    if (new Set(includedIds).size !== includedIds.length) errors.push(`Duplicate includesBusinessToolIds on tool ${tool.id}`);
+    for (const includedId of includedIds) {
+      if (includedId === tool.id) errors.push(`Tool ${tool.id} cannot include itself`);
+      const includedTool = checkedTools.find((candidate) => candidate.id === includedId);
+      if (!includedTool) errors.push(`Unknown included tool ${includedId} on tool ${tool.id}`);
+      else if (includedTool.availabilityStatus !== "available") errors.push(`Business suite ${tool.id} cannot include unpublished tool ${includedId}`);
     }
     for (const field of ["audience", "capabilities", "connections"] as const) {
       if (new Set(tool[field]).size !== tool[field].length) errors.push(`Duplicate ${field} on tool ${tool.id}`);
     }
+  }
+
+  const toolById = new Map(checkedTools.map((tool) => [tool.id, tool]));
+  const visiting = new Set<string>();
+  const visited = new Set<string>();
+  const checkSuiteCycles = (toolId: string) => {
+    if (visiting.has(toolId)) {
+      errors.push(`Circular business suite composition involving ${toolId}`);
+      return;
+    }
+    if (visited.has(toolId)) return;
+    const tool = toolById.get(toolId);
+    if (!tool) return;
+    visiting.add(toolId);
+    for (const includedId of tool.includesBusinessToolIds ?? []) {
+      if (toolById.get(includedId)?.kind === "business-suite") checkSuiteCycles(includedId);
+    }
+    visiting.delete(toolId);
+    visited.add(toolId);
+  };
+  for (const tool of checkedTools) {
+    if (tool.kind === "business-suite") checkSuiteCycles(tool.id);
   }
 
   return errors;

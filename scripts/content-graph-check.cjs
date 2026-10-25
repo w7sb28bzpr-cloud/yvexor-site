@@ -14,7 +14,7 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
-const { filterPublishedProjects, getGeneratedIndustryPages, getGeneratedProjectPages, getGeneratedSolutionPages, getProjectSitemapPaths, getPublicProjectBySlug, getPublicTools, getPublicToolsForIndustry, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
+const { filterPublishedProjects, getApplicationCatalogTools, getGeneratedIndustryPages, getGeneratedProjectPages, getGeneratedSolutionPages, getProjectSitemapPaths, getPublicProjectBySlug, getPublicTools, getPublicToolsForIndustry, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
 const { projects } = require("../data/projects.ts");
 const { getPublicSolutions } = require("../lib/content.ts");
 const { solutions } = require("../data/solutions.ts");
@@ -37,6 +37,10 @@ for (const solution of solutions.filter((item) => item.id !== "equipment-retrofi
 }
 assert.deepEqual(getPublishedProjects(), [], "No fictional or draft project should be public");
 assert.deepEqual(getPublicTools().map((tool) => tool.id), ["business-website", "business-management-app", "cash-register"], "Only confirmed application offers appear in the initial public library, with general business tools before the historic POS offer");
+assert.equal(getApplicationCatalogTools().length, 21, "The prepared application catalog includes the three existing tools and new entries");
+assert.ok(getApplicationCatalogTools().some((tool) => tool.id === "restaurant" && tool.kind === "business-suite"), "Restaurant is available as a composed catalog entry");
+assert.ok(!getApplicationCatalogTools().some((tool) => tool.id === "commerce-suite"), "Internal commerce composition is not presented as a standalone application");
+assert.deepEqual(getPublicTools().map((tool) => tool.id), ["business-website", "business-management-app", "cash-register"], "Preparing the applications catalog must not expand the legacy Solutions catalog");
 const internalPlatformTool = { ...businessTools[0], implementationPlatformId: "odoo" };
 const projectedPlatformTool = getPublicTools([internalPlatformTool])[0];
 assert.equal("implementationPlatformId" in projectedPlatformTool, false, "Internal implementation platform metadata must not enter public tool payloads");
@@ -44,6 +48,13 @@ assert.equal(JSON.stringify(projectedPlatformTool).includes("odoo"), false, "Int
 const draftTool = { ...businessTools[0], id: "tool-draft", slug: "crm-a-confirmer", availabilityStatus: "draft", solutionIds: [] };
 assert.deepEqual(getPublicTools([draftTool]), [], "Draft business tools never enter public views");
 assert.ok(validateContentGraph({ tools: [{ ...businessTools[0], solutionIds: ["missing-solution"] }] }).some((error) => error.includes("Unknown solution missing-solution on tool")), "Unknown Solution relations on tools must fail validation");
+assert.ok(validateContentGraph({ tools: [{ ...businessTools[0], categoryId: "unknown" }] }).some((error) => error.includes("Invalid categoryId on tool")), "Unknown application categories must fail validation");
+assert.ok(validateContentGraph({ tools: [{ ...businessTools[0], kind: "unknown" }] }).some((error) => error.includes("Invalid kind on tool")), "Unknown business tool kinds must fail validation");
+assert.ok(validateContentGraph({ tools: [{ ...businessTools.find((tool) => tool.kind === "business-suite"), includesBusinessToolIds: ["missing-tool"] }] }).some((error) => error.includes("Unknown included tool missing-tool")), "Business suite composition must reference existing tool IDs");
+assert.ok(validateContentGraph({ tools: [{ ...businessTools.find((tool) => tool.kind === "business-suite"), includesBusinessToolIds: [businessTools.find((tool) => tool.kind === "business-suite").id] }] }).some((error) => error.includes("cannot include itself")), "Business suites cannot include themselves");
+const restaurantSuite = businessTools.find((tool) => tool.id === "restaurant");
+const cyclicSuite = { ...restaurantSuite, id: "cyclic-suite", slug: "cyclic-suite", canonicalPath: "/applications/cyclic-suite/", includesBusinessToolIds: ["restaurant"] };
+assert.ok(validateContentGraph({ tools: [...businessTools.map((tool) => tool.id === "restaurant" ? { ...tool, includesBusinessToolIds: [...tool.includesBusinessToolIds, "cyclic-suite"] } : tool), cyclicSuite] }).some((error) => error.includes("Circular business suite composition")), "Suite composition cycles must fail validation");
 assert.ok(validateContentGraph({ tools: [{ ...draftTool, availabilityStatus: "available" }] }).some((error) => error.includes("Available tool tool-draft must link to at least one solution")), "Available tools must be backed by at least one Solution");
 assert.deepEqual(validateContentGraph({ tools: [...businessTools, { ...businessTools[0], id: "duplicate-tool", slug: "caisse" }] }).filter((error) => error.includes("Duplicate tool slug")), ["Duplicate tool slug: caisse"], "Tool slugs must remain unique");
 assert.deepEqual(filterPublishedProjects([{ publicationStatus: "draft" }]), [], "Draft projects must be filtered out");

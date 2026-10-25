@@ -10,6 +10,13 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 
 # SOURCE DE VÉRITÉ — Direction & Architecture YVEXOR
 
+### Modèle des applications — préparation du futur hub (2026-10-25)
+
+- `data/business-tools.ts` reste l’unique source des applications, suites composées et capacités transversales. `kind` distingue `application`, `business-suite` et `capability`; les suites référencent leurs briques par `includesBusinessToolIds` sans recopier leur contenu.
+- Les catégories publiques sont `manage`, `sell`, `business`, `digital` et `automate`, avec leurs libellés dans `data/business-tool-categories.ts`. `catalogSurfaces` sépare le catalogue historique de `/solutions/` du futur catalogue `/applications/`; aucun hub ni route `/applications/` n’est créé dans cette préparation.
+- Les outils disponibles issus du brief sont traités comme disponibles, y compris lorsqu’ils pourront être adaptés à partir de briques existantes. `implementationPlatformId` reste interne et n’est jamais inclus dans la projection publique; aucune marque de plateforme n’est affichée.
+- Les canoniques existants restent propriétaires de leurs pages. Les nouveaux outils portent des destinations futures sous `/applications/`, sans génération de page. Les métiers continuent de référencer les IDs des outils dans `data/industries.ts`.
+
 ### État actuel — expérience Métiers (2026-10-25)
 
 - Le portail `/metiers/` et les trois activités publiées restent pilotés par `data/industries.ts`. Le modèle Industry porte désormais `businessToolIds` explicites, avec les outils et leur contenu conservés uniquement dans `data/business-tools.ts`; la validation refuse IDs inconnus, doublons et outils non publiés. Les futures industries peuvent employer le visuel générique sans élargir l’union des secteurs à chaque ajout.

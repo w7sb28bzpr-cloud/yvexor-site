@@ -17,6 +17,8 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 - Les trois expériences détaillées sont reconstruites aux canoniques existantes `/solutions-restaurants/`, `/solutions-hotels/`, `/logiciel-garage/`. Les métadonnées, FAQ, contenu éditorial, liens liés et schémas restent issus des pages SEO existantes; aucun `/metiers/{restaurant,hotel,garage}/` n’est généré.
 - Les outils visibles sont filtrés par disponibilité et ordonnés selon `businessToolIds`. Les Solutions présentées viennent de `solutionIds`; les clusters ne structurent pas les pages Métiers. La section du logiciel au terrain s’affiche à partir des Solutions liées de connexion/retrofit.
 - Revue navigateur effectuée sur le hub et les trois destinations, aux largeurs 320, 375, 390, 430, 768, 1024 et 1440 px : pas de scroll horizontal, H1, outils et CTA contenus. Les détails FAQ utilisent les éléments natifs `details/summary`; les nouvelles pages n’ajoutent pas d’animation.
+- Le champ du code de l’accueil conserve ses textes et CTA, mais son fond occupe explicitement toute la zone du hero et se répartit en colonnes sur téléphone afin de montrer du code aux deux bords. La frappe est plus lisible avec une pause rythmée aux retours à la ligne; pause onglet masqué et source statique complète en `prefers-reduced-motion` sont maintenues.
+- `SiteFooter` est minimal sur toutes les pages qui l’utilisent : copyright et liens légaux uniquement. Les URLs légales restent inchangées; le footer ne répète plus la navigation.
 
 *Direction produit consolidée le 2026-10-24 par Claude; état d’implémentation mis à jour le 2026-10-25 par Codex après la Phase 6 et son itération immersive. Ce document reste la source de vérité produit. La Phase 6 a initialement livré la homepage portail décrite ci-dessous; l’itération du 25-10 la simplifie selon §1bis sans changer les hubs ni les données Solutions/Métiers/Projets. La revue visuelle constate deux erreurs de cache du service worker préexistant (`public/sw.js:11`, `Response.clone()` sur un corps déjà consommé); elles sont consignées dans `CODEX_AUDIT.md` et restent à examiner séparément.*
 
@@ -457,6 +459,12 @@ type Pricing = {
 - Le modèle de page consomme les outils via le filtre public, les Solutions liées par ID, et les solutions de connexion/retrofit pour le contenu logiciel ↔ terrain. Les icônes BusinessTool sont partagées avec la bibliothèque existante.
 - Contrôles : `npm run test:content`, `npm run test:seo` (64 pages indexables), `npm run test:theme`, `npx tsc --noEmit`, `npx next build` (72 routes) et `git diff --check` réussissent. Le premier build sandboxé a été bloqué par le fetch existant de `/materiel/`; le build autorisé avec accès réseau passe.
 - Revue Edge : `/metiers/` et les trois pages détaillées contrôlées à 320, 375, 390, 430, 768, 1024 et 1440 px. Aucun scroll horizontal; H1, cartes/outils et CTA dans le viewport. Aucun changement homepage, Solution hub en contenu, caisse, projet, À propos ou service worker.
+
+## [Codex — 2026-10-25] — Champ de code mobile et footer minimal
+
+- Le fond de `HomeCodeField` est désormais bord à bord, sans largeur maximale; le texte ambiant utilise deux colonnes mobiles remplies sur la hauteur. La frappe gagne un rythme modéré et marque brièvement les retours à la ligne. Les pauses à onglet masqué et le rendu statique complet `prefers-reduced-motion` restent actifs.
+- `SiteFooter`, partagé par les pages du site, n’affiche plus que `© 2026 YVEXOR`, `Mentions légales` et `Confidentialité`. Les deux destinations légales n’ont pas changé.
+- Cette correction touche uniquement le fond/animation du hero, le footer partagé et leurs contrôles; le contenu principal de l’accueil et de `/solutions/` n’est pas modifié.
 
 ## [Claude — 2026-10-21, suite]
 

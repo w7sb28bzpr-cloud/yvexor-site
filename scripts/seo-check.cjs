@@ -51,6 +51,12 @@ for(const url of routes){
  const title=decode(html.match(/<title>(.*?)<\/title>/s)?.[1]||'');const description=meta(html,'description');
  assert.ok(title&&description,url.pathname+' missing title/description');assert.ok(!titles.has(title),'Duplicate title '+title);assert.ok(!descriptions.has(description),'Duplicate description '+description);titles.add(title);descriptions.add(description);
  assert.equal((html.match(/<h1\b/g)||[]).length,1,url.pathname+' H1');assert.equal(tags(html,'main').length,1,url.pathname+' main');assert.ok(tags(html,'header').length&&tags(html,'footer').length,url.pathname+' landmarks');
+ const footer=html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0]||'';
+ assert.match(footer,/© 2026 YVEXOR/,url.pathname+' minimal footer copyright');
+ assert.match(footer,/href="\/mentions-legales\/"/,url.pathname+' legal notice footer link');
+ assert.match(footer,/href="\/politique-confidentialite\/"/,url.pathname+' privacy footer link');
+ assert.match(footer,/aria-label="Informations légales"/,url.pathname+' footer legal navigation');
+ assert.doesNotMatch(footer,/(?:Solutions|Métiers|Projets|Boutique|Espace client|Budget &amp; tarifs)/,url.pathname+' footer must not repeat primary navigation');
  assert.match(html,/<html[^>]*lang="fr"/);assert.deepEqual(canon(html),[url.href]);assert.ok(!/noindex/.test(meta(html,'robots')||''));
  assert.equal(meta(html,'og:title'),title);assert.equal(meta(html,'og:description'),description);assert.equal(meta(html,'og:url'),url.href);assert.equal(meta(html,'twitter:title'),title);
  const structured=[...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1])).flatMap(d=>d['@graph']||[d]);

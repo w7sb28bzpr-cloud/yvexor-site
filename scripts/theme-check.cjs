@@ -2,6 +2,9 @@ const assert = require('node:assert/strict');
 const vm = require('node:vm');
 const fs = require('node:fs');
 const ts = require('typescript');
+const homeCodeCss = fs.readFileSync('components/home-code-field.module.css', 'utf8');
+const homeCodeSource = fs.readFileSync('components/home-code-field.tsx', 'utf8');
+const homePageCss = fs.readFileSync('app/home-v2.module.css', 'utf8');
 const output = ts.transpileModule(fs.readFileSync('lib/theme.ts', 'utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
 const sandbox = {exports:{}};
 vm.runInNewContext(output, sandbox);
@@ -56,6 +59,18 @@ assert.doesNotMatch(primitiveCss, /^\.site-container\s*\{/m, 'Site containers mu
 assert.match(primitiveCss, /:focus-visible/);
 assert.match(primitiveCss, /prefers-reduced-motion:\s*reduce/);
 assert.match(primitiveCss, /--site-gutter/);
+assert.match(homePageCss, /\.heroVisual\s*\{[^}]*inset:\s*0[^}]*width:\s*100%[^}]*max-width:\s*none/);
+assert.match(homeCodeCss, /\.field\s*\{[^}]*width:\s*100%[^}]*min-width:\s*100%[^}]*max-width:\s*none/);
+assert.match(homeCodeCss, /\.ambient\s*\{[^}]*inset:\s*0[^}]*width:\s*100%[^}]*max-width:\s*none[^}]*columns:\s*2[^}]*column-fill:\s*auto/);
+assert.match(homeCodeCss, /@media\s*\(max-width:\s*800px\)[\s\S]*?\.ambient\s*\{[^}]*columns:\s*2/);
+assert.match(homeCodeSource, /source\.repeat\(12\)/, 'Ambient source must continue through both mobile columns');
+assert.match(homeCodeSource, /source\[current\]\s*===\s*"\\n"\s*\?\s*155/, 'Typing must pause briefly as new lines appear');
+assert.match(homeCodeSource, /motion\.matches\)[\s\S]*?cursor\s*=\s*sourceLength[\s\S]*?setPosition\(sourceLength\)/, 'Reduced motion must display the complete static source');
+const footerSource = fs.readFileSync('components/site-footer.tsx', 'utf8');
+assert.match(footerSource, /© 2026 YVEXOR/);
+assert.match(footerSource, /href="\/mentions-legales\/"/);
+assert.match(footerSource, /href="\/politique-confidentialite\/"/);
+assert.doesNotMatch(footerSource, /href="\/(?:solutions|metiers|projets|a-propos|contact|boutique|materiel|faq|caisse)\//, 'Shared footer must not repeat site navigation');
 for (const width of [320, 375, 768, 1024, 1440]) {
   const gutter = Math.min(64, Math.max(16, width * 0.04));
   assert.ok(width - 2 * gutter > 0, `Site content must remain positive at ${width}px`);

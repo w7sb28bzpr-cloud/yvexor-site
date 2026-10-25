@@ -344,3 +344,9 @@ La Phase 1 (modèle de contenu) est livrée dans le commit distinct suivant.
 - Aucun chemin `/metiers/restaurant/`, `/metiers/hotel/` ou `/metiers/garage/`, aucune nouvelle Industry, aucun projet et aucune fonctionnalité non étayée n’ont été ajoutés. Les pages caisse n’ont pas été touchées. Aucun contenu ou route homepage, hub Solutions, projets, À propos ni service worker n’a été modifié; les icônes communes ont seulement été extraites dans un composant pur pour préserver le rendu de la bibliothèque existante.
 - QA : build statique Next réussi (72 routes), `test:seo` réussi (64 indexables), `test:content`, `test:theme`, TypeScript et diff check réussis. Un premier build sans accès réseau a échoué au fetch préexistant de `/materiel/`; relancé avec l’accès réseau requis, il passe. Mesures Edge sur les quatre pages à 320/375/390/430/768/1024/1440 : largeur de document identique au viewport, titres/outils/CTA contenus.
 - En attente de revue Claude; commit local distinct à créer après les derniers contrôles. Rien n’a été poussé.
+
+## Ajustements globaux demandés — champ de code mobile et footer (25 octobre 2026)
+
+- Le champ de code du hero conserve le même contenu, mais sa boîte est explicitement pleine largeur/hauteur et sans `max-width`; le fond statique est réparti en deux colonnes sur mobile, remplies sur toute la hauteur. La vitesse de frappe augmente légèrement avec une pause lisible à chaque nouvelle ligne; curseur, boucle, renouvellement, pause onglet masqué et code complet en `prefers-reduced-motion` restent en place.
+- Le composant partagé `SiteFooter` est désormais minimal sur les pages qui le réutilisent : copyright et deux liens légaux seulement. Routes légales inchangées; aucune page supprimée.
+- Le contenu principal de la homepage et `/solutions/` n’a pas été modifié. Contrôles code ajoutés à `theme-check.cjs` et `seo-check.cjs` pour les bords du champ et le footer exporté.

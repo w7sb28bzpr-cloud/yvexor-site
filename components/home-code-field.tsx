@@ -17,7 +17,7 @@ const lines: Token[][] = [
 
 const tokens = lines.flatMap((line, index) => [...line, ...(index < lines.length - 1 ? [{ text: "\n" }] : [])]);
 const source = tokens.map((token) => token.text).join("");
-const delayFor = (index: number) => 36 + ((index * 17) % 47);
+const delayFor = (index: number) => 30 + ((index * 17) % 35);
 const capabilities = ["Applications", "IA", "Automatisation", "Systèmes connectés", "Infrastructure", "Équipements & terrain"];
 
 export function HomeCapabilities({ className, activeClassName, separatorClassName }: { className?: string; activeClassName?: string; separatorClassName?: string }) {
@@ -79,7 +79,7 @@ export function HomeCodeField() {
       if (cursor < sourceLength) {
         const current = cursor++;
         setPosition(cursor);
-        timer = window.setTimeout(type, delayFor(current));
+        timer = window.setTimeout(type, source[current] === "\n" ? 155 : delayFor(current));
         return;
       }
       timer = window.setTimeout(() => {
@@ -124,7 +124,7 @@ export function HomeCodeField() {
 
   let remaining = position;
   return <div className={styles.field} aria-hidden="true">
-    <pre className={styles.ambient}>{source.repeat(4)}</pre>
+    <pre className={styles.ambient}>{source.repeat(12)}</pre>
     <div ref={scrollRef} className={styles.viewport}>
       <pre className={styles.code}><code>{tokens.map((token, tokenIndex) => {
         const visible = token.text.slice(0, Math.max(0, Math.min(token.text.length, remaining)));

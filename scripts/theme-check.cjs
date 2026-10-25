@@ -71,7 +71,9 @@ assert.match(homeCodeSource, /character === "\\n" \? 48/, 'Line pauses must rema
 assert.match(homeCodeSource, /programIndex = \(programIndex \+ 1\) % programs\.length/, 'Code fragments must cycle continuously');
 assert.match(homeCodeSource, /new IntersectionObserver/, 'Code animation must pause outside the viewport');
 assert.match(homeCodeSource, /document\.hidden/, 'Code animation must pause when its tab is hidden');
-assert.match(homeCodeSource, /motion\.matches\)[\s\S]*?output = fullSource[\s\S]*?setText\(fullSource\)[\s\S]*?setActiveLine\(-1\)/, 'Reduced motion must display the complete static source without a cursor');
+assert.match(homeCodeSource, /motion\.matches\)[\s\S]*?padToLines\(fullSource,[\s\S]*?setActiveLine\(-1\)/, 'Reduced motion must display the complete static source, padded to fill the viewport, without a cursor');
+assert.match(homeCodeSource, /function padToLines/, 'The code field must pad its source so the stream never collapses to the bottom of a tall viewport');
+assert.match(homeCodeSource, /getComputedStyle\(viewport\)\.lineHeight/, 'The visible line budget must be measured from the real rendered viewport, not a fixed constant');
 assert.match(homeCodeSource, /<CodeStream startProgram=\{0\} initialDelay=\{80\} speedOffset=\{0\}/);
 assert.match(homeCodeSource, /<CodeStream startProgram=\{1\} initialDelay=\{720\} speedOffset=\{5\}/, 'The two code streams must start separately');
 assert.match(homePageCss, /\.heroActions > :global\(\.site-button\)\.solutionsAction\s*\{[^}]*animation:\s*solutionsSheen 8s ease-in-out infinite/);

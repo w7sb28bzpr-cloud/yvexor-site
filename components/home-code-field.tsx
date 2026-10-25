@@ -45,10 +45,23 @@ const programs = [
 const fullSource = programs.flat(2).join("\n\n");
 const capabilities = ["Applications", "IA", "Automatisation", "Systèmes connectés", "Infrastructure", "Équipements & terrain"];
 
+/** Repeats a block of source until there are at least `minLines` lines, so the
+ * stream (typed or static) starts already full instead of leaving an empty viewport. */
+function padToLines(block: string, minLines: number): string {
+  let padded = block;
+  while (padded.split("\n").length < minLines) padded += "\n\n" + block;
+  return padded;
+}
+
+const FALLBACK_MAX_LINES = 36;
+const MIN_MAX_LINES = 24;
+const LINE_BUFFER = 6;
+
 function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram: number; initialDelay: number; speedOffset: number }) {
   const [text, setText] = useState("");
   const [activeLine, setActiveLine] = useState(-1);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const maxLinesRef = useRef(FALLBACK_MAX_LINES);
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -61,8 +74,22 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     let charIndex = 0;
     let output = "";
     let charCounter = 0;
-    const seedProgram = programs[(startProgram + 1) % programs.length];
-    const seed = [...seedProgram, ...seedProgram].join("\n\n");
+
+    const measure = () => {
+      if (!viewport) return;
+      const lineHeight = parseFloat(window.getComputedStyle(viewport).lineHeight) || 20;
+      const lines = Math.ceil(viewport.clientHeight / lineHeight) + LINE_BUFFER;
+      maxLinesRef.current = Math.max(MIN_MAX_LINES, lines);
+    };
+    measure();
+
+    const seedProgram = programs[(startProgram + 1) % programs.length].join("\n\n");
+    const seed = padToLines(seedProgram, maxLinesRef.current);
+
+    const trim = (value: string) => {
+      const lines = value.split("\n");
+      return lines.length > maxLinesRef.current ? lines.slice(-maxLinesRef.current).join("\n") : value;
+    };
 
     const clear = () => {
       if (timer !== undefined) window.clearTimeout(timer);
@@ -82,8 +109,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       if (charIndex < snippet.length) {
         const character = snippet[charIndex++];
         output += character;
-        const lines = output.split("\n");
-        if (lines.length > 15) output = lines.slice(-15).join("\n");
+        output = trim(output);
         setText(output);
         setActiveLine(output.split("\n").length - 1);
         charCounter++;
@@ -99,8 +125,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
         programIndex = (programIndex + 1) % programs.length;
       }
       output += "\n";
-      const lines = output.split("\n");
-      if (lines.length > 15) output = lines.slice(-15).join("\n");
+      output = trim(output);
       setText(output);
       setActiveLine(output.split("\n").length - 1);
       schedule(90);
@@ -112,18 +137,30 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     const onMotion = () => {
       clear();
       if (motion.matches) {
-        output = fullSource;
-        setText(fullSource);
+        measure();
+        const full = padToLines(fullSource, maxLinesRef.current);
+        output = full;
+        setText(full);
         setActiveLine(-1);
         if (viewport) viewport.scrollTop = 0;
       } else {
-        output = seed;
+        measure();
+        output = padToLines(seedProgram, maxLinesRef.current);
         programIndex = startProgram;
         snippetIndex = 0;
         charIndex = 0;
-        setText(seed);
-        setActiveLine(seed.split("\n").length - 1);
+        setText(output);
+        setActiveLine(output.split("\n").length - 1);
         if (visible && !document.hidden) schedule(initialDelay);
+      }
+    };
+    const onResize = () => {
+      measure();
+      if (motion.matches) {
+        const full = padToLines(fullSource, maxLinesRef.current);
+        output = full;
+        setText(full);
+        setActiveLine(-1);
       }
     };
 
@@ -135,8 +172,9 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     if (viewport) observer.observe(viewport);
 
     if (motion.matches) {
-      output = fullSource;
-      setText(fullSource);
+      const full = padToLines(fullSource, maxLinesRef.current);
+      output = full;
+      setText(full);
       setActiveLine(-1);
     } else {
       output = seed;
@@ -148,12 +186,14 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
 
     motion.addEventListener("change", onMotion);
     document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("resize", onResize);
     return () => {
       stopped = true;
       clear();
       observer.disconnect();
       motion.removeEventListener("change", onMotion);
       document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("resize", onResize);
     };
   }, [initialDelay, speedOffset, startProgram]);
 

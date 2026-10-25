@@ -18,6 +18,7 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 - Le hero utilise une animation illustrative de code autonome, sans dépendance externe. Elle est masquée aux lecteurs d’écran, s’arrête avec `prefers-reduced-motion` et lorsque l’onglet est masqué. Le brief Phase 6 a autorisé cette visualisation temporaire; une photographie réelle reste une évolution de direction artistique, pas une condition de publication de cette phase.
 - La séquence du processus est lisible sans animation ni JavaScript. L’ancienne ancre `/#solutions` est conservée sur la section des deux entrées pour les liens historiques.
 - La homepage consomme les destinations canoniques des hubs existants. Aucun projet, métier, prix, route ou contenu public n’a été ajouté. Les sections détaillées plus bas qui décrivent l’accueil précédent sont un constat historique, et non la spécification actuelle.
+- Intégration de marque après Phase 6 : le `BrandLogo` partagé utilise le lockup officiel transparent bleu/cyan + YVEXOR dans le header et le footer; un mot-symbole sombre est utilisé sur les surfaces claires et le mot-symbole blanc sur les surfaces sombres. Le bleu/cyan reste une signature ponctuelle, pas une nouvelle palette globale. Le visuel vertical sur fond noir est conservé dans `public/brand/` pour un usage ultérieur et n’est pas imposé au hero ni aux métadonnées sociales.
 
 ## 1. Positionnement — ce que YVEXOR N'EST PAS et CE QU'IL EST
 

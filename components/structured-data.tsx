@@ -5,7 +5,7 @@ export function JsonLd({data}:{data:unknown}) {
 }
 export function OrganizationData() {
   return <JsonLd data={{"@context":"https://schema.org","@graph":[
-    {"@type":"Organization","@id":`${siteUrl}/#organization`,name:"YVEXOR",url:siteUrl+"/",logo:`${siteUrl}/yvexor-logo-officiel-v2.jpg`,telephone:"+33756913013",description:homeDescription,areaServed:areas},
+    {"@type":"Organization","@id":`${siteUrl}/#organization`,name:"YVEXOR",url:siteUrl+"/",logo:`${siteUrl}/brand/yvexor-logo-light.webp`,telephone:"+33756913013",description:homeDescription,areaServed:areas},
     {"@type":"WebSite","@id":`${siteUrl}/#website`,name:"YVEXOR",url:siteUrl+"/",inLanguage:"fr-FR",publisher:{"@id":`${siteUrl}/#organization`}}
   ]}}/>;
 }

@@ -14,11 +14,12 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
-const { filterPublishedProjects, getGeneratedIndustryPages, getGeneratedProjectPages, getGeneratedSolutionPages, getProjectSitemapPaths, getPublicProjectBySlug, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
+const { filterPublishedProjects, getGeneratedIndustryPages, getGeneratedProjectPages, getGeneratedSolutionPages, getProjectSitemapPaths, getPublicProjectBySlug, getPublicTools, getPublishablePricing, getPublishedProjects, validateContentGraph } = require("../lib/content.ts");
 const { projects } = require("../data/projects.ts");
 const { getPublicSolutions } = require("../lib/content.ts");
 const { solutions } = require("../data/solutions.ts");
 const { v2Solutions } = require("../data/v2-solutions.ts");
+const { businessTools } = require("../data/business-tools.ts");
 const errors = validateContentGraph();
 assert.deepEqual(errors, [], errors.join("\n"));
 assert.deepEqual(getGeneratedSolutionPages().map((page) => page.slug).sort(), ["hebergement-infrastructure", "retrofit-equipement-non-connecte"], "Only solutions without an existing canonical destination may generate new detail routes");
@@ -35,6 +36,12 @@ for (const solution of solutions.filter((item) => item.id !== "equipment-retrofi
   assert.equal(solution.eyebrow, source.title, `Solution ${solution.id} must use its matching V2 source`);
 }
 assert.deepEqual(getPublishedProjects(), [], "No fictional or draft project should be public");
+assert.deepEqual(getPublicTools().map((tool) => tool.id), ["business-website", "business-management-app", "cash-register"], "Only confirmed application offers appear in the initial public library, with general business tools before the historic POS offer");
+const draftTool = { ...businessTools[0], id: "tool-draft", slug: "crm-a-confirmer", availabilityStatus: "draft", solutionIds: [] };
+assert.deepEqual(getPublicTools([draftTool]), [], "Draft business tools never enter public views");
+assert.ok(validateContentGraph({ tools: [{ ...businessTools[0], solutionIds: ["missing-solution"] }] }).some((error) => error.includes("Unknown solution missing-solution on tool")), "Unknown Solution relations on tools must fail validation");
+assert.ok(validateContentGraph({ tools: [{ ...draftTool, availabilityStatus: "available" }] }).some((error) => error.includes("Available tool tool-draft must link to at least one solution")), "Available tools must be backed by at least one Solution");
+assert.deepEqual(validateContentGraph({ tools: [...businessTools, { ...businessTools[0], id: "duplicate-tool", slug: "caisse" }] }).filter((error) => error.includes("Duplicate tool slug")), ["Duplicate tool slug: caisse"], "Tool slugs must remain unique");
 assert.deepEqual(filterPublishedProjects([{ publicationStatus: "draft" }]), [], "Draft projects must be filtered out");
 
 const fixtureProject = {
@@ -76,4 +83,4 @@ const validated = { offers: [{ kind: "quote" }], validated: true };
 assert.equal(getPublishablePricing(validated)?.validated, true);
 assert.deepEqual(getPublicSolutions().map((solution) => solution.pricing), solutions.map((solution) => getPublishablePricing(solution.pricing)));
 
-console.log(`PASS: ${require("../data/solutions.ts").solutions.length} solutions, ${require("../data/industries.ts").industries.length} industries, ${projects.length} projects; IDs, slugs, relations, canonicalPath, draft and pricing guards.`);
+console.log(`PASS: ${require("../data/solutions.ts").solutions.length} solutions, ${require("../data/industries.ts").industries.length} industries, ${businessTools.length} business tools, ${projects.length} projects; IDs, slugs, relations, canonicalPath, draft and pricing guards.`);

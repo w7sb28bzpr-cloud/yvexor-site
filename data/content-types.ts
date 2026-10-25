@@ -21,6 +21,31 @@ export type SolutionClusterId =
   | "connecte-terrain"
   | "digital-infrastructure";
 
+export type SolutionEntryPoint = "custom-build";
+
+export type ToolCategoryId = "commerce" | "digital" | "gestion";
+export type ToolIconId = "cash-register" | "globe" | "workflow";
+
+/** A client-facing application entry backed by one or more YVEXOR capabilities. */
+export type BusinessTool = {
+  id: string;
+  slug: string;
+  name: string;
+  shortDescription: string;
+  category: ToolCategoryId;
+  icon: ToolIconId;
+  solutionIds: string[];
+  audience: string[];
+  capabilities: string[];
+  connections: string[];
+  evolution: string;
+  /** Shared by multiple tools when they are later built on the same platform. Internal only. */
+  implementationPlatformId?: string;
+  /** Existing canonical destination only; tools do not create duplicate SEO pages. */
+  canonicalPath: string;
+  availabilityStatus: "draft" | "available";
+};
+
 export type PricingOffer =
   | { kind: "subscription"; monthlyFrom?: number; monthlyFixed?: number }
   | { kind: "oneTime"; amountFrom?: number; quoteRequired?: boolean }
@@ -42,6 +67,8 @@ export type Solution = {
   /** Public URL that owns this solution; existing editorial pages stay canonical owners. */
   canonicalPath: string;
   cluster: SolutionClusterId;
+  /** Navigation metadata for the custom-build doorway; clusters remain browse-only groupings. */
+  entryPoints?: SolutionEntryPoint[];
   eyebrow: string;
   primaryAction: { label: string; href: string };
   industryIds: string[];

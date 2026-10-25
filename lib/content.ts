@@ -1,8 +1,9 @@
-import type { Industry, Pricing, Project } from "../data/content-types";
+import type { BusinessTool, Industry, Pricing, Project } from "../data/content-types";
 import { industries, industryById } from "../data/industries";
 import { projects } from "../data/projects";
 import { seoPages } from "../data/seo-pages";
 import { solutions, solutionById } from "../data/solutions";
+import { businessTools } from "../data/business-tools";
 
 export { industries, industryById };
 
@@ -50,6 +51,16 @@ export function getPublicSolutions(): PublicSolution[] {
   }));
 }
 
+/** A tool is public only when its availability was explicitly confirmed. */
+export function getPublicTools(source: readonly BusinessTool[] = businessTools): BusinessTool[] {
+  return source.filter((tool) => tool.availabilityStatus === "available");
+}
+
+/** The bespoke doorway uses explicit data metadata; clusters remain navigation groupings. */
+export function getCustomBuildSolutions(): PublicSolution[] {
+  return getPublicSolutions().filter((solution) => solution.entryPoints?.includes("custom-build"));
+}
+
 export function getPublicSolutionById(id: string): PublicSolution | undefined {
   const solution = solutionById[id];
   return solution ? { ...solution, pricing: getPublishablePricing(solution.pricing) } : undefined;
@@ -78,10 +89,12 @@ export function validateContentGraph(source: {
   solutions?: typeof solutions;
   industries?: readonly Industry[];
   projects?: readonly Project[];
+  tools?: readonly BusinessTool[];
 } = {}): string[] {
   const checkedSolutions = source.solutions ?? solutions;
   const checkedIndustries = source.industries ?? industries;
   const checkedProjects = source.projects ?? projects;
+  const checkedTools = source.tools ?? businessTools;
   const checkedSolutionById = Object.fromEntries(checkedSolutions.map((item) => [item.id, item]));
   const checkedIndustryById = Object.fromEntries(checkedIndustries.map((item) => [item.id, item]));
   const errors: string[] = [];
@@ -100,6 +113,7 @@ export function validateContentGraph(source: {
   checkUnique("solution", checkedSolutions);
   checkUnique("industry", checkedIndustries);
   checkUnique("project", checkedProjects);
+  checkUnique("tool", checkedTools);
 
   const clusters = new Set(["logiciel-ia", "commerce-paiement", "connecte-terrain", "digital-infrastructure"]);
   const legacyPagePaths = new Set(seoPages.map((page) => `/${page.slug}/`));
@@ -200,6 +214,29 @@ export function validateContentGraph(source: {
     }
     if (project.publicationStatus === "approved" && (!project.solutionIds.length || !project.industryIds.length)) {
       errors.push(`Approved project ${project.id} must link to at least one solution and industry`);
+    }
+  }
+
+  for (const tool of checkedTools) {
+    if (!tool.canonicalPath.startsWith("/") || !tool.canonicalPath.endsWith("/")) {
+      errors.push(`Tool ${tool.id} canonicalPath must be a local absolute path ending with /`);
+    }
+    if (tool.availabilityStatus !== "available" && tool.availabilityStatus !== "draft") {
+      errors.push(`Invalid availabilityStatus on tool ${tool.id}`);
+    }
+    if (new Set(tool.solutionIds).size !== tool.solutionIds.length) errors.push(`Duplicate solutionIds on tool ${tool.id}`);
+    if (tool.availabilityStatus === "available" && tool.solutionIds.length === 0) {
+      errors.push(`Available tool ${tool.id} must link to at least one solution`);
+    }
+    const relatedSolutions = tool.solutionIds.map((id) => checkedSolutionById[id]).filter(Boolean);
+    for (const solutionId of tool.solutionIds) {
+      if (!checkedSolutionById[solutionId]) errors.push(`Unknown solution ${solutionId} on tool ${tool.id}`);
+    }
+    if (tool.availabilityStatus === "available" && !relatedSolutions.some((solution) => solution.canonicalPath === tool.canonicalPath)) {
+      errors.push(`Available tool ${tool.id} must use a linked Solution canonicalPath`);
+    }
+    for (const field of ["audience", "capabilities", "connections"] as const) {
+      if (new Set(tool[field]).size !== tool[field].length) errors.push(`Duplicate ${field} on tool ${tool.id}`);
     }
   }
 

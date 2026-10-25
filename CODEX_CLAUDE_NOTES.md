@@ -472,3 +472,11 @@ Branche `codex/yvexor-v2`, en continuité du commit `a47d05b "chore: checkpoint 
 - `npm audit` signale 11 vulnérabilités dans les dépendances transitives, pas traité (hors périmètre demandé).
 
 Si tu reprends ce chantier : regarde d'abord la maquette `Maquette YVEXOR _ solutions numériques connectées.png` sur le Bureau de l'utilisateur — c'est la référence visuelle cible (hero plein cadre avec photo + texte en overlay, section "Ce qu'on peut faire" en cartes avec icônes sur fond clair). L'implémentation actuelle du home (`app/page.tsx`, `app/home-v2.module.css`) s'en inspire mais diffère sur plusieurs points (pas de hero plein cadre, thème sombre partout au lieu d'alterner sombre/clair, grille numérotée au lieu de cartes à icônes) — à harmoniser si l'utilisateur le souhaite.
+
+## Décision produit — bibliothèque d’outils YVEXOR (2026-10-25)
+
+- `Solution` reste le modèle des capacités/offres globales. `BusinessTool` est une entrée de bibliothèque distincte qui référence une ou plusieurs Solutions par ID, sans recopier leur prix ni leur contenu éditorial SEO.
+- Seuls les outils dont la disponibilité est explicitement confirmée (`availabilityStatus: "available"`) sont rendus. Les brouillons restent invisibles. Aucun outil comptable, CRM, facturation, stock, RH, e-commerce ou Odoo n’est déclaré disponible sans validation produit.
+- `/solutions/` est le portail des deux parcours « Construire une solution sur mesure » et « Les outils pour mon entreprise ». Les entrées d’outils renvoient aux canonicals existants ; elles ne créent pas de routes concurrentes.
+- Premier catalogue confirmé : Caisse, Site web et Gestion métier (offre d’application métier adaptable ; la réservation n’est pas présentée comme un produit autonome). Odoo pourra servir ultérieurement de plateforme commune à plusieurs outils, sans devenir le positionnement YVEXOR.
+- Le champ optionnel `implementationPlatformId` permet à plusieurs outils de référencer ultérieurement la même plateforme technique ; aucun identifiant de plateforme n’est renseigné à ce stade.

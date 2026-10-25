@@ -1,4 +1,4 @@
-import type { EditorialPage, Pricing, Solution, SolutionClusterId } from "./content-types";
+import type { EditorialPage, Pricing, Solution, SolutionClusterId, SolutionEntryPoint } from "./content-types";
 import { seoPageBySlug } from "./seo-pages";
 import { v2Solutions } from "./v2-solutions";
 import { solutionOffers } from "./public-offer";
@@ -45,19 +45,20 @@ const solutionSeeds: {
   slug: string;
   canonicalPath: string;
   cluster: SolutionClusterId;
+  entryPoints?: SolutionEntryPoint[];
   primaryAction: { label: string; href: string };
   page?: EditorialPage;
   sourceSlug?: string;
   offerId?: string;
   industries: string[];
 }[] = [
-  { id: "custom-software", v2SourceId: "custom-software", slug: "sur-mesure", canonicalPath: "/logiciel-sur-mesure/", cluster: "logiciel-ia", primaryAction: { label: "Étudier mon projet", href: "/contact/" }, sourceSlug: "logiciel-sur-mesure", offerId: "PLATEFORME_SAAS", industries: ["restaurant", "hotel", "garage"] },
-  { id: "ai-automation", v2SourceId: "ai-automation", slug: "ia-automatisation", canonicalPath: "/automatisation-entreprise/", cluster: "logiciel-ia", primaryAction: { label: "Étudier mon besoin", href: "/contact/" }, sourceSlug: "automatisation-entreprise", offerId: "IA_AUTOMATISATION", industries: ["restaurant", "hotel", "garage"] },
+  { id: "custom-software", v2SourceId: "custom-software", slug: "sur-mesure", canonicalPath: "/logiciel-sur-mesure/", cluster: "logiciel-ia", entryPoints: ["custom-build"], primaryAction: { label: "Étudier mon projet", href: "/contact/" }, sourceSlug: "logiciel-sur-mesure", offerId: "PLATEFORME_SAAS", industries: ["restaurant", "hotel", "garage"] },
+  { id: "ai-automation", v2SourceId: "ai-automation", slug: "ia-automatisation", canonicalPath: "/automatisation-entreprise/", cluster: "logiciel-ia", entryPoints: ["custom-build"], primaryAction: { label: "Étudier mon besoin", href: "/contact/" }, sourceSlug: "automatisation-entreprise", offerId: "IA_AUTOMATISATION", industries: ["restaurant", "hotel", "garage"] },
   { id: "commerce-caisse-ticketing", v2SourceId: "commerce-caisse-ticketing", slug: "commerce-caisse-billetterie", canonicalPath: "/logiciel-caisse-marseille/", cluster: "commerce-paiement", primaryAction: { label: "Configurer cette solution", href: "/caisse/" }, sourceSlug: "logiciel-caisse-marseille", offerId: "CAISSE_COMMERCE", industries: ["restaurant"] },
-  { id: "management-reservation", v2SourceId: "management-reservation", slug: "gestion-reservation", canonicalPath: "/applications-metier/", cluster: "commerce-paiement", primaryAction: { label: "Étudier mon projet", href: "/contact/" }, sourceSlug: "applications-metier", offerId: "APPLICATION_METIER", industries: ["restaurant", "hotel"] },
+  { id: "management-reservation", v2SourceId: "management-reservation", slug: "gestion-reservation", canonicalPath: "/applications-metier/", cluster: "commerce-paiement", entryPoints: ["custom-build"], primaryAction: { label: "Étudier mon projet", href: "/contact/" }, sourceSlug: "applications-metier", offerId: "APPLICATION_METIER", industries: ["restaurant", "hotel"] },
   { id: "sites-applications", v2SourceId: "sites-applications", slug: "sites-applications", canonicalPath: "/site-presence-web/", cluster: "digital-infrastructure", primaryAction: { label: "Obtenir cette solution", href: "/contact/" }, sourceSlug: "site-presence-web", offerId: "SITE_WEB", industries: ["restaurant", "hotel"] },
-  { id: "hosting-infrastructure", v2SourceId: "hosting-infrastructure", slug: "hebergement-infrastructure", canonicalPath: "/solutions/hebergement-infrastructure/", cluster: "digital-infrastructure", primaryAction: { label: "Étudier mon besoin", href: "/contact/" }, industries: [], page: { title: "Hébergement & infrastructure", description: "Définir la base technique nécessaire pour faire fonctionner un service numérique YVEXOR.", intro: "Un site, une application ou un logiciel a besoin d’une base adaptée à son usage. YVEXOR étudie l’hébergement et les services d’infrastructure avec le périmètre réel du projet.", sections: [{ title: "Partir du service à faire fonctionner", text: "Les besoins d’accès, de stockage, de disponibilité et d’évolution sont définis avec le projet, sans imposer une architecture unique." }, { title: "Prévoir les services associés", text: "Hébergement, maintenance et sauvegarde peuvent être étudiés séparément selon le service et le niveau d’accompagnement attendu." }] } },
-  { id: "connected-systems", v2SourceId: "connected-systems", slug: "systemes-connectes", canonicalPath: "/systemes-connectes/", cluster: "connecte-terrain", primaryAction: { label: "Étudier mon besoin", href: "/contact/" }, sourceSlug: "systemes-connectes", offerId: "SYSTEMES_CONNECTES", industries: ["hotel", "garage"] },
+  { id: "hosting-infrastructure", v2SourceId: "hosting-infrastructure", slug: "hebergement-infrastructure", canonicalPath: "/solutions/hebergement-infrastructure/", cluster: "digital-infrastructure", entryPoints: ["custom-build"], primaryAction: { label: "Étudier mon besoin", href: "/contact/" }, industries: [], page: { title: "Hébergement & infrastructure", description: "Définir la base technique nécessaire pour faire fonctionner un service numérique YVEXOR.", intro: "Un site, une application ou un logiciel a besoin d’une base adaptée à son usage. YVEXOR étudie l’hébergement et les services d’infrastructure avec le périmètre réel du projet.", sections: [{ title: "Partir du service à faire fonctionner", text: "Les besoins d’accès, de stockage, de disponibilité et d’évolution sont définis avec le projet, sans imposer une architecture unique." }, { title: "Prévoir les services associés", text: "Hébergement, maintenance et sauvegarde peuvent être étudiés séparément selon le service et le niveau d’accompagnement attendu." }] } },
+  { id: "connected-systems", v2SourceId: "connected-systems", slug: "systemes-connectes", canonicalPath: "/systemes-connectes/", cluster: "connecte-terrain", entryPoints: ["custom-build"], primaryAction: { label: "Étudier mon besoin", href: "/contact/" }, sourceSlug: "systemes-connectes", offerId: "SYSTEMES_CONNECTES", industries: ["hotel", "garage"] },
   { id: "field-equipment", v2SourceId: "field-equipment", slug: "equipements-terrain", canonicalPath: "/boutique/", cluster: "connecte-terrain", primaryAction: { label: "Découvrir le matériel", href: "/boutique/" }, industries: [] },
 ];
 
@@ -69,6 +70,7 @@ const catalogueSolutions: Solution[] = solutionSeeds.map((seed) => {
     slug: seed.slug,
     canonicalPath: seed.canonicalPath,
     cluster: seed.cluster,
+    entryPoints: seed.entryPoints,
     eyebrow: item.title,
     primaryAction: seed.primaryAction,
     industryIds: [...seed.industries],
@@ -83,6 +85,7 @@ const retrofitSolution: Solution = {
   slug: "retrofit-equipement-non-connecte",
   canonicalPath: "/solutions/retrofit-equipement-non-connecte/",
   cluster: "connecte-terrain",
+  entryPoints: ["custom-build"],
   eyebrow: "Retrofit & connexion d’équipements",
   primaryAction: { label: "Étudier mon projet", href: "/contact/" },
   industryIds: ["restaurant", "hotel", "garage"],

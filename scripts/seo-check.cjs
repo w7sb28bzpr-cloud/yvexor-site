@@ -21,6 +21,15 @@ const journeyLabels=[...compactJourney.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)]
 assert.deepEqual(journeyLabels,['Votre besoin','Solution sur mesure','Du logiciel au terrain'],'Homepage may show only the compact three-part YVEXOR journey');
 assert.ok(homeHtml.includes('aria-hidden="true"'),'Decorative code animation must stay hidden from assistive technology');
 assert.ok(!homeHtml.includes('home-project-title'),'No featured project placeholder is rendered while there are zero approved projects');
+const solutionHub=read('solutions/index.html');
+assert.ok(solutionHub.includes('Construire une solution sur mesure')&&solutionHub.includes('Les outils pour mon entreprise'),'Solutions hub must expose the two approved entry points');
+assert.ok(solutionHub.includes('Vous avez un besoin particulier, une idée ou un équipement à connecter ? Nous construisons la solution autour.'),'Solutions hub must retain the approved custom-build message');
+assert.ok(['Caisse','Site web','Gestion métier'].every(name=>solutionHub.includes(name)),'Only the three confirmed initial business tools should appear publicly');
+assert.ok(!['Comptabilité','CRM','Facturation','Ressources humaines','Odoo'].some(name=>solutionHub.includes(name)),'Unconfirmed tools and platforms must not be advertised publicly');
+for(const canonicalPath of ['/logiciel-sur-mesure/','/automatisation-entreprise/','/logiciel-caisse-marseille/','/applications-metier/','/site-presence-web/','/systemes-connectes/','/solutions/hebergement-infrastructure/','/solutions/retrofit-equipement-non-connecte/','/solutions-restaurants/','/solutions-hotels/','/logiciel-garage/','/caisse/','/boutique/','/materiel/']){
+ assert.ok(routes.some(url=>url.pathname===canonicalPath),'Historical canonical route must remain in sitemap: '+canonicalPath);
+}
+assert.ok(!routes.some(url=>/^\/solutions\/(?:caisse|site-web|application-metier)\/$/.test(url.pathname)),'Business tools must not create duplicate canonical detail routes');
 const canon=html=>tags(html,'link').filter(m=>m.rel==='canonical').map(m=>m.href);
 const aliases=['/realisations/','/yvexor-pos/','/projets/'];
 const pages=new Map();const titles=new Set();const descriptions=new Set();

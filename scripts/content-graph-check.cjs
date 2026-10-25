@@ -37,7 +37,7 @@ for (const solution of solutions.filter((item) => item.id !== "equipment-retrofi
 }
 assert.deepEqual(getPublishedProjects(), [], "No fictional or draft project should be public");
 assert.deepEqual(getPublicTools().map((tool) => tool.id), ["business-website", "business-management-app", "cash-register"], "Only confirmed application offers appear in the initial public library, with general business tools before the historic POS offer");
-assert.equal(getApplicationCatalogTools().length, 21, "The prepared application catalog includes the three existing tools and new entries");
+assert.equal(getApplicationCatalogTools().length, 23, "The prepared application catalog includes the three existing tools and new entries");
 assert.ok(getApplicationCatalogTools().some((tool) => tool.id === "restaurant" && tool.kind === "business-suite"), "Restaurant is available as a composed catalog entry");
 assert.ok(!getApplicationCatalogTools().some((tool) => tool.id === "commerce-suite"), "Internal commerce composition is not presented as a standalone application");
 assert.deepEqual(getPublicTools().map((tool) => tool.id), ["business-website", "business-management-app", "cash-register"], "Preparing the applications catalog must not expand the legacy Solutions catalog");

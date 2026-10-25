@@ -81,8 +81,8 @@ assert.match(homeCodeSource, /function padToLines/, 'The code field must pad its
 assert.match(homeCodeSource, /getComputedStyle\(viewport\)\.lineHeight/, 'The visible line budget must be measured from the real rendered viewport, not a fixed constant');
 assert.match(homeCodeSource, /<CodeStream startProgram=\{0\} initialDelay=\{80\} speedOffset=\{0\}/);
 assert.match(homeCodeSource, /<CodeStream startProgram=\{1\} initialDelay=\{720\} speedOffset=\{5\}/, 'The two code streams must start separately');
-assert.match(homePageCss, /\.heroActions > :global\(\.site-button\)\.solutionsAction\s*\{[^}]*animation:\s*solutionsSheen 8s ease-in-out infinite/);
-assert.match(homePageCss, /\.secondaryAction::before\s*\{[^}]*animation:\s*industryTrace 8s ease-in-out infinite/);
+assert.match(homePageCss, /\.heroActions > :global\(\.site-button\)\.solutionsAction\s*\{[^}]*animation:\s*solutionsSheen 9s cubic-bezier\(\.22,1,\.36,1\) infinite/);
+assert.match(homePageCss, /\.secondaryAction::before\s*\{[^}]*bottom:\s*-1px[^}]*animation:\s*industryTrace 9s cubic-bezier\(\.22,1,\.36,1\) infinite/);
 assert.match(homePageCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?:global\(\.site-button\)\.solutionsAction\s*\{[^}]*animation:\s*none[^}]*transition:\s*none[\s\S]*?\.secondaryAction::before\s*\{[^}]*display:\s*none;\s*animation:\s*none/);
 assert.match(homePageSource, /href="\/solutions\/">Explorer les solutions/);
 assert.match(homePageSource, /href="\/metiers\/">Explorer par métier/);
@@ -93,6 +93,8 @@ assert.match(heroWordSource, /const ROTATING_WORDS = \["sur mesure\.", "connect�
 assert.match(heroWordSource, /const HOLD_MS = 2600/);
 assert.match(heroWordSource, /const EXIT_MS = 300/);
 assert.match(heroWordSource, /const ENTER_MS = 360/);
+assert.match(heroWordSource, /translateY\(-16%\)/, 'The rotating word should use a short, gentle exit movement');
+assert.match(heroWordSource, /translateY\(16%\)/, 'The rotating word should use a short, gentle entrance movement');
 assert.match(heroWordSource, /new IntersectionObserver/, 'The rotating word must pause outside the viewport');
 assert.match(heroWordSource, /document\.hidden/, 'The rotating word must pause when its tab is hidden');
 assert.match(heroWordSource, /prefers-reduced-motion:\s*reduce/, 'The rotating word must check prefers-reduced-motion');
@@ -110,6 +112,8 @@ assert.match(heroWordSource, /exit\.cancel\(\)/);
 assert.match(heroWordSource, /enter\.cancel\(\)/);
 assert.doesNotMatch(heroWordSource, /fill:\s*"forwards"/, 'Finished animations must not leave persistent fill effects');
 assert.match(homePageCss, /\.heroRotatingWrap\s*\{[^}]*height:\s*1\.08em[^}]*overflow:\s*hidden/, 'The rotating word container height must stay fixed to avoid vertical jumps');
+assert.match(homePageCss, /\.heroRotatingWrap\s*\{[^}]*display:\s*grid[^}]*width:\s*max-content/, 'The rotating line should reserve its widest phrase and remain centered');
+assert.match(homePageCss, /\.heroRotatingWord\s*\{[^}]*color:\s*#68c9de/, 'The rotating phrase uses the YVEXOR cyan accent');
 assert.match(homePageCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.heroRotatingWord\s*\{/, 'Reduced motion must also disable the rotating word transform/opacity transition hints');
 const footerSource = fs.readFileSync('components/site-footer.tsx', 'utf8');
 assert.match(footerSource, /© 2026 YVEXOR/);

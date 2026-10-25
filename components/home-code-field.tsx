@@ -62,6 +62,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
   const [text, setText] = useState("");
   const [activeLine, setActiveLine] = useState(-1);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const hasScrolledRef = useRef(false);
   const maxLinesRef = useRef(FALLBACK_MAX_LINES);
 
   useEffect(() => {
@@ -148,6 +149,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     const onMotion = () => {
       clear();
       if (motion.matches) {
+        if (viewport) viewport.scrollTo({ top: viewport.scrollTop, behavior: "auto" });
         measure();
         const full = padToLines(fullSource, maxLinesRef.current);
         output = full;
@@ -225,7 +227,14 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
 
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
-    if (viewport && activeLine >= 0) viewport.scrollTop = viewport.scrollHeight;
+    if (!viewport || activeLine < 0) return;
+    const top = viewport.scrollHeight;
+    if (!hasScrolledRef.current) {
+      viewport.scrollTop = top;
+      hasScrolledRef.current = true;
+      return;
+    }
+    viewport.scrollTo({ top, behavior: "smooth" });
   }, [activeLine]);
 
   return <div ref={viewportRef} className={styles.stream} aria-hidden="true">

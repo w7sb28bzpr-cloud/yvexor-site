@@ -56,6 +56,7 @@ function padToLines(block: string, minLines: number): string {
 const FALLBACK_MAX_LINES = 36;
 const MIN_MAX_LINES = 24;
 const LINE_BUFFER = 6;
+const TEXT_RENDER_INTERVAL = 48;
 
 function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram: number; initialDelay: number; speedOffset: number }) {
   const [text, setText] = useState("");
@@ -74,6 +75,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     let charIndex = 0;
     let output = "";
     let charCounter = 0;
+    let lastPaintAt = 0;
 
     const measure = () => {
       if (!viewport) return;
@@ -89,6 +91,11 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
     const trim = (value: string) => {
       const lines = value.split("\n");
       return lines.length > maxLinesRef.current ? lines.slice(-maxLinesRef.current).join("\n") : value;
+    };
+    const publish = () => {
+      setText(output);
+      setActiveLine(output.split("\n").length - 1);
+      lastPaintAt = performance.now();
     };
     /** Prepends filler above the existing (unchanged) tail until the new line budget is met. */
     const growToBudget = (value: string) => {
@@ -115,10 +122,9 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       if (charIndex < snippet.length) {
         const character = snippet[charIndex++];
         output += character;
-        output = trim(output);
-        setText(output);
-        setActiveLine(output.split("\n").length - 1);
+        if (character === "\n") output = trim(output);
         charCounter++;
+        if (character === "\n" || performance.now() - lastPaintAt >= TEXT_RENDER_INTERVAL) publish();
         const delay = character === "\n" ? 48 : 18 + ((charCounter * 7 + speedOffset) % 18);
         schedule(delay);
         return;
@@ -132,8 +138,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       }
       output += "\n";
       output = trim(output);
-      setText(output);
-      setActiveLine(output.split("\n").length - 1);
+      publish();
       schedule(90);
     };
     const onVisibility = () => {
@@ -148,6 +153,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
         output = full;
         setText(full);
         setActiveLine(-1);
+        lastPaintAt = performance.now();
         if (viewport) viewport.scrollTop = 0;
       } else {
         measure();
@@ -157,6 +163,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
         charIndex = 0;
         setText(output);
         setActiveLine(output.split("\n").length - 1);
+        lastPaintAt = performance.now();
         if (visible && !document.hidden) schedule(initialDelay);
       }
     };
@@ -169,6 +176,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
         output = full;
         setText(full);
         setActiveLine(-1);
+        lastPaintAt = performance.now();
         return;
       }
       const lineCount = output.split("\n").length;
@@ -177,6 +185,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       else return;
       setText(output);
       setActiveLine(output.split("\n").length - 1);
+      lastPaintAt = performance.now();
     };
 
     const observer = new IntersectionObserver(([entry]) => {
@@ -191,10 +200,12 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
       output = full;
       setText(full);
       setActiveLine(-1);
+      lastPaintAt = performance.now();
     } else {
       output = seed;
       setText(seed);
       setActiveLine(seed.split("\n").length - 1);
+      lastPaintAt = performance.now();
       if (viewport) visible = viewport.getBoundingClientRect().bottom > 0 && viewport.getBoundingClientRect().top < window.innerHeight;
       if (visible && !document.hidden) schedule(initialDelay);
     }
@@ -215,7 +226,7 @@ function CodeStream({ startProgram, initialDelay, speedOffset }: { startProgram:
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
     if (viewport && activeLine >= 0) viewport.scrollTop = viewport.scrollHeight;
-  }, [text, activeLine]);
+  }, [activeLine]);
 
   return <div ref={viewportRef} className={styles.stream} aria-hidden="true">
     <pre className={styles.code}>{text.split("\n").map((line, index, all) => <span className={index === activeLine ? styles.activeLine : styles.oldLine} key={`${index}-${all.length}`}>{line || " "}{index === activeLine && <span className={styles.caret} />}{index < all.length - 1 ? "\n" : ""}</span>)}</pre>

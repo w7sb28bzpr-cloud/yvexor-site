@@ -2,6 +2,7 @@ import { SiteHeader } from "../components/navigation";
 import { SiteFooter } from "../components/site-footer";
 import { PageData } from "../components/structured-data";
 import { HomeCodeField } from "../components/home-code-field";
+import { HeroRotatingWord } from "../components/hero-rotating-word";
 import { homeTitle, homeDescription } from "../lib/seo";
 import styles from "./home-v2.module.css";
 
@@ -17,8 +18,9 @@ export default function Home() {
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <h1 id="home-title" aria-label="YVEXOR — Technologie sur mesure" className={`site-display ${styles.heroTitle}`}>
-              <span>YVEXOR</span>
-              <span>Technologie sur mesure.</span>
+              <span className={styles.heroKicker}>YVEXOR</span>
+              <span className={styles.heroTitleLine}>Technologie</span>
+              <HeroRotatingWord wrapClassName={styles.heroRotatingWrap} wordClassName={styles.heroRotatingWord} />
             </h1>
             <p className={styles.heroLead}>Du logiciel au terrain, nous construisons la solution autour de votre besoin.</p>
             <nav className={styles.heroActions} aria-label="Choisir un parcours">

@@ -6,8 +6,10 @@
 .heroInner { position: relative; z-index: 2; display: grid; width: min(100%, 88rem); min-height: inherit; margin-inline: auto; padding: clamp(7rem, 14svh, 10rem) var(--site-gutter) clamp(4rem, 9svh, 6rem); place-items: center; text-align: center; }
 .heroCopy { width: min(100%, 66rem); min-width: 0; }
 .heroTitle { display: flex; flex-direction: column; align-items: center; gap: .13em; margin: 0; font-size: clamp(3.4rem, 8vw, 7.25rem); font-weight: 590; line-height: .98; letter-spacing: -.07em; text-wrap: balance; }
-.heroTitle span:first-child { color: #68c9de; font-size: .34em; font-weight: 650; letter-spacing: .2em; line-height: 1.2; }
-.heroTitle span:last-child { max-width: 16ch; }
+.heroKicker { color: #68c9de; font-size: .34em; font-weight: 650; letter-spacing: .2em; line-height: 1.2; }
+.heroTitleLine { display: block; }
+.heroRotatingWrap { display: block; min-width: 0; max-width: 100%; height: 1.08em; overflow: hidden; line-height: 1.08em; font-size: clamp(1.9rem, 6.4vw, 5.6rem); }
+.heroRotatingWord { display: inline-block; white-space: nowrap; will-change: transform, opacity; }
 .heroLead { max-width: 43ch; margin: clamp(1.5rem, 3.5vh, 2.25rem) auto 0; color: #ededed; font-size: clamp(1.05rem, 1.65vw, 1.3rem); line-height: 1.6; text-wrap: balance; }
 .heroActions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; width: min(100%, 44rem); margin: clamp(2rem, 4.5vh, 3rem) auto 0; }
 .heroActions > a { min-height: 56px; padding: .9rem 1.35rem; font-size: 1rem; }
@@ -53,8 +55,8 @@
 @media (max-width: 600px) {
   .heroInner { padding: clamp(6.8rem, 17svh, 8.5rem) var(--site-gutter) clamp(3.5rem, 9svh, 5rem); }
   .heroTitle { font-size: clamp(2.35rem, 11.4vw, 3.5rem); line-height: 1.02; letter-spacing: -.065em; }
-  .heroTitle span:first-child { font-size: .36em; }
-  .heroTitle span:last-child { max-width: min(100%, 12ch); }
+  .heroKicker { font-size: .36em; }
+  .heroRotatingWrap { font-size: clamp(1.45rem, 8vw, 2.6rem); }
   .heroLead { max-width: 34ch; margin-top: 1.25rem; font-size: clamp(1rem, 4.5vw, 1.12rem); line-height: 1.5; }
   .heroActions { grid-template-columns: 1fr; gap: .6rem; width: min(100%, 25rem); margin-top: 1.75rem; }
   .heroActions > a { min-height: 54px; }
@@ -69,5 +71,6 @@
   .secondaryAction { transition: none; }
   .secondaryAction::before { display: none; animation: none; }
   .secondaryAction:hover { transform: none; }
+  .heroRotatingWord { will-change: auto; }
   .shell :global(.site-header.v2-header--immersive) { transition: none; }
 }

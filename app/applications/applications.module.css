@@ -51,6 +51,7 @@
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .heroInner,
+.ladder,
 .library,
 .closing {
   position: relative;
@@ -224,6 +225,42 @@
 @keyframes flow-status-out { to { opacity: 0; transform: translateY(-100%); } }
 @keyframes flow-status-in { from { opacity: 0; transform: translateY(100%); } }
 @keyframes flow-result-in { from { opacity: 0; transform: translate(-50%, 10px); } }
+
+/* ---------- Ladder: one app → linked apps → a full system ---------- */
+.ladder { padding-block: clamp(2.5rem, 5vw, 4.5rem); border-top: 1px solid var(--app-line); }
+.ladderHead { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem 2rem; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+.ladderHead .libraryTitle { max-width: 20ch; }
+.ladderHead p { max-width: 30ch; margin: 0; color: var(--app-cyan-text); font-size: 1rem; font-weight: 620; line-height: 1.45; }
+/* Steps rise from left to right, like a staircase. */
+.ladderSteps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: 0.65rem; margin: 0; padding: 0; list-style: none; }
+.ladderSteps li {
+  display: flex;
+  min-width: 0;
+  min-height: calc(13rem + var(--step) * 2.4rem);
+  flex-direction: column;
+  padding: 1.1rem 1.1rem 1.2rem;
+  border: 1px solid var(--app-line);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, var(--app-surface-hover), var(--app-surface));
+}
+.ladderSteps li:last-child { border-color: rgba(104, 201, 222, 0.45); }
+.ladderNumber { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--app-line-strong); border-radius: 50%; color: var(--app-text-2); font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ladderSteps li:last-child .ladderNumber { border-color: var(--app-cyan); color: var(--app-cyan-text); }
+.ladderSteps h3 { margin: auto 0 0.45rem; padding-top: 1.4rem; font-size: 1.1rem; font-weight: 680; letter-spacing: -0.02em; line-height: 1.2; }
+.ladderSteps li > p { margin: 0; color: var(--app-text-2); font-size: 0.86rem; line-height: 1.45; text-wrap: pretty; }
+.ladderTag { display: inline-flex; align-items: center; gap: 0.4rem; align-self: flex-start; margin-top: 0.9rem; padding: 0.25rem 0.6rem; border-radius: 999px; background: var(--app-cyan-soft); color: var(--app-cyan-text); font-size: 0.72rem; font-weight: 700; }
+a.ladderTag { min-height: 2.75rem; padding-inline: 0.9rem; border: 1px solid var(--app-cyan); text-decoration: none; }
+a.ladderTag span { transition: transform 220ms var(--ease-out); }
+a.ladderTag:hover span { transform: translateX(3px); }
+a.ladderTag:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
+
+/* ---------- Packs métier ---------- */
+.packs { margin-top: clamp(2rem, 4vw, 3rem); padding-top: clamp(1.6rem, 3vw, 2.2rem); border-top: 1px dashed var(--app-line-strong); }
+.packsHead { margin-bottom: 1rem; }
+.packsHead h3 { margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 650; letter-spacing: -0.04em; line-height: 1.15; }
+.packsHead p { margin: 0.4rem 0 0; color: var(--app-text-2); font-size: 0.92rem; line-height: 1.45; }
+.packsLink { display: inline-flex; min-height: 2.75rem; align-items: center; gap: 0.6rem; margin-top: 0.9rem; color: var(--app-text); font-size: 0.9rem; font-weight: 650; text-decoration: underline; text-decoration-color: var(--app-line-strong); text-underline-offset: 0.3em; }
+.packsLink:hover { text-decoration-color: var(--app-cyan); }
 
 /* ---------- Library ---------- */
 .library { padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--app-line); scroll-margin-top: 5rem; }
@@ -426,6 +463,14 @@
 @media (max-width: 56rem) {
   .heroInner { grid-template-columns: 1fr; gap: 2rem; }
   .flow { width: 100%; max-width: 34rem; }
+  /* Vertical path on narrow screens: a rail joins the steps instead of rising heights. */
+  .ladderSteps { position: relative; grid-template-columns: 1fr; gap: 0.5rem; }
+  .ladderSteps::before { position: absolute; top: 1.5rem; bottom: 1.5rem; left: 2.1rem; width: 1px; background: var(--app-line-strong); content: ""; }
+  .ladderSteps li { position: relative; display: grid; min-height: 0; grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.9rem; padding: 1rem 1.1rem; }
+  .ladderNumber { grid-row: 1 / span 3; background: var(--app-surface); }
+  .ladderSteps h3 { margin: 0.2rem 0 0.35rem; padding-top: 0; }
+  .ladderSteps li > p, .ladderTag { grid-column: 2; }
+  .ladderTag { justify-self: start; margin-top: 0.7rem; }
 }
 
 @media (max-width: 40rem) {
@@ -485,7 +530,7 @@
   .flowSummary b { color: var(--app-text); }
   .flowSummaryIcon { display: grid; width: 1.8rem; height: 1.8rem; flex: none; place-items: center; color: var(--app-cyan); }
   .flowSummaryIcon svg { width: 1.1rem; height: 1.1rem; }
-  .appTile, .appIcon, .tileOpen, .moduleNode, .filters button, .heroJump span, .dialogLink span, .closingLink span { transition: none; }
+  .appTile, .appIcon, .tileOpen, .moduleNode, .filters button, .heroJump span, .dialogLink span, .closingLink span, a.ladderTag span { transition: none; }
   .appTile:active { transform: none; }
   .familyTile:hover .moduleNode:nth-child(odd) { transform: none; }
   .gridChanged > li, .dialog[open], .dialog[open]::backdrop { animation: none; }

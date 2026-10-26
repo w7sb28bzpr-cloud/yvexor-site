@@ -24,7 +24,8 @@ export type SolutionClusterId =
 export type SolutionEntryPoint = "custom-build";
 
 export type BusinessToolKind = "application" | "business-suite" | "capability";
-export type BusinessToolCategoryId = "manage" | "sell" | "business" | "digital" | "automate";
+/** `business` holds the composed industry packs; the other ids are application filters. */
+export type BusinessToolCategoryId = "sell" | "customers" | "operations" | "finance" | "digital" | "automate" | "business";
 export type BusinessToolCatalogSurfaceId = "legacy-solutions" | "applications";
 export type ToolIconId =
   | "cash-register" | "globe" | "workflow" | "users" | "calendar" | "clipboard"

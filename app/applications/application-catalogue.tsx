@@ -7,8 +7,10 @@ import styles from "./applications.module.css";
 
 type Category = { id: BusinessToolCategoryId; label: string };
 
-export function ApplicationCatalogue({ tools, categories, existingCanonicalPaths }: {
+export function ApplicationCatalogue({ tools, packs, categories, existingCanonicalPaths }: {
   tools: PublicBusinessTool[];
+  /** Industry packs stay out of the filters: they bundle applications, they are not one. */
+  packs: PublicBusinessTool[];
   categories: Category[];
   existingCanonicalPaths: string[];
 }) {
@@ -17,7 +19,7 @@ export function ApplicationCatalogue({ tools, categories, existingCanonicalPaths
   const [selected, setSelected] = useState<PublicBusinessTool | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const byId = new Map(tools.map((tool) => [tool.id, tool]));
+  const byId = new Map([...tools, ...packs].map((tool) => [tool.id, tool]));
   const publishedPaths = new Set(existingCanonicalPaths);
   const visibleTools = category === "all" ? tools : tools.filter((tool) => tool.categoryId === category);
   const categoryLabel = (id: BusinessToolCategoryId) => categories.find((item) => item.id === id)?.label;
@@ -46,7 +48,36 @@ export function ApplicationCatalogue({ tools, categories, existingCanonicalPaths
   };
 
   const filters = [{ id: "all" as const, label: "Tout", count: tools.length },
-    ...categories.map((item) => ({ ...item, count: tools.filter((tool) => tool.categoryId === item.id).length }))];
+    ...categories.map((item) => ({ ...item, count: tools.filter((tool) => tool.categoryId === item.id).length }))
+      .filter((item) => item.count > 0)];
+
+  const tile = (tool: PublicBusinessTool, index: number) => {
+    const family = tool.kind === "business-suite";
+    const included = includedTools(tool);
+    return <li key={tool.id} className={family ? styles.familyItem : undefined} style={{ "--tile-index": Math.min(index, 10) } as React.CSSProperties}>
+      <button
+        className={`${styles.appTile} ${family ? styles.familyTile : ""}`}
+        type="button"
+        aria-haspopup="dialog"
+        onClick={(event) => open(tool, event.currentTarget)}
+      >
+        <span className={styles.appIcon}><ApplicationIcon tool={tool} /></span>
+        <span className={styles.appText}>
+          <span className={styles.appName}>{tool.name}</span>
+          <span className={styles.appDescription}>{tool.shortDescription}</span>
+        </span>
+        {family && <span className={styles.familyModules} aria-hidden="true">
+          <span className={styles.moduleNodes}>
+            {included.map((item) => <span key={item.id} className={styles.moduleNode} title={item.name}><ApplicationIcon tool={item} /></span>)}
+          </span>
+          <span className={styles.moduleNames}>{included.length} outils reliés · {included.map((item) => item.name).join(", ")}</span>
+        </span>}
+        {tool.kind === "capability" && <span className={styles.capabilityTag}>Intégrée aux autres applications</span>}
+        <span className={styles.tileOpen} aria-hidden="true" />
+        <span className={styles.srOnly}>{family ? `, regroupe ${included.length} outils` : ""}. Ouvrir la fiche</span>
+      </button>
+    </li>;
+  };
 
   return <>
     <div className={styles.filterBar}>
@@ -63,34 +94,17 @@ export function ApplicationCatalogue({ tools, categories, existingCanonicalPaths
     <p className={styles.resultCount} role="status">{visibleTools.length} {visibleTools.length > 1 ? "applications" : "application"}{category === "all" ? "" : ` · ${categoryLabel(category)}`}</p>
 
     <ul id="applications-grid" key={filterChanges} className={`${styles.grid} ${filterChanges ? styles.gridChanged : ""}`}>
-      {visibleTools.map((tool, index) => {
-        const family = tool.kind === "business-suite";
-        const included = includedTools(tool);
-        return <li key={tool.id} className={family ? styles.familyItem : undefined} style={{ "--tile-index": Math.min(index, 10) } as React.CSSProperties}>
-          <button
-            className={`${styles.appTile} ${family ? styles.familyTile : ""}`}
-            type="button"
-            aria-haspopup="dialog"
-            onClick={(event) => open(tool, event.currentTarget)}
-          >
-            <span className={styles.appIcon}><ApplicationIcon tool={tool} /></span>
-            <span className={styles.appText}>
-              <span className={styles.appName}>{tool.name}</span>
-              <span className={styles.appDescription}>{tool.shortDescription}</span>
-            </span>
-            {family && <span className={styles.familyModules} aria-hidden="true">
-              <span className={styles.moduleNodes}>
-                {included.map((item) => <span key={item.id} className={styles.moduleNode} title={item.name}><ApplicationIcon tool={item} /></span>)}
-              </span>
-              <span className={styles.moduleNames}>{included.length} outils reliés · {included.map((item) => item.name).join(", ")}</span>
-            </span>}
-            {tool.kind === "capability" && <span className={styles.capabilityTag}>Intégrée aux autres applications</span>}
-            <span className={styles.tileOpen} aria-hidden="true" />
-            <span className={styles.srOnly}>{family ? `, regroupe ${included.length} outils` : ""}. Ouvrir la fiche</span>
-          </button>
-        </li>;
-      })}
+      {visibleTools.map(tile)}
     </ul>
+
+    {packs.length > 0 && <section className={styles.packs} aria-labelledby="packs-title">
+      <div className={styles.packsHead}>
+        <h3 id="packs-title">Vous voulez tout pour votre métier&nbsp;?</h3>
+        <p>Les packs réunissent les applications utiles, déjà reliées entre elles.</p>
+      </div>
+      <ul className={styles.grid}>{packs.map(tile)}</ul>
+      <a className={styles.packsLink} href="/metiers/">Voir tous les métiers <span aria-hidden="true">→</span></a>
+    </section>}
 
     <dialog ref={dialogRef} className={styles.dialog} aria-labelledby="application-dialog-title" aria-describedby="application-dialog-summary" onClose={onClose} onClick={(event) => {
       if (event.target === dialogRef.current) close();
@@ -100,7 +114,7 @@ export function ApplicationCatalogue({ tools, categories, existingCanonicalPaths
         <div className={styles.dialogTop}>
           <span className={styles.dialogIcon}><ApplicationIcon tool={selected} /></span>
           <div className={styles.dialogHeading}>
-            <p className={styles.dialogKicker}>{categoryLabel(selected.categoryId)}{selected.kind === "business-suite" ? " · Univers métier" : ""}</p>
+            <p className={styles.dialogKicker}>{categoryLabel(selected.categoryId)}</p>
             <h2 id="application-dialog-title">{selected.name}</h2>
           </div>
           <button type="button" className={styles.dialogClose} onClick={close} aria-label="Fermer la fiche"><span aria-hidden="true" /></button>

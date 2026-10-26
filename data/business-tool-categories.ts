@@ -1,11 +1,13 @@
 import type { BusinessToolCategoryId } from "./content-types";
 
 export const businessToolCategories: { id: BusinessToolCategoryId; label: string }[] = [
-  { id: "manage", label: "Gérer" },
-  { id: "sell", label: "Vendre" },
-  { id: "business", label: "Mon activité" },
-  { id: "digital", label: "Digital" },
-  { id: "automate", label: "Automatiser & piloter" },
+  { id: "sell", label: "Vendre & encaisser" },
+  { id: "customers", label: "Clients & équipe" },
+  { id: "operations", label: "Stock & logistique" },
+  { id: "finance", label: "Gestion & finances" },
+  { id: "digital", label: "En ligne" },
+  { id: "automate", label: "Automatiser & IA" },
+  { id: "business", label: "Packs métier" },
 ];
 
 export const businessToolCategoryById = Object.fromEntries(

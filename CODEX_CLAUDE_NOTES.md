@@ -17,6 +17,10 @@ Fichier partagé pour que Codex et Claude Code se laissent des messages quand il
 - Les outils disponibles issus du brief sont traités comme disponibles, y compris lorsqu’ils pourront être adaptés à partir de briques existantes. `implementationPlatformId` reste interne et n’est jamais inclus dans la projection publique; aucune marque de plateforme n’est affichée.
 - Les canoniques existants restent propriétaires de leurs pages. Les nouveaux outils portent des destinations futures sous `/applications/`, sans génération de page. Les métiers continuent de référencer les IDs des outils dans `data/industries.ts`.
 
+### Référentiel d’animations
+
+La bibliothèque documentaire principale est `docs/animations/yvexor-kit/`, issue de `yvexor-animations-kit.zip`. Elle n’est pas chargée au runtime et reste subordonnée à l’état du dépôt et aux décisions produit actuelles. `5858` est une ancienne référence complémentaire, non dupliquée. Codex et Claude Code peuvent créer mieux que les exemples si cela sert davantage le produit et respecte l’identité YVEXOR.
+
 ### État actuel — expérience Métiers (2026-10-25)
 
 - Le portail `/metiers/` et les trois activités publiées restent pilotés par `data/industries.ts`. Le modèle Industry porte désormais `businessToolIds` explicites, avec les outils et leur contenu conservés uniquement dans `data/business-tools.ts`; la validation refuse IDs inconnus, doublons et outils non publiés. Les futures industries peuvent employer le visuel générique sans élargir l’union des secteurs à chaque ajout.
@@ -458,6 +462,37 @@ type Pricing = {
 6. **Prix restaurant/tennis-padel cités par l'utilisateur (§10.5)** — à réconcilier avec le catalogue B2B PDF avant de les saisir dans `data/caisses.json`, ils ne sont pas dans le code aujourd'hui.
 
 ---
+
+## [Claude — 2026-10-26] — Décision produit : l’escalier des offres + rangement de `/applications/`
+
+**Décision de Yannick (à respecter partout sur le site).** Les deux offres sont deux étapes d’un même chemin, pas deux mondes :
+
+1. **Essayer** : gratuit, sans engagement. La forme (essai limité dans le temps ou version gratuite limitée) reste **ouverte**.
+2. **Une application** : elle fait une chose. Petit abonnement, sans engagement. → « Nos applications ».
+3. **Des applications reliées** : on paie la connexion entre les outils, pas un outil de plus. Abonnement connecté.
+4. **Votre système** : tout circule (ventes, équipe, gestion, IA). Sur devis. → « Nos solutions ».
+
+Phrase-règle : **« Le prix suit ce que vous reliez, pas ce que vous essayez. »** Le catalogue B2B PDF suit déjà cet escalier dans chaque métier (ex. Commerce 49 → 89 → 129 €, Restaurant 49 → 99/179 → 389/699 €).
+
+**Posture prix (à discuter, rien n’est publié).** Les tarifs du catalogue sont des repères négociables. Yannick ne veut pas de « à partir de » (le client lit « ça sera plus cher »). Piste retenue en discussion : présenter le prix affiché comme un **plafond** (« au devis, il ne peut que baisser ») et proposer « Envoyez-nous votre devis, on vous fait une contre-proposition », plutôt qu’un « −20 % garanti » figé (risque de marge et cadre de la publicité comparative). Aucun prix ni aucune de ces promesses n’est encore sur le site.
+
+**Point ouvert, vocabulaire.** Dans le PDF, « Sur mesure » est une formule à 129 € (Commerce, Snack). Sur le site, « sur mesure » = marche 4 (« Nos solutions »). À trancher par Yannick : renommer la formule 129 € ou réserver « sur mesure » à la marche 4.
+
+**Ce qui a changé dans le code.**
+- Catégories d’applications (`data/business-tool-categories.ts`, `BusinessToolCategoryId`) : `sell` Vendre & encaisser, `customers` Clients & équipe, `operations` Stock & logistique, `finance` Gestion & finances, `digital` En ligne, `automate` Automatiser & IA, `business` Packs métier. `manage` disparaît ; l’ancien « Vendre » fourre-tout (compta, achats, stock…) est éclaté.
+- `/applications/` : les packs métier (`kind: "business-suite"`, Restaurant, Club & Sport) sortent de la grille et des filtres et passent dans un bloc « Vous voulez tout pour votre métier ? » sous la bibliothèque, avec un lien vers `/metiers/`. Un filtre sans application est masqué.
+- `/applications/` : nouvelle section « Commencez petit. Grandissez quand vous voulez. » entre le hero et la bibliothèque, avec les 4 marches (en escalier sur ordi, en liste avec un rail sur mobile, sans animation). L’accroche du hero passe de « L’écosystème YVEXOR » à « Nos applications ».
+- `app/solutions/tool-library.tsx` n’a pas changé : son libellé de repli « Gestion » couvre toujours `business-management-app`.
+
+**À reprendre ailleurs ensuite** (non fait) : le même escalier sur l’accueil (sous les deux boutons) et sur chaque page métier, avec les prix du métier une fois la posture prix tranchée.
+
+## [Claude — 2026-10-25] — Finition visuelle de `/applications/` (commit `ff7cb19`, non poussé)
+
+- J’ai gardé toute l’architecture de `334bff8` : `BusinessTool` comme source, 21 entrées, 5 filtres, familles, canonicals seulement si la page existe, `dialog` natif. Seuls les fichiers de `app/applications/` sont touchés.
+- **Visuel.** Même palette neutre que l’accueil (`#090909`, cyan en accent) au lieu du fond teinté bleu-vert. La page suit le thème global : elle passe en clair de 7 h à 19 h en mode auto, contrairement à l’accueil qui reste toujours sombre. La scène et la fiche restent sombres dans les deux thèmes.
+- **Flux.** C’est une scène logiciel (kit, section 5 ter) : un même enregistrement de démonstration passe de fiche CRM à devis, puis à facture payée, puis à chiffre d’affaires. Une bulle de résultat apparaît à chaque étape, sur une hauteur fixe (CLS 0). Le flux est en pause hors écran ou onglet masqué. Avec `prefers-reduced-motion`, un résumé texte des 4 étapes le remplace ; ce même résumé sert aux lecteurs d’écran.
+- **Icônes.** `app/applications/application-icon.tsx` ajoute 6 glyphes propres à la page pour les entrées qui partageaient une icône (devis/facture, catalogue/stock, gestion/automatisations, commerce/boutique). Le repli se fait sur `BusinessToolIcon`, sans changer les données ni les autres pages.
+- **Mesures** (Edge headless) : CLS 0 et 60 fps à 375, 430 et 1440 px. Pas de scroll horizontal de 320 à 1440 px, et pas de remontée automatique du scroll. Validé au clavier : filtres, ouverture de la fiche, focus dans la fiche, Échap, retour du focus.
 
 ## [Claude — 2026-10-25] — Fluidité du champ de code de l’accueil
 

@@ -463,6 +463,39 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-27] — À lire en premier, Codex : résumé des sessions du 26 et 27 octobre
+
+Yannick a travaillé avec moi sur la vision des offres et sur `/applications/`. Tout est sur `main` et en ligne (commits `ad03357`, `d8c7d52`, `99502d7`, `3f0c350`, déploiements GitHub Pages réussis). Les détails sont dans les deux entrées suivantes. Voici l’essentiel.
+
+**1. La vision (décision de Yannick).**
+- Deux offres, un seul chemin. **Nos applications** = des applis prêtes à l’emploi, pour tout le monde. **Nos solutions** = le sur-mesure avec IA (connexion possible à Claude, ChatGPT ou l’IA YVEXOR).
+- L’escalier : **Essayer** (gratuit) → **Une application** (petit abonnement) → **Des applications reliées** (abonnement connecté) → **Votre système** (sur devis). Phrase-règle : « Le prix suit ce que vous reliez, pas ce que vous essayez. » Le but est que le client B2B comprenne pourquoi le prix monte, sans avoir peur.
+- Le catalogue PDF (`YVEXOR_Catalogue_Complet.pdf`, 5 métiers) suit déjà cet escalier dans chaque métier.
+- Ton général : YVEXOR, « c’est des gentils », c’est une passion. On peut commencer gratuitement, et les tarifs sont des repères qui se discutent.
+
+**2. Ce qui est en ligne sur `/applications/`.**
+- Le hub ne parle presque plus : un titre modeste « Nos applications », une phrase, l’animation « une information, quatre applications », puis 7 briques de rubrique. « Voir toutes les applications » est à la fin.
+- Chaque rubrique a sa page statique `/applications/<rubrique>/`, et `/applications/toutes/` contient la bibliothèque complète avec filtres et packs.
+- Les catégories ont été rangées en 6 rubriques plus Packs métier (`data/business-tool-categories.ts`). Les packs (Restaurant, Club & Sport) ne sont plus mélangés aux applis.
+- Les icônes sont désormais façon iOS : tuile arrondie, une couleur par rubrique via `data-tone={categoryId}`, pictogramme blanc. La palette est seulement dans `applications.module.css` et **ne fixe pas la couleur d’accent YVEXOR**, qui reste ouverte.
+
+**3. Les règles à respecter si tu touches à ces zones.**
+- Sur `/applications/`, Yannick veut **peu de texte** : l’animation et des briques, rien de plus.
+- L’escalier a été retiré de `/applications/` pour cette raison. Sa place prévue est l’accueil (sous les deux boutons) ou les pages métier. **Ce n’est pas encore fait.**
+- Aucun prix ni aucune promesse commerciale (gratuit, prix plafond, contre-proposition sur devis) n’est encore publié avec des chiffres. Ne pas transformer les pistes ci-dessous en texte officiel sans l’accord de Yannick.
+- Un slug d’outil ne doit jamais être égal à un slug de rubrique : `validateContentGraph` le refuse.
+
+**4. Décisions encore ouvertes (à Yannick, pas à nous).**
+- La forme du gratuit : essai limité dans le temps, ou version gratuite limitée à vie.
+- La présentation des prix : prix « plafond » plutôt que « à partir de », et « Envoyez-nous votre devis, on vous fait une contre-proposition » plutôt qu’un « −20 % garanti ».
+- Le mot « Sur mesure » : c’est une formule à 129 € dans le PDF (Commerce, Snack), alors que sur le site il veut dire « Nos solutions ». Il faudra renommer l’un des deux.
+
+## [Claude — 2026-10-27] — Icônes des applications façon écran d’accueil (commit `3f0c350`)
+
+- `.shell [data-tone]` dessine une tuile arrondie (`border-radius: 27%`) avec un dégradé par rubrique, un reflet, une ombre teintée et un pictogramme blanc plus épais (`stroke-width: 1.9`). Les couleurs : vert pour `sell`, bleu `customers`, orange `operations`, violet `finance`, turquoise `digital`, rose `automate`, et graphite avec pictogramme cyan pour `business`.
+- Le ton est posé sur les icônes des tuiles, des briques, des fiches, des « outils réunis » et des modules des packs. Le hero animé (`ApplicationFlow`) n’a pas été touché.
+- Au survol, l’icône se soulève légèrement. Avec `prefers-reduced-motion`, rien ne bouge.
+
 ## [Claude — 2026-10-27] — `/applications/` devient un portail à rubriques
 
 **Décision de Yannick.** Sur `/applications/`, on parle peu. On garde l’animation « une information, quatre applications », puis seulement des briques. Le client clique sur ce qui l’intéresse, et « voir toutes les applications » arrive à la fin.
@@ -471,7 +504,7 @@ type Pricing = {
 - `/applications/[categorie]/` (statique, `dynamicParams = false`) : une page par rubrique (`vendre-encaisser`, `clients-equipe`, `stock-logistique`, `gestion-finances`, `en-ligne`, `automatiser-ia`, `packs-metier`) et `/applications/toutes/` (bibliothèque complète avec filtres et packs). Les fiches s’ouvrent dans le même `dialog`. En bas, des liens vers les autres rubriques.
 - Les slugs, descriptions et icônes de rubrique sont dans `data/business-tool-categories.ts`. `validateContentGraph` refuse un slug d’outil égal à un slug de rubrique, parce que les destinations futures des outils sont aussi sous `/applications/`.
 - Les rubriques entrent dans le sitemap. `scripts/seo-check.cjs` vérifie maintenant que chaque sous-page de `/applications/` du sitemap est réellement générée, et la garde des chemins privés compare des segments entiers (`/client/`, `/clients/`, `/api/`…) au lieu de n’importe quelle sous-chaîne, qui bloquait `clients-equipe`.
-- Constat indépendant de ce travail : `npm run build` échoue sur `caisse-sync --check` (`portal/core/caisse_catalogue.json` désynchronisé). `next build`, `test:seo`, `test:content` et `test:theme` passent.
+- `npm run build` échoue en local sous Windows sur `caisse-sync --check` (`portal/core/caisse_catalogue.json`), mais passe sur GitHub Actions (Linux) : les déploiements de `d8c7d52`, `99502d7` et `3f0c350` ont réussi. C’est donc vraisemblablement une différence de fins de ligne locale, pas un blocage du déploiement.
 
 ## [Claude — 2026-10-26] — Décision produit : l’escalier des offres + rangement de `/applications/`
 

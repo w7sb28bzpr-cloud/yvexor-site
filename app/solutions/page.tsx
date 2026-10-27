@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { PageData } from "../../components/structured-data";
 import { catalogueOffers } from "../../data/catalogue-offers";
-import { trades } from "../../data/trades";
+import { technologies, trades } from "../../data/trades";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/navigation";
 import { getCustomBuildSolutions, getPublicTools } from "../../lib/content";
 import { pageMetadata } from "../../lib/seo";
+import { ConnectedScene } from "./connected-scene";
+import { TechIcon } from "./tech-icon";
 import { ToolLibrary } from "./tool-library";
 import styles from "./solutions.module.css";
 
@@ -17,20 +19,23 @@ export default function SolutionsPage() {
   const customSolutions = getCustomBuildSolutions();
   const tools = getPublicTools();
 
-  return <div className="site-foundation">
+  return <div className={`site-foundation ${styles.shell}`}>
     <PageData path="/solutions/" title={title} description={description} type="CollectionPage" />
     <SiteHeader />
     <main id="contenu" className={styles.page}>
       <div className="site-container">
-        <header className={styles.intro}>
-          <p className={styles.eyebrow}>Votre accompagnateur web</p>
-          <h1 className="site-display site-heading-xl">Votre besoin. Votre budget. On lance ensemble.</h1>
-          <p className="site-copy">Chez YVEXOR, on ne vous impose pas une grille de prix. On discute, on définit votre budget avec vous, puis on construit : logiciel, automatisation, IA ou objets connectés. Avec 20 € ou 2 000 € par mois, vous aurez une solution qui vous fait avancer.</p>
-          <div className={styles.introActions}>
-            <a className={styles.customCta} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
-            <a className={styles.introLink} href="/applications/">Une seule application ? Elle est gratuite <span aria-hidden="true">→</span></a>
-          </div>
-        </header>
+        <div className={styles.hero}>
+          <header className={styles.intro}>
+            <p className={styles.kicker}>Votre accompagnateur web</p>
+            <h1 className="site-display site-heading-xl">Votre besoin. Votre budget. <span>On lance ensemble.</span></h1>
+            <p className="site-copy">Chez YVEXOR, on ne vous impose pas une grille de prix. On discute, on définit votre budget avec vous, puis on construit : logiciel, automatisation, IA ou objets connectés. Avec 20 € ou 2 000 € par mois, vous aurez une solution qui vous fait avancer.</p>
+            <div className={styles.introActions}>
+              <a className={styles.customCta} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
+              <a className={styles.introLink} href="/applications/">Une seule application ? Elle est gratuite <span aria-hidden="true">→</span></a>
+            </div>
+          </header>
+          <ConnectedScene />
+        </div>
 
         <ol className={styles.method} aria-label="Comment on travaille">
           <li><span>1</span><strong>On discute</strong>Votre activité, ce qui vous fait perdre du temps, ce que vous voulez changer.</li>
@@ -38,7 +43,27 @@ export default function SolutionsPage() {
           <li><span>3</span><strong>On lance et on vous accompagne</strong>Une première version utile, puis on la fait grandir avec vous.</li>
         </ol>
 
+        <section className={styles.trades} id="technologies" aria-labelledby="tech-title">
+          <p className={styles.kicker}>Partout où il y a de la technologie</p>
+          <h2 id="tech-title" className="site-display">On connecte tout.</h2>
+          <p className={styles.offersLead}>Même un équipement ancien ou isolé peut rejoindre votre système.</p>
+          <ul className={styles.techGrid}>
+            {technologies.map((tech) => <li key={tech.id}>
+              <details className={styles.trade}>
+                <summary>
+                  <span className={styles.techIcon}><TechIcon icon={tech.icon} /></span>
+                  <span className={styles.tradeName}>{tech.name}</span>
+                  <span className={styles.tradeShort}>{tech.short}</span>
+                  <span className={styles.tradeMore} aria-hidden="true">Lire plus</span>
+                </summary>
+                <p>{tech.more}</p>
+              </details>
+            </li>)}
+          </ul>
+        </section>
+
         <section className={styles.trades} id="metiers" aria-labelledby="trades-title">
+          <p className={styles.kicker}>Pour tous les corps de métier</p>
           <h2 id="trades-title" className="site-display">On touche à tous les métiers.</h2>
           <p className={styles.offersLead}>On répond à n’importe quelle demande, et on connecte même ce qui ne l’est pas encore. Quelques exemples :</p>
           <ul className={styles.tradeGrid}>
@@ -62,6 +87,7 @@ export default function SolutionsPage() {
         </section>
 
         <section className={styles.offers} id="offres" aria-labelledby="offers-title">
+          <p className={styles.kicker}>Pour vous situer</p>
           <h2 id="offers-title" className="site-display">Exemples d’offres par métier</h2>
           <p className={styles.offersLead}>Des repères du marché, pour vous situer. Le vrai point de départ, c’est votre budget.</p>
           <ul className={styles.offerGrid}>

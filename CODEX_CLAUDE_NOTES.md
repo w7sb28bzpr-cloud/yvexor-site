@@ -463,6 +463,16 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-27, soir 3] — `/solutions/` au thème YVEXOR, animation « tout se connecte », technologies
+
+**Demande de Yannick.** Ajouter domotique, accès parking, contrôle d’accès, zoos, parcs… « partout où il y a de la techno ». Rendre la page plus YVEXOR. Pas d’images trouvées sur le web ni générées par IA : des animations.
+
+- **Thème** : `.shell` redéfinit localement les tokens `--site-*` en sombre (`#090909`, texte `#f7f7f7`, cyan `#68c9de`), dans les deux thèmes du site, comme l’accueil. La trame de points reprend `/applications/`. Les composants existants (portes, `ToolLibrary`) suivent automatiquement. Le header passe aussi en sombre sur cette page.
+- **Animation** `app/solutions/connected-scene.tsx` (kit A03 + A17, style « scène logiciel ») : YVEXOR au centre, 7 équipements (parking, badge, porte, éclairage, chauffage, caméra, capteur) qui s’activent tour à tour avec une bulle de résultat. Le capteur déclenche une alerte ambre. Elle n’anime que `transform`, `opacity` et `stroke-dashoffset`, se met en pause hors écran et onglet masqué, et affiche l’état final avec `prefers-reduced-motion`. Une liste est lisible par les lecteurs d’écran, la bande de résultat a une hauteur fixe (pas de CLS) et l’étiquette « Exemple » est présente. Aucune image.
+- **Technologies** (`technologies` dans `data/trades.ts`, pictogrammes dans `app/solutions/tech-icon.tsx`) : Domotique, Contrôle d’accès, Parkings & barrières, Vidéo & caméras, Capteurs & alertes, IA & automatisation, Bornes/écrans/paiement, Logiciels & applications. Section `#technologies`, « On connecte tout. », avec « Lire plus ».
+- **Métiers ajoutés** : Zoos, parcs & loisirs ; Campings & résidences ; Copropriétés, bureaux & parkings ; Collectivités, écoles & équipements (18 au total).
+- Vérifié : `tsc`, `test:content`, `test:theme`, `next build` et `test:seo` (78 pages). Rendu vérifié sur ordi et à 375 px, sans scroll horizontal. Les mots interdits par `seo-check` sont toujours absents.
+
 ## [Claude — 2026-10-27, soir 2] — YVEXOR accompagnateur : le budget du client avant la grille
 
 **Décision de Yannick, qui prime sur la manière de présenter les prix.** YVEXOR est un **accompagnateur web**. Le mieux, c’est de discuter avec le client, de définir son budget avec lui et de lancer. Avec 20 € ou 2 000 €, le client a une solution, plus ou moins poussée : c’est une force de YVEXOR. **Les tarifs du catalogue sont des repères du marché**, pas une grille imposée. **Une seule application, c’est gratuit.** La page Solutions doit dire que YVEXOR touche à tous les métiers, répond à n’importe quelle demande et connecte même ce qui ne l’est pas, en paragraphes courts avec « Lire plus ».

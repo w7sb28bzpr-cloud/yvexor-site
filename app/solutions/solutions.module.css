@@ -1,4 +1,87 @@
-.page { min-height: 60vh; padding-block: clamp(6rem, 11vw, 9rem) 5rem; }
+/* YVEXOR dark theme, like the homepage, in both site themes: the shared tokens are redefined for this page. */
+.shell {
+  --site-background: #090909;
+  --site-surface: #111;
+  --site-surface-elevated: #161616;
+  --site-border: rgba(255, 255, 255, .12);
+  --site-text-primary: #f7f7f7;
+  --site-text-body: #d5d5d5;
+  --site-text-secondary: #c2c2c2;
+  --site-text-muted: #8f8f8f;
+  --site-focus: #68c9de;
+  min-height: 100vh;
+  background: #090909;
+  color: #f7f7f7;
+}
+.page { position: relative; isolation: isolate; min-height: 60vh; padding-block: clamp(6rem, 11vw, 8.5rem) 5rem; }
+.page::before { position: absolute; z-index: -1; inset: 0 0 auto; height: 52rem; background-image: radial-gradient(rgba(255, 255, 255, .1) 1px, transparent 1.2px); background-size: 22px 22px; mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 10%, transparent 70%); content: ""; pointer-events: none; }
+.kicker { margin: 0 0 .9rem; color: #68c9de; font-size: .74rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Hero: copy beside the connected scene ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.hero .intro { margin-bottom: 0; }
+.hero .intro h1 { max-width: 15ch; font-size: clamp(2.5rem, 4.8vw, 4.3rem); line-height: 1; }
+.hero h1 span { color: #68c9de; }
+
+.scene { position: relative; min-width: 0; margin: 0; padding: 1rem 1rem 1.1rem; border: 1px solid rgba(255, 255, 255, .1); border-radius: 1.25rem; background: linear-gradient(180deg, #131313, #0c0c0c); }
+.sceneHead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: #c2c2c2; font-size: .74rem; font-weight: 650; }
+.sceneHead > span:first-child { display: inline-flex; align-items: center; gap: .5rem; }
+.sceneDot { display: inline-block; width: .45rem; height: .45rem; border-radius: 50%; background: #68c9de; }
+.sceneDemo { color: #8f8f8f; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.stage { position: relative; aspect-ratio: 1 / .9; margin-top: .6rem; }
+.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.links line { stroke: rgba(255, 255, 255, .14); stroke-width: 1; stroke-dasharray: 3 4; transition: stroke 400ms ease, opacity 400ms ease; }
+.links .linkDone { stroke: rgba(104, 201, 222, .35); }
+.links .linkActive { stroke: #68c9de; stroke-width: 1.5; }
+.links .linkAlert { stroke: #ef9f27; stroke-width: 1.5; }
+.hub { position: absolute; top: 48%; left: 50%; display: grid; width: 5.2rem; height: 5.2rem; place-items: center; border: 1px solid rgba(104, 201, 222, .55); border-radius: 1.3rem; background: #0f1d21; transform: translate(-50%, -50%); }
+.hubMark { color: #f7f7f7; font-size: .78rem; font-weight: 800; letter-spacing: .14em; }
+.hubPing { position: absolute; inset: -1px; border: 1px solid #68c9de; border-radius: inherit; opacity: 0; }
+.devices { margin: 0; padding: 0; list-style: none; }
+.device { position: absolute; display: flex; width: 5rem; flex-direction: column; align-items: center; gap: .35rem; transform: translate(-50%, -50%); }
+.deviceTile { display: grid; width: 2.7rem; height: 2.7rem; place-items: center; border: 1px solid rgba(255, 255, 255, .16); border-radius: .85rem; background: #161616; color: #8f8f8f; transition: color 400ms ease, border-color 400ms ease, background-color 400ms ease; }
+.deviceTile svg { width: 1.35rem; height: 1.35rem; }
+.deviceLabel { color: #8f8f8f; font-size: .68rem; font-weight: 650; transition: color 400ms ease; }
+.deviceDone .deviceTile { border-color: rgba(104, 201, 222, .35); color: #68c9de; }
+.deviceActive .deviceTile { border-color: #68c9de; background: #0f1d21; color: #68c9de; }
+.deviceAlert .deviceTile { border-color: #ef9f27; background: #2a1d08; color: #ffc46b; }
+.deviceActive .deviceLabel, .deviceAlert .deviceLabel { color: #f7f7f7; }
+.resultBand { display: grid; height: 2.6rem; place-items: center; margin-top: .2rem; }
+.result { display: flex; max-width: 100%; align-items: center; gap: .5rem; margin: 0; padding: .5rem .85rem; border-radius: 999px; background: #f7f7f7; color: #111; font-size: .76rem; font-weight: 650; text-align: center; }
+.result span { display: grid; width: 1.15rem; height: 1.15rem; flex: none; place-items: center; border-radius: 50%; background: #68c9de; color: #06181c; font-size: .66rem; font-weight: 800; }
+.resultAlert span { background: #ef9f27; color: #2a1d08; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hubPing { animation: scene-ping 1.4s var(--ease-out, cubic-bezier(.22, 1, .36, 1)) both; }
+  .deviceActive .deviceTile, .deviceAlert .deviceTile { animation: scene-pop 520ms cubic-bezier(.22, 1, .36, 1) both; }
+  .linkActive, .linkAlert { animation: scene-flow 900ms linear infinite; }
+  .result { animation: scene-result 480ms cubic-bezier(.22, 1, .36, 1) both; }
+}
+@keyframes scene-ping { from { opacity: .8; transform: scale(1); } to { opacity: 0; transform: scale(1.35); } }
+@keyframes scene-pop { from { transform: scale(.88); } }
+@keyframes scene-flow { to { stroke-dashoffset: -14; } }
+@keyframes scene-result { from { opacity: 0; transform: translateY(10px); } }
+
+/* ---------- Technologies ---------- */
+.techGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr)); align-items: start; gap: .6rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.techGrid > li { min-width: 0; }
+.techIcon { display: grid; width: 2.6rem; height: 2.6rem; margin-bottom: .45rem; place-items: center; border: 1px solid rgba(104, 201, 222, .4); border-radius: .8rem; background: #0f1d21; color: #68c9de; }
+.techIcon svg { width: 1.35rem; height: 1.35rem; }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .scene { width: 100%; max-width: 32rem; }
+}
+@media (max-width: 420px) {
+  .device { width: 4.2rem; }
+  .deviceTile { width: 2.3rem; height: 2.3rem; border-radius: .75rem; }
+  .deviceTile svg { width: 1.15rem; height: 1.15rem; }
+  .deviceLabel { font-size: .6rem; }
+  .hub { width: 4.2rem; height: 4.2rem; border-radius: 1.1rem; }
+  .hubMark { font-size: .64rem; }
+  .result { font-size: .7rem; }
+}
 .intro { max-width: 64rem; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
 .eyebrow { margin: 0 0 .85rem; color: var(--site-text-muted); font-size: .72rem; font-weight: 720; letter-spacing: .14em; text-transform: uppercase; }
 .intro h1 { max-width: 14ch; margin: 0; }

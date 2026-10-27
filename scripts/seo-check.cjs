@@ -29,7 +29,7 @@ assert.ok(['Caisse','Site web','Gestion métier'].every(name=>solutionHub.includ
 assert.ok(!['Comptabilité','CRM','Facturation','Ressources humaines','Odoo'].some(name=>solutionHub.includes(name)),'Unconfirmed tools and platforms must not be advertised publicly');
 const applicationsHub=read('applications/index.html');
 assert.ok(routes.some(url=>url.pathname==='/applications/'),'Applications library must be in the sitemap');
-assert.ok(applicationsHub.includes('Applications<span> YVEXOR.'),'Applications library must have its own visible H1');
+assert.ok(/<h1\b[^>]*>Nos applications<\/h1>/.test(applicationsHub),'Applications library must have its own visible H1');
 assert.ok(['CRM','Caisse','Facturation','Planning','Restaurant','Club &amp; Sport'].every(name=>applicationsHub.includes(name)),'Applications library must render available entries from BusinessTool');
 assert.ok(!applicationsHub.includes('Odoo'),'Internal implementation platforms must stay out of the public library');
 const applicationSubpaths=routes.filter(url=>url.pathname.startsWith('/applications/')&&url.pathname!=='/applications/').map(url=>url.pathname);

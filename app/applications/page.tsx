@@ -32,8 +32,7 @@ export default function ApplicationsPage() {
       <section className={styles.hero} aria-labelledby="applications-title">
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}><span className={styles.kickerMark} aria-hidden="true" /> Nos applications</p>
-            <h1 id="applications-title" className={styles.heroTitle}>Applications<span> YVEXOR.</span></h1>
+            <h1 id="applications-title" className={styles.heroTitle}>Nos applications</h1>
             <p className={styles.heroLead}>Les outils pour gérer, vendre, automatiser et faire évoluer votre activité.</p>
             <a className={styles.heroJump} href="#rubriques">Choisir une rubrique <span aria-hidden="true">↓</span></a>
           </div>

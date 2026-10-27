@@ -32,7 +32,12 @@ assert.ok(routes.some(url=>url.pathname==='/applications/'),'Applications librar
 assert.ok(applicationsHub.includes('Applications<span> YVEXOR.'),'Applications library must have its own visible H1');
 assert.ok(['CRM','Caisse','Facturation','Planning','Restaurant','Club &amp; Sport'].every(name=>applicationsHub.includes(name)),'Applications library must render available entries from BusinessTool');
 assert.ok(!applicationsHub.includes('Odoo'),'Internal implementation platforms must stay out of the public library');
-assert.ok(!routes.some(url=>url.pathname.startsWith('/applications/')&&url.pathname!=='/applications/'),'Unbuilt application details must not enter the sitemap');
+const applicationSubpaths=routes.filter(url=>url.pathname.startsWith('/applications/')&&url.pathname!=='/applications/').map(url=>url.pathname);
+assert.ok(applicationSubpaths.includes('/applications/toutes/')&&applicationSubpaths.includes('/applications/vendre-encaisser/'),'Applications rubric pages must be in the sitemap');
+for(const subpath of applicationSubpaths){assert.ok(fs.existsSync(path.join(root,subpath,'index.html')),'Only built application rubric pages may enter the sitemap: '+subpath);}
+assert.ok(!applicationSubpaths.some(p=>['/applications/abonnements/','/applications/club-sport/','/applications/commerce/'].includes(p)),'Unbuilt application details must not enter the sitemap');
+const allApplications=read('applications/toutes/index.html');
+assert.ok(['CRM','Caisse','Facturation','Planning','Restaurant','Club &amp; Sport'].every(name=>allApplications.includes(name)),'The full library page must render every available entry');
 for(const canonicalPath of ['/logiciel-sur-mesure/','/automatisation-entreprise/','/logiciel-caisse-marseille/','/applications-metier/','/site-presence-web/','/systemes-connectes/','/solutions/hebergement-infrastructure/','/solutions/retrofit-equipement-non-connecte/','/solutions-restaurants/','/solutions-hotels/','/logiciel-garage/','/caisse/','/boutique/','/materiel/']){
  assert.ok(routes.some(url=>url.pathname===canonicalPath),'Historical canonical route must remain in sitemap: '+canonicalPath);
 }
@@ -52,7 +57,7 @@ for(const [route,name,tools] of [
 const aliases=['/realisations/','/yvexor-pos/','/projets/'];
 const pages=new Map();const titles=new Set();const descriptions=new Set();
 for(const url of routes){
- assert.equal(url.origin,origin);assert.ok(url.pathname.endsWith('/'));assert.ok(!/auth|admin|api|client/.test(url.pathname));
+ assert.equal(url.origin,origin);assert.ok(url.pathname.endsWith('/'));assert.ok(!/\/(?:auth|admin|api|clients?)\//.test(url.pathname));
  const html=read(url.pathname.slice(1)+'index.html');pages.set(url.pathname,html);
  const title=decode(html.match(/<title>(.*?)<\/title>/s)?.[1]||'');const description=meta(html,'description');
  assert.ok(title&&description,url.pathname+' missing title/description');assert.ok(!titles.has(title),'Duplicate title '+title);assert.ok(!descriptions.has(description),'Duplicate description '+description);titles.add(title);descriptions.add(description);

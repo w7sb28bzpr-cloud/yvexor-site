@@ -4,7 +4,7 @@ import { projects } from "../data/projects";
 import { seoPages } from "../data/seo-pages";
 import { solutions, solutionById } from "../data/solutions";
 import { businessTools } from "../data/business-tools";
-import { businessToolCategories } from "../data/business-tool-categories";
+import { allApplicationsSlug, businessToolCategories } from "../data/business-tool-categories";
 
 export { industries, industryById };
 
@@ -147,6 +147,7 @@ export function validateContentGraph(source: {
   const clusters = new Set(["logiciel-ia", "commerce-paiement", "connecte-terrain", "digital-infrastructure"]);
   const toolKinds = new Set(["application", "business-suite", "capability"]);
   const toolCategoryIds = new Set(businessToolCategories.map(({ id }) => id));
+  const categoryPageSlugs = new Set([...businessToolCategories.map(({ slug }) => slug), allApplicationsSlug]);
   const toolCatalogSurfaces = new Set(["legacy-solutions", "applications"]);
   const legacyPagePaths = new Set(seoPages.map((page) => `/${page.slug}/`));
   const knownSolutionDestinations = new Set([...legacyPagePaths, "/boutique/"]);
@@ -264,6 +265,7 @@ export function validateContentGraph(source: {
     }
     if (!toolKinds.has(tool.kind)) errors.push(`Invalid kind on tool ${tool.id}: ${tool.kind}`);
     if (!toolCategoryIds.has(tool.categoryId)) errors.push(`Invalid categoryId on tool ${tool.id}: ${tool.categoryId}`);
+    if (categoryPageSlugs.has(tool.slug)) errors.push(`Tool ${tool.id} slug collides with an applications category page: ${tool.slug}`);
     if (new Set(tool.catalogSurfaces).size !== tool.catalogSurfaces.length) errors.push(`Duplicate catalogSurfaces on tool ${tool.id}`);
     for (const surface of tool.catalogSurfaces) {
       if (!toolCatalogSurfaces.has(surface)) errors.push(`Invalid catalog surface ${surface} on tool ${tool.id}`);

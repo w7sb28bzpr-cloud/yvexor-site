@@ -463,6 +463,16 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-27] — `/applications/` devient un portail à rubriques
+
+**Décision de Yannick.** Sur `/applications/`, on parle peu. On garde l’animation « une information, quatre applications », puis seulement des briques. Le client clique sur ce qui l’intéresse, et « voir toutes les applications » arrive à la fin.
+
+- `/applications/` : hero et `ApplicationFlow` inchangés, puis « Que voulez-vous faire ? » avec 7 briques (6 rubriques + Packs métier). Chaque brique affiche son nom, une ligne, les noms des applis et leur nombre. À la fin : « Voir toutes les applications » et un lien discret vers Nos solutions. **L’escalier des 4 marches est retiré de cette page.** La décision ci-dessous reste valable, mais l’escalier devra vivre ailleurs (accueil ou pages métier).
+- `/applications/[categorie]/` (statique, `dynamicParams = false`) : une page par rubrique (`vendre-encaisser`, `clients-equipe`, `stock-logistique`, `gestion-finances`, `en-ligne`, `automatiser-ia`, `packs-metier`) et `/applications/toutes/` (bibliothèque complète avec filtres et packs). Les fiches s’ouvrent dans le même `dialog`. En bas, des liens vers les autres rubriques.
+- Les slugs, descriptions et icônes de rubrique sont dans `data/business-tool-categories.ts`. `validateContentGraph` refuse un slug d’outil égal à un slug de rubrique, parce que les destinations futures des outils sont aussi sous `/applications/`.
+- Les rubriques entrent dans le sitemap. `scripts/seo-check.cjs` vérifie maintenant que chaque sous-page de `/applications/` du sitemap est réellement générée, et la garde des chemins privés compare des segments entiers (`/client/`, `/clients/`, `/api/`…) au lieu de n’importe quelle sous-chaîne, qui bloquait `clients-equipe`.
+- Constat indépendant de ce travail : `npm run build` échoue sur `caisse-sync --check` (`portal/core/caisse_catalogue.json` désynchronisé). `next build`, `test:seo`, `test:content` et `test:theme` passent.
+
 ## [Claude — 2026-10-26] — Décision produit : l’escalier des offres + rangement de `/applications/`
 
 **Décision de Yannick (à respecter partout sur le site).** Les deux offres sont deux étapes d’un même chemin, pas deux mondes :

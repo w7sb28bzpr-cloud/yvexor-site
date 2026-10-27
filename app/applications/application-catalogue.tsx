@@ -7,12 +7,14 @@ import styles from "./applications.module.css";
 
 type Category = { id: BusinessToolCategoryId; label: string };
 
-export function ApplicationCatalogue({ tools, packs, categories, existingCanonicalPaths }: {
+export function ApplicationCatalogue({ tools, packs = [], categories, existingCanonicalPaths, showFilters = true }: {
   tools: PublicBusinessTool[];
   /** Industry packs stay out of the filters: they bundle applications, they are not one. */
-  packs: PublicBusinessTool[];
+  packs?: PublicBusinessTool[];
   categories: Category[];
   existingCanonicalPaths: string[];
+  /** A category page already is the filter. */
+  showFilters?: boolean;
 }) {
   const [category, setCategory] = useState<BusinessToolCategoryId | "all">("all");
   const [filterChanges, setFilterChanges] = useState(0);
@@ -80,6 +82,7 @@ export function ApplicationCatalogue({ tools, packs, categories, existingCanonic
   };
 
   return <>
+    {showFilters && <>
     <div className={styles.filterBar}>
       <div className={styles.filters} role="group" aria-label="Filtrer les applications">
         {filters.map((item) => <button
@@ -92,6 +95,7 @@ export function ApplicationCatalogue({ tools, packs, categories, existingCanonic
       </div>
     </div>
     <p className={styles.resultCount} role="status">{visibleTools.length} {visibleTools.length > 1 ? "applications" : "application"}{category === "all" ? "" : ` · ${categoryLabel(category)}`}</p>
+    </>}
 
     <ul id="applications-grid" key={filterChanges} className={`${styles.grid} ${filterChanges ? styles.gridChanged : ""}`}>
       {visibleTools.map(tile)}

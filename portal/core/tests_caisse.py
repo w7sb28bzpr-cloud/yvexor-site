@@ -6,16 +6,22 @@ from .models import User, Organization, Membership, Request
                    PASSWORD_HASHERS=['django.contrib.auth.hashers.MD5PasswordHasher'])
 class CaisseTests(TestCase):
     def selection(self, **values):
-        return {'profession':'alimentation', 'plan':'stock', 'hardware':'own', **values}
+        return {'profession':'alimentation', 'plan':'commerce-pro', 'hardware':'own', **values}
 
-    def test_four_commercial_examples(self):
-        cases=[({},79,0),({'profession':'boulangerie','plan':'pilotage','website':'true','hardware':'post'},158,380),
-               ({'profession':'snack','plan':'pilotage','website':'true','mobile':'true'},187,0),
-               ({'profession':'snack','kiosk':'1','hardware':'post'},98,380)]
+    def test_catalogue_examples(self):
+        # Prices follow the B2B catalogue: options are included in the plans, packs are bought once.
+        cases=[({},89,0),({'profession':'boulangerie','plan':'essentiel','website':'true','hardware':'pack-fixe'},49,489),
+               ({'profession':'snack','plan':'snack-connecte','mobile':'true','kiosk':'1'},89,0),
+               ({'profession':'coiffure','plan':'salon-caisse','hardware':'pack-tablette'},69,309)]
         for values,monthly,hardware in cases:
             text=draft_initial(normalize(self.selection(**values)))['body']
             self.assertIn(f'Total mensuel : {monthly} € HT/mois',text)
             self.assertIn(f'{hardware} € HT, achat unique',text)
+
+    def test_from_price_plan_is_quoted(self):
+        text=draft_initial(normalize(self.selection(profession='snack',plan='snack-sur-mesure')))['body']
+        self.assertIn('dès 129 € HT/mois, sur devis',text)
+        self.assertIn('Total mensuel : sur devis',text)
 
     def test_no_client_price_and_no_implicit_license_price(self):
         text=draft_initial(normalize(self.selection(price='1',license='true',tpe='true')))['body']
@@ -38,10 +44,10 @@ class CaisseTests(TestCase):
         response=self.client.post('/auth/login/',{'email':'test@example.com','password':'test-long-password','remember':'on'})
         self.assertEqual(response.url,'/requests/new/')
         response=self.client.get(response.url)
-        self.assertContains(response,'79 € HT/mois')
+        self.assertContains(response,'89 € HT/mois')
         initial=draft_initial(self.client.session['caisse_draft'])
         response=self.client.post('/requests/new/',{**initial,'budget':'unknown','timeline':'unknown','details':''})
         self.assertEqual(response.status_code,302)
         item=Request.objects.get();self.assertEqual(item.organization,org)
-        self.assertIn('Total mensuel : 79 € HT/mois',item.body)
+        self.assertIn('Total mensuel : 89 € HT/mois',item.body)
         self.assertNotIn('caisse_draft',self.client.session)

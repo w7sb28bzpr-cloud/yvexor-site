@@ -1,0 +1,91 @@
+/* Catalogue offers, one activity per page. Neutral tokens from the site; cyan only marks prices and focus. */
+.page {
+  --offer-cyan: #68c9de;
+  --offer-cyan-text: #68c9de;
+  --offer-cyan-soft: rgba(104, 201, 222, 0.1);
+  width: min(100%, 86rem);
+  margin-inline: auto;
+  padding: clamp(6rem, 11vw, 8.5rem) var(--site-gutter, clamp(1rem, 4vw, 4rem)) clamp(3rem, 6vw, 5rem);
+}
+:global(:root[data-theme="light"]) .page { --offer-cyan-text: #006b80; --offer-cyan-soft: rgba(0, 107, 128, 0.08); }
+
+.eyebrow { margin: 0 0 0.75rem; color: var(--site-text-muted); font-size: 0.72rem; font-weight: 720; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* ---------- Head ---------- */
+.head { max-width: 60rem; padding-bottom: clamp(2rem, 4vw, 3rem); }
+.back { display: inline-flex; min-height: 2.75rem; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; color: var(--site-text-secondary); font-size: 0.88rem; font-weight: 620; text-decoration: none; }
+.back:hover { color: var(--site-text-primary); }
+.title { margin: 0; font-family: var(--site-font-display); font-size: clamp(2.4rem, 5.6vw, 4.6rem); font-weight: 620; letter-spacing: -0.06em; line-height: 0.98; text-wrap: balance; }
+.lead { max-width: 42ch; margin: 1rem 0 0; color: var(--site-text-secondary); font-size: clamp(1.02rem, 1.5vw, 1.2rem); line-height: 1.5; }
+.jump { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
+.jump a { display: inline-flex; min-height: 2.5rem; align-items: center; padding: 0.4rem 0.9rem; border: 1px solid var(--site-border); border-radius: 999px; color: var(--site-text-secondary); font-size: 0.84rem; font-weight: 620; text-decoration: none; transition: border-color var(--site-transition-fast), color var(--site-transition-fast); }
+.jump a:hover { border-color: var(--site-text-muted); color: var(--site-text-primary); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.2rem; margin-top: 1.6rem; }
+.primary { display: inline-flex; min-height: 3rem; align-items: center; gap: 0.7rem; padding: 0.75rem 1.35rem; border-radius: 999px; background: var(--offer-cyan); color: #071014; font-size: 0.95rem; font-weight: 720; text-decoration: none; transition: background-color var(--site-transition-fast); }
+.primary:hover { background: #8cdeef; }
+.secondary { display: inline-flex; min-height: 2.75rem; align-items: center; color: var(--site-text-primary); font-size: 0.92rem; font-weight: 650; text-decoration: underline; text-decoration-color: var(--site-border); text-underline-offset: 0.3em; }
+.secondary:hover { text-decoration-color: var(--offer-cyan); }
+
+/* ---------- Sections ---------- */
+.section { padding-block: clamp(2.4rem, 5vw, 4rem); border-top: 1px solid var(--site-border); scroll-margin-top: 5rem; }
+.sectionTitle { max-width: 22ch; margin: 0; font-family: var(--site-font-display); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 620; letter-spacing: -0.05em; line-height: 1.04; }
+.intro { max-width: 52ch; margin: 0.8rem 0 0; color: var(--site-text-secondary); font-size: 1rem; line-height: 1.5; }
+.note { max-width: 70ch; margin: 1.2rem 0 0; color: var(--site-text-muted); font-size: 0.86rem; line-height: 1.5; }
+
+.plans,
+.cards { display: grid; gap: 0.75rem; margin: clamp(1.4rem, 3vw, 2rem) 0 0; padding: 0; list-style: none; }
+.plans { grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.cards { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr)); }
+
+.plan { position: relative; display: flex; min-width: 0; flex-direction: column; padding: 1.4rem 1.3rem 1.5rem; border: 1px solid var(--site-border); border-radius: 1.2rem; background: var(--site-surface); }
+.planHighlight { border-color: color-mix(in srgb, var(--offer-cyan) 60%, transparent); box-shadow: 0 0 0 4px var(--offer-cyan-soft); }
+.badge { align-self: flex-start; margin-bottom: 0.8rem; padding: 0.22rem 0.6rem; border-radius: 999px; background: var(--offer-cyan); color: #071014; font-size: 0.68rem; font-weight: 750; letter-spacing: 0.04em; text-transform: uppercase; }
+.plan h3 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+.price { margin: 0.55rem 0 0; color: var(--site-text-primary); font-family: var(--site-font-display); font-size: clamp(2.2rem, 3.6vw, 2.8rem); font-weight: 650; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+.price small { color: var(--site-text-muted); font-family: var(--site-font-body); font-size: 0.82rem; font-weight: 600; letter-spacing: 0; }
+.planLead { margin: 0.8rem 0 0; color: var(--site-text-primary); font-size: 0.95rem; font-weight: 620; line-height: 1.4; }
+.items { display: grid; gap: 0.45rem; margin: 1rem 0 0; padding: 1rem 0 0; border-top: 1px solid var(--site-border); list-style: none; }
+.items li { position: relative; padding-left: 1.05rem; color: var(--site-text-secondary); font-size: 0.88rem; line-height: 1.45; }
+.items li::before { position: absolute; top: 0.58em; left: 0; width: 0.38rem; height: 0.38rem; border-radius: 50%; background: var(--offer-cyan); content: ""; }
+.planNote { margin: auto 0 0; padding-top: 1rem; color: var(--site-text-muted); font-size: 0.82rem; line-height: 1.45; }
+
+.card { min-width: 0; padding: 1.15rem 1.15rem 1.25rem; border: 1px solid var(--site-border); border-radius: 1rem; background: var(--site-surface); }
+.card h3 { margin: 0; font-size: 1rem; font-weight: 680; letter-spacing: -0.015em; line-height: 1.25; }
+.cardPrice { margin: 0.45rem 0 0; color: var(--offer-cyan-text); font-size: 0.84rem; font-weight: 720; }
+.card p:last-child { margin: 0.5rem 0 0; color: var(--site-text-secondary); font-size: 0.87rem; line-height: 1.45; }
+
+/* The per-court grid scrolls inside its own frame on phones; the page never scrolls sideways. */
+.tableWrap { max-width: 100%; margin-top: clamp(1.4rem, 3vw, 2rem); overflow-x: auto; border: 1px solid var(--site-border); border-radius: 1rem; background: var(--site-surface); overscroll-behavior-x: contain; }
+.tableWrap:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
+.table { width: 100%; min-width: 34rem; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.table th,
+.table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--site-border); text-align: right; white-space: nowrap; }
+.table tr:last-child th,
+.table tr:last-child td { border-bottom: 0; }
+.table thead th { color: var(--site-text-muted); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.table th:first-child { text-align: left; }
+.table tbody th { color: var(--site-text-primary); font-size: 0.92rem; font-weight: 680; }
+.table td { color: var(--site-text-primary); font-size: 1.02rem; font-weight: 620; }
+
+/* ---------- Conditions and other activities ---------- */
+.conditions,
+.others { padding-block: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--site-border); }
+.conditions h2,
+.others h2 { margin: 0 0 0.9rem; font-size: 1.15rem; font-weight: 680; letter-spacing: -0.02em; }
+.conditions ul { display: grid; max-width: 75ch; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+.conditions li { color: var(--site-text-muted); font-size: 0.84rem; line-height: 1.5; }
+.others ul { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+.others li a { display: inline-flex; min-height: 2.75rem; align-items: center; padding: 0.5rem 1rem; border: 1px solid var(--site-border); border-radius: 999px; color: var(--site-text-secondary); font-size: 0.86rem; font-weight: 620; text-decoration: none; transition: border-color var(--site-transition-fast), color var(--site-transition-fast); }
+.others li a:hover { border-color: var(--site-text-muted); color: var(--site-text-primary); }
+
+@media (max-width: 40rem) {
+  .page { padding-top: 6rem; }
+  .actions { flex-direction: column; align-items: stretch; }
+  .primary { justify-content: center; }
+  .secondary { justify-content: center; }
+  .plan { padding: 1.2rem 1.1rem 1.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jump a, .primary, .others li a { transition: none; }
+}

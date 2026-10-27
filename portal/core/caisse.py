@@ -48,15 +48,18 @@ def draft_initial(draft):
     hardware = next(x for x in CATALOGUE['hardware'] if x['id'] == s['hardware'])
     lines = ['Configuration YVEXOR Caisses — estimation HT, sans engagement', 'Activité : ' + p['name']]
     monthly = plan['monthly'] if plan else 0
+    # A "from" price is a floor, not a total: the final amount comes with the quote.
+    from_price = bool(plan and plan.get('fromPrice'))
     if plan:
-        lines.append('Formule : ' + plan['name'] + (' — licence sur devis' if s['license'] else f" — {monthly} € HT/mois"))
+        price = f"dès {monthly} € HT/mois, sur devis" if from_price else f"{monthly} € HT/mois"
+        lines.append('Formule : ' + plan['name'] + (' — licence sur devis' if s['license'] else f" — {price}"))
     for option in CATALOGUE['options']:
         quantity = int(s.get(option['id'], 0))
         if quantity and p['family'] in option['families']:
             amount = option['monthly'] * quantity
             monthly += amount
             lines.append(f"{option['name']} × {quantity} : {amount} € HT/mois — {option['availability']}")
-    lines.append('Total mensuel : ' + ('sur devis' if s['license'] or not plan else f'{monthly} € HT/mois'))
+    lines.append('Total mensuel : ' + ('sur devis' if s['license'] or not plan or from_price else f'{monthly} € HT/mois'))
     lines.append(f"Matériel : {hardware['name']} — {hardware['once']} € HT, achat unique")
     if s['tpe']:
         lines.append('TPE / paiement CB demandé : frais et commissions sur proposition, non inclus.')

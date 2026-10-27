@@ -3,6 +3,19 @@
 .eyebrow { margin: 0 0 .85rem; color: var(--site-text-muted); font-size: .72rem; font-weight: 720; letter-spacing: .14em; text-transform: uppercase; }
 .intro h1 { max-width: 14ch; margin: 0; }
 .intro > .site-copy { max-width: 45rem; margin: 1.25rem 0 0; font-size: clamp(1.05rem, 1.7vw, 1.25rem); }
+.offers { margin-bottom: clamp(2.5rem, 5vw, 4rem); scroll-margin-top: 6rem; }
+.offers h2 { margin: 0; font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.02; }
+.offersLead { margin: .7rem 0 0; color: var(--site-text-secondary); font-size: 1.02rem; }
+.offerGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: .7rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.offerGrid > li { display: flex; min-width: 0; }
+.offerCard { position: relative; display: flex; width: 100%; min-height: 10.5rem; flex-direction: column; gap: .35rem; padding: 1.15rem 1.15rem 1.2rem; border: 1px solid var(--site-border); border-radius: 1.2rem; background: var(--site-surface); color: var(--site-text-primary); transition: border-color var(--site-transition-fast), transform var(--site-transition-fast); }
+.offerCard:hover { transform: translateY(-2px); border-color: #68c9de; }
+.offerName { font-size: 1.08rem; font-weight: 700; letter-spacing: -.02em; }
+.offerSummary { color: var(--site-text-secondary); font-size: .86rem; line-height: 1.45; }
+.offerPrice { margin-top: auto; padding-top: .8rem; font-size: 1.25rem; font-weight: 700; letter-spacing: -.03em; }
+.offerPrice small { color: var(--site-text-muted); font-size: .78rem; font-weight: 600; letter-spacing: 0; }
+.offerArrow { position: absolute; right: 1.1rem; bottom: 1.2rem; color: #68c9de; }
+@media (prefers-reduced-motion: reduce) { .offerCard { transition: none; } .offerCard:hover { transform: none; } }
 .doors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch; }
 .customDoor, .toolsDoor { min-width: 0; padding: clamp(1.35rem, 3.4vw, 2.8rem); border: 1px solid var(--site-border); border-radius: 2rem; }
 .customDoor { position: relative; overflow: hidden; display: flex; flex-direction: column; background: radial-gradient(ellipse at 5% 95%, rgba(71, 186, 211, .12), transparent 38%), var(--site-surface); }

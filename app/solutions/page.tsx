@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageData } from "../../components/structured-data";
+import { catalogueOffers } from "../../data/catalogue-offers";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/navigation";
 import { getCustomBuildSolutions, getPublicTools } from "../../lib/content";
@@ -25,6 +26,21 @@ export default function SolutionsPage() {
           <h1 className="site-display site-heading-xl">Les solutions YVEXOR s’adaptent à votre besoin.</h1>
           <p className="site-copy">Vous savez ce que vous cherchez ou vous partez d’un problème à résoudre : choisissez votre point de départ.</p>
         </header>
+
+        <section className={styles.offers} id="offres" aria-labelledby="offers-title">
+          <h2 id="offers-title" className="site-display">Nos offres par métier</h2>
+          <p className={styles.offersLead}>Formules, matériel et options, avec nos tarifs.</p>
+          <ul className={styles.offerGrid}>
+            {catalogueOffers.map((offer) => <li key={offer.slug}>
+              <a className={styles.offerCard} href={`/solutions/offres/${offer.slug}/`}>
+                <span className={styles.offerName}>{offer.name}</span>
+                <span className={styles.offerSummary}>{offer.summary}</span>
+                <span className={styles.offerPrice}>Dès {offer.startingPrice} <small>HT / mois</small></span>
+                <span className={styles.offerArrow} aria-hidden="true">→</span>
+              </a>
+            </li>)}
+          </ul>
+        </section>
 
         <div className={styles.doors}>
           <section className={styles.customDoor} id="sur-mesure" aria-labelledby="custom-title">

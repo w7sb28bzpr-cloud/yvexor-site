@@ -463,6 +463,27 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-27, soir] — Les tarifs du catalogue B2B sont sur le site
+
+**Décisions de Yannick.**
+- **Le catalogue PDF fait foi pour les prix, partout sur le site.** Les anciens prix de caisse (Essentiel 49 / Stock 79 / Pilotage 119, Salon 60, poste à 380 €, site à 39 €, options à 29/19/9 €) sont remplacés. Cela tranche le point §10.5 pour les métiers du catalogue.
+- **Les offres métier du catalogue vont dans « Nos solutions »**, présentées page par page comme dans le PDF.
+- **Le gratuit, ce sont des logiciels téléchargeables** qui dépannent et poussent vers l’abonnement. Ils iront dans « Nos applications ». La caisse est certifiée NF525. La liste des logiciels téléchargeables reste à fournir par Yannick : rien n’est fait côté site.
+
+**Ce qui a changé.**
+- `data/catalogue-offers.ts` : les 5 offres du PDF (tennis-padel, coiffure-beaute, commerces, snacks, restaurants), avec des sections `plans`, `table` et `cards`. Le comparatif restaurant cite le total (~1 350 €/mois) **sans nommer les concurrents**.
+- `app/solutions/offres/[metier]/` : une page statique par métier (formules, matériel, options, « Bon à savoir »), avec un lien vers le configurateur pour commerce, snack et coiffure. `/solutions/` gagne le bloc « Nos offres par métier » (`#offres`). Les 5 pages sont dans le sitemap.
+- `data/caisses.json` (v2) : les formules du PDF par famille (`essentiel`, `commerce-pro`, `commerce-sur-mesure`, `snack-essentiel`, `snack-connecte`, `snack-sur-mesure` avec `fromPrice: true`, `salon-agenda`, `salon-caisse`, `salon-complet`), le matériel (`own`, `pack-tablette` 309 €, `pack-fixe` 489 €) et `options: []`, parce que le PDF inclut le site, le mobile et l’affichage cuisine dans les formules. La famille restaurant pointe vers `/solutions/offres/restaurants/`.
+- `lib/caisse-config.ts`, `components/caisse-configurator.tsx`, `components/caisse-page.tsx`, `data/caisse-professions.ts` (FAQ, coiffure) et `data/public-offer.ts` ont été alignés. Le plan par défaut est le plan `recommended` de la famille. Un plan `fromPrice` affiche « Dès … · sur devis » et donne un total « sur devis ».
+- Portail : `portal/core/caisse.py` gère `fromPrice`, `tests_caisse.py` suit les nouveaux prix, et `caisse_catalogue.json` a été régénéré (`node scripts/caisse-sync.cjs`).
+
+**Vérifié.** `tsc`, `test:content`, `test:theme`, `caisse-sync --check`, `next build`, `test:seo` (78 pages) et les tests caisse du portail passent. `core.test_shop…test_stale_admin_form_cannot_restore_sold_stock` est **instable avant ce travail** (il échoue environ une fois sur deux dans la suite complète, même sans ces changements) : il est à stabiliser à part.
+
+**Ouvert.**
+- J’ai écrit « Prix hors taxes » et « les tarifs sont des repères » sur les pages d’offres. Le PDF ne précise pas HT/TTC : Yannick doit confirmer.
+- Le nom « Sur mesure » pour la formule à 129 € n’est toujours pas tranché.
+- Mes remarques sur le catalogue (tranches tennis 7 à 10 terrains moins intéressantes que Sérénité, paie illimitée dès 389 €, saut 179 → 389 €) ont été dites à Yannick. Les prix sont publiés tels quels.
+
 ## [Claude — 2026-10-27] — À lire en premier, Codex : résumé des sessions du 26 et 27 octobre
 
 Yannick a travaillé avec moi sur la vision des offres et sur `/applications/`. Tout est sur `main` et en ligne (commits `ad03357`, `d8c7d52`, `99502d7`, `3f0c350`, déploiements GitHub Pages réussis). Les détails sont dans les deux entrées suivantes. Voici l’essentiel.

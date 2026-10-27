@@ -463,6 +463,15 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-27, soir 4] — `/solutions/` : thème jour/nuit, hero aéré, textes plus clairs
+
+**Demande de Yannick.** Être plus clair avec le client, garder le mode clair qui passe en sombre la nuit, et corriger le hero trop comprimé et décalé sous la barre du haut.
+
+- **Thème** : la page suit à nouveau le thème du site (clair de 7 h à 19 h en auto, sombre sinon). Les tokens sombres ne sont redéfinis que sous `:root[data-theme="dark"]`, et `--sol-cyan-text` vaut `#006b80` en clair et `#68c9de` en sombre pour le contraste. La scène animée reste sombre dans les deux thèmes, comme le flux de `/applications/`. **Ceci remplace le « sombre forcé » de l’entrée suivante.**
+- **Hero** : le header est dans le flux, donc `.page` passe de ~107 px à `clamp(2.25rem, 5vw, 4rem)` en haut. La grille passe à `1.15fr / .85fr`, le titre est un peu plus petit et l’empilement se fait sous 900 px. Bug corrigé : dans un module CSS, `.site-copy` était renommée localement, et les règles ciblent maintenant `:global(.site-copy)`. Le paragraphe garde donc son espace sous le titre.
+- **Textes** : h1 « On construit votre solution, selon votre budget. », un paragraphe en une idée, 3 promesses cochées (tout budget, une appli gratuite, accompagnement), un sommaire en pastilles (Comment ça marche, Ce qu’on connecte, Votre métier, Exemples de prix, Sur mesure) et des titres de section plus parlants (« Trois étapes, et c’est parti. », « Tout ce qui est technologique, on le relie. », « On travaille avec tous les métiers. », « Pour vous donner une idée »).
+- Vérifié : `tsc`, tests contenu, thème et SEO (78 pages), `next build`, rendu clair et sombre sur ordi, et 375 px sans scroll horizontal.
+
 ## [Claude — 2026-10-27, soir 3] — `/solutions/` au thème YVEXOR, animation « tout se connecte », technologies
 
 **Demande de Yannick.** Ajouter domotique, accès parking, contrôle d’accès, zoos, parcs… « partout où il y a de la techno ». Rendre la page plus YVEXOR. Pas d’images trouvées sur le web ni générées par IA : des animations.

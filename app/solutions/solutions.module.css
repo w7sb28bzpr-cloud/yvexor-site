@@ -1,5 +1,12 @@
-/* YVEXOR dark theme, like the homepage, in both site themes: the shared tokens are redefined for this page. */
+/* Follows the site theme: light by day, YVEXOR dark at night (auto) or when chosen.
+ * The connected scene stays dark in both, like a product screen. */
 .shell {
+  --sol-cyan-text: #006b80;
+  --sol-dots: rgba(0, 0, 0, .1);
+  background: var(--site-background);
+  color: var(--site-text-primary);
+}
+:global(:root[data-theme="dark"]) .shell {
   --site-background: #090909;
   --site-surface: #111;
   --site-surface-elevated: #161616;
@@ -9,20 +16,32 @@
   --site-text-secondary: #c2c2c2;
   --site-text-muted: #8f8f8f;
   --site-focus: #68c9de;
-  min-height: 100vh;
-  background: #090909;
-  color: #f7f7f7;
+  --sol-cyan-text: #68c9de;
+  --sol-dots: rgba(255, 255, 255, .1);
 }
-.page { position: relative; isolation: isolate; min-height: 60vh; padding-block: clamp(6rem, 11vw, 8.5rem) 5rem; }
-.page::before { position: absolute; z-index: -1; inset: 0 0 auto; height: 52rem; background-image: radial-gradient(rgba(255, 255, 255, .1) 1px, transparent 1.2px); background-size: 22px 22px; mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 10%, transparent 70%); content: ""; pointer-events: none; }
-.kicker { margin: 0 0 .9rem; color: #68c9de; font-size: .74rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+/* The header is part of the page flow, so the hero only needs a modest gap below it. */
+.page { position: relative; isolation: isolate; min-height: 60vh; padding-block: clamp(2.25rem, 5vw, 4rem) 5rem; }
+.page::before { position: absolute; z-index: -1; inset: 0 0 auto; height: 46rem; background-image: radial-gradient(var(--sol-dots) 1px, transparent 1.2px); background-size: 22px 22px; mask-image: radial-gradient(ellipse 70% 60% at 72% 30%, #000 10%, transparent 70%); content: ""; pointer-events: none; }
+.kicker { margin: 0 0 .9rem; color: var(--sol-cyan-text); font-size: .74rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ---------- Hero: copy beside the connected scene ---------- */
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-.hero .intro { margin-bottom: 0; }
-.hero .intro h1 { max-width: 15ch; font-size: clamp(2.5rem, 4.8vw, 4.3rem); line-height: 1; }
-.hero h1 span { color: #68c9de; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; gap: clamp(2rem, 4.5vw, 4rem); margin-bottom: clamp(2rem, 4vw, 3rem); }
+.hero .intro { max-width: 36rem; margin-bottom: 0; }
+.hero .intro h1 { max-width: 16ch; font-size: clamp(2.4rem, 4.4vw, 4rem); line-height: 1.02; }
+.hero h1 span { color: var(--sol-cyan-text); }
+.hero .intro > p:global(.site-copy) { max-width: 34rem; margin-top: 1.2rem; font-size: clamp(1.02rem, 1.4vw, 1.15rem); line-height: 1.55; }
+.promises { display: grid; gap: .5rem; margin: 1.3rem 0 0; padding: 0; list-style: none; }
+.promises li { position: relative; padding-left: 1.7rem; color: var(--site-text-primary); font-size: .95rem; font-weight: 600; line-height: 1.4; }
+.promises li::before { position: absolute; top: .05rem; left: 0; display: grid; width: 1.15rem; height: 1.15rem; place-items: center; border-radius: 50%; background: #68c9de; color: #071014; content: "✓"; font-size: .66rem; font-weight: 800; }
+
+/* Quick access to each part of the page. */
+.toc { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 clamp(2.5rem, 5vw, 3.5rem); padding-top: clamp(1.2rem, 2.5vw, 1.6rem); border-top: 1px solid var(--site-border); }
+.toc a { display: inline-flex; min-height: 44px; align-items: center; padding: .45rem 1rem; border: 1px solid var(--site-border); border-radius: 999px; color: var(--site-text-secondary); font-size: .86rem; font-weight: 620; transition: border-color var(--site-transition-fast), color var(--site-transition-fast); }
+.toc a:hover { border-color: #68c9de; color: var(--site-text-primary); }
+.how { margin-bottom: clamp(2.5rem, 5vw, 4rem); scroll-margin-top: 6rem; }
+.how h2 { margin: 0 0 1.4rem; font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.02; }
+.how .method { margin-bottom: 0; }
 
 .scene { position: relative; min-width: 0; margin: 0; padding: 1rem 1rem 1.1rem; border: 1px solid rgba(255, 255, 255, .1); border-radius: 1.25rem; background: linear-gradient(180deg, #131313, #0c0c0c); }
 .sceneHead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: #c2c2c2; font-size: .74rem; font-weight: 650; }
@@ -69,7 +88,7 @@
 .techIcon { display: grid; width: 2.6rem; height: 2.6rem; margin-bottom: .45rem; place-items: center; border: 1px solid rgba(104, 201, 222, .4); border-radius: .8rem; background: #0f1d21; color: #68c9de; }
 .techIcon svg { width: 1.35rem; height: 1.35rem; }
 
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; }
   .scene { width: 100%; max-width: 32rem; }
 }
@@ -85,9 +104,7 @@
 .intro { max-width: 64rem; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
 .eyebrow { margin: 0 0 .85rem; color: var(--site-text-muted); font-size: .72rem; font-weight: 720; letter-spacing: .14em; text-transform: uppercase; }
 .intro h1 { max-width: 14ch; margin: 0; }
-.intro > .site-copy { max-width: 45rem; margin: 1.25rem 0 0; font-size: clamp(1.05rem, 1.7vw, 1.25rem); }
-/* The site copy reset removes the gap under the large title. */
-.intro > p.site-copy { margin-top: 1.4rem; }
+.intro > :global(.site-copy) { max-width: 45rem; margin: 1.25rem 0 0; font-size: clamp(1.05rem, 1.7vw, 1.25rem); }
 .introActions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-top: 1.6rem; }
 .introActions .customCta { min-width: 15rem; }
 .introLink { display: inline-flex; min-height: 44px; align-items: center; gap: .5rem; color: var(--site-text-primary); font-weight: 650; text-decoration: underline; text-decoration-color: #68c9de; text-underline-offset: .25em; }
@@ -110,7 +127,7 @@
 .trade summary:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; border-radius: 1.1rem; }
 .tradeName { margin: 0; color: var(--site-text-primary); font-size: 1rem; font-weight: 700; letter-spacing: -.015em; }
 .tradeShort { margin: 0; color: var(--site-text-secondary); font-size: .87rem; line-height: 1.45; }
-.tradeMore { margin-top: .35rem; color: #68c9de; font-size: .8rem; font-weight: 700; }
+.tradeMore { margin-top: .35rem; color: var(--sol-cyan-text); font-size: .8rem; font-weight: 700; }
 .trade[open] .tradeMore { display: none; }
 .trade p { margin: 0; padding: 0 1.1rem .9rem; color: var(--site-text-secondary); font-size: .87rem; line-height: 1.5; }
 .trade a,
@@ -135,7 +152,7 @@
 .offerSummary { color: var(--site-text-secondary); font-size: .86rem; line-height: 1.45; }
 .offerPrice { margin-top: auto; padding-top: .8rem; font-size: 1.25rem; font-weight: 700; letter-spacing: -.03em; }
 .offerPrice small { color: var(--site-text-muted); font-size: .78rem; font-weight: 600; letter-spacing: 0; }
-.offerArrow { position: absolute; right: 1.1rem; bottom: 1.2rem; color: #68c9de; }
+.offerArrow { position: absolute; right: 1.1rem; bottom: 1.2rem; color: var(--sol-cyan-text); }
 @media (prefers-reduced-motion: reduce) { .offerCard { transition: none; } .offerCard:hover { transform: none; } }
 .doors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch; }
 .customDoor, .toolsDoor { min-width: 0; padding: clamp(1.35rem, 3.4vw, 2.8rem); border: 1px solid var(--site-border); border-radius: 2rem; }

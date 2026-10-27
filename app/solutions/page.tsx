@@ -26,27 +26,44 @@ export default function SolutionsPage() {
       <div className="site-container">
         <div className={styles.hero}>
           <header className={styles.intro}>
-            <p className={styles.kicker}>Votre accompagnateur web</p>
-            <h1 className="site-display site-heading-xl">Votre besoin. Votre budget. <span>On lance ensemble.</span></h1>
-            <p className="site-copy">Chez YVEXOR, on ne vous impose pas une grille de prix. On discute, on définit votre budget avec vous, puis on construit : logiciel, automatisation, IA ou objets connectés. Avec 20 € ou 2 000 € par mois, vous aurez une solution qui vous fait avancer.</p>
+            <p className={styles.kicker}>Nos solutions</p>
+            <h1 className="site-display site-heading-xl">On construit votre solution, <span>selon votre budget.</span></h1>
+            <p className="site-copy">Vous nous expliquez votre besoin et ce que vous voulez y consacrer. On vous propose la solution adaptée (logiciel, automatisation, IA ou équipements connectés), puis on vous accompagne.</p>
+            <ul className={styles.promises}>
+              <li>Petit budget ou gros projet : il y a toujours une solution.</li>
+              <li>Une seule application ? Elle est gratuite.</li>
+              <li>On reste à vos côtés après la mise en route.</li>
+            </ul>
             <div className={styles.introActions}>
               <a className={styles.customCta} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
-              <a className={styles.introLink} href="/applications/">Une seule application ? Elle est gratuite <span aria-hidden="true">→</span></a>
+              <a className={styles.introLink} href="/applications/">Voir nos applications <span aria-hidden="true">→</span></a>
             </div>
           </header>
           <ConnectedScene />
         </div>
 
-        <ol className={styles.method} aria-label="Comment on travaille">
-          <li><span>1</span><strong>On discute</strong>Votre activité, ce qui vous fait perdre du temps, ce que vous voulez changer.</li>
-          <li><span>2</span><strong>On définit votre budget</strong>Ensemble, à partir de ce que vous pouvez investir, pas d’une grille.</li>
-          <li><span>3</span><strong>On lance et on vous accompagne</strong>Une première version utile, puis on la fait grandir avec vous.</li>
-        </ol>
+        <nav className={styles.toc} aria-label="Sur cette page">
+          <a href="#comment">Comment ça marche</a>
+          <a href="#technologies">Ce qu’on connecte</a>
+          <a href="#metiers">Votre métier</a>
+          <a href="#offres">Exemples de prix</a>
+          <a href="#sur-mesure">Sur mesure</a>
+        </nav>
+
+        <section id="comment" className={styles.how} aria-labelledby="how-title">
+          <p className={styles.kicker}>Comment ça marche</p>
+          <h2 id="how-title" className="site-display">Trois étapes, et c’est parti.</h2>
+          <ol className={styles.method}>
+            <li><span>1</span><strong>Vous nous parlez de votre besoin</strong>Votre activité, ce qui vous fait perdre du temps, ce que vous voulez changer.</li>
+            <li><span>2</span><strong>On fixe le budget ensemble</strong>À partir de ce que vous voulez investir, pas d’une grille imposée.</li>
+            <li><span>3</span><strong>On installe et on vous accompagne</strong>Une première version utile, puis on la fait évoluer avec vous.</li>
+          </ol>
+        </section>
 
         <section className={styles.trades} id="technologies" aria-labelledby="tech-title">
-          <p className={styles.kicker}>Partout où il y a de la technologie</p>
-          <h2 id="tech-title" className="site-display">On connecte tout.</h2>
-          <p className={styles.offersLead}>Même un équipement ancien ou isolé peut rejoindre votre système.</p>
+          <p className={styles.kicker}>Ce qu’on connecte</p>
+          <h2 id="tech-title" className="site-display">Tout ce qui est technologique, on le relie.</h2>
+          <p className={styles.offersLead}>Même un équipement ancien ou isolé peut rejoindre votre système. Touchez une carte pour en savoir plus.</p>
           <ul className={styles.techGrid}>
             {technologies.map((tech) => <li key={tech.id}>
               <details className={styles.trade}>
@@ -63,9 +80,9 @@ export default function SolutionsPage() {
         </section>
 
         <section className={styles.trades} id="metiers" aria-labelledby="trades-title">
-          <p className={styles.kicker}>Pour tous les corps de métier</p>
-          <h2 id="trades-title" className="site-display">On touche à tous les métiers.</h2>
-          <p className={styles.offersLead}>On répond à n’importe quelle demande, et on connecte même ce qui ne l’est pas encore. Quelques exemples :</p>
+          <p className={styles.kicker}>Votre métier</p>
+          <h2 id="trades-title" className="site-display">On travaille avec tous les métiers.</h2>
+          <p className={styles.offersLead}>Quelle que soit votre demande, on y répond. Trouvez votre activité :</p>
           <ul className={styles.tradeGrid}>
             {trades.map((trade) => <li key={trade.id}>
               <details className={styles.trade}>
@@ -87,9 +104,9 @@ export default function SolutionsPage() {
         </section>
 
         <section className={styles.offers} id="offres" aria-labelledby="offers-title">
-          <p className={styles.kicker}>Pour vous situer</p>
-          <h2 id="offers-title" className="site-display">Exemples d’offres par métier</h2>
-          <p className={styles.offersLead}>Des repères du marché, pour vous situer. Le vrai point de départ, c’est votre budget.</p>
+          <p className={styles.kicker}>Exemples de prix</p>
+          <h2 id="offers-title" className="site-display">Pour vous donner une idée</h2>
+          <p className={styles.offersLead}>Ce sont les prix habituels du marché, détaillés par métier. Votre budget reste le point de départ.</p>
           <ul className={styles.offerGrid}>
             {catalogueOffers.map((offer) => <li key={offer.slug}>
               <a className={styles.offerCard} href={`/solutions/offres/${offer.slug}/`}>

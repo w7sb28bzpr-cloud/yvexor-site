@@ -45,7 +45,7 @@ export default function ApplicationsPage() {
         <ul className={styles.rubricGrid}>
           {rubrics.map((rubric) => <li key={rubric.id}>
             <a className={`${styles.rubric} ${rubric.id === "business" ? styles.rubricPacks : ""}`} href={`/applications/${rubric.slug}/`}>
-              <span className={styles.appIcon}><BusinessToolIcon icon={rubric.icon} /></span>
+              <span className={styles.appIcon} data-tone={rubric.id}><BusinessToolIcon icon={rubric.icon} /></span>
               <span className={styles.rubricText}>
                 <span className={styles.rubricName}>{rubric.label}</span>
                 <span className={styles.rubricDescription}>{rubric.description}</span>

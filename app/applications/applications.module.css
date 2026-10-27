@@ -246,7 +246,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 .rubricPacks { background: linear-gradient(120deg, var(--app-surface-hover), var(--app-surface) 70%); }
-.rubricPacks .appIcon { border-color: rgba(104, 201, 222, 0.45); color: var(--app-cyan-text); }
 .rubricText { display: flex; min-width: 0; flex-direction: column; gap: 0.3rem; padding-top: 0.1rem; }
 .rubricName { font-size: 1.1rem; font-weight: 680; letter-spacing: -0.025em; line-height: 1.2; }
 .rubricDescription { color: var(--app-text-2); font-size: 0.86rem; line-height: 1.4; }
@@ -255,7 +254,7 @@
 .rubricArrow { position: absolute; right: 1.1rem; bottom: 1.05rem; color: var(--app-text-3); transition: color 240ms ease, transform 300ms var(--ease-out); }
 @media (hover: hover) {
   .rubric:hover { border-color: var(--app-line-strong); background: var(--app-surface-hover); }
-  .rubric:hover .appIcon { border-color: rgba(104, 201, 222, 0.55); color: var(--app-cyan-text); box-shadow: 0 0 0 4px var(--app-cyan-soft); }
+  .rubric:hover .appIcon { transform: translateY(-2px) scale(1.04); }
   .rubric:hover .rubricArrow { color: var(--app-cyan-text); transform: translateX(3px); }
 }
 .rubric:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
@@ -360,20 +359,39 @@
   transition: border-color 240ms ease, background-color 240ms ease, transform 240ms var(--ease-out);
   -webkit-tap-highlight-color: transparent;
 }
-.appIcon,
-.dialogIcon {
+/* App icons, home-screen style: one colour per rubric, white glyph, soft gloss and shadow.
+ * The palette is only here; it does not define the YVEXOR accent colour. */
+.shell [data-tone] {
+  --tone-a: #5c5c66;
+  --tone-b: #1c1c21;
+  position: relative;
   display: grid;
-  width: 2.9rem;
-  height: 2.9rem;
+  flex: none;
   place-items: center;
-  border: 1px solid var(--app-line-strong);
-  border-radius: 0.85rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
-  color: var(--app-text);
-  transition: color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+  border: 0;
+  border-radius: 27%;
+  background:
+    radial-gradient(120% 80% at 30% 0%, rgba(255, 255, 255, 0.3), transparent 55%),
+    linear-gradient(160deg, var(--tone-a), var(--tone-b));
+  color: #fff;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.14),
+    0 6px 14px -8px color-mix(in srgb, var(--tone-b) 80%, transparent);
+  transition: transform 300ms var(--ease-out), box-shadow 300ms ease;
 }
-:global(:root[data-theme="light"]) .appIcon { background: #f3f3f2; }
-.appIcon svg { width: 1.45rem; height: 1.45rem; }
+.shell [data-tone] svg { stroke-width: 1.9; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2)); }
+.shell [data-tone="sell"] { --tone-a: #63e292; --tone-b: #11a052; }
+.shell [data-tone="customers"] { --tone-a: #6db3ff; --tone-b: #2160e8; }
+.shell [data-tone="operations"] { --tone-a: #ffb46a; --tone-b: #ef6c0e; }
+.shell [data-tone="finance"] { --tone-a: #b59dff; --tone-b: #6a3ce0; }
+.shell [data-tone="digital"] { --tone-a: #62e2f3; --tone-b: #0a90b3; }
+.shell [data-tone="automate"] { --tone-a: #ff7cc9; --tone-b: #c22dd0; }
+.shell [data-tone="business"] { --tone-a: #4b4b54; --tone-b: #121215; color: #8fe7f6; }
+
+.appIcon,
+.dialogIcon { width: 3.2rem; height: 3.2rem; }
+.appIcon svg { width: 1.6rem; height: 1.6rem; }
 .appText { display: flex; min-width: 0; flex-direction: column; gap: 0.3rem; padding-top: 0.1rem; }
 .appName { font-size: 1rem; font-weight: 680; letter-spacing: -0.02em; line-height: 1.2; }
 .appDescription { display: -webkit-box; overflow: hidden; color: var(--app-text-2); font-size: 0.8rem; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
@@ -386,24 +404,21 @@
 
 @media (hover: hover) {
   .appTile:hover { border-color: var(--app-line-strong); background: var(--app-surface-hover); }
-  .appTile:hover .appIcon { border-color: rgba(104, 201, 222, 0.55); color: var(--app-cyan-text); box-shadow: 0 0 0 4px var(--app-cyan-soft); }
+  .appTile:hover .appIcon { transform: translateY(-2px) scale(1.04); box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.25), inset 0 -2px 5px rgba(0, 0, 0, 0.14), 0 10px 20px -8px color-mix(in srgb, var(--tone-b) 85%, transparent); }
   .appTile:hover .tileOpen { color: var(--app-text); transform: rotate(90deg); }
 }
 .appTile:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
-.appTile:focus-visible .appIcon { border-color: rgba(104, 201, 222, 0.55); color: var(--app-cyan-text); }
 .appTile:active { transform: scale(0.985); }
 
 /* Families: a hub icon with the apps it brings together. */
 .familyTile { grid-template-columns: auto minmax(0, 1fr); padding-right: 2.6rem; background: linear-gradient(120deg, var(--app-surface-hover), var(--app-surface) 70%); }
-.familyTile .appIcon { border-color: rgba(104, 201, 222, 0.45); color: var(--app-cyan-text); }
 .familyModules { grid-column: 1 / -1; display: flex; min-width: 0; flex-direction: column; gap: 0.55rem; padding-top: 0.85rem; border-top: 1px dashed var(--app-line-strong); }
 .moduleNodes { position: relative; display: flex; gap: 0.5rem; }
 .moduleNodes::before { position: absolute; top: 50%; right: 0.5rem; left: 0.5rem; height: 1px; background: var(--app-line-strong); content: ""; }
-.moduleNode { position: relative; display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--app-line-strong); border-radius: 0.6rem; background: var(--app-surface); color: var(--app-text-2); transition: color 240ms ease, border-color 240ms ease, transform 300ms var(--ease-out); }
+.moduleNode { width: 2rem; height: 2rem; }
 .moduleNode svg { width: 1.05rem; height: 1.05rem; }
 .moduleNames { overflow: hidden; color: var(--app-text-3); font-size: 0.72rem; text-overflow: ellipsis; white-space: nowrap; }
 @media (hover: hover) {
-  .familyTile:hover .moduleNode { border-color: rgba(104, 201, 222, 0.45); color: var(--app-cyan-text); }
   .familyTile:hover .moduleNode:nth-child(odd) { transform: translateY(-2px); }
 }
 
@@ -430,7 +445,7 @@
 .dialogContent { padding: clamp(1.25rem, 4vw, 2.2rem); }
 .dialogGrabber { display: none; }
 .dialogTop { display: flex; align-items: center; gap: 1rem; }
-.dialogIcon { width: 3.5rem; height: 3.5rem; flex: none; border-color: rgba(104, 201, 222, 0.45); border-radius: 1rem; color: var(--app-cyan); }
+.dialogIcon { width: 3.5rem; height: 3.5rem; }
 .dialogIcon svg { width: 1.75rem; height: 1.75rem; }
 .dialogHeading { min-width: 0; flex: 1; }
 .dialogKicker { margin: 0 0 0.3rem; color: var(--app-cyan); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -448,7 +463,7 @@
 .dialogFacts dt { margin: 0 0 0.55rem; color: var(--app-text-3); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .dialogModules ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
 .dialogModules li { display: flex; align-items: center; gap: 0.55rem; color: var(--app-text); font-size: 0.82rem; font-weight: 600; }
-.dialogModules li span { display: grid; width: 1.9rem; height: 1.9rem; flex: none; place-items: center; border: 1px solid var(--app-line-strong); border-radius: 0.55rem; color: var(--app-cyan); }
+.dialogModules li span { width: 1.9rem; height: 1.9rem; }
 .dialogModules li svg { width: 1rem; height: 1rem; }
 
 .dialogFacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.3rem 1.6rem; margin: 0; padding-top: 1.4rem; border-top: 1px solid var(--app-line); }
@@ -505,8 +520,8 @@
   .filterBar::after { position: absolute; top: 0; right: 0; bottom: 0.4rem; width: 2.5rem; background: linear-gradient(90deg, transparent, var(--app-bg)); content: ""; pointer-events: none; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
   .appTile { gap: 0.75rem; padding: 0.9rem 0.85rem 1rem; border-radius: 0.95rem; }
-  .appIcon { width: 2.75rem; height: 2.75rem; border-radius: 0.8rem; }
-  .appIcon svg { width: 1.4rem; height: 1.4rem; }
+  .appIcon { width: 3rem; height: 3rem; }
+  .appIcon svg { width: 1.5rem; height: 1.5rem; }
   .appName { font-size: 0.95rem; }
   .appDescription { font-size: 0.76rem; }
   .tileOpen { top: 0.9rem; right: 0.85rem; }
@@ -549,5 +564,7 @@
   .rubric:active { transform: none; }
   .appTile:active { transform: none; }
   .familyTile:hover .moduleNode:nth-child(odd) { transform: none; }
+  .shell [data-tone] { transition: none; }
+  .appTile:hover .appIcon, .rubric:hover .appIcon { transform: none; }
   .gridChanged > li, .dialog[open], .dialog[open]::backdrop { animation: none; }
 }

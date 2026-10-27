@@ -63,14 +63,14 @@ export function ApplicationCatalogue({ tools, packs = [], categories, existingCa
         aria-haspopup="dialog"
         onClick={(event) => open(tool, event.currentTarget)}
       >
-        <span className={styles.appIcon}><ApplicationIcon tool={tool} /></span>
+        <span className={styles.appIcon} data-tone={tool.categoryId}><ApplicationIcon tool={tool} /></span>
         <span className={styles.appText}>
           <span className={styles.appName}>{tool.name}</span>
           <span className={styles.appDescription}>{tool.shortDescription}</span>
         </span>
         {family && <span className={styles.familyModules} aria-hidden="true">
           <span className={styles.moduleNodes}>
-            {included.map((item) => <span key={item.id} className={styles.moduleNode} title={item.name}><ApplicationIcon tool={item} /></span>)}
+            {included.map((item) => <span key={item.id} className={styles.moduleNode} data-tone={item.categoryId} title={item.name}><ApplicationIcon tool={item} /></span>)}
           </span>
           <span className={styles.moduleNames}>{included.length} outils reliés · {included.map((item) => item.name).join(", ")}</span>
         </span>}
@@ -116,7 +116,7 @@ export function ApplicationCatalogue({ tools, packs = [], categories, existingCa
       {selected && <div className={styles.dialogContent}>
         <span className={styles.dialogGrabber} aria-hidden="true" />
         <div className={styles.dialogTop}>
-          <span className={styles.dialogIcon}><ApplicationIcon tool={selected} /></span>
+          <span className={styles.dialogIcon} data-tone={selected.categoryId}><ApplicationIcon tool={selected} /></span>
           <div className={styles.dialogHeading}>
             <p className={styles.dialogKicker}>{categoryLabel(selected.categoryId)}</p>
             <h2 id="application-dialog-title">{selected.name}</h2>
@@ -127,7 +127,7 @@ export function ApplicationCatalogue({ tools, packs = [], categories, existingCa
 
         {selected.kind === "business-suite" && <section className={styles.dialogModules} aria-labelledby="dialog-modules-title">
           <h3 id="dialog-modules-title">Les outils réunis</h3>
-          <ul>{includedTools(selected).map((item) => <li key={item.id}><span aria-hidden="true"><ApplicationIcon tool={item} /></span>{item.name}</li>)}</ul>
+          <ul>{includedTools(selected).map((item) => <li key={item.id}><span aria-hidden="true" data-tone={item.categoryId}><ApplicationIcon tool={item} /></span>{item.name}</li>)}</ul>
         </section>}
 
         <dl className={styles.dialogFacts}>

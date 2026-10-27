@@ -3,6 +3,44 @@
 .eyebrow { margin: 0 0 .85rem; color: var(--site-text-muted); font-size: .72rem; font-weight: 720; letter-spacing: .14em; text-transform: uppercase; }
 .intro h1 { max-width: 14ch; margin: 0; }
 .intro > .site-copy { max-width: 45rem; margin: 1.25rem 0 0; font-size: clamp(1.05rem, 1.7vw, 1.25rem); }
+/* The site copy reset removes the gap under the large title. */
+.intro > p.site-copy { margin-top: 1.4rem; }
+.introActions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-top: 1.6rem; }
+.introActions .customCta { min-width: 15rem; }
+.introLink { display: inline-flex; min-height: 44px; align-items: center; gap: .5rem; color: var(--site-text-primary); font-weight: 650; text-decoration: underline; text-decoration-color: #68c9de; text-underline-offset: .25em; }
+
+/* How we work: three short steps, no pricing grid. */
+.method { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 0 0 clamp(2.5rem, 5vw, 4rem); padding: 0; list-style: none; }
+.method li { display: flex; min-width: 0; flex-direction: column; gap: .35rem; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid var(--site-border); border-radius: 1.2rem; background: var(--site-surface); color: var(--site-text-secondary); font-size: .9rem; line-height: 1.45; }
+.method span { display: grid; width: 2rem; height: 2rem; margin-bottom: .45rem; place-items: center; border-radius: 50%; background: #68c9de; color: #071014; font-size: .85rem; font-weight: 750; }
+.method strong { color: var(--site-text-primary); font-size: 1.05rem; letter-spacing: -.015em; }
+
+/* Every trade: one line, "Lire plus" for the detail. */
+.trades { margin-bottom: clamp(2.5rem, 5vw, 4rem); scroll-margin-top: 6rem; }
+.trades h2 { margin: 0; font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.02; }
+.tradeGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); align-items: start; gap: .6rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.tradeGrid > li { min-width: 0; }
+.trade { border: 1px solid var(--site-border); border-radius: 1.1rem; background: var(--site-surface); transition: border-color var(--site-transition-fast); }
+.trade[open] { border-color: color-mix(in srgb, #68c9de 55%, transparent); }
+.trade summary { display: flex; min-height: 44px; flex-direction: column; gap: .3rem; padding: 1rem 1.1rem 1.05rem; cursor: pointer; list-style: none; }
+.trade summary::-webkit-details-marker { display: none; }
+.trade summary:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; border-radius: 1.1rem; }
+.tradeName { margin: 0; color: var(--site-text-primary); font-size: 1rem; font-weight: 700; letter-spacing: -.015em; }
+.tradeShort { margin: 0; color: var(--site-text-secondary); font-size: .87rem; line-height: 1.45; }
+.tradeMore { margin-top: .35rem; color: #68c9de; font-size: .8rem; font-weight: 700; }
+.trade[open] .tradeMore { display: none; }
+.trade p { margin: 0; padding: 0 1.1rem .9rem; color: var(--site-text-secondary); font-size: .87rem; line-height: 1.5; }
+.trade a,
+.tradeOther a { display: inline-flex; min-height: 44px; align-items: center; gap: .4rem; margin: 0 1.1rem .5rem; color: var(--site-text-primary); font-size: .86rem; font-weight: 680; text-decoration: underline; text-decoration-color: #68c9de; text-underline-offset: .25em; }
+.tradeOther { display: flex; flex-direction: column; gap: .3rem; padding: 1rem 0 .3rem 1.1rem; border: 1px dashed color-mix(in srgb, #68c9de 60%, transparent); border-radius: 1.1rem; }
+.tradeOther .tradeShort { padding-right: 1.1rem; }
+.tradeOther a { margin-left: 0; }
+
+@media (max-width: 760px) {
+  .method { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .trade { transition: none; } }
+
 .offers { margin-bottom: clamp(2.5rem, 5vw, 4rem); scroll-margin-top: 6rem; }
 .offers h2 { margin: 0; font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.02; }
 .offersLead { margin: .7rem 0 0; color: var(--site-text-secondary); font-size: 1.02rem; }

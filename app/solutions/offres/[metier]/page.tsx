@@ -76,11 +76,12 @@ export default async function OfferPage({ params }: OfferPageProps) {
         <p className={styles.eyebrow}>{offer.brand} · {offer.eyebrow}</p>
         <h1 className={styles.title}>{offer.title}</h1>
         <p className={styles.lead}>{offer.lead}</p>
+        <p className={styles.budget}>Ces tarifs sont des repères du marché. Chez YVEXOR, on part de votre budget : on en discute et on construit la solution qui vous correspond.</p>
         <nav className={styles.jump} aria-label="Dans cette offre">
           {offer.sections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.eyebrow.replace(/^[AB] · /, "")}</a>)}
         </nav>
         <div className={styles.actions}>
-          <a className={styles.primary} href="/contact/">Demander mon devis <span aria-hidden="true">→</span></a>
+          <a className={styles.primary} href="/contact/">Parler de mon budget <span aria-hidden="true">→</span></a>
           {offer.configure && <a className={styles.secondary} href={offer.configure}>Configurer ma caisse</a>}
         </div>
       </header>
@@ -90,7 +91,7 @@ export default async function OfferPage({ params }: OfferPageProps) {
       <section className={styles.conditions} aria-labelledby="conditions-title">
         <h2 id="conditions-title">Bon à savoir</h2>
         <ul>
-          <li>Prix hors taxes. Les tarifs sont des repères : on en parle ensemble et on s’adapte à votre activité.</li>
+          <li>Prix hors taxes, donnés comme repères du marché. Votre budget fixe le vrai point de départ.</li>
           {offer.conditions.map((condition) => <li key={condition}>{condition}</li>)}
         </ul>
       </section>

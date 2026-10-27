@@ -17,6 +17,7 @@
 .back:hover { color: var(--site-text-primary); }
 .title { margin: 0; font-family: var(--site-font-display); font-size: clamp(2.4rem, 5.6vw, 4.6rem); font-weight: 620; letter-spacing: -0.06em; line-height: 0.98; text-wrap: balance; }
 .lead { max-width: 42ch; margin: 1rem 0 0; color: var(--site-text-secondary); font-size: clamp(1.02rem, 1.5vw, 1.2rem); line-height: 1.5; }
+.budget { max-width: 60ch; margin: 1.1rem 0 0; padding: 0.85rem 1rem; border-left: 3px solid var(--offer-cyan); border-radius: 0 0.8rem 0.8rem 0; background: var(--offer-cyan-soft); color: var(--site-text-primary); font-size: 0.95rem; line-height: 1.5; }
 .jump { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
 .jump a { display: inline-flex; min-height: 2.5rem; align-items: center; padding: 0.4rem 0.9rem; border: 1px solid var(--site-border); border-radius: 999px; color: var(--site-text-secondary); font-size: 0.84rem; font-weight: 620; text-decoration: none; transition: border-color var(--site-transition-fast), color var(--site-transition-fast); }
 .jump a:hover { border-color: var(--site-text-muted); color: var(--site-text-primary); }

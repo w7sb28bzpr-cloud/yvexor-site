@@ -463,6 +463,17 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-27, soir 2] — YVEXOR accompagnateur : le budget du client avant la grille
+
+**Décision de Yannick, qui prime sur la manière de présenter les prix.** YVEXOR est un **accompagnateur web**. Le mieux, c’est de discuter avec le client, de définir son budget avec lui et de lancer. Avec 20 € ou 2 000 €, le client a une solution, plus ou moins poussée : c’est une force de YVEXOR. **Les tarifs du catalogue sont des repères du marché**, pas une grille imposée. **Une seule application, c’est gratuit.** La page Solutions doit dire que YVEXOR touche à tous les métiers, répond à n’importe quelle demande et connecte même ce qui ne l’est pas, en paragraphes courts avec « Lire plus ».
+
+**Ce qui a changé.**
+- `/solutions/` : nouvelle intro « Votre besoin. Votre budget. On lance ensemble. », avec un bouton « Parler de mon projet » et un lien « Une seule application ? Elle est gratuite », puis 3 étapes (On discute → On définit votre budget → On lance et on vous accompagne). Vient ensuite la section `#metiers`, « On touche à tous les métiers. » : 14 métiers dans `data/trades.ts` (une ligne, puis `details` « Lire plus », avec un lien vers l’offre quand elle existe) et une carte « Votre métier n’est pas dans la liste ? ». Le bloc d’offres devient « Exemples d’offres par métier : des repères du marché ». Les deux portes sur mesure et outils restent en dessous, sans changement.
+- Pages `/solutions/offres/*` : un encadré en tête dit que les tarifs sont des repères du marché et qu’on part du budget du client. Le bouton principal devient « Parler de mon budget ». « Bon à savoir » commence par « Prix hors taxes, donnés comme repères du marché. Votre budget fixe le vrai point de départ. »
+- Garde-fous SEO toujours respectés : pas de « CRM », « Comptabilité », « Facturation », « Ressources humaines » ni « Odoo » sur `/solutions/`.
+
+**À garder en tête.** Ne jamais présenter les prix comme fermes ou comme une grille obligatoire. Ne pas promettre automatiquement d’être moins cher (§10.8). « Une seule application gratuite » renvoie vers `/applications/`, mais **aucun bouton de téléchargement n’existe encore** : la liste des logiciels gratuits est attendue de Yannick.
+
 ## [Claude — 2026-10-27, soir] — Les tarifs du catalogue B2B sont sur le site
 
 **Décisions de Yannick.**

@@ -96,6 +96,7 @@ export const catalogueOffers: CatalogueOffer[] = [
           { title: "Analyse vidéo par IA", price: "Sur devis", text: "Suivi de balle, statistiques de jeu et séquences à revoir créées automatiquement." },
           { title: "Application du club", price: "Sur devis", text: "Réservations, planning, espace membres, actualités et notifications." },
           { title: "Autres besoins du club", text: "Caisse pour l’accueil ou le snack, éclairage des terrains à distance ou payant, ouverture à distance des serrures compatibles." },
+          { title: "Foot, basket et autres terrains", price: "Sur devis", text: "La même vidéo connectée s’adapte au foot à 5, au city-stade, au basket, au squash et aux autres terrains." },
         ],
       },
     ],

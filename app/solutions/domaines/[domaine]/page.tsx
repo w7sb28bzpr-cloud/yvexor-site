@@ -5,6 +5,7 @@ import { SiteHeader } from "../../../../components/navigation";
 import { PageData } from "../../../../components/structured-data";
 import { catalogueOfferBySlug } from "../../../../data/catalogue-offers";
 import { solutionRubricBySlug, solutionRubrics } from "../../../../data/solution-rubrics";
+import { tradeHref, tradePageById } from "../../../../data/trade-pages";
 import { trades } from "../../../../data/trades";
 import { pageMetadata } from "../../../../lib/seo";
 import { TechIcon } from "../../tech-icon";
@@ -71,7 +72,7 @@ export default async function RubricPage({ params }: RubricPageProps) {
       {forTrades.length > 0 && <section className={offerStyles.section} aria-labelledby="trades-title">
         <h2 id="trades-title" className={offerStyles.sectionTitle}>Pour qui&nbsp;?</h2>
         <ul className={`${styles.chips} ${offerStyles.chipsGap}`}>
-          {forTrades.map((trade) => <li key={trade.id}><a href={trade.offer ? `/solutions/offres/${trade.offer}/` : "/contact/"}>{trade.name}</a></li>)}
+          {forTrades.map((trade) => <li key={trade.id}><a href={tradePageById[trade.id] || trade.offer ? tradeHref(trade) : "/contact/"}>{trade.name}</a></li>)}
         </ul>
       </section>}
 

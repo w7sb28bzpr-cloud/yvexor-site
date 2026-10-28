@@ -60,6 +60,19 @@
 .headIcon { display: flex; margin: 0.4rem 0 1.1rem; }
 ul.chipsGap { margin-top: 1.3rem; }
 
+/* Trade pages: covered activities, the "we invent it" box and the featured offer. */
+.tags { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.3rem 0 0; padding: 0; list-style: none; }
+.tags li { padding: .45rem .95rem; border: 1px solid var(--site-border); border-radius: 999px; background: var(--site-surface); color: var(--site-text-primary); font-size: .87rem; font-weight: 620; }
+.invent { max-width: 46rem; margin-top: 1.6rem; padding: 1.3rem 1.4rem 1.2rem; border: 1px dashed color-mix(in srgb, var(--offer-cyan) 70%, transparent); border-radius: 1.1rem; background: var(--offer-cyan-soft); }
+.invent h3 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em; }
+.invent p { margin: .5rem 0 .3rem; color: var(--site-text-secondary); font-size: .95rem; line-height: 1.5; }
+.featured { display: flex; max-width: 36rem; flex-direction: column; gap: .4rem; margin-top: 1.4rem; padding: 1.4rem 1.4rem 1.3rem; border: 1px solid color-mix(in srgb, var(--offer-cyan) 60%, transparent); border-radius: 1.2rem; background: var(--site-surface); box-shadow: 0 0 0 4px var(--offer-cyan-soft); color: var(--site-text-primary); text-decoration: none; transition: border-color var(--site-transition-fast); }
+.featured:hover { border-color: var(--offer-cyan); }
+.featured:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
+.featuredPrice { margin-top: .5rem; font-family: var(--site-font-display); font-size: 2rem; font-weight: 650; letter-spacing: -.04em; }
+.featuredPrice small { color: var(--site-text-muted); font-family: var(--site-font-body); font-size: .82rem; font-weight: 600; letter-spacing: 0; }
+.featuredCta { color: var(--offer-cyan-text); font-size: .9rem; font-weight: 700; }
+
 /* Service cards with "Lire plus", and offer links (rubric pages). */
 .detail,
 .offerLink { display: flex; min-width: 0; height: 100%; flex-direction: column; border: 1px solid var(--site-border); border-radius: 1rem; background: var(--site-surface); }

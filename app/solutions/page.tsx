@@ -3,6 +3,7 @@ import { PageData } from "../../components/structured-data";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/navigation";
 import { solutionRubricBySlug, solutionRubrics } from "../../data/solution-rubrics";
+import { tradeHref } from "../../data/trade-pages";
 import { trades } from "../../data/trades";
 import { pageMetadata } from "../../lib/seo";
 import { ConnectedScene } from "./connected-scene";
@@ -55,7 +56,7 @@ export default function SolutionsPage() {
           <ul className={styles.tradeGrid}>
             {trades.map((trade) => <li key={trade.id}>
               {/* The icon takes the colour of the domain the trade leads to. */}
-              <a className={styles.tradeCard} href={trade.offer ? `/solutions/offres/${trade.offer}/` : `/solutions/domaines/${trade.rubric}/`}>
+              <a className={styles.tradeCard} href={tradeHref(trade)}>
                 <span className={`${styles.tile} ${styles.tileSmall}`} data-tone={solutionRubricBySlug[trade.rubric]?.tone}><TradeIcon id={trade.id} /></span>
                 <span className={styles.tradeText}>
                   <span className={styles.tradeName}>{trade.name}</span>

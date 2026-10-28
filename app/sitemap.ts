@@ -7,6 +7,7 @@ import { getGeneratedSolutionPages, getProjectSitemapPaths } from "../lib/conten
 import { allApplicationsSlug, businessToolCategories } from "../data/business-tool-categories";
 import { catalogueOffers } from "../data/catalogue-offers";
 import { solutionRubrics } from "../data/solution-rubrics";
+import { tradePages } from "../data/trade-pages";
 
 export const dynamic = "force-static";
 
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...getGeneratedSolutionPages().map(({ slug }) => ({ url: `https://yvexor.com/solutions/${slug}/` })),
     ...catalogueOffers.map(({ slug }) => ({ url: `https://yvexor.com/solutions/offres/${slug}/` })),
     ...solutionRubrics.map(({ slug }) => ({ url: `https://yvexor.com/solutions/domaines/${slug}/` })),
+    ...tradePages.map(({ id }) => ({ url: `https://yvexor.com/solutions/metiers/${id}/` })),
     { url: "https://yvexor.com/metiers/" },
     ...getProjectSitemapPaths().map((path) => ({ url: `https://yvexor.com${path}` })),
     { url: "https://yvexor.com/a-propos/" },

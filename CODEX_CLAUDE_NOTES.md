@@ -463,6 +463,15 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-28, suite 2] — Page métier « Clubs & salles de sport »
+
+**Demande de Yannick.** La carte sport ne doit pas aller directement à l’offre padel : il faut d’abord expliquer tout ce qu’on peut faire **pour tous les sports**, y compris construire une technologie qui n’existe pas encore. L’offre tennis & padel est la **cible B2B** et s’adapte aussi au foot et aux autres terrains.
+
+- `data/trade-pages.ts` : `tradePages` (pour l’instant `sport`) avec un titre, une phrase, 8 services « Lire plus » (vidéo, IA, réservation, accès & éclairage, scores, membres, caisse, capteurs), les disciplines couvertes, l’encadré « Une idée qui n’existe nulle part ? » et une offre mise en avant (`tennis-padel`). `tradeHref(trade)` décide où mène une carte : page métier, sinon offre catalogue, sinon domaine. Il est utilisé sur le hub et dans « Pour qui ? » des domaines.
+- Route statique `/solutions/metiers/[metier]/`, ajoutée au sitemap (85 pages SEO OK). Elle réutilise `offers.module.css` (nouvelles classes `.tags`, `.invent`, `.featured`).
+- L’offre tennis & padel gagne une carte « Foot, basket et autres terrains », sur devis. La ligne courte du métier sport dit maintenant « Tous les sports ».
+- D’autres métiers pourront avoir leur page en ajoutant simplement une entrée dans `tradePages`.
+
 ## [Claude — 2026-10-28, suite] — « Votre métier » en cartes
 
 Yannick valide la nouvelle page Solutions et demande d’améliorer « Votre métier ». Les pastilles deviennent des **cartes** (`#metiers`) : une tuile colorée de la couleur du domaine vers lequel mène le métier (`solutionRubricBySlug[trade.rubric].tone`), un pictogramme propre au métier (`app/solutions/trade-icon.tsx`, 18 glyphes indexés par `trade.id`), le nom et la ligne courte (2 lignes au maximum). Une carte en pointillés « Votre métier n’est pas là ? » mène à `/contact/`. Sous 560 px, la grille passe à deux colonnes compactes sans la ligne courte (690 px de haut au lieu de 1 228 à 375 px). Vérifié : `tsc`, thème, build et SEO (84 pages), ordi et mobile.

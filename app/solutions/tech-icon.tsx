@@ -12,7 +12,8 @@ const paths: Record<SceneIconId, React.ReactNode> = {
   ai: <><path d="m12 3 1.4 5.6L19 10l-5.6 1.4L12 17l-1.4-5.6L5 10l5.6-1.4z"/><path d="m18.5 15.5.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></>,
   screen: <><rect x="3.5" y="4" width="17" height="12" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7.5 8.5h5M7.5 11.5h3"/></>,
   app: <><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M9.5 7h5M9.5 10h5M9.5 13h3"/></>,
-  door: <><path d="M5.5 21V4.5a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1V21"/><path d="M3.5 21h17"/><circle cx="15" cy="12.5" r="1"/></>,
+  globe: <><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a15 15 0 0 1 0 18m0-18a15 15 0 0 0 0 18"/></>,
+  door:<><path d="M5.5 21V4.5a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1V21"/><path d="M3.5 21h17"/><circle cx="15" cy="12.5" r="1"/></>,
   bulb: <><path d="M9 17.5h6M10 21h4"/><path d="M8.5 14.5a6 6 0 1 1 7 0c-.6.5-1 1.2-1 2v1h-5v-1c0-.8-.4-1.5-1-2z"/></>,
   thermo: <><path d="M10 13.6V5a2 2 0 0 1 4 0v8.6a4 4 0 1 1-4 0z"/><path d="M12 9.5v6"/></>,
 };

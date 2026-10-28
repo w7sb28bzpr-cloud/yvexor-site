@@ -72,7 +72,7 @@ export default async function OfferPage({ params }: OfferPageProps) {
     <SiteHeader />
     <main id="contenu" className={styles.page}>
       <header className={styles.head}>
-        <a className={styles.back} href="/solutions/#offres"><span aria-hidden="true">←</span> Nos solutions</a>
+        <a className={styles.back} href="/solutions/#rubriques"><span aria-hidden="true">←</span> Nos solutions</a>
         <p className={styles.eyebrow}>{offer.brand} · {offer.eyebrow}</p>
         <h1 className={styles.title}>{offer.title}</h1>
         <p className={styles.lead}>{offer.lead}</p>
@@ -99,7 +99,7 @@ export default async function OfferPage({ params }: OfferPageProps) {
       <nav className={styles.others} aria-labelledby="others-title">
         <h2 id="others-title">Les autres métiers</h2>
         <ul>{others.map((item) => <li key={item.slug}><a href={`/solutions/offres/${item.slug}/`}>{item.name}</a></li>)}</ul>
-        <a className={styles.secondary} href="/solutions/#sur-mesure">Un projet sur mesure, avec l’IA ? Parlons-en</a>
+        <a className={styles.secondary} href="/contact/">Un projet sur mesure, avec l’IA ? Parlons-en</a>
       </nav>
     </main>
     <SiteFooter />

@@ -23,9 +23,10 @@ assert.deepEqual(journeyLabels,['Votre besoin','Solution sur mesure','Du logicie
 assert.ok(homeHtml.includes('aria-hidden="true"'),'Decorative code animation must stay hidden from assistive technology');
 assert.ok(!homeHtml.includes('home-project-title'),'No featured project placeholder is rendered while there are zero approved projects');
 const solutionHub=read('solutions/index.html');
-assert.ok(solutionHub.includes('Construire une solution sur mesure')&&solutionHub.includes('Les outils pour mon entreprise'),'Solutions hub must expose the two approved entry points');
-assert.ok(solutionHub.includes('Vous avez un besoin particulier, une idée ou un équipement à connecter ? Nous construisons la solution autour.'),'Solutions hub must retain the approved custom-build message');
-assert.ok(['Caisse','Site web','Gestion métier'].every(name=>solutionHub.includes(name)),'Only the three confirmed initial business tools should appear publicly');
+// Decision 2026-10-28: the hub follows the /applications/ recipe (animation, one sentence, six rubric doors).
+assert.ok(/<h1\b[^>]*>Nos solutions<\/h1>/.test(solutionHub)&&solutionHub.includes('On fait tout'),'Solutions hub must say plainly that YVEXOR does everything');
+const rubricDoors=['logiciels-applications','ia-automatisation','domotique-objets-connectes','acces-parkings-securite','caisses-paiement','sites-internet'];
+for(const slug of rubricDoors){assert.ok(solutionHub.includes(`href="/solutions/domaines/${slug}/"`),'Solutions hub must link every rubric door: '+slug);assert.ok(routes.some(url=>url.pathname===`/solutions/domaines/${slug}/`),'Rubric page must be in the sitemap: '+slug);}
 assert.ok(!['Comptabilité','CRM','Facturation','Ressources humaines','Odoo'].some(name=>solutionHub.includes(name)),'Unconfirmed tools and platforms must not be advertised publicly');
 const applicationsHub=read('applications/index.html');
 assert.ok(routes.some(url=>url.pathname==='/applications/'),'Applications library must be in the sitemap');

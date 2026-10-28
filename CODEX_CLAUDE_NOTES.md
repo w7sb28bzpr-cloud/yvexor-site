@@ -463,6 +463,16 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-28] — `/solutions/` refait sur le modèle de `/applications/`
+
+**Décision de Yannick.** Applications lui plaît, Solutions était « le brouhaha » (9 blocs). Le client doit comprendre en une seconde que **YVEXOR fait tout**. Même recette qu’Applications : **une animation, une phrase, des briques**. Les détails vont dans les pages de chaque domaine.
+
+- **Hub `/solutions/`** : h1 modeste « Nos solutions », une phrase (« **On fait tout** : logiciels, IA, automatisation, objets connectés… votre budget, on s’occupe du reste »), un bouton, puis l’animation `ConnectedScene` (inchangée). Ensuite « Que voulez-vous faire ? » avec **6 briques** (tuiles colorées comme les icônes d’Applications), une ligne de pastilles « Votre métier » (18 métiers, vers l’offre du catalogue si elle existe, sinon vers le domaine `trade.rubric`) et une fin « Votre budget, votre rythme » avec le lien « une seule application, gratuite ». Les promesses, le sommaire, les 3 étapes, la grille technologies, la grille métiers « Lire plus », la grille d’offres et les deux portes sur mesure/outils ont été retirés du hub.
+- **Domaines** `data/solution-rubrics.ts` → `/solutions/domaines/<slug>/` (statique) : `logiciels-applications`, `ia-automatisation`, `domotique-objets-connectes`, `acces-parkings-securite`, `caisses-paiement`, `sites-internet`. Chaque page contient un titre, une phrase, 4 services avec « Lire plus », « Pour qui ? », des exemples de prix (liens vers `/solutions/offres/*` quand ils existent), les autres domaines et un lien vers la page détaillée existante (`/logiciel-sur-mesure/`, `/automatisation-entreprise/`, `/systemes-connectes/`, `/caisse/`, `/site-presence-web/`). Le namespace `/solutions/<slug>/` étant déjà pris par les anciennes pages générées, les domaines vivent sous `/solutions/domaines/`.
+- `app/solutions/tool-library.*` a été supprimé (plus utilisé). `data/trades.ts` gagne `rubric` et l’icône `globe`. `technologies` reste dans les données (non affiché sur le hub). Les liens vers les anciennes ancres (`#offres`, `#sur-mesure`, `#commerce`, `#infrastructure`) ont été redirigés.
+- **Pages d’offres et de domaines** : le padding haut passe de `clamp(6rem…)` à `clamp(1.25rem, 2.5vw, 2.25rem)`, parce que le header est dans le flux (même correction que Codex sur le hub).
+- **`seo-check`** : les anciennes assertions (deux portes, message sur mesure, outils « Caisse / Site web / Gestion métier ») sont remplacées par : h1 « Nos solutions » + « On fait tout », 6 liens de domaine sur le hub, 6 domaines dans le sitemap. Les mots interdits restent vérifiés. 84 pages OK.
+
 ## [Codex — 2026-10-28] — Espacement et finition de `/solutions/`
 
 - Correction de l’espace excessif entre le header et le hero sur mobile : le padding supérieur passe de `6.5rem` à `1.25rem`. Le header étant dans le flux, la grande réserve n’était pas nécessaire.

@@ -5,7 +5,8 @@
   --offer-cyan-soft: rgba(104, 201, 222, 0.1);
   width: min(100%, 86rem);
   margin-inline: auto;
-  padding: clamp(6rem, 11vw, 8.5rem) var(--site-gutter, clamp(1rem, 4vw, 4rem)) clamp(3rem, 6vw, 5rem);
+  /* The header is part of the page flow: a modest gap is enough. */
+  padding: clamp(1.25rem, 2.5vw, 2.25rem) var(--site-gutter, clamp(1rem, 4vw, 4rem)) clamp(3rem, 6vw, 5rem);
 }
 :global(:root[data-theme="light"]) .page { --offer-cyan-text: #006b80; --offer-cyan-soft: rgba(0, 107, 128, 0.08); }
 
@@ -55,6 +56,28 @@
 .cardPrice { margin: 0.45rem 0 0; color: var(--offer-cyan-text); font-size: 0.84rem; font-weight: 720; }
 .card p:last-child { margin: 0.5rem 0 0; color: var(--site-text-secondary); font-size: 0.87rem; line-height: 1.45; }
 
+/* Rubric pages: icon above the title, chips under a section title. */
+.headIcon { display: flex; margin: 0.4rem 0 1.1rem; }
+ul.chipsGap { margin-top: 1.3rem; }
+
+/* Service cards with "Lire plus", and offer links (rubric pages). */
+.detail,
+.offerLink { display: flex; min-width: 0; height: 100%; flex-direction: column; border: 1px solid var(--site-border); border-radius: 1rem; background: var(--site-surface); }
+.detail[open] { border-color: color-mix(in srgb, var(--offer-cyan) 55%, transparent); }
+.detail summary { display: flex; min-height: 44px; flex-direction: column; gap: .35rem; padding: 1.15rem 1.15rem 1.2rem; cursor: pointer; list-style: none; }
+.detail summary::-webkit-details-marker { display: none; }
+.detail summary:focus-visible,
+.offerLink:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; border-radius: 1rem; }
+.detailTitle { color: var(--site-text-primary); font-size: 1.02rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.25; }
+.detailText { color: var(--site-text-secondary); font-size: .88rem; line-height: 1.45; }
+.detailMore { margin-top: .3rem; color: var(--offer-cyan-text); font-size: .8rem; font-weight: 700; }
+.detail[open] .detailMore { display: none; }
+.detail p { margin: 0; padding: 0 1.15rem 1.15rem; color: var(--site-text-secondary); font-size: .88rem; line-height: 1.5; }
+.offerLink { gap: .35rem; padding: 1.15rem 1.15rem 1.2rem; color: var(--site-text-primary); text-decoration: none; transition: border-color var(--site-transition-fast); }
+.offerLink:hover { border-color: var(--offer-cyan); }
+.detailCards > li { display: flex; }
+.detailCards > li > * { width: 100%; }
+
 /* The per-court grid scrolls inside its own frame on phones; the page never scrolls sideways. */
 .tableWrap { max-width: 100%; margin-top: clamp(1.4rem, 3vw, 2rem); overflow-x: auto; border: 1px solid var(--site-border); border-radius: 1rem; background: var(--site-surface); overscroll-behavior-x: contain; }
 .tableWrap:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
@@ -80,7 +103,6 @@
 .others li a:hover { border-color: var(--site-text-muted); color: var(--site-text-primary); }
 
 @media (max-width: 40rem) {
-  .page { padding-top: 6rem; }
   .actions { flex-direction: column; align-items: stretch; }
   .primary { justify-content: center; }
   .secondary { justify-content: center; }

@@ -33,6 +33,8 @@ export type CatalogueOffer = {
   conditions: string[];
   /** The caisse configurator for this activity, when one exists. */
   configure?: string;
+  /** A real photo for the header. Free licence, no credit required. */
+  image?: { src: string; alt: string; width: number; height: number };
 };
 
 const hardwarePacks: OfferSection = {
@@ -58,6 +60,7 @@ export const catalogueOffers: CatalogueOffer[] = [
     lead: "Commencez avec deux terrains, puis équipez les suivants quand vous le souhaitez.",
     summary: "Vidéo des terrains, forfaits club ou abonnement par terrain.",
     startingPrice: "89 €",
+    image: { src: "/media/solutions/terrains-padel.webp", alt: "Deux terrains de padel bleus avec parois vitrées et projecteurs, en plein jour", width: 1440, height: 810 },
     sections: [
       {
         kind: "plans",

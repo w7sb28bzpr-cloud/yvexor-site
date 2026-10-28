@@ -463,6 +463,15 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-28, suite 3] — Vraie photo dans l’offre tennis & padel
+
+**Décision de Yannick** : une vraie photo de terrain sur l’offre tennis & padel, **pas d’image générée par IA**, sans source affichée. Cela fait exception, pour cette page, à la règle « aucune photo stock » qui visait le hero de l’accueil.
+
+- Photo Unsplash `a4SslXtr1TE` (deux terrains de padel vitrés, en plein jour). La **Licence Unsplash** autorise l’usage commercial gratuit sans attribution obligatoire, vérifiée sur la page de la photo le 28/10/2026. Ne pas remplacer par une image trouvée ailleurs sans licence équivalente.
+- Fichier `public/media/solutions/terrains-padel.webp` (1440 × 810, 246 Ko, téléchargé depuis le CDN Unsplash en WebP).
+- `CatalogueOffer.image?` (`src`, `alt`, `width`, `height`). L’en-tête de `/solutions/offres/[metier]/` passe en deux colonnes quand une image existe (`.headWithImage`, `.photo` en 16/9 avec `object-fit: cover`), et s’empile sous 900 px. Seule l’offre `tennis-padel` a une image pour l’instant.
+- Vérifié : tests contenu, thème et SEO (85 pages, images incluses), build, ordi et 375 px.
+
 ## [Claude — 2026-10-28, suite 2] — Page métier « Clubs & salles de sport »
 
 **Demande de Yannick.** La carte sport ne doit pas aller directement à l’offre padel : il faut d’abord expliquer tout ce qu’on peut faire **pour tous les sports**, y compris construire une technologie qui n’existe pas encore. L’offre tennis & padel est la **cible B2B** et s’adapte aussi au foot et aux autres terrains.

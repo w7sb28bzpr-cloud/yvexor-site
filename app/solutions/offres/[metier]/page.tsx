@@ -71,7 +71,8 @@ export default async function OfferPage({ params }: OfferPageProps) {
     <PageData path={path} title={metaTitle(offer.name)} description={offer.summary} service={offer.brand} />
     <SiteHeader />
     <main id="contenu" className={styles.page}>
-      <header className={styles.head}>
+      <header className={`${styles.head} ${offer.image ? styles.headWithImage : ""}`}>
+        <div className={styles.headText}>
         <a className={styles.back} href="/solutions/#rubriques"><span aria-hidden="true">←</span> Nos solutions</a>
         <p className={styles.eyebrow}>{offer.brand} · {offer.eyebrow}</p>
         <h1 className={styles.title}>{offer.title}</h1>
@@ -84,6 +85,10 @@ export default async function OfferPage({ params }: OfferPageProps) {
           <a className={styles.primary} href="/contact/">Parler de mon budget <span aria-hidden="true">→</span></a>
           {offer.configure && <a className={styles.secondary} href={offer.configure}>Configurer ma caisse</a>}
         </div>
+        </div>
+        {offer.image && <figure className={styles.photo}>
+          <img src={offer.image.src} alt={offer.image.alt} width={offer.image.width} height={offer.image.height} fetchPriority="high" decoding="async" />
+        </figure>}
       </header>
 
       {offer.sections.map((section) => <Section key={section.id} section={section} />)}

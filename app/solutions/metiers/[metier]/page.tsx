@@ -8,7 +8,7 @@ import { solutionRubricBySlug, solutionRubrics } from "../../../../data/solution
 import { tradePageById, tradePages } from "../../../../data/trade-pages";
 import { trades } from "../../../../data/trades";
 import { pageMetadata } from "../../../../lib/seo";
-import { StepScene } from "../../step-scene";
+import { DomainScene } from "../../scenes/domain-scenes";
 import { BudgetClosing, HowItWorks, ServiceGrid, SubHero, subpageStyles as sub } from "../../subpage";
 import { TradeIcon } from "../../trade-icon";
 import offerStyles from "../../offres/offers.module.css";
@@ -38,8 +38,6 @@ export default async function TradePage({ params }: TradePageProps) {
   if (!page || !trade) notFound();
   const path = `/solutions/metiers/${page.id}/`;
   const featured = page.featured ? catalogueOfferBySlug[page.featured.offer] : undefined;
-  // The header example comes from the domain the trade belongs to.
-  const rubric = solutionRubricBySlug[trade.rubric];
 
   return <div className={`site-foundation ${styles.shell}`}>
     <PageData path={path} title={metaTitle(page.title)} description={page.lead} service={page.title} />
@@ -50,7 +48,7 @@ export default async function TradePage({ params }: TradePageProps) {
         title={page.title}
         lead={page.lead}
         icon={<span className={`${styles.tile} ${styles.tileSmall}`} data-tone={solutionRubricBySlug[trade.rubric]?.tone}><TradeIcon id={trade.id} /></span>}
-        visual={rubric ? <StepScene title={rubric.scene.title} steps={rubric.scene.steps} /> : undefined}
+        visual={<DomainScene domain={trade.rubric} />}
       >
         <a className={sub.primary} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
         {featured

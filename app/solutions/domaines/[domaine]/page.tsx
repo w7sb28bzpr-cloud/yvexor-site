@@ -8,7 +8,7 @@ import { solutionRubricBySlug, solutionRubrics } from "../../../../data/solution
 import { tradeHref, tradePageById } from "../../../../data/trade-pages";
 import { trades } from "../../../../data/trades";
 import { pageMetadata } from "../../../../lib/seo";
-import { StepScene } from "../../step-scene";
+import { DomainScene } from "../../scenes/domain-scenes";
 import { BudgetClosing, HowItWorks, ServiceGrid, SubHero, subpageStyles as sub } from "../../subpage";
 import { TechIcon } from "../../tech-icon";
 import offerStyles from "../../offres/offers.module.css";
@@ -49,7 +49,7 @@ export default async function RubricPage({ params }: RubricPageProps) {
         title={rubric.name}
         lead={rubric.lead}
         icon={<span className={`${styles.tile} ${styles.tileSmall}`} data-tone={rubric.tone}><TechIcon icon={rubric.icon} /></span>}
-        visual={<StepScene title={rubric.scene.title} steps={rubric.scene.steps} />}
+        visual={<DomainScene domain={rubric.slug} />}
       >
         <a className={sub.primary} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
         <a className={sub.secondary} href="#services">Ce qu’on fait <span aria-hidden="true">↓</span></a>

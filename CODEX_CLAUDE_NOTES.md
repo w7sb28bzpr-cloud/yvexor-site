@@ -463,6 +463,22 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-28, suite 6] — Une animation différente par domaine
+
+**Retour de Yannick** : les scènes à 4 étapes se ressemblaient toutes. Il veut une animation propre à chaque domaine (ex. caisse = ticket qui s’imprime). `StepScene` et `solutionRubrics[].scene` sont **supprimés**, remplacés par `app/solutions/scenes/` :
+
+- `scene-frame.tsx` : `useSceneLoop(durations)` (boucle en 4 étapes, pause hors écran et onglet masqué, dernier état avec `prefers-reduced-motion`, `cycle` pour rejouer les animations ponctuelles), `SceneFrame` (cadre sombre, titre, étiquette « Exemple ») et `ResultBubble`.
+- `domain-scenes.tsx` + `scenes.module.css`, une scène par domaine via `DomainScene({ domain })` :
+  - `caisses-paiement` → **TicketScene** (kit A07 : ticket qui sort de l’imprimante en `clip-path`, tampon « Payé », carte, écran cuisine, chiffre du jour) ;
+  - `ia-automatisation` → **ChatScene** (A11 : message client, IA qui « tape », réponse avec devis, puces d’actions) ;
+  - `domotique-objets-connectes` → **SensorScene** (A17 : courbe SVG tracée par `stroke-dashoffset`, seuil 6 °C, passage en ambre, carte d’alerte) ;
+  - `acces-parkings-securite` → **GateScene** (A12 : voiture, lecture de plaque, barrière qui pivote, journal de passage) ;
+  - `logiciels-applications` → **BoardScene** (fiche qui glisse À faire → En cours → Terminé, compteur du tableau de bord) ;
+  - `sites-internet` → **SiteScene** (page qui se charge, curseur sur « Réserver », formulaire, toast de confirmation).
+- Les pages métier affichent la scène de leur domaine (`trade.rubric`). Toutes les données sont fictives et marquées « Exemple ».
+- Astuce de test : dans le panneau masqué, la boucle est en pause (`document.visibilityState === "hidden"`). Pour vérifier, forcer `visibilityState` à `visible` dans la console puis déclencher `visibilitychange`.
+- Vérifié : `tsc`, tests contenu, thème et SEO (98 pages), build. Les 6 scènes ont été vérifiées étape par étape, sur ordi et à 375 px sans scroll horizontal.
+
 ## [Claude — 2026-10-28, suite 5] — Sous-pages Solutions au niveau du hub
 
 **Demande de Yannick.** Les pages ouvertes depuis Solutions (ex. IA & automatisation) doivent être aussi soignées que le hub.

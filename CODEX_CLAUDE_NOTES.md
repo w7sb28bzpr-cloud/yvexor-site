@@ -463,6 +463,12 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-28, suite 4] — Page métier « Collectivités, écoles & équipements »
+
+Yannick a remarqué que cette carte ouvrait le domaine « Accès, parkings & sécurité », ce qui est trop étroit. Elle ouvre maintenant `/solutions/metiers/public/` : 8 services (accès aux bâtiments, réservation des salles, qualité de l’air dans les classes, énergie & chauffage, cantine & périscolaire, portail famille & citoyen, information & affichage, alertes & sécurité), les lieux couverts et l’encadré « Un besoin propre à votre commune ? ». Il n’y a pas d’offre catalogue. `TradePage` gagne `scopeTitle`, parce que le titre des tags n’est plus propre au sport. 86 pages SEO OK.
+
+**Fait ensuite (même jour)** : les 12 autres métiers ont aussi leur page dans `tradePages` (hotel, garage, craft, office, realestate, transport, association, industry, leisure, camping, building, business), avec 6 services « Lire plus », `scopeTitle`/`scope` et un encadré « idée sur mesure ». Les 14 métiers ouvrent donc leur propre page `/solutions/metiers/<id>/`. Restaurant, snack, commerce et coiffure ouvrent leur offre du catalogue (`tradeHref`). 98 pages SEO OK. Les contenus sont des capacités proposées, pas des références clients : ne pas les présenter comme des réalisations.
+
 ## [Claude — 2026-10-28, suite 3] — Vraie photo dans l’offre tennis & padel
 
 **Décision de Yannick** : une vraie photo de terrain sur l’offre tennis & padel, **pas d’image générée par IA**, sans source affichée. Cela fait exception, pour cette page, à la règle « aucune photo stock » qui visait le hero de l’accueil.

@@ -69,7 +69,7 @@ export default async function TradePage({ params }: TradePageProps) {
       </section>
 
       <section className={offerStyles.section} aria-labelledby="scope-title">
-        <h2 id="scope-title" className={offerStyles.sectionTitle}>Pour toutes les disciplines</h2>
+        <h2 id="scope-title" className={offerStyles.sectionTitle}>{page.scopeTitle}</h2>
         <ul className={offerStyles.tags}>{page.scope.map((item) => <li key={item}>{item}</li>)}</ul>
         <div className={offerStyles.invent}>
           <h3>{page.invent.title}</h3>

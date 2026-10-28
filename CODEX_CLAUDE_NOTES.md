@@ -463,6 +463,13 @@ type Pricing = {
 
 ---
 
+## [Codex — 2026-10-28] — Espacement et finition de `/solutions/`
+
+- Correction de l’espace excessif entre le header et le hero sur mobile : le padding supérieur passe de `6.5rem` à `1.25rem`. Le header étant dans le flux, la grande réserve n’était pas nécessaire.
+- Sections, étapes et cartes d’offres plus aérées (espacements et paddings ajustés). Ajout d’une entrée douce du hero et de réactions discrètes au survol, uniquement si `prefers-reduced-motion: no-preference`.
+- Le texte d’aide des technologies dit maintenant « Sélectionnez une carte », valable au tactile comme à la souris.
+- Contrôles avant publication : `npm run build`, `npm run test:seo` (78 pages), `npm run test:theme` réussis. Sur Windows, `caisse-sync --check` a d’abord rencontré des fins de ligne différentes ; après régénération du snapshot, le build passe. Ne pas inclure le snapshot généré au commit.
+
 ## [Claude — 2026-10-27, soir 4] — `/solutions/` : thème jour/nuit, hero aéré, textes plus clairs
 
 **Demande de Yannick.** Être plus clair avec le client, garder le mode clair qui passe en sombre la nuit, et corriger le hero trop comprimé et décalé sous la barre du haut.

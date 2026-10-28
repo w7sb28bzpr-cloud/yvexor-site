@@ -63,7 +63,7 @@ export default function SolutionsPage() {
         <section className={styles.trades} id="technologies" aria-labelledby="tech-title">
           <p className={styles.kicker}>Ce qu’on connecte</p>
           <h2 id="tech-title" className="site-display">Tout ce qui est technologique, on le relie.</h2>
-          <p className={styles.offersLead}>Même un équipement ancien ou isolé peut rejoindre votre système. Touchez une carte pour en savoir plus.</p>
+          <p className={styles.offersLead}>Même un équipement ancien ou isolé peut rejoindre votre système. Sélectionnez une carte pour en savoir plus.</p>
           <ul className={styles.techGrid}>
             {technologies.map((tech) => <li key={tech.id}>
               <details className={styles.trade}>

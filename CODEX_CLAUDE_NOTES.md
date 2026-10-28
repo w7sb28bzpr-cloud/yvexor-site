@@ -463,6 +463,10 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-28, suite] — « Votre métier » en cartes
+
+Yannick valide la nouvelle page Solutions et demande d’améliorer « Votre métier ». Les pastilles deviennent des **cartes** (`#metiers`) : une tuile colorée de la couleur du domaine vers lequel mène le métier (`solutionRubricBySlug[trade.rubric].tone`), un pictogramme propre au métier (`app/solutions/trade-icon.tsx`, 18 glyphes indexés par `trade.id`), le nom et la ligne courte (2 lignes au maximum). Une carte en pointillés « Votre métier n’est pas là ? » mène à `/contact/`. Sous 560 px, la grille passe à deux colonnes compactes sans la ligne courte (690 px de haut au lieu de 1 228 à 375 px). Vérifié : `tsc`, thème, build et SEO (84 pages), ordi et mobile.
+
 ## [Claude — 2026-10-28] — `/solutions/` refait sur le modèle de `/applications/`
 
 **Décision de Yannick.** Applications lui plaît, Solutions était « le brouhaha » (9 blocs). Le client doit comprendre en une seconde que **YVEXOR fait tout**. Même recette qu’Applications : **une animation, une phrase, des briques**. Les détails vont dans les pages de chaque domaine.

@@ -92,9 +92,26 @@
   .rubric:hover .rubricArrow { color: var(--sol-cyan-text); transform: translate(3px, -50%); }
 }
 
-/* ---------- Trades: one row of chips ---------- */
-.tradesRow { padding-block: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--site-border); }
-.smallTitle { margin: 0 0 1rem; font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em; }
+/* ---------- Trades: compact cards, the icon in the colour of its domain ---------- */
+.tradesSection { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--site-border); scroll-margin-top: 5rem; }
+.sectionLead { margin: .7rem 0 0; color: var(--site-text-secondary); font-size: 1.02rem; }
+.tradeGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr)); gap: .6rem; margin: clamp(1.3rem, 3vw, 1.8rem) 0 0; padding: 0; list-style: none; }
+.tradeGrid > li { display: flex; min-width: 0; }
+.tradeCard { display: grid; width: 100%; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .85rem; padding: .85rem 1rem .85rem .85rem; border: 1px solid var(--site-border); border-radius: 1rem; background: var(--site-surface); color: var(--site-text-primary); transition: border-color 240ms ease, background-color 240ms ease, transform 240ms cubic-bezier(.22, 1, .36, 1); -webkit-tap-highlight-color: transparent; }
+.tradeText { display: flex; min-width: 0; flex-direction: column; gap: .15rem; }
+.tradeName { font-size: .95rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.25; }
+.tradeShort { display: -webkit-box; overflow: hidden; color: var(--site-text-secondary); font-size: .8rem; line-height: 1.35; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.tradeCard:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; }
+.tradeCard:active { transform: scale(.985); }
+.tileSmall { width: 2.6rem; height: 2.6rem; }
+.tileSmall svg { width: 1.35rem; height: 1.35rem; }
+.tradeOther { border-style: dashed; border-color: color-mix(in srgb, #68c9de 60%, transparent); }
+.tileGhost { background: transparent; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, #68c9de 70%, transparent); color: var(--sol-cyan-text); font-size: 1.1rem; font-weight: 800; }
+@media (hover: hover) {
+  .tradeCard:hover { border-color: var(--site-text-muted); background: var(--site-surface-elevated); }
+  .tradeCard:hover .tile { transform: translateY(-2px) scale(1.05); }
+}
+
 .chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0; padding: 0; list-style: none; }
 .chips a { display: inline-flex; min-height: 44px; align-items: center; padding: .45rem 1rem; border: 1px solid var(--site-border); border-radius: 999px; color: var(--site-text-secondary); font-size: .87rem; font-weight: 620; transition: border-color var(--site-transition-fast), color var(--site-transition-fast); }
 .chips a:hover { border-color: #68c9de; color: var(--site-text-primary); }
@@ -107,6 +124,15 @@
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; }
   .scene { width: 100%; max-width: 32rem; }
+}
+/* Phones: two compact columns, like the applications grid. */
+@media (max-width: 560px) {
+  .tradeGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  .tradeCard { gap: .55rem; padding: .65rem .65rem .65rem .6rem; border-radius: .9rem; }
+  .tileSmall { width: 2.15rem; height: 2.15rem; }
+  .tileSmall svg { width: 1.15rem; height: 1.15rem; }
+  .tradeName { font-size: .8rem; line-height: 1.2; }
+  .tradeShort { display: none; }
 }
 @media (max-width: 420px) {
   .device { width: 4.2rem; }
@@ -130,7 +156,9 @@
 @media (prefers-reduced-motion: reduce) {
   .rubric, .rubricArrow, .tile, .chips a, .customCta { transition: none; }
   .rubric:active, .customCta:hover { transform: none; }
-  .rubric:hover .tile { transform: none; }
+  .rubric:hover .tile, .tradeCard:hover .tile { transform: none; }
+  .tradeCard { transition: none; }
+  .tradeCard:active { transform: none; }
 }
 @keyframes scene-ping { from { opacity: .8; transform: scale(1); } to { opacity: 0; transform: scale(1.35); } }
 @keyframes scene-pop { from { transform: scale(.88); } }

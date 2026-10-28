@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { PageData } from "../../components/structured-data";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/navigation";
-import { solutionRubrics } from "../../data/solution-rubrics";
+import { solutionRubricBySlug, solutionRubrics } from "../../data/solution-rubrics";
 import { trades } from "../../data/trades";
 import { pageMetadata } from "../../lib/seo";
 import { ConnectedScene } from "./connected-scene";
 import { TechIcon } from "./tech-icon";
+import { TradeIcon } from "./trade-icon";
 import styles from "./solutions.module.css";
 
 const title = "Solutions YVEXOR — Logiciels, IA, objets connectés, sur mesure";
@@ -48,12 +49,29 @@ export default function SolutionsPage() {
           </ul>
         </section>
 
-        <section className={styles.tradesRow} aria-labelledby="trades-title">
-          <h2 id="trades-title" className={styles.smallTitle}>Votre métier</h2>
-          <ul className={styles.chips}>
+        <section id="metiers" className={styles.tradesSection} aria-labelledby="trades-title">
+          <h2 id="trades-title" className={styles.sectionTitle}>Votre métier</h2>
+          <p className={styles.sectionLead}>On travaille avec tous les métiers. Choisissez le vôtre :</p>
+          <ul className={styles.tradeGrid}>
             {trades.map((trade) => <li key={trade.id}>
-              <a href={trade.offer ? `/solutions/offres/${trade.offer}/` : `/solutions/domaines/${trade.rubric}/`}>{trade.name}</a>
+              {/* The icon takes the colour of the domain the trade leads to. */}
+              <a className={styles.tradeCard} href={trade.offer ? `/solutions/offres/${trade.offer}/` : `/solutions/domaines/${trade.rubric}/`}>
+                <span className={`${styles.tile} ${styles.tileSmall}`} data-tone={solutionRubricBySlug[trade.rubric]?.tone}><TradeIcon id={trade.id} /></span>
+                <span className={styles.tradeText}>
+                  <span className={styles.tradeName}>{trade.name}</span>
+                  <span className={styles.tradeShort}>{trade.short}</span>
+                </span>
+              </a>
             </li>)}
+            <li>
+              <a className={`${styles.tradeCard} ${styles.tradeOther}`} href="/contact/">
+                <span className={`${styles.tile} ${styles.tileSmall} ${styles.tileGhost}`}>?</span>
+                <span className={styles.tradeText}>
+                  <span className={styles.tradeName}>Votre métier n’est pas là&nbsp;?</span>
+                  <span className={styles.tradeShort}>On trouve la solution quand même. Écrivez-nous.</span>
+                </span>
+              </a>
+            </li>
           </ul>
         </section>
 

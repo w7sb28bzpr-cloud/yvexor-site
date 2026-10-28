@@ -463,6 +463,15 @@ type Pricing = {
 
 ---
 
+## [Claude — 2026-10-28, suite 5] — Sous-pages Solutions au niveau du hub
+
+**Demande de Yannick.** Les pages ouvertes depuis Solutions (ex. IA & automatisation) doivent être aussi soignées que le hub.
+
+- **Animation par domaine** `app/solutions/step-scene.tsx` (+ `.module.css`) : une scène « logiciel » en 4 étapes, dans le même langage que le flux de `/applications/` (rail d’étapes, fenêtre qui change, bulle de résultat, étiquette « Exemple »). Les données sont dans `solutionRubrics[].scene` (`SceneStep`, avec une icône du jeu `BusinessToolIcon` ou `TechIcon`). Ça n’anime que `transform`/`opacity`, se met en pause hors écran et onglet masqué, et affiche l’état final avec `prefers-reduced-motion`. La hauteur est fixe (pas de CLS).
+- **Blocs communs** `app/solutions/subpage.tsx` (+ `.module.css`) : `SubHero` (hero en deux colonnes avec la scène, kicker, petite tuile colorée), `ServiceGrid` (services numérotés 01–0n avec « Lire plus »), `HowItWorks` (3 étapes) et `BudgetClosing`. Ils sont utilisés par `/solutions/domaines/*` et `/solutions/metiers/*`. Les pages métier reprennent la scène de leur domaine (`trade.rubric`).
+- Les styles `.detail*` et `.headIcon` inutilisés ont été retirés de `offers.module.css`. Les pages d’offres du catalogue n’ont pas changé.
+- Vérifié : `tsc`, tests contenu, thème et SEO (98 pages), build, ordi et 375 px sans scroll horizontal.
+
 ## [Claude — 2026-10-28, suite 4] — Page métier « Collectivités, écoles & équipements »
 
 Yannick a remarqué que cette carte ouvrait le domaine « Accès, parkings & sécurité », ce qui est trop étroit. Elle ouvre maintenant `/solutions/metiers/public/` : 8 services (accès aux bâtiments, réservation des salles, qualité de l’air dans les classes, énergie & chauffage, cantine & périscolaire, portail famille & citoyen, information & affichage, alertes & sécurité), les lieux couverts et l’encadré « Un besoin propre à votre commune ? ». Il n’y a pas d’offre catalogue. `TradePage` gagne `scopeTitle`, parce que le titre des tags n’est plus propre au sport. 86 pages SEO OK.

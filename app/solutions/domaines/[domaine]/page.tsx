@@ -8,6 +8,8 @@ import { solutionRubricBySlug, solutionRubrics } from "../../../../data/solution
 import { tradeHref, tradePageById } from "../../../../data/trade-pages";
 import { trades } from "../../../../data/trades";
 import { pageMetadata } from "../../../../lib/seo";
+import { StepScene } from "../../step-scene";
+import { BudgetClosing, HowItWorks, ServiceGrid, SubHero, subpageStyles as sub } from "../../subpage";
 import { TechIcon } from "../../tech-icon";
 import offerStyles from "../../offres/offers.module.css";
 import styles from "../../solutions.module.css";
@@ -41,44 +43,30 @@ export default async function RubricPage({ params }: RubricPageProps) {
   return <div className={`site-foundation ${styles.shell}`}>
     <PageData path={path} title={metaTitle(rubric.name)} description={rubric.lead} service={rubric.name} />
     <SiteHeader />
-    <main id="contenu" className={offerStyles.page}>
-      <header className={offerStyles.head}>
-        <a className={offerStyles.back} href="/solutions/#rubriques"><span aria-hidden="true">←</span> Nos solutions</a>
-        <div className={offerStyles.headIcon}><span className={styles.tile} data-tone={rubric.tone}><TechIcon icon={rubric.icon} /></span></div>
-        <h1 className={offerStyles.title}>{rubric.name}</h1>
-        <p className={offerStyles.lead}>{rubric.lead}</p>
-        <div className={offerStyles.actions}>
-          <a className={offerStyles.primary} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
-        </div>
-      </header>
+    <main id="contenu" className={sub.page}>
+      <SubHero
+        kicker="Nos solutions"
+        title={rubric.name}
+        lead={rubric.lead}
+        icon={<span className={`${styles.tile} ${styles.tileSmall}`} data-tone={rubric.tone}><TechIcon icon={rubric.icon} /></span>}
+        visual={<StepScene title={rubric.scene.title} steps={rubric.scene.steps} />}
+      >
+        <a className={sub.primary} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
+        <a className={sub.secondary} href="#services">Ce qu’on fait <span aria-hidden="true">↓</span></a>
+      </SubHero>
 
-      <section className={offerStyles.section} aria-labelledby="services-title">
-        <h2 id="services-title" className={offerStyles.sectionTitle}>Ce qu’on fait pour vous</h2>
-        <ul className={`${offerStyles.cards} ${offerStyles.detailCards}`}>
-          {rubric.services.map((service) => <li key={service.title}>
-            <details className={offerStyles.detail}>
-              <summary>
-                <span className={offerStyles.detailTitle}>{service.title}</span>
-                <span className={offerStyles.detailText}>{service.text}</span>
-                <span className={offerStyles.detailMore} aria-hidden="true">Lire plus</span>
-              </summary>
-              <p>{service.more}</p>
-            </details>
-          </li>)}
-        </ul>
-        <p className={offerStyles.note}>Votre budget fixe le point de départ : on commence par ce qui vous sert le plus, puis on ajoute le reste quand vous voulez.</p>
-      </section>
+      <ServiceGrid id="services" title="Ce qu’on fait pour vous" services={rubric.services} />
 
-      {forTrades.length > 0 && <section className={offerStyles.section} aria-labelledby="trades-title">
-        <h2 id="trades-title" className={offerStyles.sectionTitle}>Pour qui&nbsp;?</h2>
+      {forTrades.length > 0 && <section className={sub.section} aria-labelledby="trades-title">
+        <h2 id="trades-title" className={sub.sectionTitle}>Pour qui&nbsp;?</h2>
         <ul className={`${styles.chips} ${offerStyles.chipsGap}`}>
           {forTrades.map((trade) => <li key={trade.id}><a href={tradePageById[trade.id] || trade.offer ? tradeHref(trade) : "/contact/"}>{trade.name}</a></li>)}
         </ul>
       </section>}
 
-      {offers.length > 0 && <section className={offerStyles.section} aria-labelledby="offers-title">
-        <h2 id="offers-title" className={offerStyles.sectionTitle}>Exemples de prix</h2>
-        <p className={offerStyles.intro}>Les prix habituels du marché, détaillés par métier. Votre budget reste le point de départ.</p>
+      {offers.length > 0 && <section className={sub.section} aria-labelledby="offers-title">
+        <h2 id="offers-title" className={sub.sectionTitle}>Exemples de prix</h2>
+        <p className={sub.sectionLead}>Les prix habituels du marché, détaillés par métier. Votre budget reste le point de départ.</p>
         <ul className={`${offerStyles.cards} ${offerStyles.detailCards}`}>
           {offers.map((offer) => <li key={offer.slug}>
             <a className={offerStyles.offerLink} href={`/solutions/offres/${offer.slug}/`}>
@@ -89,6 +77,9 @@ export default async function RubricPage({ params }: RubricPageProps) {
           </li>)}
         </ul>
       </section>}
+
+      <HowItWorks />
+      <BudgetClosing />
 
       <nav className={offerStyles.others} aria-labelledby="others-title">
         <h2 id="others-title">Les autres domaines</h2>

@@ -8,6 +8,8 @@ import { solutionRubricBySlug, solutionRubrics } from "../../../../data/solution
 import { tradePageById, tradePages } from "../../../../data/trade-pages";
 import { trades } from "../../../../data/trades";
 import { pageMetadata } from "../../../../lib/seo";
+import { StepScene } from "../../step-scene";
+import { BudgetClosing, HowItWorks, ServiceGrid, SubHero, subpageStyles as sub } from "../../subpage";
 import { TradeIcon } from "../../trade-icon";
 import offerStyles from "../../offres/offers.module.css";
 import styles from "../../solutions.module.css";
@@ -36,40 +38,30 @@ export default async function TradePage({ params }: TradePageProps) {
   if (!page || !trade) notFound();
   const path = `/solutions/metiers/${page.id}/`;
   const featured = page.featured ? catalogueOfferBySlug[page.featured.offer] : undefined;
+  // The header example comes from the domain the trade belongs to.
+  const rubric = solutionRubricBySlug[trade.rubric];
 
   return <div className={`site-foundation ${styles.shell}`}>
     <PageData path={path} title={metaTitle(page.title)} description={page.lead} service={page.title} />
     <SiteHeader />
-    <main id="contenu" className={offerStyles.page}>
-      <header className={offerStyles.head}>
-        <a className={offerStyles.back} href="/solutions/#metiers"><span aria-hidden="true">←</span> Nos solutions</a>
-        <div className={offerStyles.headIcon}><span className={styles.tile} data-tone={solutionRubricBySlug[trade.rubric]?.tone}><TradeIcon id={trade.id} /></span></div>
-        <h1 className={offerStyles.title}>{page.title}</h1>
-        <p className={offerStyles.lead}>{page.lead}</p>
-        <div className={offerStyles.actions}>
-          <a className={offerStyles.primary} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
-          {featured && <a className={offerStyles.secondary} href="#offre">{`Voir l’offre ${featured.name.toLowerCase()}`}</a>}
-        </div>
-      </header>
+    <main id="contenu" className={sub.page}>
+      <SubHero
+        kicker="Votre métier"
+        title={page.title}
+        lead={page.lead}
+        icon={<span className={`${styles.tile} ${styles.tileSmall}`} data-tone={solutionRubricBySlug[trade.rubric]?.tone}><TradeIcon id={trade.id} /></span>}
+        visual={rubric ? <StepScene title={rubric.scene.title} steps={rubric.scene.steps} /> : undefined}
+      >
+        <a className={sub.primary} href="/contact/">Parler de mon projet <span aria-hidden="true">→</span></a>
+        {featured
+          ? <a className={sub.secondary} href="#offre">{`Voir l’offre ${featured.name.toLowerCase()}`}</a>
+          : <a className={sub.secondary} href="#services">Ce qu’on fait <span aria-hidden="true">↓</span></a>}
+      </SubHero>
 
-      <section className={offerStyles.section} aria-labelledby="services-title">
-        <h2 id="services-title" className={offerStyles.sectionTitle}>Tout ce qu’on peut faire pour vous</h2>
-        <ul className={`${offerStyles.cards} ${offerStyles.detailCards}`}>
-          {page.services.map((service) => <li key={service.title}>
-            <details className={offerStyles.detail}>
-              <summary>
-                <span className={offerStyles.detailTitle}>{service.title}</span>
-                <span className={offerStyles.detailText}>{service.text}</span>
-                <span className={offerStyles.detailMore} aria-hidden="true">Lire plus</span>
-              </summary>
-              <p>{service.more}</p>
-            </details>
-          </li>)}
-        </ul>
-      </section>
+      <ServiceGrid id="services" title="Tout ce qu’on peut faire pour vous" services={page.services} />
 
-      <section className={offerStyles.section} aria-labelledby="scope-title">
-        <h2 id="scope-title" className={offerStyles.sectionTitle}>{page.scopeTitle}</h2>
+      <section className={sub.section} aria-labelledby="scope-title">
+        <h2 id="scope-title" className={sub.sectionTitle}>{page.scopeTitle}</h2>
         <ul className={offerStyles.tags}>{page.scope.map((item) => <li key={item}>{item}</li>)}</ul>
         <div className={offerStyles.invent}>
           <h3>{page.invent.title}</h3>
@@ -78,9 +70,9 @@ export default async function TradePage({ params }: TradePageProps) {
         </div>
       </section>
 
-      {featured && <section id="offre" className={offerStyles.section} aria-labelledby="featured-title">
-        <h2 id="featured-title" className={offerStyles.sectionTitle}>{page.featured!.title}</h2>
-        <p className={offerStyles.intro}>{page.featured!.text}</p>
+      {featured && <section id="offre" className={sub.section} aria-labelledby="featured-title">
+        <h2 id="featured-title" className={sub.sectionTitle}>{page.featured!.title}</h2>
+        <p className={sub.sectionLead}>{page.featured!.text}</p>
         <a className={offerStyles.featured} href={`/solutions/offres/${featured.slug}/`}>
           <span className={offerStyles.detailTitle}>{featured.brand}</span>
           <span className={offerStyles.detailText}>{featured.summary}</span>
@@ -88,6 +80,9 @@ export default async function TradePage({ params }: TradePageProps) {
           <span className={offerStyles.featuredCta}>Voir les formules et les prix <span aria-hidden="true">→</span></span>
         </a>
       </section>}
+
+      <HowItWorks />
+      <BudgetClosing />
 
       <nav className={offerStyles.others} aria-labelledby="others-title">
         <h2 id="others-title">Explorer par domaine</h2>

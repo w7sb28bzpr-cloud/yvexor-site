@@ -1,4 +1,17 @@
+import type { ToolIconId } from "./content-types";
 import type { TechIconId } from "./trades";
+
+/** One step of a domain scene. Icons come from the tool set or the connected-scene set. */
+export type SceneStep = {
+  icon: { set: "tool"; id: ToolIconId } | { set: "scene"; id: TechIconId | "door" | "bulb" | "thermo" };
+  label: string;
+  /** Window header, small caps. */
+  head: string;
+  primary: string;
+  secondary: string;
+  result: string;
+  alert?: boolean;
+};
 
 /** The six doors of /solutions/: what the client wants to do. Each opens /solutions/domaines/<slug>/. */
 export type SolutionRubric = {
@@ -14,6 +27,8 @@ export type SolutionRubric = {
   offers?: string[];
   /** An existing, more detailed page. */
   deeper?: { label: string; href: string };
+  /** The animated example in the header: four steps, illustrative figures. */
+  scene: { title: string; steps: SceneStep[] };
 };
 
 export const solutionRubrics: SolutionRubric[] = [
@@ -31,6 +46,12 @@ export const solutionRubrics: SolutionRubric[] = [
       { title: "Plateforme ou projet à lancer", text: "Une idée à tester ? On commence petit.", more: "On construit d’abord une première version utile, on la met entre les mains de vrais utilisateurs, puis on la fait grandir." },
     ],
     deeper: { label: "Le logiciel sur mesure en détail", href: "/logiciel-sur-mesure/" },
+    scene: { title: "Une demande, du client au tableau de bord", steps: [
+      { icon: { set: "tool", id: "users" }, label: "Client", head: "Nouvelle demande", primary: "Mme Martin · installation", secondary: "Reçue depuis le site", result: "Fiche client créée" },
+      { icon: { set: "tool", id: "calendar" }, label: "Planning", head: "Intervention", primary: "Mardi 9 h · équipe B", secondary: "Ajoutée au planning partagé", result: "Intervention planifiée" },
+      { icon: { set: "tool", id: "clipboard" }, label: "Terrain", head: "Compte rendu", primary: "3 photos · signé par le client", secondary: "Rempli sur le téléphone", result: "Intervention terminée" },
+      { icon: { set: "tool", id: "chart" }, label: "Pilotage", head: "Tableau de bord", primary: "12 interventions cette semaine", secondary: "Mis à jour tout seul", result: "Vos chiffres sont à jour" },
+    ] },
   },
   {
     slug: "ia-automatisation",
@@ -46,6 +67,12 @@ export const solutionRubrics: SolutionRubric[] = [
       { title: "Rapports et prévisions", text: "Vos chiffres expliqués simplement.", more: "Ventes, marges, tendances : des rapports clairs envoyés automatiquement, et des prévisions pour anticiper." },
     ],
     deeper: { label: "L’automatisation en détail", href: "/automatisation-entreprise/" },
+    scene: { title: "Un message client, traité tout seul", steps: [
+      { icon: { set: "tool", id: "users" }, label: "Message", head: "Message reçu", primary: "« Bonjour, je voudrais un devis… »", secondary: "Par e-mail, 7 h 42", result: "Demande reçue" },
+      { icon: { set: "tool", id: "sparkles" }, label: "IA", head: "Analyse", primary: "Sujet : devis · Priorité : haute", secondary: "Client déjà connu", result: "Demande triée par l’IA" },
+      { icon: { set: "tool", id: "clipboard" }, label: "Réponse", head: "Brouillon", primary: "Devis préparé avec vos tarifs", secondary: "À valider en un clic", result: "Réponse prête" },
+      { icon: { set: "tool", id: "repeat" }, label: "Suite", head: "Automatisation", primary: "Devis envoyé · relance à J+3", secondary: "Dossier classé automatiquement", result: "Fait, sans copier-coller" },
+    ] },
   },
   {
     slug: "domotique-objets-connectes",
@@ -61,6 +88,12 @@ export const solutionRubrics: SolutionRubric[] = [
       { title: "Écrans & affichage", text: "Les bonnes informations au bon endroit.", more: "Affichage dynamique à l’accueil, écrans en cuisine ou en atelier, tableaux de bord de suivi en temps réel." },
     ],
     deeper: { label: "Les systèmes connectés en détail", href: "/systemes-connectes/" },
+    scene: { title: "Une journée dans un bâtiment connecté", steps: [
+      { icon: { set: "scene", id: "door" }, label: "Arrivée", head: "Entrée", primary: "Badge du gérant · 7 h 02", secondary: "Alarme désactivée", result: "Bâtiment ouvert" },
+      { icon: { set: "scene", id: "bulb" }, label: "Lumière", head: "Éclairage", primary: "Accueil et couloirs allumés", secondary: "Scénario « ouverture »", result: "Lumière allumée" },
+      { icon: { set: "scene", id: "thermo" }, label: "Chauffage", head: "Confort", primary: "Bureaux à 20,5 °C", secondary: "Selon l’occupation", result: "Confort atteint" },
+      { icon: { set: "scene", id: "sensor" }, label: "Capteur", head: "Chambre froide", primary: "7,8 °C · seuil dépassé", secondary: "Message au responsable", result: "Alerte envoyée", alert: true },
+    ] },
   },
   {
     slug: "acces-parkings-securite",
@@ -77,6 +110,12 @@ export const solutionRubrics: SolutionRubric[] = [
     ],
     offers: ["tennis-padel"],
     deeper: { label: "Les systèmes connectés en détail", href: "/systemes-connectes/" },
+    scene: { title: "Un visiteur, de la barrière au bureau", steps: [
+      { icon: { set: "scene", id: "barrier" }, label: "Parking", head: "Barrière", primary: "Plaque AB-123-CD reconnue", secondary: "Place 14 réservée", result: "Barrière ouverte" },
+      { icon: { set: "scene", id: "badge" }, label: "Badge", head: "Contrôle d’accès", primary: "Accès visiteur · 9 h – 12 h", secondary: "Code envoyé par SMS", result: "Accès autorisé" },
+      { icon: { set: "scene", id: "door" }, label: "Porte", head: "Hall", primary: "Déverrouillée 5 secondes", secondary: "Passage enregistré", result: "Porte ouverte" },
+      { icon: { set: "scene", id: "camera" }, label: "Caméra", head: "Surveillance", primary: "Mouvement au portail · 22 h 14", secondary: "Hors horaires", result: "Enregistrement lancé", alert: true },
+    ] },
   },
   {
     slug: "caisses-paiement",
@@ -93,6 +132,12 @@ export const solutionRubrics: SolutionRubric[] = [
     ],
     offers: ["commerces", "snacks", "restaurants", "coiffure-beaute"],
     deeper: { label: "Configurer ma caisse", href: "/caisse/" },
+    scene: { title: "Une commande, du comptoir à la cuisine", steps: [
+      { icon: { set: "tool", id: "restaurant" }, label: "Commande", head: "Commande #48", primary: "2 menus · 1 boisson", secondary: "Sur place · QR table 6", result: "Commande saisie" },
+      { icon: { set: "tool", id: "cash-register" }, label: "Caisse", head: "Encaissement", primary: "Total 24,50 € · carte", secondary: "Ticket envoyé par e-mail", result: "Paiement accepté" },
+      { icon: { set: "scene", id: "screen" }, label: "Cuisine", head: "Écran cuisine", primary: "#48 · 2 burgers, 1 salade", secondary: "Temps de préparation 8 min", result: "Envoyée en cuisine" },
+      { icon: { set: "tool", id: "chart" }, label: "Chiffres", head: "Journée", primary: "Chiffre d’affaires : 1 284 €", secondary: "Consultable à distance", result: "Ventes à jour" },
+    ] },
   },
   {
     slug: "sites-internet",
@@ -108,6 +153,12 @@ export const solutionRubrics: SolutionRubric[] = [
       { title: "Hébergement & suivi", text: "On s’occupe de la technique.", more: "Hébergement, sécurité, sauvegardes et mises à jour : votre site reste en ligne et à jour." },
     ],
     deeper: { label: "La présence web en détail", href: "/site-presence-web/" },
+    scene: { title: "Un visiteur devient un client", steps: [
+      { icon: { set: "tool", id: "globe" }, label: "Site", head: "Visite", primary: "Arrivé depuis Google", secondary: "Page « Réserver »", result: "Visiteur sur votre site" },
+      { icon: { set: "tool", id: "calendar" }, label: "Réservation", head: "Demande", primary: "Table pour 4 · samedi 20 h", secondary: "Disponibilité vérifiée", result: "Réservation reçue" },
+      { icon: { set: "tool", id: "users" }, label: "Client", head: "Confirmation", primary: "E-mail et SMS envoyés", secondary: "Rappel prévu la veille", result: "Client prévenu" },
+      { icon: { set: "tool", id: "chart" }, label: "Suivi", head: "Statistiques", primary: "312 visites cette semaine", secondary: "+24 % de réservations", result: "Suivi à jour" },
+    ] },
   },
 ];
 

@@ -64,8 +64,7 @@
 .cardPrice { margin: 0.45rem 0 0; color: var(--offer-cyan-text); font-size: 0.84rem; font-weight: 720; }
 .card p:last-child { margin: 0.5rem 0 0; color: var(--site-text-secondary); font-size: 0.87rem; line-height: 1.45; }
 
-/* Rubric pages: icon above the title, chips under a section title. */
-.headIcon { display: flex; margin: 0.4rem 0 1.1rem; }
+/* Rubric pages: chips under a section title. */
 ul.chipsGap { margin-top: 1.3rem; }
 
 /* Trade pages: covered activities, the "we invent it" box and the featured offer. */
@@ -82,18 +81,10 @@ ul.chipsGap { margin-top: 1.3rem; }
 .featuredCta { color: var(--offer-cyan-text); font-size: .9rem; font-weight: 700; }
 
 /* Service cards with "Lire plus", and offer links (rubric pages). */
-.detail,
 .offerLink { display: flex; min-width: 0; height: 100%; flex-direction: column; border: 1px solid var(--site-border); border-radius: 1rem; background: var(--site-surface); }
-.detail[open] { border-color: color-mix(in srgb, var(--offer-cyan) 55%, transparent); }
-.detail summary { display: flex; min-height: 44px; flex-direction: column; gap: .35rem; padding: 1.15rem 1.15rem 1.2rem; cursor: pointer; list-style: none; }
-.detail summary::-webkit-details-marker { display: none; }
-.detail summary:focus-visible,
 .offerLink:focus-visible { outline: 2px solid var(--site-focus); outline-offset: 3px; border-radius: 1rem; }
 .detailTitle { color: var(--site-text-primary); font-size: 1.02rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.25; }
 .detailText { color: var(--site-text-secondary); font-size: .88rem; line-height: 1.45; }
-.detailMore { margin-top: .3rem; color: var(--offer-cyan-text); font-size: .8rem; font-weight: 700; }
-.detail[open] .detailMore { display: none; }
-.detail p { margin: 0; padding: 0 1.15rem 1.15rem; color: var(--site-text-secondary); font-size: .88rem; line-height: 1.5; }
 .offerLink { gap: .35rem; padding: 1.15rem 1.15rem 1.2rem; color: var(--site-text-primary); text-decoration: none; transition: border-color var(--site-transition-fast); }
 .offerLink:hover { border-color: var(--offer-cyan); }
 .detailCards > li { display: flex; }
